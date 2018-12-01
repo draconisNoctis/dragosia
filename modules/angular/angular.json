@@ -29,7 +29,42 @@
               "libs/jui/tsconfig.lib.json",
               "libs/jui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sheet": {
+      "root": "libs/sheet",
+      "sourceRoot": "libs/sheet/src",
+      "projectType": "library",
+      "prefix": "js",
+        "schematics": {
+            "@nrwl/schematics:component": {
+                "prefix": "js"
+            }
+        },
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/sheet/src/test.ts",
+            "tsConfig": "libs/sheet/tsconfig.spec.json",
+            "karmaConfig": "libs/sheet/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/sheet/tsconfig.lib.json",
+              "libs/sheet/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
