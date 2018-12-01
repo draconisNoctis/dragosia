@@ -8,6 +8,11 @@
       "sourceRoot": "libs/jui/src",
       "projectType": "library",
       "prefix": "jui",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "prefix": "jui"
+        }
+      },
       "architect": {
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
