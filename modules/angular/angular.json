@@ -30,6 +30,14 @@
       }
     }
   },
+  "schematics": {
+    "@nrwl/schematics:component": {
+      "styleext": "scss",
+      "viewEncapsulation": "None",
+      "changeDetection": "OnPush",
+      "prefix": "jd"
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
