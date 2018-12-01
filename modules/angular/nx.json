@@ -13,6 +13,12 @@
     },
     "sheet": {
       "tags": []
+    },
+    "char-sheet": {
+      "tags": []
+    },
+    "char-sheet-e2e": {
+      "tags": []
     }
   }
 }
