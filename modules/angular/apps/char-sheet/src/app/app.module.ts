@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { SheetModule } from '@jina-draicana/sheet';
 
 import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
@@ -14,7 +15,8 @@ import { SheetComponent } from './sheet/sheet.component';
         RouterModule.forRoot([
             { path: '', component: SheetComponent },
             { path: '*', redirectTo: '/' }
-        ], { initialNavigation: 'enabled' })
+        ], { initialNavigation: 'enabled' }),
+        SheetModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -14,9 +14,9 @@ import {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'jui-page',
-        '[jui-page-a4]': 'din == "a4"',
-        '[jui-page-a5]': 'din == "a5"',
-        '[jui-page-a6]': 'din == "a6"'
+        '[class.jui-page-a4]': 'din == "a4"',
+        '[class.jui-page-a5]': 'din == "a5"',
+        '[class.jui-page-a6]': 'din == "a6"'
     }
 })
 export class PageComponent implements OnInit {

@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://unpkg.com/normalize.css@5.0.0/normalize.css");
+
+:root {
+    --content-background-color: white;
+    --page-background-color: #EFEFEF;
+}
+
+body {
+    background: var(--page-background-color);
+}
