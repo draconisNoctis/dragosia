@@ -132,4 +132,62 @@
         <jui-radio-range formControlName="health" [max]="25"></jui-radio-range>
     </div>
 </jui-page>
-<jui-page din="a4">Page 2</jui-page>
+
+<jui-page din="a4">
+    <h1 i18n class="page-title">Character Sheet</h1>
+
+    <h2 i18n class="melee-title">Melee</h2>
+
+    <div class="melee">
+        <div *ngFor="let control of form.get(['talents', 'melee']).controls" [formGroup]="control" class="talent">
+            <input formControlName="skill" />
+            <input formControlName="name" />
+            <input formControlName="attribute" />
+            <jui-radio-range formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n class="range-title">Range</h2>
+
+    <div class="range">
+        <div *ngFor="let control of form.get(['talents', 'range']).controls" [formGroup]="control" class="talent">
+            <input formControlName="skill" />
+            <input formControlName="name" />
+            <input formControlName="attribute" />
+            <jui-radio-range formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n class="physical-title">Physical</h2>
+
+    <div class="physical">
+        <div *ngFor="let control of form.get(['talents', 'physical']).controls" [formGroup]="control" class="talent">
+            <input formControlName="skill" />
+            <input formControlName="name" />
+            <input formControlName="attribute" />
+            <jui-radio-range formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n class="mental-title">Mental</h2>
+
+    <div class="mental">
+        <div *ngFor="let control of form.get(['talents', 'mental']).controls" [formGroup]="control" class="talent">
+            <input formControlName="skill" />
+            <input formControlName="name" />
+            <input formControlName="attribute" />
+            <jui-radio-range formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n class="magic-title">Mental</h2>
+
+    <div class="magic">
+        <div *ngFor="let control of form.get(['talents', 'magic']).controls" [formGroup]="control" class="talent">
+            <input formControlName="skill" />
+            <input formControlName="name" />
+            <input formControlName="attribute" />
+            <jui-radio-range formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+</jui-page>

@@ -15,6 +15,14 @@
     h1, h2 {
         margin: 0;
     }
+
+    input {
+        border: none;
+        line-height: 3rem;
+        padding: 0 2mm;
+        border-bottom: 1px solid var(--border-color);
+    }
+
     .jui-page:nth-child(1) {
         display: grid;
         grid-gap: 5mm;
@@ -42,114 +50,163 @@
                 grid-area: $area;
             }
         }
-    }
-
-    .about {
-        display: grid;
-        grid-gap: 0 5mm;
-        grid-template-columns: min-content auto;
-        grid-auto-rows: auto;
-        align-items: center;
 
 
-        label {
-            display: contents;
+        .about {
+            display: grid;
+            grid-gap: 0 5mm;
+            grid-template-columns: min-content auto;
+            grid-auto-rows: auto;
+            align-items: center;
 
-            input {
-                border: none;
-                line-height: 3rem;
-                padding: 0 2mm;
-                border-bottom: 1px solid var(--border-color);
+
+            label {
+                display: contents;
             }
         }
-    }
 
-    .description {
-        label {
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: relative;
-
-            span {
-                position: absolute;
-                top: -2rem;
-                left: 0;
-            }
-
-            textarea {
+        .description {
+            label {
+                display: block;
                 width: 100%;
                 height: 100%;
-            }
-        }
-    }
+                position: relative;
 
-    strong {
-        line-height: 2rem;
-        margin-bottom: .5rem;
-    }
-
-    fieldset {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        border: 0;
-        padding: 0;
-        margin: 0;
-    }
-
-    textarea {
-        min-height: 10rem;
-        line-height: calc(3rem + 1px);
-        border: none;
-        background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                transparent 3rem,
-                var(--border-color) 3rem,
-                var(--border-color) calc(3rem + 1px)
-        );
-        background-size: 100% calc(3rem + 1px);
-        resize: none;
-    }
-
-    .health, .mana {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-auto-rows: auto;
-
-        > span {
-            grid-row: 1;
-
-            grid-column: auto / span 4;
-            //grid-column-end: span 2;
-        }
-
-        .jui-radio-range {
-            display: contents;
-
-            span {
-                grid-row: 3;
-                width: 1rem;
-                height: 1rem;
-
-                &:nth-child(5n) {
-                    width: 3rem;
-                    height: 3rem;
-                    grid-row: 2;
-                    grid-column: auto / span 4;
-                    //grid-column-end: span 2;
+                span {
+                    position: absolute;
+                    top: -2rem;
+                    left: 0;
                 }
 
-                //&:nth-child(5n - 2), &:nth-child(5n - 1) {
-                //    grid-row: 3;
-                //}
-                //
-                //&:nth-child(5n - 4), &:nth-child(5n - 3) {
-                //    grid-row: 4;
-                //}
+                textarea {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        strong {
+            line-height: 2rem;
+            margin-bottom: .5rem;
+        }
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        textarea {
+            min-height: 10rem;
+            line-height: calc(3rem + 1px);
+            border: none;
+            background: linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    transparent 3rem,
+                    var(--border-color) 3rem,
+                    var(--border-color) calc(3rem + 1px)
+            );
+            background-size: 100% calc(3rem + 1px);
+            resize: none;
+        }
+
+        .health, .mana {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-auto-rows: auto;
+
+            > span {
+                grid-row: 1;
+
+                grid-column: auto / span 4;
+            }
+
+            .jui-radio-range {
+                display: contents;
+
+                span {
+                    grid-row: 3;
+                    width: 1rem;
+                    height: 1rem;
+
+                    &:nth-child(5n) {
+                        width: 3rem;
+                        height: 3rem;
+                        grid-row: 2;
+                        grid-column: auto / span 4;
+                    }
+                }
             }
         }
     }
+
+    .jui-page:nth-child(2) {
+        display: grid;
+        grid-gap: 5mm;
+        grid-template-columns: repeat(20, 1fr);
+        grid-template-rows: 1cm .5cm 1fr .5cm 2fr .5cm 1fr;
+        grid-template-areas:
+            "#{gta(page-title, 20)}"
+            "#{gta(melee-title, 10)} #{gta(range-title, 10)}"
+            "#{gta(melee, 10)} #{gta(range, 10)}"
+            "#{gta(physical-title, 10)} #{gta(mental-title, 10)}"
+            "#{gta(physical, 10)} #{gta(mental, 10)}"
+            "#{gta(magic-title, 20)}"
+            "#{gta(magic, 20)}";
+
+        @each $area in (page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic) {
+            .#{$area} {
+                grid-area: $area;
+            }
+        }
+
+        .talent {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            input {
+                margin-right: 2mm;
+                &:nth-child(1) {
+                    width: .8cm;
+                    text-align: center;
+                }
+                &:nth-child(2) {
+                    flex-grow: 1;
+                }
+                &:nth-child(3) {
+                    width: 1.2cm;
+                    text-align: center;
+                }
+            }
+            .jui-radio-range {
+                span {
+                    height: 1rem;
+                    width: 1rem;
+                    &:not(:last-child) {
+                        margin-right: .2rem;
+                    }
+                }
+            }
+        }
+
+        .magic {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            .talent {
+                width: calc((100% - 5mm) / 2);
+
+                &:nth-child(2n - 1) {
+                    margin-right: 5mm;
+                }
+            }
+        }
+    }
+
 }

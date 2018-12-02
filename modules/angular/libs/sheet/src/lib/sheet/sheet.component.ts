@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector       : 'js-sheet',
@@ -40,7 +40,15 @@ export class SheetComponent implements OnInit {
         advantages: new FormControl(),
         disadvantages: new FormControl(),
         health: new FormControl(),
-        mana: new FormControl()
+        mana: new FormControl(),
+        
+        talents: new FormGroup({
+            melee: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
+            range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
+            physical: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
+            mental: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
+            magic: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
+        })
     });
     
     
@@ -53,4 +61,12 @@ export class SheetComponent implements OnInit {
         })
     }
     
+    protected createTalentFormControl() {
+        return new FormGroup({
+            skill: new FormControl(),
+            name: new FormControl(),
+            attribute: new FormControl(),
+            value: new FormControl()
+        })
+    }
 }
