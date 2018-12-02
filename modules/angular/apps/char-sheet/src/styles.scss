@@ -1,15 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://unpkg.com/normalize.css@5.0.0/normalize.css");
+@import url('https://fonts.googleapis.com/css?family=Jim+Nightshade');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 :root {
     --content-background-color: white;
     --page-background-color: #EFEFEF;
     --border-color: #666;
     --text-color: #333;
+    --font-family: Roboto;
     font-size: 62.5%;
 }
 
 body {
     background: var(--page-background-color);
     color: var(--text-color);
+    font-family: var(--font-family);
 }
