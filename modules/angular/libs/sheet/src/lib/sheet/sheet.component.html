@@ -1,2 +1,135 @@
-<jui-page din="a4">Page 1</jui-page>
+<jui-page din="a4" [formGroup]="form">
+    <h1 i18n class="page-title">Character Sheet</h1>
+    <div class="about" formGroupName="about">
+        <label for="name">
+            <span i18n>Name</span>
+            <input formControlName="name" id="name" />
+        </label>
+
+        <label for="race">
+            <span i18n>Race</span>
+            <input formControlName="race" id="race" />
+        </label>
+
+        <label for="culture">
+            <span i18n>Culture</span>
+            <input formControlName="culture" id="culture" />
+        </label>
+
+        <label for="class">
+            <span i18n>Class</span>
+            <input formControlName="class" id="class" />
+        </label>
+    </div>
+    <div class="description" formGroupName="about">
+        <label for="description">
+            <span i18n>Description</span>
+            <textarea formControlName="description"></textarea>
+        </label>
+    </div>
+    <ng-container formGroupName="attributes">
+        <h2 i18n class="attribute-title">Attributes</h2>
+
+        <fieldset class="attribute-strength">
+            <strong i18n>Strength</strong>
+            <jui-radio-range formControlName="strength"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-agility">
+            <strong i18n>Agility</strong>
+            <jui-radio-range formControlName="agility"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-dexterity">
+            <strong i18n>Dexterity</strong>
+            <jui-radio-range formControlName="dexterity"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-constitution">
+            <strong i18n>Constitution</strong>
+            <jui-radio-range formControlName="constitution"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-courage">
+            <strong i18n>Courage</strong>
+            <jui-radio-range formControlName="courage"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-intelligence">
+            <strong i18n>Intelligence</strong>
+            <jui-radio-range formControlName="intelligence"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-intuition">
+            <strong i18n>Intuition</strong>
+            <jui-radio-range formControlName="intuition"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="attribute-charisma">
+            <strong i18n>Charisma</strong>
+            <jui-radio-range formControlName="charisma"></jui-radio-range>
+        </fieldset>
+    </ng-container>
+
+    <ng-container formGroupName="skills">
+        <h2 i18n class="skill-title">Skills</h2>
+
+        <fieldset class="skill-melee">
+            <strong i18n>Melee</strong>
+            <jui-radio-range formControlName="melee"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="skill-range">
+            <strong i18n>Range</strong>
+            <jui-radio-range formControlName="range"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="skill-physical">
+            <strong i18n>Physical</strong>
+            <jui-radio-range formControlName="physical"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="skill-mental">
+            <strong i18n>Mental</strong>
+            <jui-radio-range formControlName="mental"></jui-radio-range>
+        </fieldset>
+
+        <fieldset class="skill-magic">
+            <strong i18n>Magic</strong>
+            <jui-radio-range formControlName="magic"></jui-radio-range>
+        </fieldset>
+    </ng-container>
+
+    <h2 i18n class="advantages-title">Advantages</h2>
+
+    <textarea class="advantages" formControlName="advantages"></textarea>
+
+    <h2 i18n class="disadvantages-title">Disadvantages</h2>
+
+    <textarea class="disadvantages" formControlName="disadvantages"></textarea>
+
+    <div class="info">info</div>
+
+    <h2 i18n class="health-title">Health</h2>
+
+    <div class="health">
+        <span>-1</span>
+        <span>-2</span>
+        <span>-3</span>
+        <span>-4</span>
+        <span i18n>Dead</span>
+        <jui-radio-range formControlName="health" [max]="25"></jui-radio-range>
+    </div>
+
+    <h2 i18n class="mana-title">Mana</h2>
+
+    <div class="mana">
+        <span>-1</span>
+        <span>-2</span>
+        <span>-3</span>
+        <span>-4</span>
+        <span i18n>Senseless</span>
+        <jui-radio-range formControlName="health" [max]="25"></jui-radio-range>
+    </div>
+</jui-page>
 <jui-page din="a4">Page 2</jui-page>

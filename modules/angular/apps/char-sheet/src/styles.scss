@@ -4,8 +4,12 @@
 :root {
     --content-background-color: white;
     --page-background-color: #EFEFEF;
+    --border-color: #666;
+    --text-color: #333;
+    font-size: 62.5%;
 }
 
 body {
     background: var(--page-background-color);
+    color: var(--text-color);
 }

@@ -1,0 +1,6 @@
+<span *ngFor="let i of entries"
+      (click)="onClick(i)"
+      (keydown.space)="onClick(i);$event.preventDefault()"
+      tabindex="0"
+      class="circle"
+      [class.selected]="value >= i" [attr.data-number]="i"></span>
