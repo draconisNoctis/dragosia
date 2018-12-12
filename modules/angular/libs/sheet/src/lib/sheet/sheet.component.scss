@@ -23,6 +23,21 @@
         border-bottom: 1px solid var(--border-color);
     }
 
+    textarea {
+        min-height: 10rem;
+        line-height: calc(3rem + 1px);
+        border: none;
+        background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                transparent 3rem,
+                var(--border-color) 3rem,
+                var(--border-color) calc(3rem + 1px)
+        );
+        background-size: 100% calc(3rem + 1px);
+        resize: none;
+    }
+
     .jui-page:nth-child(1) {
         display: grid;
         grid-gap: 5mm;
@@ -98,21 +113,6 @@
             border: 0;
             padding: 0;
             margin: 0;
-        }
-
-        textarea {
-            min-height: 10rem;
-            line-height: calc(3rem + 1px);
-            border: none;
-            background: linear-gradient(
-                    to bottom,
-                    transparent 0%,
-                    transparent 3rem,
-                    var(--border-color) 3rem,
-                    var(--border-color) calc(3rem + 1px)
-            );
-            background-size: 100% calc(3rem + 1px);
-            resize: none;
         }
 
         .health, .mana {
@@ -209,4 +209,51 @@
         }
     }
 
+    .jui-page:nth-child(3) {
+        display: grid;
+        grid-gap: 5mm;
+        grid-template-columns: repeat(20, 1fr);
+        grid-template-rows: 1cm .5cm 1fr .5cm 1fr .5cm min-content .5cm min-content;
+        grid-template-areas:
+            "#{gta(page-title, 20)}"
+            "#{gta(inventory-title, 10)} #{gta(financials-title, 10)}"
+            "#{gta(inventory, 10)} #{gta(financials, 10)}"
+            "#{gta(equipment-title, 20)}"
+            "#{gta(equipment, 20)}"
+            "#{gta(melee-weapons-title, 20)}"
+            "#{gta(melee-weapons, 20)}"
+            "#{gta(range-weapons-title, 20)}"
+            "#{gta(range-weapons, 20)}";
+
+        @each $area in (page-title, inventory-title, inventory, financials-title, financials, equipment-title, equipment, melee-weapons-title, melee-weapons, range-weapons-title, range-weapons) {
+            .#{$area} {
+                grid-area: $area;
+            }
+        }
+
+        .melee-weapons {
+            grid-template-columns: 5fr 2fr 1fr 1fr 1fr 1fr;
+        }
+
+        .range-weapons {
+            grid-template-columns: 3fr 2fr 1fr 2fr 1fr 2fr;
+        };
+
+        .melee-weapons, .range-weapons {
+            display: grid;
+            grid-gap: 0 2mm;
+            grid-auto-rows: min-content;
+
+            strong {
+                &:not(:first-child) {
+                    text-align: center;
+                }
+            }
+
+            input {
+                box-sizing: border-box;
+                width: 100%;
+            }
+        }
+    }
 }

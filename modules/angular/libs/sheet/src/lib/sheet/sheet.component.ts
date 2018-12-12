@@ -48,7 +48,14 @@ export class SheetComponent implements OnInit {
             physical: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
             mental: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
             magic: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
-        })
+        }),
+        
+        inventory: new FormControl(),
+        financials: new FormControl(),
+        equipment: new FormControl(),
+        
+        melee: new FormArray(Array.from({ length: 8 }, () => this.createMeleeWeaponControl())),
+        range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl()))
     });
     
     
@@ -67,6 +74,28 @@ export class SheetComponent implements OnInit {
             name: new FormControl(),
             attribute: new FormControl(),
             value: new FormControl()
+        })
+    }
+    
+    protected createMeleeWeaponControl() {
+        return new FormGroup({
+            name: new FormControl(),
+            type: new FormControl(),
+            attribute: new FormControl(),
+            attackModificator: new FormControl(),
+            paradeModificator: new FormControl(),
+            damageModificator: new FormControl()
+        })
+    }
+    
+    protected createRangeWeaponControl() {
+        return new FormGroup({
+            name: new FormControl(),
+            type: new FormControl(),
+            attribute: new FormControl(),
+            range: new FormControl(),
+            paradeModificator: new FormControl(),
+            damageModificator: new FormControl()
         })
     }
 }

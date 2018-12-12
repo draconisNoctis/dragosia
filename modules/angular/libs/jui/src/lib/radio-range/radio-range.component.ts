@@ -23,7 +23,7 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     @Input()
     get labeled() { return this._labeled }
     set labeled(labeled : boolean) {
-        this._labeled = labeled || '' == labeled;
+        this._labeled = labeled || '' == labeled as any;
     }
     
     _labeled = false;

@@ -24,7 +24,7 @@
     <div class="description" formGroupName="about">
         <label for="description">
             <span i18n>Description</span>
-            <textarea formControlName="description"></textarea>
+            <textarea formControlName="description" id="description"></textarea>
         </label>
     </div>
     <ng-container formGroupName="attributes">
@@ -189,5 +189,61 @@
             <input formControlName="attribute" />
             <jui-radio-range formControlName="value"></jui-radio-range>
         </div>
+    </div>
+</jui-page>
+
+<jui-page din="a4" [formGroup]="form">
+    <h1 i18n class="page-title">Equipment Sheet</h1>
+
+    <h2 i18n class="inventory-title">Inventory</h2>
+
+    <textarea class="inventory" formControlName="inventory"></textarea>
+
+    <h2 i18n class="financials-title">Financials</h2>
+
+    <textarea class="financials" formControlName="financials"></textarea>
+
+    <h2 i18n class="equipment-title">Equipment</h2>
+
+    <textarea class="equipment" formControlName="equipment"></textarea>
+
+    <h2 i18n class="melee-weapons-title">Melee Weapons</h2>
+
+    <div class="melee-weapons">
+        <strong i18n>Name</strong>
+        <strong i18n>Type</strong>
+        <strong i18n>Attr.</strong>
+        <strong i18n>AT</strong>
+        <strong i18n>PA</strong>
+        <strong i18n>Dmg</strong>
+
+        <ng-container *ngFor="let control of form.get('melee').controls" [formGroup]="control">
+            <input formControlName="name" />
+            <input formControlName="type" />
+            <input formControlName="attribute" />
+            <input formControlName="attackModificator" />
+            <input formControlName="paradeModificator" />
+            <input formControlName="damageModificator" />
+        </ng-container>
+    </div>
+
+    <h2 i18n class="range-weapons-title">Range Weapons</h2>
+
+    <div class="range-weapons">
+        <strong i18n>Name</strong>
+        <strong i18n>Type</strong>
+        <strong i18n>Attr.</strong>
+        <strong i18n>Range</strong>
+        <strong i18n>PA</strong>
+        <strong i18n>Dmg</strong>
+
+        <ng-container *ngFor="let control of form.get('range').controls" [formGroup]="control">
+            <input formControlName="name" />
+            <input formControlName="type" />
+            <input formControlName="attribute" />
+            <input formControlName="range" />
+            <input formControlName="paradeModificator" />
+            <input formControlName="damageModificator" />
+        </ng-container>
     </div>
 </jui-page>
