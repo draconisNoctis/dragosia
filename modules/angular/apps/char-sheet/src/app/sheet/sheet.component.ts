@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { SetThemeAction } from '../+state/sheet.actions';
+import { CharSheetState } from '../+state/state';
 
 @Component({
     selector       : 'cs-sheet',
@@ -12,12 +15,19 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@
     }
 })
 export class SheetComponent implements OnInit {
-    theme = 'default';
+    // theme = 'default';
+    theme = this.state.pipe(
+        select('sheet', 'theme')
+    );
     
-    constructor() {
+    constructor(protected readonly state : Store<CharSheetState>) {
     }
     
     ngOnInit() {
+    }
+    
+    setTheme(theme : string) {
+        this.state.dispatch(new SetThemeAction(theme));
     }
     
 }

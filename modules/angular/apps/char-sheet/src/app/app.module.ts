@@ -2,12 +2,27 @@ import { MatButtonModule, MatMenuModule, MatToolbarModule } from '@angular/mater
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SheetModule } from '@jina-draicana/sheet';
+import { EffectsModule } from '@ngrx/effects';
+import { ActionReducer, StoreModule } from '@ngrx/store';
+import { SheetEffects } from './+state/sheet.effects';
+import { sheetReducer } from './+state/sheet.reducer';
 
 import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { SheetComponent } from './sheet/sheet.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { localStorageSync } from 'ngrx-store-localstorage'
+
+const _syncReducer = localStorageSync({
+    keys: [ 'sheet' ],
+    rehydrate: true
+});
+
+export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
+    return _syncReducer(reducer);
+}
+
 
 @NgModule({
     declarations: [AppComponent, SheetComponent],
@@ -22,7 +37,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserAnimationsModule,
         MatMenuModule,
         MatButtonModule,
-        MatToolbarModule
+        MatToolbarModule,
+        StoreModule.forRoot({
+            sheet: sheetReducer
+        }, {
+            metaReducers: [
+                syncReducer
+            ]
+        }),
+        EffectsModule.forRoot([ SheetEffects ])
     ],
     providers: [],
     bootstrap: [AppComponent]

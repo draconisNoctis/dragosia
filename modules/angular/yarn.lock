@@ -329,6 +329,11 @@
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-6.1.0.tgz#a225de3fbb262429561d722e139dde7efdcf0cea"
   integrity sha512-uMC0TykeVi0fPuX+iwanCAX5mBrb+LHgJGtI4CL+sEjviXe9C/84UDmApoG9Goe0xuCtALqOqGDP0UoNSxVA3g==
 
+"@ngrx/schematics@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/schematics/-/schematics-6.1.2.tgz#52dce7f2d4275791732805576eaf007d1043ef58"
+  integrity sha512-hiu8rdYAJIfIoJHPlAJr+mBkXab7OLRyg8Z/i5lUpmE382yvESfcVI9hqYsGXWBbyfY5Al+BGzGhBth5gc5AvA==
+
 "@ngrx/store-devtools@6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-6.1.0.tgz#cf65a3149628dc37badd094204484dde9ba14200"
@@ -4788,6 +4793,11 @@ ngrx-store-freeze@0.2.4:
   integrity sha512-90awpbbMa/x2H81eWWYniyli3LJ1PZU/FaztL10d9Rp/4kw2+97pqyLjdxSPxcOv9St//m9kfuWZ7gyoVDjgcg==
   dependencies:
     deep-freeze-strict "^1.1.1"
+
+ngrx-store-localstorage@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-5.1.0.tgz#02e2e2c061c5ebacbe10c848ba8d4853aaa911ed"
+  integrity sha512-TNVfIbJVxCkSjOrCsSwYsTcWbkDVxWWT/bV278Vhha2ksAA8/D8oQmJDcAt0xekaq8a1IBzgS2w65WfkAkP1mQ==
 
 nice-try@^1.0.4:
   version "1.0.5"

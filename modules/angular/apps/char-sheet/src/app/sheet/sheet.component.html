@@ -1,10 +1,10 @@
 <mat-toolbar>
     <button mat-button i18n [matMenuTriggerFor]="themeMenu">Theme</button>
     <mat-menu #themeMenu="matMenu">
-        <button mat-menu-item (click)="theme = 'default'">Default</button>
-        <button mat-menu-item (click)="theme = 'ancient'">Ancient</button>
+        <button mat-menu-item (click)="setTheme('default')">Default</button>
+        <button mat-menu-item (click)="setTheme('ancient')">Ancient</button>
     </mat-menu>
 </mat-toolbar>
-<div [ngClass]="theme">
-    <js-sheet class="mat-typography" [ngClass]="theme"></js-sheet>
+<div [ngClass]="theme | async">
+    <js-sheet class="mat-typography"></js-sheet>
 </div>
