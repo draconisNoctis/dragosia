@@ -51,9 +51,9 @@
             "#{gta(attribute-strength, 5)} #{gta(attribute-agility, 5)} #{gta(attribute-dexterity, 5)} #{gta(attribute-constitution, 5)}"
             "#{gta(attribute-courage, 5)} #{gta(attribute-intelligence, 5)} #{gta(attribute-intuition, 5)} #{gta(attribute-charisma, 5)}"
             "#{gta(skill-title, 20)}"
-            "#{gta(skill-melee, 4)} #{gta(skill-range, 4)} #{gta(skill-physical, 4)} #{gta(skill-mental, 4)} #{gta(skill-magic, 4)}"
-            "#{gta(advantages-title, 10)} #{gta(info, 10)}"
-            "#{gta(advantages, 10)} #{gta(info, 10)}"
+            "#{gta(skill-melee, 5)} #{gta(skill-range, 5)} #{gta(skill-physical, 5)} #{gta(skill-mental, 5)}"
+            "#{gta(advantages-title, 10)} #{gta(gifts-title, 10)}"
+            "#{gta(advantages, 10)} #{gta(gifts, 10)}"
             "#{gta(disadvantages-title, 10)} #{gta(info, 10)}"
             "#{gta(disadvantages, 10)} #{gta(info, 10)}"
             "#{gta(health-title, 10)} #{gta(mana-title, 10)}"
@@ -61,7 +61,7 @@
 
         @each $area in (page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
         attribute-courage, attribute-intelligence, attribute-intuition, attribute-charisma, skill-title, skill-melee, skill-range, skill-physical,
-        skill-mental, skill-magic, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana) {
+        skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts) {
             .#{$area} {
                 grid-area: $area;
             }
@@ -97,6 +97,33 @@
                 textarea {
                     width: 100%;
                     height: 100%;
+                }
+            }
+        }
+
+        .gifts {
+            > div {
+                display: grid;
+                grid-template-columns: auto min-content;
+                grid-auto-rows: auto;
+                grid-gap: 2mm;
+
+
+                &:not(:last-child) {
+                    //margin-bottom: 3mm;
+                }
+
+                > *:nth-child(1) {
+                    input {
+                        width: 100%;
+                        box-sizing: border-box;
+                    }
+                }
+
+                > *:nth-child(2) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                 }
             }
         }
@@ -157,10 +184,10 @@
             "#{gta(melee, 10)} #{gta(range, 10)}"
             "#{gta(physical-title, 10)} #{gta(mental-title, 10)}"
             "#{gta(physical, 10)} #{gta(mental, 10)}"
-            "#{gta(magic-title, 20)}"
-            "#{gta(magic, 20)}";
+            "#{gta(gifts-title, 20)}"
+            "#{gta(gifts, 20)}";
 
-        @each $area in (page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic) {
+        @each $area in (page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic, gifts-title, gifts) {
             .#{$area} {
                 grid-area: $area;
             }
@@ -196,7 +223,7 @@
             }
         }
 
-        .magic {
+        .gifts {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;

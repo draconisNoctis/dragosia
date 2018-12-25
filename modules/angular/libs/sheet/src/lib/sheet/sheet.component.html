@@ -93,12 +93,20 @@
             <strong i18n>Mental</strong>
             <jui-radio-range formControlName="mental"></jui-radio-range>
         </fieldset>
-
-        <fieldset class="skill-magic">
-            <strong i18n>Magic</strong>
-            <jui-radio-range formControlName="magic"></jui-radio-range>
-        </fieldset>
     </ng-container>
+
+    <h2 i18n class="gifts-title">Gifts</h2>
+
+    <div class="gifts">
+        <div *ngFor="let control of form.get('gifts').controls" [formGroup]="control" >
+            <div>
+               <input formControlName="name">
+            </div>
+            <div>
+                <jui-radio-range formControlName="value"></jui-radio-range>
+            </div>
+        </div>
+    </div>
 
     <h2 i18n class="advantages-title">Advantages</h2>
 
@@ -180,10 +188,10 @@
         </div>
     </div>
 
-    <h2 i18n class="magic-title">Mental</h2>
+    <h2 i18n class="gifts-title">Gifts</h2>
 
-    <div class="magic">
-        <div *ngFor="let control of form.get(['talents', 'magic']).controls" [formGroup]="control" class="talent">
+    <div class="gifts">
+        <div *ngFor="let control of form.get(['talents', 'gifts']).controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />

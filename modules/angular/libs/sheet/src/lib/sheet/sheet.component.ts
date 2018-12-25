@@ -34,9 +34,9 @@ export class SheetComponent implements OnInit {
             melee: new FormControl(null, Validators.required),
             range: new FormControl(null, Validators.required),
             physical: new FormControl(null, Validators.required),
-            mental: new FormControl(null, Validators.required),
-            magic: new FormControl(null, Validators.required)
+            mental: new FormControl(null, Validators.required)
         }),
+        gifts: new FormArray(Array.from({ length: 6 }, () => this.createGiftFormControl())),
         advantages: new FormControl(),
         disadvantages: new FormControl(),
         health: new FormControl(),
@@ -47,7 +47,7 @@ export class SheetComponent implements OnInit {
             range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
             physical: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
             mental: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
-            magic: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
+            gifts: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
         }),
         
         inventory: new FormControl(),
@@ -65,6 +65,13 @@ export class SheetComponent implements OnInit {
     ngOnInit() {
         this.form.valueChanges.subscribe(value => {
             console.log(value);
+        })
+    }
+    
+    protected createGiftFormControl() {
+        return new FormGroup({
+            name: new FormControl(),
+            value: new FormControl()
         })
     }
     
