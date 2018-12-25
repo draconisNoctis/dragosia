@@ -6,6 +6,10 @@
         top: 0;
     }
 
+    .mat-list-item {
+        min-width: 200px;
+    }
+
     .ancient {
         @include mat-core(
                 mat-typography-config(

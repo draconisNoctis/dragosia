@@ -1,4 +1,11 @@
-import { MatButtonModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import {
+    MatButtonModule,
+    MatCommonModule,
+    MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule
+} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SheetModule } from '@jina-draicana/sheet';
@@ -31,6 +38,7 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
         NxModule.forRoot(),
         RouterModule.forRoot([
             { path: '', component: SheetComponent },
+            { path: ':id', component: SheetComponent },
             { path: '*', redirectTo: '/' }
         ], { initialNavigation: 'enabled' }),
         SheetModule,
@@ -38,6 +46,9 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
         MatMenuModule,
         MatButtonModule,
         MatToolbarModule,
+        MatListModule,
+        MatCommonModule,
+        MatSidenavModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {

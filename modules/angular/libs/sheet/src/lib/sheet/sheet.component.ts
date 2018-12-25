@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Output, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ICharacter } from '../../../../../apps/char-sheet/src/app/+state/sheet.reducer';
 
 @Component({
     selector       : 'js-sheet',
@@ -12,7 +13,9 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
     }
 })
 export class SheetComponent implements OnInit {
+    
     form = new FormGroup({
+        _id: new FormControl((Math.random() * 1000000 | 0).toString(36)),
         about: new FormGroup({
             name: new FormControl(null, Validators.required),
             race: new FormControl(null, Validators.required),
@@ -58,6 +61,15 @@ export class SheetComponent implements OnInit {
         range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl()))
     });
     
+    @Input()
+    set character(char : ICharacter) {
+        if(char) {
+            this.form.patchValue(char, { emitEvent: false });
+        }
+    }
+    
+    @Output()
+    update = this.form.valueChanges;
     
     constructor() {
     }
@@ -101,7 +113,7 @@ export class SheetComponent implements OnInit {
             type: new FormControl(),
             attribute: new FormControl(),
             range: new FormControl(),
-            paradeModificator: new FormControl(),
+            attackModificator: new FormControl(),
             damageModificator: new FormControl()
         })
     }

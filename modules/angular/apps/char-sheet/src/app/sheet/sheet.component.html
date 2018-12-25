@@ -1,10 +1,27 @@
-<mat-toolbar>
-    <button mat-button i18n [matMenuTriggerFor]="themeMenu">Theme</button>
-    <mat-menu #themeMenu="matMenu">
-        <button mat-menu-item (click)="setTheme('default')">Default</button>
-        <button mat-menu-item (click)="setTheme('ancient')">Ancient</button>
-    </mat-menu>
-</mat-toolbar>
-<div [ngClass]="theme | async">
-    <js-sheet class="mat-typography"></js-sheet>
-</div>
+<mat-sidenav-container>
+    <mat-sidenav [mode]="'side'" [opened]="true">
+        <mat-list>
+            <ng-container *ngFor="let char of chars | async">
+                <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/', char._id ]">
+                    {{ char.about.name}}
+                    <span *ngIf="char._changed" class="changed">*</span>
+                </mat-list-item>
+            </ng-container>
+        </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <button mat-button i18n [matMenuTriggerFor]="themeMenu">Theme</button>
+            <button mat-flat-button i18n color="primary" (click)="doStore()">Save</button>
+
+            <mat-menu #themeMenu="matMenu">
+                <button mat-menu-item (click)="setTheme('default')">Default</button>
+                <button mat-menu-item (click)="setTheme('ancient')">Ancient</button>
+            </mat-menu>
+        </mat-toolbar>
+        <div [ngClass]="theme | async">
+            <js-sheet class="mat-typography" (update)="doUpdate($event)" [character]="char | async"></js-sheet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

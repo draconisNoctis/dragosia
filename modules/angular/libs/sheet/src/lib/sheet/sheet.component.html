@@ -242,7 +242,7 @@
         <strong i18n>Type</strong>
         <strong i18n>Attr.</strong>
         <strong i18n>Range</strong>
-        <strong i18n>PA</strong>
+        <strong i18n>AT</strong>
         <strong i18n>Dmg</strong>
 
         <ng-container *ngFor="let control of form.get('range').controls" [formGroup]="control">
@@ -250,7 +250,7 @@
             <input formControlName="type" />
             <input formControlName="attribute" />
             <input formControlName="range" />
-            <input formControlName="paradeModificator" />
+            <input formControlName="attackModificator" />
             <input formControlName="damageModificator" />
         </ng-container>
     </div>
