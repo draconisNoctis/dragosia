@@ -108,11 +108,6 @@
                 grid-auto-rows: auto;
                 grid-gap: 2mm;
 
-
-                &:not(:last-child) {
-                    //margin-bottom: 3mm;
-                }
-
                 > *:nth-child(1) {
                     input {
                         width: 100%;
@@ -145,10 +140,15 @@
 
         .health, .mana {
             display: grid;
-            grid-template-columns: repeat(10, 1fr);
+            grid-template-columns: repeat(20, 1fr);
             grid-auto-rows: auto;
+            grid-gap: 2mm 0;
+            justify-content: center;
+            align-content: center;
 
             > span {
+                text-align: center;
+
                 grid-row: 1;
 
                 grid-column: auto / span 4;
@@ -169,6 +169,10 @@
                         grid-column: auto / span 4;
                     }
                 }
+
+                .circle {
+                    margin: 0 auto;
+                };
             }
         }
     }
