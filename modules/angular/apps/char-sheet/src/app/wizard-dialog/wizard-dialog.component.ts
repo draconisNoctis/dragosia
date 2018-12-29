@@ -16,6 +16,16 @@ import { FormControl, Validators } from '@angular/forms';
 export class WizardDialogComponent implements OnInit {
     settingsControl = new FormControl(null, Validators.required);
     backgroundControl = new FormControl(null, Validators.required);
+    attributesControl = new FormControl({
+        strength: 1,
+        agility: 1,
+        dexterity: 1,
+        constitution: 1,
+        courage: 1,
+        intelligence: 1,
+        intuition: 1,
+        charisma: 1
+    }, Validators.required);
 
     constructor() {}
 

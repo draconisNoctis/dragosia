@@ -1,0 +1,16 @@
+.js-attributes {
+
+    form {
+        display: grid;
+        grid-template-columns: auto min-content;
+        grid-auto-rows: auto;
+
+        label, .jui-radio-range {
+            padding: 8px;
+
+            &:nth-child(4n), &:nth-child(4n - 1) {
+                background: rgba(0, 0, 0, .1);
+            }
+        }
+    }
+}

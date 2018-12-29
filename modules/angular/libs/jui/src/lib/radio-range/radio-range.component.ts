@@ -70,7 +70,7 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
             if(!this.deselectable) {
                 return;
             }
-            this.value = 0;
+            this.value = this.min;
         } else {
             if(n >= this.min && (!this.max || n <= this.max)) {
                 this.value = n;

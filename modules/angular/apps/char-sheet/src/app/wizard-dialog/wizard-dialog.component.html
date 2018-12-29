@@ -4,8 +4,18 @@
         <cs-settings [formControl]="settingsControl"></cs-settings>
     </mat-step>
 
-    <mat-step>
+    <mat-step [stepControl]="backgroundControl">
         <ng-template matStepLabel i18n>Background</ng-template>
         <cs-background [formControl]="backgroundControl" [preset]="settingsControl.value?.preset"></cs-background>
+    </mat-step>
+
+    <mat-step [stepControl]="attributesControl">
+        <ng-template matStepLabel i18n>Attributes</ng-template>
+        <js-attributes [formControl]="attributesControl" [pointsAvailable]="10"></js-attributes>
+        <button mat-button matStepperNext>Next</button>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel i18n>Skills</ng-template>
     </mat-step>
 </mat-horizontal-stepper>
