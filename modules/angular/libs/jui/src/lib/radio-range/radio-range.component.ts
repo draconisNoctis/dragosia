@@ -18,7 +18,20 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     value?: number;
     
     @Input()
-    max = 5;
+    size = 5;
+    
+    @Input()
+    min = 0;
+    
+    @Input()
+    max?: number;
+    
+    @Input()
+    get deselectable() { return this._deselectable };
+    set deselectable(value : any) {
+        this._deselectable = value === '' || !!value;
+    }
+    protected _deselectable = false;
     
     @Input()
     get labeled() { return this._labeled }
@@ -29,7 +42,7 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     _labeled = false;
     
     get entries() {
-        return Array.from(new Array(this.max), (_, i) => i + 1);
+        return Array.from(new Array(this.size), (_, i) => i + 1);
     }
     
     onChange = (v : any) => {};
@@ -54,9 +67,16 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     
     onClick(n : number) {
         if(this.value === n) {
-            this.value = null;
+            if(!this.deselectable) {
+                return;
+            }
+            this.value = 0;
         } else {
-            this.value = n;
+            if(n >= this.min && (!this.max || n <= this.max)) {
+                this.value = n;
+            } else {
+                return;
+            }
         }
         this.onChange(this.value);
     }
