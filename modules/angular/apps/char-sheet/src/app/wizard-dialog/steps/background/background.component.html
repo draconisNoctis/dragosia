@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <mat-select
+            i18n-placeholder
+            placeholder="Race"
+            formControlName="race"
+        >
+            <mat-option *ngFor="let race of races" [value]="race.id" i18n>{{ race.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select
+            i18n-placeholder
+            placeholder="Culture"
+            formControlName="culture"
+        >
+            <mat-option *ngFor="let culture of cultures" [value]="culture.id" i18n>{{ culture.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select
+            i18n-placeholder
+            placeholder="Profession"
+            formControlName="profession"
+        >
+            <mat-option *ngFor="let profession of professions" [value]="profession.id" i18n>{{ profession.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-button (click)="stepper.next()" i18n>Next</button>
+</form>

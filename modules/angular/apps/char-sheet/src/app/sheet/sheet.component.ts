@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
@@ -7,6 +8,7 @@ import { SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actio
 import { ICharacter, selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { SheetComponent as CharSheetComponent } from '@jina-draicana/sheet';
+import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
 
 @Component({
     selector       : 'cs-sheet',
@@ -41,7 +43,8 @@ export class SheetComponent implements OnInit {
     sheet!: CharSheetComponent;
     
     constructor(protected readonly store : Store<CharSheetState>,
-                protected readonly route : ActivatedRoute) {
+                protected readonly route : ActivatedRoute,
+                protected readonly dialog : MatDialog) {
     }
     
     ngOnInit() {
@@ -60,4 +63,13 @@ export class SheetComponent implements OnInit {
         this.store.dispatch(new UpdateAction(value));
     }
     
+    async openWizard() {
+        const ref = this.dialog.open(WizardDialogComponent);
+        
+        const result = await ref.afterClosed().toPromise();
+        
+        if(!result) {
+            return;
+        }
+    }
 }

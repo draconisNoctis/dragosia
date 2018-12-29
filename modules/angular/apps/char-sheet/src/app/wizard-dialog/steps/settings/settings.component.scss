@@ -1,0 +1,22 @@
+.cs-settings {
+    .mat-form-field {
+        display: block;
+    }
+
+    .limits {
+        display: flex;
+        flex-direction: row;
+
+        .mat-form-field {
+            flex-grow: 1;
+
+            &:not(:last-child) {
+                margin-right: 8px;
+            }
+
+            &-infix {
+                width: auto;
+            }
+        }
+    }
+}

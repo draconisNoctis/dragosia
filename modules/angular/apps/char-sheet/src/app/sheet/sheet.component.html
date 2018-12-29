@@ -14,6 +14,7 @@
         <mat-toolbar>
             <button mat-button i18n [matMenuTriggerFor]="themeMenu">Theme</button>
             <button mat-flat-button i18n color="primary" (click)="doStore()">Save</button>
+            <button mat-stroked-button i18n color="primary" (click)="openWizard()">Create</button>
 
             <mat-menu #themeMenu="matMenu">
                 <button mat-menu-item (click)="setTheme('default')">Default</button>

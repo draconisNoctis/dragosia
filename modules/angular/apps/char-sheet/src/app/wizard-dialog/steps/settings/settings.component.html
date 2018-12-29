@@ -1,0 +1,62 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <mat-select
+            i18n-placeholder
+            placeholder="Preset"
+            formControlName="preset"
+        >
+            <mat-option *ngFor="let preset of presets" [value]="preset.id" i18n>{{ preset.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select
+            i18n-placeholder
+            placeholder="Limits"
+            [formControl]="limitsControl"
+        >
+            <mat-option value="beginner" i18n>Beginner</mat-option>
+            <mat-option value="normal" i18n>Normal</mat-option>
+            <mat-option value="hero" i18n>Hero</mat-option>
+            <mat-option value="legend" i18n>Legend</mat-option>
+            <mat-option value="custom" i18n>Custom</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="limits" formGroupName="limits">
+        <mat-form-field>
+            <input
+                matInput
+                type="number"
+                min="1"
+                max="100"
+                formControlName="attributes"
+                i18n-placeholder
+                placeholder="Attributes"
+            />
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                matInput
+                type="number"
+                min="1"
+                max="100"
+                formControlName="skills"
+                i18n-placeholder
+                placeholder="Skills"
+            />
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                matInput
+                type="number"
+                min="1"
+                max="200"
+                formControlName="talents"
+                i18n-placeholder
+                placeholder="Talents"
+            />
+        </mat-form-field>
+    </div>
+    <button mat-button (click)="stepper.next()" i18n>Next</button>
+</form>

@@ -1,13 +1,14 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
-    MatCommonModule,
+    MatCommonModule, MatDialogModule, MatFormFieldModule, MatInputModule,
     MatListModule,
-    MatMenuModule,
-    MatSidenavModule,
+    MatMenuModule, MatSelectModule,
+    MatSidenavModule, MatStepperModule,
     MatToolbarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
 import { SheetModule } from '@jina-draicana/sheet';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducer, StoreModule } from '@ngrx/store';
@@ -19,7 +20,11 @@ import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { SheetComponent } from './sheet/sheet.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { localStorageSync } from 'ngrx-store-localstorage'
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
+import { SettingsComponent } from './wizard-dialog/steps/settings/settings.component'
+import { I18n } from '@ngx-translate/i18n-polyfill';
+import { BackgroundComponent } from './wizard-dialog/steps/background/background.component';
 
 const _syncReducer = localStorageSync({
     keys: [ 'sheet' ],
@@ -30,11 +35,16 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
     return _syncReducer(reducer);
 }
 
+export function translationsFactory() {
+    return '';
+}
 
 @NgModule({
-    declarations: [AppComponent, SheetComponent],
+    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent],
     imports: [
         BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
         NxModule.forRoot(),
         RouterModule.forRoot([
             { path: '', component: SheetComponent },
@@ -49,6 +59,11 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
         MatListModule,
         MatCommonModule,
         MatSidenavModule,
+        MatDialogModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {
@@ -58,7 +73,16 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
         }),
         EffectsModule.forRoot([ SheetEffects ])
     ],
-    providers: [],
+    providers: [
+        I18n,
+        { provide: TRANSLATIONS_FORMAT, useValue: 'xlf' },
+        {
+            provide: TRANSLATIONS,
+            useFactory: translationsFactory,
+            deps: [LOCALE_ID]
+        },
+    ],
+    entryComponents: [WizardDialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
