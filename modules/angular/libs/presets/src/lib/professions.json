@@ -1,0 +1,22 @@
+[
+    {
+        "id": "warrior",
+        "name": "Warrior",
+        "cultures": [ "generic-human", "generic-dwarf", "generic-orc" ]
+    },
+    {
+        "id": "witch",
+        "name": "Witch",
+        "cultures": [ "generic-human", "generic-orc" ]
+    },
+    {
+        "id": "mage",
+        "name": "Mage",
+        "cultures": [ "generic-human", "generic-dwarf" ]
+    },
+    {
+        "id": "shaman",
+        "name": "Shaman",
+        "cultures": [ "generic-orc" ]
+    }
+]

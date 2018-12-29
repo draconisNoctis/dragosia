@@ -19,6 +19,9 @@
     },
     "char-sheet-e2e": {
       "tags": []
+    },
+    "presets": {
+      "tags": []
     }
   }
 }

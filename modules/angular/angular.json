@@ -74,11 +74,11 @@
       "sourceRoot": "apps/char-sheet/src",
       "projectType": "application",
       "prefix": "cs",
-        "schematics": {
-            "@nrwl/schematics:component": {
-                "prefix": "cs"
-            }
-        },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "prefix": "cs"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -193,6 +193,34 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/char-sheet-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "presets": {
+      "root": "libs/presets",
+      "sourceRoot": "libs/presets/src",
+      "projectType": "library",
+      "prefix": "jina-draicana",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/presets/src/test.ts",
+            "tsConfig": "libs/presets/tsconfig.spec.json",
+            "karmaConfig": "libs/presets/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/presets/tsconfig.lib.json",
+              "libs/presets/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

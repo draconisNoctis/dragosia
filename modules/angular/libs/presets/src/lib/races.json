@@ -1,0 +1,17 @@
+[
+    {
+        "id": "human",
+        "name": "Human",
+        "presets": [ "dragosia" ]
+    },
+    {
+        "id": "dwarf",
+        "name": "Dwarf",
+        "presets": [ "dragosia" ]
+    },
+    {
+        "id": "orc",
+        "name": "Orc",
+        "presets": [ "dragosia" ]
+    }
+]

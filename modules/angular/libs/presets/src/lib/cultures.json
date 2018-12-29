@@ -1,0 +1,17 @@
+[
+    {
+        "id": "generic-human",
+        "name": "Generic Human",
+        "races": [ "human" ]
+    },
+    {
+        "id": "generic-dwarf",
+        "name": "Generic Dwarf",
+        "races": [ "dwarf" ]
+    },
+    {
+        "id": "generic-orc",
+        "name": "Generic Orc",
+        "races": [ "orc" ]
+    }
+]

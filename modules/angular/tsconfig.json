@@ -21,6 +21,9 @@
       ],
       "@jina-draicana/sheet": [
         "libs/sheet/src/index.ts"
+      ],
+      "@jina-draicana/presets": [
+        "libs/presets/src/index.ts"
       ]
     }
   },
