@@ -111,6 +111,15 @@ export interface IPartialTalent extends ITalent {
     category: keyof ICharacterTalents;
 }
 
+export interface IPartialGift {
+    id: string;
+    name: string;
+}
+
+export interface IPartialGiftWithValue extends IPartialGift {
+    value: number;
+}
+
 export interface IPartialTalentWithValue extends IPartialTalent {
     value: number;
 }
@@ -123,7 +132,7 @@ export interface ISelectTalents {
 export interface IPartial {
     attributes?: Partial<ICharacterAttributes>;
     skills?: Partial<ICharacterSkills>;
-    gifts?: IGift[];
+    gifts?: IPartialGiftWithValue[];
     talents?: (IPartialTalentWithValue|ISelectTalents)[]//Partial<ICharacterTalents>;
 }
 
@@ -349,6 +358,14 @@ export class Presets {
     }
     private _talents?: ITalent[];
     
+    protected get gifts() {
+        if(!this._gifts) {
+            this._gifts = require('./gifts.json');
+        }
+        return this._gifts!;
+    }
+    private _gifts?: IPartialGift[];
+    
     constructor(protected readonly i18n : I18n) {}
     
     getPresets() : IPreset[] {
@@ -371,6 +388,10 @@ export class Presets {
         return this.talents.find(t => t.id === id);
     }
     
+    getGiftById(id : string) {
+        return this.gifts.find(g => g.id === id);
+    }
+    
     mapPartial(partial : IPartial) {
         if(partial.talents) {
             for(const talent of partial.talents) {
@@ -381,6 +402,11 @@ export class Presets {
                 } else {
                     Object.assign(talent, this.getTalentById(talent.id));
                 }
+            }
+        }
+        if(partial.gifts) {
+            for(const gift of partial.gifts) {
+                Object.assign(gift, this.getGiftById(gift.id));
             }
         }
     }
