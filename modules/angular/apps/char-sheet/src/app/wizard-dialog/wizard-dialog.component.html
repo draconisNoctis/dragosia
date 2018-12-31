@@ -6,12 +6,17 @@
 
     <mat-step [stepControl]="backgroundControl">
         <ng-template matStepLabel i18n>Background</ng-template>
-        <cs-background [formControl]="backgroundControl" [preset]="settingsControl.value?.preset"></cs-background>
+        <cs-background [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+    </mat-step>
+
+    <mat-step [stepControl]="selectionsControl">
+        <ng-template matStepLabel i18n>Selections</ng-template>
+        <cs-selection [formControl]="selectionsControl" [steps]="selections"></cs-selection>
     </mat-step>
 
     <mat-step [stepControl]="attributesControl">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <js-attributes [formControl]="attributesControl" [pointsAvailable]="10"></js-attributes>
+        <js-attributes [formControl]="attributesControl" [pointsAvailable]="budget?.attributes"></js-attributes>
         <button mat-button matStepperNext>Next</button>
     </mat-step>
 

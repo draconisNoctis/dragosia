@@ -1,0 +1,17 @@
+<form *ngIf="steps" [formGroup]="form">
+    <div class="selections mat-typography" [style.--columns]="steps[step].values.length" [formGroup]="form">
+        <div class="selections-title-column">
+            <strong></strong>
+            <span *ngFor="let talent of steps[step].nOf">{{ talent.name }}</span>
+        </div>
+
+        <mat-radio-group class="selections-column" *ngFor="let value of steps[step].values; let index = index"
+                         [formControl]="form.get([ step, index ])">
+            <strong>+{{ value }}</strong>
+            <mat-radio-button *ngFor="let talent of steps[step].nOf; let sel = index"
+                              [value]="sel"></mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <button mat-button (click)="next()" i18n>Next</button>
+</form>

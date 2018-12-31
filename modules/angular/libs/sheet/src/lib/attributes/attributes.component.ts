@@ -8,10 +8,9 @@ import {
     Output
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { COSTS, getCosts } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
 import { map, pairwise, startWith } from 'rxjs/operators';
-
-const COSTS = [ 1, 1, 2, 3, 5, 8 ];
 
 @Component({
     selector       : 'js-attributes',
@@ -83,17 +82,18 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
     
             let price = 0;
             for(const key in previous) {
-                if(previous[key] < current[key]) {
-                    let n = current[key] + 1;
-                    while(--n > previous[key]) {
-                        price += COSTS[n];
-                    }
-                } else if(previous[key] >  current[key]) {
-                    let n = previous[key] + 1;
-                    while(--n > current[key]) {
-                        price -= COSTS[n];
-                    }
-                }
+                price += getCosts(previous[key], current[key]);
+                // if(previous[key] < current[key]) {
+                //     let n = current[key] + 1;
+                //     while(--n > previous[key]) {
+                //         price += COSTS[n];
+                //     }
+                // } else if(previous[key] >  current[key]) {
+                //     let n = previous[key] + 1;
+                //     while(--n > current[key]) {
+                //         price -= COSTS[n];
+                //     }
+                // }
             }
             
             console.log({ price });

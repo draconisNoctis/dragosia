@@ -1,9 +1,18 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, Optional } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Optional,
+    Output,
+    ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material';
 import { ICulture, IProfession, IRace, Presets } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { debounceTime, startWith } from 'rxjs/operators';
 
 @Component({
     selector       : 'cs-background',
@@ -28,6 +37,9 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
         this.races = this.presets.getRacesForPreset(preset);
     }
     
+    @Output()
+    next = new EventEmitter<void>();
+    
     races?: IRace[];
     cultures?: ICulture[];
     professions?: IProfession[];
@@ -40,8 +52,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     
     subscription = Subscription.EMPTY;
     
-    constructor(protected readonly presets : Presets,
-                @Optional() public readonly stepper: MatStepper) {
+    constructor(protected readonly presets : Presets) {
     }
     
     ngOnInit() {
@@ -88,10 +99,12 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             this.form.statusChanges,
             this.form.valueChanges
         )
-            .pipe(startWith([this.form.status, this.form.value]))
+            .pipe(startWith([this.form.status, this.form.value]), debounceTime(1))
             .subscribe(([status, value]) => {
                 if ('VALID' === status) {
                     fn(value);
+                } else {
+                    fn(null);
                 }
             });
     }

@@ -1,0 +1,42 @@
+.cs-selection {
+    .selections {
+        display: grid;
+        grid-template-columns: auto repeat(var(--columns), 100px);
+        grid-auto-rows: 1fr;
+        align-items: center;
+
+        .selections-title-column, .selections-column {
+            display: contents;
+
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i}) {
+                    > * {
+                        grid-column: $i;
+                    }
+                }
+            }
+
+            > * {
+                padding: 8px;
+                &:nth-child(2n) {
+                    background: rgba(0, 0, 0, .1);
+                }
+
+                @for $i from 1 through 100 {
+                    &:nth-child(#{$i}) {
+                        grid-row: $i;
+                    }
+                }
+            }
+        }
+
+        .selections-column > * {
+            text-align: center;
+
+            .mat-radio-label-content {
+                display: none;
+            }
+        }
+    }
+}

@@ -3,7 +3,7 @@ import {
     MatButtonModule,
     MatCommonModule, MatDialogModule, MatFormFieldModule, MatInputModule,
     MatListModule,
-    MatMenuModule, MatSelectModule,
+    MatMenuModule, MatRadioModule, MatSelectModule,
     MatSidenavModule, MatStepperModule,
     MatToolbarModule
 } from '@angular/material';
@@ -25,6 +25,7 @@ import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
 import { SettingsComponent } from './wizard-dialog/steps/settings/settings.component'
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { BackgroundComponent } from './wizard-dialog/steps/background/background.component';
+import { SelectionComponent } from './wizard-dialog/steps/selection/selection.component';
 
 const _syncReducer = localStorageSync({
     keys: [ 'sheet' ],
@@ -40,7 +41,7 @@ export function translationsFactory() {
 }
 
 @NgModule({
-    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent],
+    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent, SelectionComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -64,6 +65,7 @@ export function translationsFactory() {
         MatFormFieldModule,
         MatSelectModule,
         MatInputModule,
+        MatRadioModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {

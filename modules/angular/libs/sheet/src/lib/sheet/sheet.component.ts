@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Output, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ICharacter } from '../../../../../apps/char-sheet/src/app/+state/sheet.reducer';
+import { ICharacter } from '@jina-draicana/presets';
 
 @Component({
     selector       : 'js-sheet',

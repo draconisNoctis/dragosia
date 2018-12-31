@@ -12,6 +12,9 @@
     {
         "id": "generic-orc",
         "name": "Generic Orc",
-        "races": [ "orc" ]
+        "races": [ "orc" ],
+        "talents": [
+            { "id": "foo", "value": 1 }
+        ]
     }
 ]

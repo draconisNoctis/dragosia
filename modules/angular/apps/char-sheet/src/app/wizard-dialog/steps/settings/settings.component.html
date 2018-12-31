@@ -12,8 +12,8 @@
     <mat-form-field>
         <mat-select
             i18n-placeholder
-            placeholder="Limits"
-            [formControl]="limitsControl"
+            placeholder="Budget"
+            [formControl]="budgetControl"
         >
             <mat-option value="beginner" i18n>Beginner</mat-option>
             <mat-option value="normal" i18n>Normal</mat-option>
@@ -23,7 +23,7 @@
         </mat-select>
     </mat-form-field>
 
-    <div class="limits" formGroupName="limits">
+    <div class="budget" formGroupName="budget">
         <mat-form-field>
             <input
                 matInput

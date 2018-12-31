@@ -37,14 +37,14 @@ import { map, startWith } from 'rxjs/operators';
 export class SettingsComponent implements OnInit, ControlValueAccessor {
     form = new FormGroup({
         preset: new FormControl(null, Validators.required),
-        limits: new FormGroup({
+        budget: new FormGroup({
             attributes: new FormControl(null, Validators.required),
             skills: new FormControl(null, Validators.required),
             talents: new FormControl(null, Validators.required)
         })
     });
 
-    limitsControl = new FormControl('normal');
+    budgetControl = new FormControl('normal');
 
     subscription = Subscription.EMPTY;
     
@@ -56,44 +56,44 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
     }
 
     ngOnInit() {
-        const limits = this.form.get('limits')!;
+        const budget = this.form.get('budget')!;
 
-        this.limitsControl.valueChanges
-            .pipe(startWith(this.limitsControl.value))
+        this.budgetControl.valueChanges
+            .pipe(startWith(this.budgetControl.value))
             .subscribe(value => {
                 if (value === 'custom') {
-                    if (limits.disabled) {
-                        limits.enable();
+                    if (budget.disabled) {
+                        budget.enable();
                     }
                 } else {
-                    if (limits.enabled) {
-                        limits.disable();
+                    if (budget.enabled) {
+                        budget.disable();
                     }
                     switch (value) {
                         case 'beginner':
-                            limits.setValue({
-                                attributes: 15,
+                            budget.setValue({
+                                attributes: 4,
                                 skills: 5,
                                 talents: 20
                             });
                             break;
                         case 'normal':
-                            limits.setValue({
-                                attributes: 20,
+                            budget.setValue({
+                                attributes: 12,
                                 skills: 9,
                                 talents: 30
                             });
                             break;
                         case 'hero':
-                            limits.setValue({
-                                attributes: 30,
+                            budget.setValue({
+                                attributes: 22,
                                 skills: 18,
                                 talents: 45
                             });
                             break;
                         case 'legend':
-                            limits.setValue({
-                                attributes: 40,
+                            budget.setValue({
+                                attributes: 32,
                                 skills: 25,
                                 talents: 60
                             });

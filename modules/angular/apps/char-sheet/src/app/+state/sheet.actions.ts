@@ -1,5 +1,5 @@
+import { ICharacter } from '@jina-draicana/presets';
 import { Action } from '@ngrx/store';
-import { ICharacter } from './sheet.reducer';
 
 export enum SheetActionTypes {
     SetTheme = '[Sheet] Set Theme',

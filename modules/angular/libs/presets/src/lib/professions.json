@@ -2,7 +2,22 @@
     {
         "id": "warrior",
         "name": "Warrior",
-        "cultures": [ "generic-human", "generic-dwarf", "generic-orc" ]
+        "cultures": [ "generic-human", "generic-dwarf", "generic-orc" ],
+        "talents": [
+            {
+                "nOf": [
+                    {
+                        "id": "foo"
+                    },
+                    {
+                        "id": "bar"
+                    }
+                ],
+                "values": [
+                    1
+                ]
+            }
+        ]
     },
     {
         "id": "witch",

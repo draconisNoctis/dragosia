@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
-import { ICharacter, selectAllSheets } from '../+state/sheet.reducer';
+import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { SheetComponent as CharSheetComponent } from '@jina-draicana/sheet';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';

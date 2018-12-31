@@ -2,16 +2,49 @@
     {
         "id": "human",
         "name": "Human",
-        "presets": [ "dragosia" ]
+        "presets": [
+            "dragosia"
+        ],
+        "talents": [
+            {
+                "nOf": [
+                    {
+                        "id": "foo"
+                    },
+                    {
+                        "id": "bar"
+                    },
+                    {
+                        "id": "baz"
+                    }
+                ],
+                "values": [
+                    1,
+                    2
+                ]
+            }
+        ]
     },
     {
         "id": "dwarf",
         "name": "Dwarf",
-        "presets": [ "dragosia" ]
+        "presets": [
+            "dragosia"
+        ],
+        "attributes": {
+            "strength": 1,
+            "courage": 1
+        }
     },
     {
         "id": "orc",
         "name": "Orc",
-        "presets": [ "dragosia" ]
+        "presets": [
+            "dragosia"
+        ],
+        "attributes": {
+            "strength": 1,
+            "constitution": 1
+        }
     }
 ]
