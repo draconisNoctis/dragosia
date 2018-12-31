@@ -265,7 +265,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
                     costs.skills += getCosts(existingGift.value, existingGift.value + gift.value);
                     existingGift.value += gift.value;
                 } else {
-                    costs.skills += getCosts(0, gift.value);
+                    costs.skills += getCosts(-1, gift.value);
                     character.gifts.push(gift);
                 }
             }
@@ -288,7 +288,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
                         costs.talents += getCosts(existingTalent.value, existingTalent.value + talent.value);
                         existingTalent.value += talent.value;
                     } else {
-                        costs.talents += getCosts(0, talent.value);
+                        costs.talents += getCosts(-1, talent.value);
                         character.talents[ talent.category ].push(talent);
                     }
                 }

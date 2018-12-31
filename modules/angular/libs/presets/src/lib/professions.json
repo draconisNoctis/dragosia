@@ -22,12 +22,22 @@
     {
         "id": "witch",
         "name": "Witch",
-        "cultures": [ "generic-human", "generic-orc" ]
+        "cultures": [ "generic-human", "generic-orc" ],
+        "gifts": [
+            {
+                "id": "magic", "value": 0
+            }
+        ]
     },
     {
         "id": "mage",
         "name": "Mage",
-        "cultures": [ "generic-human", "generic-dwarf" ]
+        "cultures": [ "generic-human", "generic-dwarf" ],
+        "gifts": [
+            {
+                "id": "magic", "value": 1
+            }
+        ]
     },
     {
         "id": "shaman",
