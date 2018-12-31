@@ -45,6 +45,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     professions?: IProfession[];
     
     form = new FormGroup({
+        name: new FormControl(null, Validators.required),
         race: new FormControl(null, Validators.required),
         culture: new FormControl({ disabled: true }, Validators.required),
         profession: new FormControl({ disabled: true }, Validators.required)

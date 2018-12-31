@@ -84,6 +84,8 @@ export class WizardDialogComponent implements OnInit {
             this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.id === this.backgroundControl.value.culture)!,
             this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.id === this.backgroundControl.value.profession)!
         ], this.selectionsControl.value);
+        
+        character.about.name = this.backgroundControl.value.name;
     
         this.character = character;
         this.costs = costs;
