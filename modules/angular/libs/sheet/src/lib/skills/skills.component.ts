@@ -4,30 +4,30 @@ import {
     ViewEncapsulation,
     ChangeDetectionStrategy,
     Input,
-    EventEmitter,
-    Output
+    Output,
+    EventEmitter
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { COSTS, getCosts } from '@jina-draicana/presets';
+import { getCosts } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
-import { map, pairwise, startWith } from 'rxjs/operators';
+import { pairwise, startWith } from 'rxjs/operators';
 
 @Component({
-    selector       : 'js-attributes',
-    templateUrl    : './attributes.component.html',
-    styleUrls      : [ './attributes.component.scss' ],
+    selector       : 'js-skills',
+    templateUrl    : './skills.component.html',
+    styleUrls      : [ './skills.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host           : {
-        'class': 'js-attributes mat-typography'
+        'class': 'js-skills mat-typography'
     },
     providers      : [ {
         provide    : NG_VALUE_ACCESSOR,
-        useExisting: AttributesComponent,
+        useExisting: SkillsComponent,
         multi      : true
     } ]
 })
-export class AttributesComponent implements OnInit, ControlValueAccessor {
+export class SkillsComponent implements OnInit, ControlValueAccessor {
     @Input()
     set pointsAvailable(value : number) {
         this._pointsAvailable = value;
@@ -48,25 +48,17 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
     pointsAvailableChange = new EventEmitter<number>();
     
     form = new FormGroup({
-        strength: new FormControl(null, Validators.required),
-        agility: new FormControl(null, Validators.required),
-        dexterity: new FormControl(null, Validators.required),
-        constitution: new FormControl(null, Validators.required),
-        courage: new FormControl(null, Validators.required),
-        intelligence: new FormControl(null, Validators.required),
-        intuition: new FormControl(null, Validators.required),
-        charisma: new FormControl(null, Validators.required)
+        melee: new FormControl(null, Validators.required),
+        range: new FormControl(null, Validators.required),
+        physical: new FormControl(null, Validators.required),
+        mental: new FormControl(null, Validators.required)
     });
     
     mins = {
-        strength: 0,
-        agility: 0,
-        dexterity: 0,
-        constitution: 0,
-        courage: 0,
-        intelligence: 0,
-        intuition: 0,
-        charisma: 0
+        melee: 0,
+        range: 0,
+        physical: 0,
+        mental: 0
     };
     
     subscription = Subscription.EMPTY;
@@ -82,24 +74,11 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
             if(null === previous) {
                 return;
             }
-    
+            
             let price = 0;
             for(const key in previous) {
                 price += getCosts(previous[key], current[key]);
-                // if(previous[key] < current[key]) {
-                //     let n = current[key] + 1;
-                //     while(--n > previous[key]) {
-                //         price += COSTS[n];
-                //     }
-                // } else if(previous[key] >  current[key]) {
-                //     let n = previous[key] + 1;
-                //     while(--n > current[key]) {
-                //         price -= COSTS[n];
-                //     }
-                // }
             }
-            
-            console.log({ price });
             
             if(price) {
                 this._pointsAvailable -= price;
@@ -142,5 +121,6 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
             this.mins = obj;
         }
     }
+    
     
 }

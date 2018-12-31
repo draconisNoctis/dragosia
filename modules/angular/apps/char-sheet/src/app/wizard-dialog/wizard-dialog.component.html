@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="true">
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
     <mat-step [stepControl]="settingsControl">
         <ng-template matStepLabel i18n>Settings</ng-template>
         <cs-settings [formControl]="settingsControl"></cs-settings>
@@ -16,11 +16,11 @@
 
     <mat-step [stepControl]="attributesControl">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <js-attributes [formControl]="attributesControl" [pointsAvailable]="budget?.attributes"></js-attributes>
-        <button mat-button matStepperNext>Next</button>
+        <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes" (next)="stepper.next()"></js-attributes>
     </mat-step>
 
-    <mat-step>
+    <mat-step [stepControl]="skillsControl">
         <ng-template matStepLabel i18n>Skills</ng-template>
+        <js-skills *ngIf="budget" [formControl]="skillsControl" [(pointsAvailable)]="budget.skills" (next)="stepper.next()"></js-skills>
     </mat-step>
 </mat-horizontal-stepper>

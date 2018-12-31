@@ -27,16 +27,8 @@ export class WizardDialogComponent implements OnInit {
     settingsControl = new FormControl(null, Validators.required);
     backgroundControl = new FormControl(null, Validators.required);
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
-    attributesControl = new FormControl({
-        strength: 1,
-        agility: 1,
-        dexterity: 1,
-        constitution: 1,
-        courage: 1,
-        intelligence: 1,
-        intuition: 1,
-        charisma: 1
-    }, Validators.required);
+    attributesControl = new FormControl(null, Validators.required);
+    skillsControl = new FormControl(null, Validators.required);
     
     character?: ICharacter;
     costs?: ICosts;
@@ -95,6 +87,7 @@ export class WizardDialogComponent implements OnInit {
             talents: this.settingsControl.value.budget.talents - costs.talents
         };
         this.attributesControl.setValue(this.character.attributes);
+        this.skillsControl.setValue(this.character.skills);
         console.log(this.character);
         console.log(this.costs);
         console.log(this.budget);

@@ -1,20 +1,24 @@
 <span class="available-points" i18n>Available: {{ pointsAvailable }}</span>
 
 <form [formGroup]="form">
-    <label i18n>Strength</label>
-    <jui-radio-range deselectable [min]="mins.strength" formControlName="strength"></jui-radio-range>
-    <label i18n>Agility</label>
-    <jui-radio-range deselectable [min]="mins.agility" formControlName="agility"></jui-radio-range>
-    <label i18n>Dexterity</label>
-    <jui-radio-range deselectable [min]="mins.dexterity" formControlName="dexterity"></jui-radio-range>
-    <label i18n>Constitution</label>
-    <jui-radio-range deselectable [min]="mins.constitution" formControlName="constitution"></jui-radio-range>
-    <label i18n>Courage</label>
-    <jui-radio-range deselectable [min]="mins.courage" formControlName="courage"></jui-radio-range>
-    <label i18n>Intelligence</label>
-    <jui-radio-range deselectable [min]="mins.intelligence" formControlName="intelligence"></jui-radio-range>
-    <label i18n>Intuition</label>
-    <jui-radio-range deselectable [min]="mins.intuition" formControlName="intuition"></jui-radio-range>
-    <label i18n>Charisma</label>
-    <jui-radio-range deselectable [min]="mins.charisma" formControlName="charisma"></jui-radio-range>
+    <div>
+        <label i18n>Strength</label>
+        <jui-radio-range deselectable [min]="mins.strength" formControlName="strength"></jui-radio-range>
+        <label i18n>Agility</label>
+        <jui-radio-range deselectable [min]="mins.agility" formControlName="agility"></jui-radio-range>
+        <label i18n>Dexterity</label>
+        <jui-radio-range deselectable [min]="mins.dexterity" formControlName="dexterity"></jui-radio-range>
+        <label i18n>Constitution</label>
+        <jui-radio-range deselectable [min]="mins.constitution" formControlName="constitution"></jui-radio-range>
+        <label i18n>Courage</label>
+        <jui-radio-range deselectable [min]="mins.courage" formControlName="courage"></jui-radio-range>
+        <label i18n>Intelligence</label>
+        <jui-radio-range deselectable [min]="mins.intelligence" formControlName="intelligence"></jui-radio-range>
+        <label i18n>Intuition</label>
+        <jui-radio-range deselectable [min]="mins.intuition" formControlName="intuition"></jui-radio-range>
+        <label i18n>Charisma</label>
+        <jui-radio-range deselectable [min]="mins.charisma" formControlName="charisma"></jui-radio-range>
+    </div>
+
+    <button mat-button (click)="next.emit()" i18n [disabled]="form.invalid || pointsAvailable < 0">Next</button>
 </form>
