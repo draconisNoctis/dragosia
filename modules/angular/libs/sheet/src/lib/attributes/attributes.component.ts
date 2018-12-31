@@ -86,20 +86,7 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
             let price = 0;
             for(const key in previous) {
                 price += getCosts(previous[key], current[key]);
-                // if(previous[key] < current[key]) {
-                //     let n = current[key] + 1;
-                //     while(--n > previous[key]) {
-                //         price += COSTS[n];
-                //     }
-                // } else if(previous[key] >  current[key]) {
-                //     let n = previous[key] + 1;
-                //     while(--n > current[key]) {
-                //         price -= COSTS[n];
-                //     }
-                // }
             }
-            
-            console.log({ price });
             
             if(price) {
                 this._pointsAvailable -= price;

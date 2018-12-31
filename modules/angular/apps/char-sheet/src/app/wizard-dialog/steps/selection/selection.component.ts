@@ -67,7 +67,6 @@ export class SelectionComponent implements OnInit, ControlValueAccessor {
     }
     
     next() {
-        console.log(this.form);
         if(this.form.at(this.step).invalid) {
             return;
         }

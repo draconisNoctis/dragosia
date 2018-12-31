@@ -75,9 +75,9 @@ export class SheetComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.form.valueChanges.subscribe(value => {
-            console.log(value);
-        })
+        // this.form.valueChanges.subscribe(value => {
+        //     console.log(value);
+        // })
     }
     
     protected createGiftFormControl() {
