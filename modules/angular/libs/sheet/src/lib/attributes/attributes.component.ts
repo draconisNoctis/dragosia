@@ -107,7 +107,7 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
                 if ('VALID' === status && 0 <= pointsAvailable) {
                     fn(value);
                 } else {
-                    fn(null)
+                    fn(null);
                 }
             });
     }
@@ -125,8 +125,8 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
     
     writeValue(obj : any) : void {
         if(obj) {
-            this.form.setValue(obj);
             this.mins = obj;
+            this.form.setValue(obj);
         }
     }
     

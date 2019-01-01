@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -47,7 +47,7 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     
     onChange = (v : any) => {};
     
-    constructor() {
+    constructor(protected readonly cdr : ChangeDetectorRef) {
     }
     
     ngOnInit() {
@@ -63,6 +63,7 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     
     writeValue(obj : any) : void {
         this.value = obj;
+        this.cdr.markForCheck();
     }
     
     onClick(n : number) {
