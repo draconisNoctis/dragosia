@@ -61,6 +61,16 @@ export class SheetComponent implements OnInit {
         range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl()))
     });
     
+    giftsForm = this.form.get('gifts') as FormArray;
+    meleeForm = this.form.get('melee') as FormArray;
+    rangeForm = this.form.get('range') as FormArray;
+    
+    talentsMeleeForm = this.form.get([ 'talents', 'melee' ]) as FormArray;
+    talentsRangeForm = this.form.get([ 'talents', 'range' ]) as FormArray;
+    talentsPhysicalForm = this.form.get([ 'talents', 'physical' ]) as FormArray;
+    talentsMentalForm = this.form.get([ 'talents', 'mental' ]) as FormArray;
+    talentsGiftsForm = this.form.get([ 'talents', 'gifts' ]) as FormArray;
+    
     @Input()
     set character(char : ICharacter) {
         if(char) {

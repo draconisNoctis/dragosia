@@ -1,7 +1,7 @@
 <form [formGroup]="form">
     <h2 i18n>Melee</h2>
     <div formArrayName="melee" class=wrapper>
-        <div class="row" *ngFor="let control of form.get('melee').controls; let index = index" [formGroup]="control">
+        <div class="row" *ngFor="let control of meleeForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
@@ -15,7 +15,7 @@
 
     <h2 i18n>Range</h2>
     <div formArrayName="range" class=wrapper>
-        <div class="row" *ngFor="let control of form.get('range').controls; let index = index" [formGroup]="control">
+        <div class="row" *ngFor="let control of rangeForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
@@ -29,7 +29,7 @@
 
     <h2 i18n>Physical</h2>
     <div formArrayName="physical" class=wrapper>
-        <div class="row" *ngFor="let control of form.get('physical').controls; let index = index" [formGroup]="control">
+        <div class="row" *ngFor="let control of physicalForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
@@ -43,7 +43,7 @@
 
     <h2 i18n>Mental</h2>
     <div formArrayName="mental" class="wrapper">
-        <div class="row" *ngFor="let control of form.get('mental').controls; let index = index" [formGroup]="control">
+        <div class="row" *ngFor="let control of mentalForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
@@ -57,7 +57,7 @@
 
     <h2 i18n>Gifts</h2>
     <div formArrayName="gifts">
-        <div *ngFor="let control of form.get('gifts').controls; let index = index" [formGroup]="control">
+        <div *ngFor="let control of giftsForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
@@ -68,5 +68,5 @@
             <jui-radio-range deselectable [min]="mins.gifts[index]" formControlName="value"></jui-radio-range>
         </div>
     </div>
-    <button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < factor"><mat-icon>add</mat-icon></button>
+    <button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < 1"><mat-icon>add</mat-icon></button>
 </form>

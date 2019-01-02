@@ -46,7 +46,7 @@ export class WizardDialogComponent implements OnInit {
     stepper! : MatHorizontalStepper;
     
     constructor(protected readonly presets : Presets,
-                protected readonly ref : MatDialogRef) {
+                protected readonly ref : MatDialogRef<WizardDialogComponent>) {
     }
     
     ngOnInit() {

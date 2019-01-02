@@ -59,12 +59,18 @@ export class TalentsComponent implements OnInit, ControlValueAccessor {
     
     talents? : IPartialTalent[];
     
+    meleeForm    = new FormArray([]);
+    rangeForm    = new FormArray([]);
+    physicalForm = new FormArray([]);
+    mentalForm   = new FormArray([]);
+    giftsForm    = new FormArray([]);
+    
     form = new FormGroup({
-        melee   : new FormArray([]),
-        range   : new FormArray([]),
-        physical: new FormArray([]),
-        mental  : new FormArray([]),
-        gifts   : new FormArray([])
+        melee   : this.meleeForm,
+        range   : this.rangeForm,
+        physical: this.physicalForm,
+        mental  : this.mentalForm,
+        gifts   : this.giftsForm
     });
     
     mins : { [P in keyof ICharacterTalents] : number[] } = {

@@ -98,7 +98,7 @@
     <h2 i18n class="gifts-title">Gifts</h2>
 
     <div class="gifts">
-        <div *ngFor="let control of form.get('gifts').controls" [formGroup]="control" >
+        <div *ngFor="let control of giftsForm.controls" [formGroup]="control" >
             <div>
                <input formControlName="name">
             </div>
@@ -147,7 +147,7 @@
     <h2 i18n class="melee-title">Melee</h2>
 
     <div class="melee">
-        <div *ngFor="let control of form.get(['talents', 'melee']).controls" [formGroup]="control" class="talent">
+        <div *ngFor="let control of talentsMeleeForm.controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />
@@ -158,7 +158,7 @@
     <h2 i18n class="range-title">Range</h2>
 
     <div class="range">
-        <div *ngFor="let control of form.get(['talents', 'range']).controls" [formGroup]="control" class="talent">
+        <div *ngFor="let control of talentsRangeForm.controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />
@@ -169,7 +169,7 @@
     <h2 i18n class="physical-title">Physical</h2>
 
     <div class="physical">
-        <div *ngFor="let control of form.get(['talents', 'physical']).controls" [formGroup]="control" class="talent">
+        <div *ngFor="let control of talentsPhysicalForm.controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />
@@ -180,7 +180,7 @@
     <h2 i18n class="mental-title">Mental</h2>
 
     <div class="mental">
-        <div *ngFor="let control of form.get(['talents', 'mental']).controls" [formGroup]="control" class="talent">
+        <div *ngFor="let control of talentsMentalForm.controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />
@@ -191,7 +191,7 @@
     <h2 i18n class="gifts-title">Gifts</h2>
 
     <div class="gifts">
-        <div *ngFor="let control of form.get(['talents', 'gifts']).controls" [formGroup]="control" class="talent">
+        <div *ngFor="let control of talentsGiftsForm.controls" [formGroup]="control" class="talent">
             <input formControlName="skill" />
             <input formControlName="name" />
             <input formControlName="attribute" />
@@ -225,7 +225,7 @@
         <strong i18n>PA</strong>
         <strong i18n>Dmg</strong>
 
-        <ng-container *ngFor="let control of form.get('melee').controls" [formGroup]="control">
+        <ng-container *ngFor="let control of meleeForm.controls" [formGroup]="control">
             <input formControlName="name" />
             <input formControlName="type" />
             <input formControlName="attribute" />
@@ -245,7 +245,7 @@
         <strong i18n>AT</strong>
         <strong i18n>Dmg</strong>
 
-        <ng-container *ngFor="let control of form.get('range').controls" [formGroup]="control">
+        <ng-container *ngFor="let control of meleeForm.controls" [formGroup]="control">
             <input formControlName="name" />
             <input formControlName="type" />
             <input formControlName="attribute" />
