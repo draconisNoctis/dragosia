@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
@@ -45,7 +45,8 @@ export class SheetComponent implements OnInit {
     
     constructor(protected readonly store : Store<CharSheetState>,
                 protected readonly route : ActivatedRoute,
-                protected readonly dialog : MatDialog) {
+                protected readonly dialog : MatDialog,
+                protected readonly router : Router) {
     }
     
     ngOnInit() {
@@ -69,8 +70,9 @@ export class SheetComponent implements OnInit {
         
         const result = await ref.afterClosed().toPromise();
         
-        if(!result) {
-            return;
+        if(result) {
+            this.store.dispatch(new StoreAction(result));
+            this.router.navigate([ '/', result._id ])
         }
     }
 }

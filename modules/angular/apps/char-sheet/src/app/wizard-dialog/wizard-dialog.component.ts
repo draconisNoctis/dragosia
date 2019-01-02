@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatHorizontalStepper } from '@angular/material';
+import { MatDialogRef, MatHorizontalStepper } from '@angular/material';
 import {
     applyPartials,
     createEmptyCharacter,
@@ -10,7 +10,10 @@ import {
     ISelectTalents,
     Presets
 } from '@jina-draicana/presets';
+import { Store } from '@ngrx/store';
 import { delay, filter } from 'rxjs/operators';
+import { StoreAction } from '../+state/sheet.actions';
+import { SheetState } from '../+state/sheet.reducer';
 
 @Component({
     selector       : 'cs-wizard-dialog',
@@ -42,7 +45,8 @@ export class WizardDialogComponent implements OnInit {
     @ViewChild(MatHorizontalStepper)
     stepper! : MatHorizontalStepper;
     
-    constructor(protected readonly presets : Presets) {
+    constructor(protected readonly presets : Presets,
+                protected readonly ref : MatDialogRef) {
     }
     
     ngOnInit() {
@@ -106,5 +110,15 @@ export class WizardDialogComponent implements OnInit {
         if(this.selections.length === 0) {
             this.stepper.next();
         }
+    }
+    
+    create() {
+        this.character.attributes = this.attributesControl.value;
+        this.character.skills = this.skillsGiftsControl.value.skills;
+        this.character.gifts = this.skillsGiftsControl.value.gifts;
+        this.character.talents = this.talentsControl.value;
+        
+        console.log(this.character);
+        this.ref.close(this.character);
     }
 }
