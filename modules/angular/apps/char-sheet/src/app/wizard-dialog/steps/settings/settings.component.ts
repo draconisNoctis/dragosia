@@ -1,24 +1,20 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    OnInit,
-    Optional,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
     ControlValueAccessor,
     FormControl,
     FormGroup,
+    FormGroupDirective,
     NG_VALUE_ACCESSOR,
+    NgForm,
     Validators
 } from '@angular/forms';
-import { MatStepper } from '@angular/material';
 import { IPreset, Presets } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
     selector: 'cs-settings',
+    exportAs: 'csSettings',
     templateUrl: './settings.component.html',
     styleUrls: ['./settings.component.scss'],
     encapsulation: ViewEncapsulation.None,
@@ -35,6 +31,9 @@ import { map, startWith } from 'rxjs/operators';
     ]
 })
 export class SettingsComponent implements OnInit, ControlValueAccessor {
+    @ViewChild('submit')
+    submitButton : ElementRef<HTMLButtonElement>;
+    
     form = new FormGroup({
         preset: new FormControl(null, Validators.required),
         budget: new FormGroup({
@@ -50,8 +49,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
     
     presets : IPreset[];
 
-    constructor(presets : Presets,
-                @Optional() public readonly stepper: MatStepper) {
+    constructor(presets : Presets) {
         this.presets = presets.getPresets();
     }
 
@@ -101,6 +99,10 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                     }
                 }
             });
+    }
+    
+    submit() {
+        this.submitButton.nativeElement.click();
     }
 
     registerOnChange(fn: any): void {

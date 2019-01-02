@@ -1,11 +1,11 @@
 import {
     ChangeDetectionStrategy,
-    Component,
+    Component, ElementRef,
     EventEmitter,
     Input,
     OnInit,
     Optional,
-    Output,
+    Output, ViewChild,
     ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
@@ -16,18 +16,19 @@ import { debounceTime, startWith } from 'rxjs/operators';
 
 @Component({
     selector       : 'cs-background',
+    exportAs       : 'csBackground',
     templateUrl    : './background.component.html',
     styleUrls      : [ './background.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
+    host           : {
         class: 'cs-background'
     },
-    providers: [
+    providers      : [
         {
-            provide: NG_VALUE_ACCESSOR,
+            provide    : NG_VALUE_ACCESSOR,
             useExisting: BackgroundComponent,
-            multi: true
+            multi      : true
         }
     ]
 })
@@ -40,15 +41,18 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     @Output()
     next = new EventEmitter<void>();
     
-    races?: IRace[];
-    cultures?: ICulture[];
-    professions?: IProfession[];
+    @ViewChild('submit')
+    submitButton : ElementRef<HTMLButtonElement>;
+    
+    races? : IRace[];
+    cultures? : ICulture[];
+    professions? : IProfession[];
     
     form = new FormGroup({
-        name: new FormControl(null, Validators.required),
-        race: new FormControl(null, Validators.required),
-        culture: new FormControl({ disabled: true }, Validators.required),
-        profession: new FormControl({ disabled: true }, Validators.required)
+        name      : new FormControl(null, Validators.required),
+        race      : new FormControl(null, Validators.required),
+        culture   : new FormControl({ value: null, disabled: true }, Validators.required),
+        profession: new FormControl({ value: null, disabled: true }, Validators.required)
     });
     
     subscription = Subscription.EMPTY;
@@ -67,7 +71,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             if(value) {
                 culture.enable();
                 this.cultures = this.presets.getCulturesForRace(value);
-    
+                
                 if(!this.cultures.some(c => c.id === culture.value)) {
                     culture.reset();
                 }
@@ -83,7 +87,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             if(value) {
                 profession.enable();
                 this.professions = this.presets.getProfessionsForCulture(value);
-    
+                
                 if(!this.professions.some(p => p.id === profession.value)) {
                     profession.reset();
                 }
@@ -94,15 +98,19 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
         });
     }
     
-    registerOnChange(fn: any): void {
+    submit() {
+        this.submitButton.nativeElement.click();
+    }
+    
+    registerOnChange(fn : any) : void {
         this.subscription.unsubscribe();
         this.subscription = combineLatest(
             this.form.statusChanges,
             this.form.valueChanges
         )
-            .pipe(startWith([this.form.status, this.form.value]), debounceTime(1))
-            .subscribe(([status, value]) => {
-                if ('VALID' === status) {
+            .pipe(startWith([ this.form.status, this.form.value ]), debounceTime(1))
+            .subscribe(([ status, value ]) => {
+                if('VALID' === status) {
                     fn(value);
                 } else {
                     fn(null);
@@ -113,16 +121,16 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     registerOnTouched(fn : any) : void {
     }
     
-    setDisabledState(isDisabled: boolean): void {
-        if (isDisabled) {
+    setDisabledState(isDisabled : boolean) : void {
+        if(isDisabled) {
             this.form.disable();
         } else {
             this.form.enable();
         }
     }
     
-    writeValue(obj: any): void {
-        if (obj) {
+    writeValue(obj : any) : void {
+        if(obj) {
             this.form.patchValue(obj);
         }
     }

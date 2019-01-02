@@ -3,6 +3,10 @@
         display: block;
     }
 
+    .hidden {
+        display: none;
+    }
+
     .budget {
         display: flex;
         flex-direction: row;

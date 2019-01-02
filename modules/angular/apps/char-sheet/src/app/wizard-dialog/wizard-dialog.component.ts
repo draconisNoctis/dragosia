@@ -4,7 +4,7 @@ import {
     ViewEncapsulation,
     ChangeDetectionStrategy, ViewChild
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper } from '@angular/material';
 import {
     applyPartials,
@@ -108,5 +108,9 @@ export class WizardDialogComponent implements OnInit {
         if(this.selections.length === 0) {
             this.stepper.next();
         }
+    }
+    
+    trySubmit(control : AbstractControl) {
+        console.log({ control });
     }
 }

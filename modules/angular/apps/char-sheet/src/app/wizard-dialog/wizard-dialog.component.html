@@ -1,22 +1,38 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
     <mat-step [stepControl]="settingsControl">
         <ng-template matStepLabel i18n>Settings</ng-template>
-        <cs-settings [formControl]="settingsControl"></cs-settings>
+        <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
+
+        <div class="buttons">
+            <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="backgroundControl">
         <ng-template matStepLabel i18n>Background</ng-template>
-        <cs-background [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+        <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+
+        <div class="buttons">
+            <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="selectionsControl">
         <ng-template matStepLabel i18n>Selections</ng-template>
-        <cs-selection [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+        <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+
+        <div class="buttons">
+            <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="attributesControl">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes" (next)="stepper.next()"></js-attributes>
+        <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
+
+        <div class="buttons">
+            <button mat-button matStepperNext i18n>Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl">

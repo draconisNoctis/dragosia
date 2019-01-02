@@ -42,9 +42,6 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
     factor = 1;
     
     @Output()
-    next = new EventEmitter<void>();
-    
-    @Output()
     pointsAvailableChange = new EventEmitter<number>();
     
     form = new FormGroup({

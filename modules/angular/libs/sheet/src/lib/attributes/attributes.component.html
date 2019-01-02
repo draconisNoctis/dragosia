@@ -19,6 +19,4 @@
         <label i18n>Charisma</label>
         <jui-radio-range deselectable [min]="mins.charisma" formControlName="charisma"></jui-radio-range>
     </div>
-
-    <button mat-button (click)="next.emit()" i18n [disabled]="form.invalid || pointsAvailable < 0">Next</button>
 </form>

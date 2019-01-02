@@ -1,39 +1,43 @@
 import {
-    Component,
-    OnInit,
-    ViewEncapsulation,
     ChangeDetectionStrategy,
-    Input,
+    Component,
+    ElementRef,
     HostBinding,
-    Optional
+    Input,
+    OnInit,
+    ViewChild,
+    ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { MatStepper } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ISelectTalents, Presets } from '@jina-draicana/presets';
+import { ISelectTalents } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
-import { debounceTime, startWith, throttleTime } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators';
 
 @Component({
     selector       : 'cs-selection',
+    exportAs       : 'csSelection',
     templateUrl    : './selection.component.html',
     styleUrls      : [ './selection.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
+    host           : {
         class: 'cs-selection'
     },
-    providers: [
+    providers      : [
         {
-            provide: NG_VALUE_ACCESSOR,
+            provide    : NG_VALUE_ACCESSOR,
             useExisting: SelectionComponent,
-            multi: true
+            multi      : true
         }
     ]
 })
 export class SelectionComponent implements OnInit, ControlValueAccessor {
     @Input()
-    get steps() : ISelectTalents[] { return this._steps; }
+    get steps() : ISelectTalents[] {
+        return this._steps;
+    }
+    
     set steps(value : ISelectTalents[]) {
         this._steps = !value || value.length === 0 ? undefined : value;
         this.step = 0;
@@ -46,12 +50,16 @@ export class SelectionComponent implements OnInit, ControlValueAccessor {
             }
         }
     }
+    
     protected _steps? : ISelectTalents[];
     
     @HostBinding("attr.style")
     get columns() {
-        return this.sanitizer.bypassSecurityTrustStyle(`--columns: ${this.steps ? this.steps[this.step].values.length : 0}`);
+        return this.sanitizer.bypassSecurityTrustStyle(`--columns: ${this.steps ? this.steps[ this.step ].values.length : 0}`);
     }
+    
+    @ViewChild('submit')
+    submitButton : ElementRef<HTMLButtonElement>;
     
     step = 0;
     
@@ -59,33 +67,31 @@ export class SelectionComponent implements OnInit, ControlValueAccessor {
     
     subscription = Subscription.EMPTY;
     
-    constructor(protected readonly sanitizer : DomSanitizer,
-                @Optional() public readonly stepper: MatStepper) {
+    constructor(protected readonly sanitizer : DomSanitizer) {
     }
     
     ngOnInit() {
     }
     
-    next() {
+    submit() {
+        this.submitButton.nativeElement.click();
         if(this.form.at(this.step).invalid) {
             return;
         }
-        if(this.step + 1 >= this.steps.length) {
-            this.stepper.next();
-        } else {
+        if(this.step + 1 < this.steps.length) {
             ++this.step;
         }
     }
     
-    registerOnChange(fn: any): void {
+    registerOnChange(fn : any) : void {
         this.subscription.unsubscribe();
         this.subscription = combineLatest(
             this.form.statusChanges,
             this.form.valueChanges
         )
-            .pipe(startWith([this.form.status, this.form.value]))
-            .subscribe(([status, value]) => {
-                if ('VALID' === status) {
+            .pipe(startWith([ this.form.status, this.form.value ]))
+            .subscribe(([ status, value ]) => {
+                if('VALID' === status) {
                     fn(value);
                 } else {
                     fn(null);
@@ -96,16 +102,16 @@ export class SelectionComponent implements OnInit, ControlValueAccessor {
     registerOnTouched(fn : any) : void {
     }
     
-    setDisabledState(isDisabled: boolean): void {
-        if (isDisabled) {
+    setDisabledState(isDisabled : boolean) : void {
+        if(isDisabled) {
             this.form.disable();
         } else {
             this.form.enable();
         }
     }
     
-    writeValue(obj: any): void {
-        if (obj) {
+    writeValue(obj : any) : void {
+        if(obj) {
             this.form.patchValue(obj);
         }
     }

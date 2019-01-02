@@ -32,7 +32,5 @@
         </mat-select>
     </mat-form-field>
 
-    <ng-content></ng-content>
-
-    <button mat-button (click)="next.emit()" i18n>Next</button>
+    <button #submit class="hidden"></button>
 </form>
