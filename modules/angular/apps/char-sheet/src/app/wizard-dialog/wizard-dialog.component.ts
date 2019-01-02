@@ -19,7 +19,7 @@ import { delay, filter } from 'rxjs/operators';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        'class': 'cs-wizard-dialog'
+        'class': 'cs-wizard-dialog mat-typography'
     }
 })
 export class WizardDialogComponent implements OnInit {

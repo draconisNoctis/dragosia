@@ -1,7 +1,9 @@
 .cs-selection {
+    display: block;
+
     .selections {
         display: grid;
-        grid-template-columns: auto repeat(var(--columns), 100px);
+        grid-template-columns: auto repeat(var(--columns), 50px);
         grid-auto-rows: 1fr;
         align-items: center;
 
