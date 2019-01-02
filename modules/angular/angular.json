@@ -105,6 +105,7 @@
                   "with": "apps/char-sheet/src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "/dragosia",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
