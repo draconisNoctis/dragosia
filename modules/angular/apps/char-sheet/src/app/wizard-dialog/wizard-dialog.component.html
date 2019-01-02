@@ -1,5 +1,5 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
-    <mat-step [stepControl]="settingsControl">
+    <mat-step [stepControl]="settingsControl" [editable]="false">
         <ng-template matStepLabel i18n>Settings</ng-template>
         <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
 
@@ -8,7 +8,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="backgroundControl">
+    <mat-step [stepControl]="backgroundControl" [editable]="false">
         <ng-template matStepLabel i18n>Background</ng-template>
         <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
 
@@ -17,7 +17,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="selectionsControl">
+    <mat-step [stepControl]="selectionsControl" [editable]="false">
         <ng-template matStepLabel i18n>Selections</ng-template>
         <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
 
@@ -26,7 +26,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="attributesControl">
+    <mat-step [stepControl]="attributesControl" [editable]="false">
         <ng-template matStepLabel i18n>Attributes</ng-template>
         <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
 
@@ -37,7 +37,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl">
+    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="false">
         <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
         <h2 i18n>Skills</h2>
         <js-skills *ngIf="budget" formControlName="skills" [(pointsAvailable)]="budget.skills"></js-skills>
@@ -51,7 +51,7 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="talentsControl">
+    <mat-step [stepControl]="talentsControl" [editable]="false">
         <ng-template matStepLabel i18n>Talents</ng-template>
         <js-talents *ngIf="budget" [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>
 
