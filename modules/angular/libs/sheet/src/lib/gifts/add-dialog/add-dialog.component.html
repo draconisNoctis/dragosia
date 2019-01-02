@@ -3,6 +3,6 @@
 
 <div matDialogContent>
     <mat-selection-list>
-        <mat-list-item *ngFor="let gift of gifts"><button>{{ gift.name }}</button></mat-list-item>
+        <mat-list-item *ngFor="let gift of gifts"><button [matDialogClose]="gift">{{ gift.name }}</button></mat-list-item>
     </mat-selection-list>
 </div>

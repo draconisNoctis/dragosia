@@ -144,10 +144,10 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
         
         const result = await ref.afterClosed().toPromise();
         
-        console.log(result);
         if(result) {
             this.addGift(result);
             this.mins.push(0);
+            this.pointsAvailable -= this.factor;
             this.cdr.markForCheck();
         }
     }
