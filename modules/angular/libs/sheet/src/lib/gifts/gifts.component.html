@@ -5,5 +5,5 @@
             <jui-radio-range deselectable [min]="mins[index]" formControlName="value"></jui-radio-range>
         </ng-container>
     </div>
-    <button mat-fab (click)="openAddDialog()"><mat-icon>add</mat-icon></button>
+    <button mat-fab (click)="openAddDialog()" [disabled]="pointsAvailable < factor"><mat-icon>add</mat-icon></button>
 </form>

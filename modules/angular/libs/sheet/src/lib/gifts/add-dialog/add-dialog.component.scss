@@ -1,0 +1,23 @@
+.js-add-dialog {
+    position: relative;
+    display: block;
+
+    .mat-icon-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+    }
+
+    .mat-selection-list {
+        min-width: 200px;
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

@@ -2,5 +2,7 @@
 <button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
 
 <div matDialogContent>
-    <button mat-button *ngFor="let gift of gifts" [matDialogClose]="gift">{{ gift.name }}</button>
+    <mat-selection-list>
+        <mat-list-item *ngFor="let gift of gifts"><button>{{ gift.name }}</button></mat-list-item>
+    </mat-selection-list>
 </div>
