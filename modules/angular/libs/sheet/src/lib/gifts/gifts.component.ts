@@ -1,5 +1,5 @@
 import {
-    ChangeDetectionStrategy,
+    ChangeDetectionStrategy, ChangeDetectorRef,
     Component,
     EventEmitter,
     Input,
@@ -7,27 +7,34 @@ import {
     Output,
     ViewEncapsulation
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { getCosts } from '@jina-draicana/presets';
+import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
 import { pairwise, startWith } from 'rxjs/operators';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
-    selector       : 'js-skills',
-    templateUrl    : './skills.component.html',
-    styleUrls      : [ './skills.component.scss' ],
+    selector       : 'js-gifts',
+    templateUrl    : './gifts.component.html',
+    styleUrls      : [ './gifts.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host           : {
-        'class': 'js-skills mat-typography'
+        'class': 'js-gifts mat-typography'
     },
     providers      : [ {
         provide    : NG_VALUE_ACCESSOR,
-        useExisting: SkillsComponent,
+        useExisting: GiftsComponent,
         multi      : true
     } ]
 })
-export class SkillsComponent implements OnInit, ControlValueAccessor {
+export class GiftsComponent implements OnInit, ControlValueAccessor {
+    @Input()
+    set preset(preset : string) {
+        this.gifts = this.presets.getGiftsForPreset(preset);
+    }
+    
     @Input()
     set pointsAvailable(value : number) {
         this._pointsAvailable = value;
@@ -44,23 +51,17 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
     @Output()
     pointsAvailableChange = new EventEmitter<number>();
     
-    form = new FormGroup({
-        melee: new FormControl(null, Validators.required),
-        range: new FormControl(null, Validators.required),
-        physical: new FormControl(null, Validators.required),
-        mental: new FormControl(null, Validators.required)
-    });
+    gifts?: IPartialGift[];
     
-    mins = {
-        melee: 0,
-        range: 0,
-        physical: 0,
-        mental: 0
-    };
+    form = new FormArray([]);
+    
+    mins : number[] = [];
     
     subscription = Subscription.EMPTY;
     
-    constructor() {
+    constructor(protected readonly dialog : MatDialog,
+                protected readonly presets : Presets,
+                protected readonly cdr : ChangeDetectorRef) {
     }
     
     ngOnInit() {
@@ -71,12 +72,12 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
             if(null === previous) {
                 return;
             }
-            
+        
             let price = 0;
             for(const key in previous) {
-                price += getCosts(previous[key], current[key]);
+                price += getCosts(previous[key].value, current[key].value);
             }
-            
+        
             if(price) {
                 this._pointsAvailable -= price;
                 this.pointsAvailableChange.emit(this._pointsAvailable);
@@ -96,7 +97,7 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
                 if ('VALID' === status && 0 <= pointsAvailable) {
                     fn(value);
                 } else {
-                    fn(null)
+                    fn(null);
                 }
             });
     }
@@ -112,12 +113,42 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
         }
     }
     
-    writeValue(obj : any) : void {
+    writeValue(obj : any[]) : void {
+        while(this.form.length) {
+            this.form.removeAt(0);
+        }
         if(obj) {
-            this.form.setValue(obj);
-            this.mins = obj;
+            this.mins = obj.map(o => o.value);
+            for(const gift of obj) {
+                this.addGift(gift);
+            }
         }
     }
     
+    protected addGift(gift : IGift) {
+        this.form.push(new FormGroup({
+            name: new FormControl(gift.name, Validators.required),
+            value: new FormControl(gift.value, Validators.required),
+        }))
+    }
     
+    async openAddDialog() {
+        const v : IGift[] = this.form.value;
+        const ref = this.dialog.open(AddDialogComponent, {
+            data: {
+                gifts: this.gifts.filter(gift => {
+                    return !v.some(g => g.name === gift.name);
+                })
+            }
+        });
+        
+        const result = await ref.afterClosed().toPromise();
+        
+        console.log(result);
+        if(result) {
+            this.addGift(result);
+            this.mins.push(0);
+            this.cdr.markForCheck();
+        }
+    }
 }

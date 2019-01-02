@@ -1,0 +1,9 @@
+<form [formGroup]="form">
+    <div>
+        <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <jui-radio-range deselectable [min]="mins[index]" formControlName="value"></jui-radio-range>
+        </ng-container>
+    </div>
+    <button mat-fab (click)="openAddDialog()"><mat-icon>add</mat-icon></button>
+</form>

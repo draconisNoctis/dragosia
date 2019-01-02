@@ -1,0 +1,6 @@
+<h2 matDialogTitle i18n>Add Gift</h2>
+<button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
+
+<div matDialogContent>
+    <button mat-button *ngFor="let gift of gifts" [matDialogClose]="gift">{{ gift.name }}</button>
+</div>

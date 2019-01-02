@@ -19,8 +19,15 @@
         <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes" (next)="stepper.next()"></js-attributes>
     </mat-step>
 
-    <mat-step [stepControl]="skillsControl">
-        <ng-template matStepLabel i18n>Skills</ng-template>
-        <js-skills *ngIf="budget" [formControl]="skillsControl" [(pointsAvailable)]="budget.skills" (next)="stepper.next()"></js-skills>
+    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl">
+        <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
+        <h3 i18n>Skills</h3>
+        <js-skills *ngIf="budget" formControlName="skills" [(pointsAvailable)]="budget.skills"></js-skills>
+        <h3 i18n>Gifts</h3>
+        <js-gifts *ngIf="budget" formControlName="gifts" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.skills"></js-gifts>
+
+        <div class="buttons">
+            <button mat-button matStepperNext i18n>Next</button>
+        </div>
     </mat-step>
 </mat-horizontal-stepper>

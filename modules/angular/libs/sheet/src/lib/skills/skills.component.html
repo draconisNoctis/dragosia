@@ -1,5 +1,3 @@
-<span class="available-points" i18n>Available: {{ pointsAvailable }}</span>
-
 <form [formGroup]="form">
     <div>
         <label i18n>Melee</label>
@@ -11,6 +9,4 @@
         <label i18n>Mental</label>
         <jui-radio-range deselectable [min]="mins.mental" formControlName="mental"></jui-radio-range>
     </div>
-
-    <button mat-button (click)="next.emit()" i18n [disabled]="form.invalid || pointsAvailable < 0">Next</button>
 </form>

@@ -114,6 +114,7 @@ export interface IPartialTalent extends ITalent {
 export interface IPartialGift {
     id: string;
     name: string;
+    presets?: string[];
 }
 
 export interface IPartialGiftWithValue extends IPartialGift {
@@ -374,6 +375,10 @@ export class Presets {
     
     getRacesForPreset(preset : string) : IRace[] {
         return this.races.filter(race => race.presets.includes(preset));
+    }
+    
+    getGiftsForPreset(preset : string) {
+        return this.gifts.filter(g => !g.presets || g.presets.includes(preset));
     }
     
     getCulturesForRace(race : string) : ICulture[] {

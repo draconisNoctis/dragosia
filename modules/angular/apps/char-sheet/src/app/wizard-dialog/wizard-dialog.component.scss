@@ -1,0 +1,11 @@
+.cs-wizard-dialog {
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        button {
+            margin-left: 8px;
+        }
+    }
+}

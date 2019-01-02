@@ -4,7 +4,7 @@ import {
     ViewEncapsulation,
     ChangeDetectionStrategy, ViewChild
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper } from '@angular/material';
 import {
     applyPartials,
@@ -17,30 +17,37 @@ import {
 import { debounceTime, delay, filter } from 'rxjs/operators';
 
 @Component({
-    selector: 'cs-wizard-dialog',
-    templateUrl: './wizard-dialog.component.html',
-    styleUrls: ['./wizard-dialog.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    selector       : 'cs-wizard-dialog',
+    templateUrl    : './wizard-dialog.component.html',
+    styleUrls      : [ './wizard-dialog.component.scss' ],
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        'class': 'cs-wizard-dialog'
+    }
 })
 export class WizardDialogComponent implements OnInit {
     settingsControl = new FormControl(null, Validators.required);
     backgroundControl = new FormControl(null, Validators.required);
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
     attributesControl = new FormControl(null, Validators.required);
-    skillsControl = new FormControl(null, Validators.required);
+    skillsGiftsControl = new FormGroup({
+        skills: new FormControl(null, Validators.required),
+        gifts : new FormControl(null, Validators.required)
+    });
     
-    character?: ICharacter;
-    costs?: ICosts;
-    budget?: ICosts;
+    character? : ICharacter;
+    costs? : ICosts;
+    budget? : ICosts;
     
-    selections?: ISelectTalents[];
+    selections? : ISelectTalents[];
     
     @ViewChild(MatHorizontalStepper)
-    stepper!: MatHorizontalStepper;
-
-    constructor(protected readonly presets : Presets) {}
-
+    stepper! : MatHorizontalStepper;
+    
+    constructor(protected readonly presets : Presets) {
+    }
+    
     ngOnInit() {
         this.backgroundControl.valueChanges.subscribe(value => {
             if(value && value.race && value.culture && value.profession) {
@@ -78,16 +85,19 @@ export class WizardDialogComponent implements OnInit {
         ], this.selectionsControl.value);
         
         character.about.name = this.backgroundControl.value.name;
-    
+        
         this.character = character;
         this.costs = costs;
         this.budget = {
             attributes: this.settingsControl.value.budget.attributes - costs.attributes,
-            skills: this.settingsControl.value.budget.skills - costs.skills,
-            talents: this.settingsControl.value.budget.talents - costs.talents
+            skills    : this.settingsControl.value.budget.skills - costs.skills,
+            talents   : this.settingsControl.value.budget.talents - costs.talents
         };
         this.attributesControl.setValue(this.character.attributes);
-        this.skillsControl.setValue(this.character.skills);
+        this.skillsGiftsControl.setValue({
+            skills: this.character.skills,
+            gifts: this.character.gifts
+        });
         console.log(this.character);
         console.log(this.costs);
         console.log(this.budget);

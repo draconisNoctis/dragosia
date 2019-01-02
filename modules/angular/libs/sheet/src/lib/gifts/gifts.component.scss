@@ -1,0 +1,27 @@
+.js-gifts {
+
+    form {
+        position: relative;
+
+        > div {
+            display: grid;
+            grid-template-columns: auto min-content;
+            grid-auto-rows: auto;
+
+            label, .jui-radio-range {
+                padding: 8px;
+
+                &:nth-child(4n), &:nth-child(4n - 1) {
+                    background: rgba(0, 0, 0, .1);
+                }
+            }
+        }
+
+        button {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translateY(85%);
+        }
+    }
+}
