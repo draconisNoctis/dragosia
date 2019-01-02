@@ -50,4 +50,15 @@
             <button mat-button matStepperNext i18n>Next</button>
         </div>
     </mat-step>
+
+    <mat-step [stepControl]="talentsControl">
+        <ng-template matStepLabel i18n>Talents</ng-template>
+        <js-talents *ngIf="budget" [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>
+
+        <div class="sub">
+            <span class="points-available" i18n>Available: {{ budget?.talents }}</span>
+
+            <button mat-button matStepperNext i18n>Next</button>
+        </div>
+    </mat-step>
 </mat-horizontal-stepper>

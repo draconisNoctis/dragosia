@@ -109,6 +109,7 @@ export interface ICosts {
 export interface IPartialTalent extends ITalent {
     id: string;
     category: keyof ICharacterTalents;
+    presets?: string[];
 }
 
 export interface IPartialGift {
@@ -246,6 +247,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
     const character = cloneCharacter(char);
     const costs : ICosts = { attributes: 0, skills: 0, talents: 0 };
     
+    let i = 0;
     for(const partial of partials) {
         if(partial.attributes) {
             for(const attr in partial.attributes) {
@@ -272,7 +274,6 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
             }
         }
         if(partial.talents) {
-            let i = 0;
             for(const t of partial.talents) {
                 let talents : IPartialTalentWithValue[];
                 if('nOf' in t) {
@@ -357,7 +358,7 @@ export class Presets {
         }
         return this._talents!;
     }
-    private _talents?: ITalent[];
+    private _talents?: IPartialTalent[];
     
     protected get gifts() {
         if(!this._gifts) {
@@ -379,6 +380,10 @@ export class Presets {
     
     getGiftsForPreset(preset : string) {
         return this.gifts.filter(g => !g.presets || g.presets.includes(preset));
+    }
+    
+    getTalentsForPreset(preset : string) {
+        return this.talents.filter(t => !t.presets || t.presets.includes(preset));
     }
     
     getCulturesForRace(race : string) : ICulture[] {

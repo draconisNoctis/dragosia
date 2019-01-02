@@ -1,0 +1,19 @@
+<h2 matDialogTitle i18n>Add Gift</h2>
+<button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
+
+<mat-form-field>
+    <mat-select [formControl]="filter" i18n-placeholder placeholder="Category">
+        <mat-option value="" i18n>All</mat-option>
+        <mat-option value="melee" i18n>Melee</mat-option>
+        <mat-option value="range" i18n>Range</mat-option>
+        <mat-option value="physical" i18n>Physical</mat-option>
+        <mat-option value="mental" i18n>Mental</mat-option>
+        <mat-option value="gifts" i18n>Gifts</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div matDialogContent>
+    <mat-selection-list>
+        <mat-list-item *ngFor="let talent of filteredTalents | async"><button [matDialogClose]="talent">{{ talent.name }} ({{talent.attribute}} - {{talent.skill}})</button></mat-list-item>
+    </mat-selection-list>
+</div>

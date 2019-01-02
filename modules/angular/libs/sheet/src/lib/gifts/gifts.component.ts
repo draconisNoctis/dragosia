@@ -66,21 +66,15 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
     
     ngOnInit() {
         this.form.valueChanges.pipe(
-            startWith(null),
             pairwise()
         ).subscribe(([ previous, current ]) => {
-            if(null === previous) {
-                return;
-            }
-        
             let price = 0;
             for(const key in previous) {
                 price += getCosts(previous[key].value, current[key].value);
             }
         
             if(price) {
-                this._pointsAvailable -= price;
-                this.pointsAvailableChange.emit(this._pointsAvailable);
+                this.pointsAvailable -= price;
             }
         });
     }

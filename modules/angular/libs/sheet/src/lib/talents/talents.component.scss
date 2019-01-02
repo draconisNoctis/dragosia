@@ -1,0 +1,42 @@
+.js-talents {
+
+    form {
+        position: relative;
+
+        .wrapper {
+            .row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                &:nth-child(2n) {
+                    background: rgba(0, 0, 0, .1);
+                }
+
+                label {
+                    flex-grow: 1;
+                    margin-left: 8px;
+                }
+
+                .mat-form-field {
+                    width: 50px;
+                    margin-left: 8px;
+
+                    input {
+                        text-align: center;
+                    }
+                }
+
+                .jui-radio-range {
+                    margin: 0 8px;
+                }
+            }
+        }
+
+        button {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}

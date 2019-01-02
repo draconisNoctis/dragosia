@@ -1,0 +1,72 @@
+<form [formGroup]="form">
+    <h2 i18n>Melee</h2>
+    <div formArrayName="melee" class=wrapper>
+        <div class="row" *ngFor="let control of form.get('melee').controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            </mat-form-field>
+            <jui-radio-range deselectable [min]="mins.melee[index]" formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n>Range</h2>
+    <div formArrayName="range" class=wrapper>
+        <div class="row" *ngFor="let control of form.get('range').controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            </mat-form-field>
+            <jui-radio-range deselectable [min]="mins.range[index]" formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n>Physical</h2>
+    <div formArrayName="physical" class=wrapper>
+        <div class="row" *ngFor="let control of form.get('physical').controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            </mat-form-field>
+            <jui-radio-range deselectable [min]="mins.physical[index]" formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n>Mental</h2>
+    <div formArrayName="mental" class="wrapper">
+        <div class="row" *ngFor="let control of form.get('mental').controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            </mat-form-field>
+            <jui-radio-range deselectable [min]="mins.mental[index]" formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+
+    <h2 i18n>Gifts</h2>
+    <div formArrayName="gifts">
+        <div *ngFor="let control of form.get('gifts').controls; let index = index" [formGroup]="control">
+            <label>{{ control.value.name }}</label>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            </mat-form-field>
+            <mat-form-field floatLabel="never">
+                <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            </mat-form-field>
+            <jui-radio-range deselectable [min]="mins.gifts[index]" formControlName="value"></jui-radio-range>
+        </div>
+    </div>
+    <button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < factor"><mat-icon>add</mat-icon></button>
+</form>

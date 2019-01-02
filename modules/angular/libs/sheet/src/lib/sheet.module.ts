@@ -7,21 +7,23 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatListModule
+    MatListModule, MatSelectModule
 } from '@angular/material';
 import { JuiModule } from '@jina-draicana/jui';
 import { AttributesComponent } from './attributes/attributes.component';
-import { AddDialogComponent } from './gifts/add-dialog/add-dialog.component';
+import { AddDialogComponent as AddGiftDialogComponent } from './gifts/add-dialog/add-dialog.component';
+import { AddDialogComponent as AddTalentDialogComponent } from './talents/add-dialog/add-dialog.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { SkillsComponent } from './skills/skills.component';
+import { TalentsComponent } from './talents/talents.component';
 
 @NgModule({
     imports        : [ CommonModule, JuiModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule,
-        MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule ],
-    declarations   : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddDialogComponent ],
-    entryComponents: [ AddDialogComponent ],
-    exports        : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddDialogComponent ]
+        MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule, MatSelectModule ],
+    declarations   : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent ],
+    entryComponents: [ AddGiftDialogComponent, AddTalentDialogComponent ],
+    exports        : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent ]
 })
 export class SheetModule {
 }

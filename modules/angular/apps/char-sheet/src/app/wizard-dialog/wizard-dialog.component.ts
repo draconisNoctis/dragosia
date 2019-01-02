@@ -1,20 +1,16 @@
-import {
-    Component,
-    OnInit,
-    ViewEncapsulation,
-    ChangeDetectionStrategy, ViewChild
-} from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatHorizontalStepper } from '@angular/material';
 import {
     applyPartials,
     createEmptyCharacter,
     getPartialSelections,
     ICharacter,
-    ICosts, ISelectTalents,
+    ICosts,
+    ISelectTalents,
     Presets
 } from '@jina-draicana/presets';
-import { debounceTime, delay, filter } from 'rxjs/operators';
+import { delay, filter } from 'rxjs/operators';
 
 @Component({
     selector       : 'cs-wizard-dialog',
@@ -32,9 +28,10 @@ export class WizardDialogComponent implements OnInit {
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
     attributesControl = new FormControl(null, Validators.required);
     skillsGiftsControl = new FormGroup({
-        skills: new FormControl(null, Validators.required),
-        gifts : new FormControl(null, Validators.required)
+        skills: new FormControl(null),
+        gifts : new FormControl(null)
     });
+    talentsControl = new FormControl(null, Validators.required);
     
     character? : ICharacter;
     costs? : ICosts;
@@ -98,6 +95,7 @@ export class WizardDialogComponent implements OnInit {
             skills: this.character.skills,
             gifts: this.character.gifts
         });
+        this.talentsControl.setValue(this.character.talents);
         console.log(this.character);
         console.log(this.costs);
         console.log(this.budget);
@@ -108,9 +106,5 @@ export class WizardDialogComponent implements OnInit {
         if(this.selections.length === 0) {
             this.stepper.next();
         }
-    }
-    
-    trySubmit(control : AbstractControl) {
-        console.log({ control });
     }
 }
