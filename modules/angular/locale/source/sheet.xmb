@@ -38,7 +38,7 @@
   <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:17</source>Charisma</msg>
   <msg id="4342625008558026850"><source>src/lib/sheet/sheet.component.html:75</source>Skills</msg>
   <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:147</source><source>src/lib/skills/skills.component.html:3</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
-  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:158</source><source>src/lib/sheet/sheet.component.html:244</source><source>src/lib/skills/skills.component.html:5</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:16</source>Range</msg>
+  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:158</source><source>src/lib/skills/skills.component.html:5</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:16</source>Range</msg>
   <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:7</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:30</source>Physical</msg>
   <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:9</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:44</source>Mental</msg>
   <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:58</source>Gifts</msg>
@@ -59,6 +59,7 @@
   <msg id="3229995205437916259"><source>src/lib/sheet/sheet.component.html:225</source>PA</msg>
   <msg id="5034984824056492965"><source>src/lib/sheet/sheet.component.html:226</source><source>src/lib/sheet/sheet.component.html:246</source>Dmg</msg>
   <msg id="3212248032259955065"><source>src/lib/sheet/sheet.component.html:238</source>Range Weapons</msg>
+  <msg id="8197642571840924882" meaning="distance"><source>src/lib/sheet/sheet.component.html:244</source>Range</msg>
   <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source>Add Gift</msg>
   <msg id="1616102757855967475"><source>src/lib/talents/add-dialog/add-dialog.component.html:6</source>All</msg>
   <msg id="1806667489382256324"><source>src/lib/talents/add-dialog/add-dialog.component.html:5</source>Category</msg>

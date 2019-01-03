@@ -38,7 +38,7 @@
   <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:17</source>Charisma</msg>
   <msg id="4342625008558026850"><source>src/lib/sheet/sheet.component.html:75</source>Skills</msg>
   <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:147</source><source>src/lib/skills/skills.component.html:3</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
-  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:158</source><source>src/lib/sheet/sheet.component.html:244</source><source>src/lib/skills/skills.component.html:5</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:16</source>Range</msg>
+  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:158</source><source>src/lib/skills/skills.component.html:5</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:16</source>Range</msg>
   <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:7</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:30</source>Physical</msg>
   <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:9</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:44</source>Mental</msg>
   <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:58</source>Gifts</msg>
@@ -59,21 +59,22 @@
   <msg id="3229995205437916259"><source>src/lib/sheet/sheet.component.html:225</source>PA</msg>
   <msg id="5034984824056492965"><source>src/lib/sheet/sheet.component.html:226</source><source>src/lib/sheet/sheet.component.html:246</source>Dmg</msg>
   <msg id="3212248032259955065"><source>src/lib/sheet/sheet.component.html:238</source>Range Weapons</msg>
+  <msg id="8197642571840924882" meaning="distance"><source>src/lib/sheet/sheet.component.html:244</source>Range</msg>
   <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source>Add Gift</msg>
   <msg id="1616102757855967475"><source>src/lib/talents/add-dialog/add-dialog.component.html:6</source>All</msg>
   <msg id="1806667489382256324"><source>src/lib/talents/add-dialog/add-dialog.component.html:5</source>Category</msg>
   <msg id="1650073357556875190"><source>src/lib/talents/talents.component.html:7</source><source>src/lib/talents/talents.component.html:21</source><source>src/lib/talents/talents.component.html:35</source><source>src/lib/talents/talents.component.html:49</source><source>src/lib/talents/talents.component.html:63</source>Attribute</msg>
   <msg id="6387879863897234206"><source>src/lib/talents/talents.component.html:10</source><source>src/lib/talents/talents.component.html:24</source><source>src/lib/talents/talents.component.html:38</source><source>src/lib/talents/talents.component.html:52</source><source>src/lib/talents/talents.component.html:66</source>Skill</msg>
   <msg id="4930506384627295710"><source>src/app/wizard-dialog/wizard-dialog.component.html:3</source>Settings</msg>
-  <msg id="3885497195825665706"><source>src/app/wizard-dialog/wizard-dialog.component.html:7</source><source>src/app/wizard-dialog/wizard-dialog.component.html:16</source><source>src/app/wizard-dialog/wizard-dialog.component.html:25</source><source>src/app/wizard-dialog/wizard-dialog.component.html:36</source><source>src/app/wizard-dialog/wizard-dialog.component.html:50</source>Next</msg>
-  <msg id="4531310590867542081"><source>src/app/wizard-dialog/wizard-dialog.component.html:12</source>Background</msg>
-  <msg id="2257050785343808305"><source>src/app/wizard-dialog/wizard-dialog.component.html:21</source>Selections</msg>
-  <msg id="3567096528905232171"><source>src/app/wizard-dialog/wizard-dialog.component.html:34</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></msg>
-  <msg id="6846241822886534943"><source>src/app/wizard-dialog/wizard-dialog.component.html:41</source>Skills &amp; Gifts</msg>
-  <msg id="6794067075608705128"><source>src/app/wizard-dialog/wizard-dialog.component.html:48</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.skills }}</ex>{{ budget?.skills }}</ph></msg>
-  <msg id="6489414246802244883"><source>src/app/wizard-dialog/wizard-dialog.component.html:55</source><source>src/app/wizard-dialog/steps/settings/settings.component.html:57</source>Talents</msg>
-  <msg id="4137971599293800094"><source>src/app/wizard-dialog/wizard-dialog.component.html:59</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></msg>
-  <msg id="5674286808255988565"><source>src/app/wizard-dialog/wizard-dialog.component.html:61</source>Create</msg>
+  <msg id="3885497195825665706"><source>src/app/wizard-dialog/wizard-dialog.component.html:8</source><source>src/app/wizard-dialog/wizard-dialog.component.html:19</source><source>src/app/wizard-dialog/wizard-dialog.component.html:30</source><source>src/app/wizard-dialog/wizard-dialog.component.html:43</source><source>src/app/wizard-dialog/wizard-dialog.component.html:59</source>Next</msg>
+  <msg id="4531310590867542081"><source>src/app/wizard-dialog/wizard-dialog.component.html:14</source>Background</msg>
+  <msg id="2257050785343808305"><source>src/app/wizard-dialog/wizard-dialog.component.html:25</source>Selections</msg>
+  <msg id="3567096528905232171"><source>src/app/wizard-dialog/wizard-dialog.component.html:41</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></msg>
+  <msg id="6846241822886534943"><source>src/app/wizard-dialog/wizard-dialog.component.html:49</source>Skills &amp; Gifts</msg>
+  <msg id="6794067075608705128"><source>src/app/wizard-dialog/wizard-dialog.component.html:57</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.skills }}</ex>{{ budget?.skills }}</ph></msg>
+  <msg id="6489414246802244883"><source>src/app/wizard-dialog/wizard-dialog.component.html:65</source><source>src/app/wizard-dialog/steps/settings/settings.component.html:57</source>Talents</msg>
+  <msg id="4137971599293800094"><source>src/app/wizard-dialog/wizard-dialog.component.html:70</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></msg>
+  <msg id="5674286808255988565"><source>src/app/wizard-dialog/wizard-dialog.component.html:72</source>Create</msg>
   <msg id="7505371262892780592"><source>src/app/sheet/sheet.component.html:28</source>New Character</msg>
   <msg id="3768927257183755959"><source>src/app/sheet/sheet.component.html:32</source>Save</msg>
   <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:36</source>Theme</msg>

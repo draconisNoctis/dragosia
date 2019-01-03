@@ -50,7 +50,7 @@
   <translation id="3675298821422143312">Eig.</translation>
   <translation id="8927075220582389378">AT</translation>
   <translation id="3229995205437916259">PA</translation>
-  <translation id="5034984824056492965">Sch</translation>
+  <translation id="5034984824056492965">Schaden</translation>
   <translation id="3212248032259955065">Fernkampf Waffen</translation>
   <translation id="609533585549478126">Gabe hinzufügen</translation>
   <translation id="1616102757855967475">Alle</translation>
@@ -79,4 +79,5 @@
   <translation id="7590013429208346303">Benutzerdefiniert</translation>
   <translation id="6885844978916799621">Budget</translation>
   <translation id="4846236882408369646">Profession</translation>
+  <translation id="8197642571840924882" meaning="distance">Reichweite</translation>
 </translationbundle>
