@@ -1,6 +1,9 @@
 @import '~@angular/material/theming';
 
 .cs-sheet {
+    display: block;
+    border: 1px solid transparent;
+
     .mat-drawer-container, .mat-drawer-content {
         overflow: inherit;
     }
