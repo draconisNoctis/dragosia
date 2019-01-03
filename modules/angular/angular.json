@@ -14,6 +14,22 @@
         }
       },
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/libs/jui",
+            "index": "",
+            "main": "libs/jui/src/index.ts",
+            "tsConfig": "libs/jui/tsconfig.xi18n.json"
+          },
+          "configurations": {}
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "jui:build"
+          }
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -47,6 +63,22 @@
         }
       },
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/libs/sheet",
+            "index": "",
+            "main": "libs/sheet/src/index.ts",
+            "tsConfig": "libs/sheet/tsconfig.xi18n.json"
+          },
+          "configurations": {}
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sheet:build"
+          }
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -207,6 +239,22 @@
       "projectType": "library",
       "prefix": "jina-draicana",
       "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/libs/presets",
+            "index": "",
+            "main": "libs/presets/src/index.ts",
+            "tsConfig": "libs/presets/tsconfig.xi18n.json"
+          },
+          "configurations": {}
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "presets:build"
+          }
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -246,5 +294,5 @@
     "defaultCollection": "@nrwl/schematics",
     "packageManager": "yarn"
   },
-  "defaultProject": "jui"
+  "defaultProject": "char-sheet"
 }

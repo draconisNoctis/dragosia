@@ -307,10 +307,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
 export class Presets {
     protected get presets() {
         if(!this._presets) {
-            this._presets = require('./presets.json').map(preset => {
-                preset.name = this.i18n(preset.name);
-                return preset;
-            });
+            this._presets = require('./presets.json');
         }
         return this._presets;
     }
@@ -319,7 +316,6 @@ export class Presets {
     protected get races() {
         if(!this._races) {
             this._races = require('./races.json').map((race : IRace) => {
-                race.name = this.i18n(race.name);
                 this.mapPartial(race);
                 return race;
             });
@@ -331,7 +327,6 @@ export class Presets {
     protected get cultures() {
         if(!this._cultures) {
             this._cultures = require('./cultures.json').map((culture : ICulture) => {
-                culture.name = this.i18n(culture.name);
                 this.mapPartial(culture);
                 return culture;
             });
@@ -343,7 +338,6 @@ export class Presets {
     protected get professions() {
         if(!this._professions) {
             this._professions = require('./professions.json').map((profession : IProfession) => {
-                profession.name = this.i18n(profession.name);
                 this.mapPartial(profession);
                 return profession;
             });
@@ -367,8 +361,6 @@ export class Presets {
         return this._gifts!;
     }
     private _gifts?: IPartialGift[];
-    
-    constructor(protected readonly i18n : I18n) {}
     
     getPresets() : IPreset[] {
         return this.presets;

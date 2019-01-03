@@ -24,7 +24,13 @@
     "update:check": "ng update",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
-    "help": "./node_modules/.bin/nx help"
+    "help": "./node_modules/.bin/nx help",
+    "xi18n:all": "concurrently -n 'char-sheet,jui,sheet,presets' 'yarn xi18n:char-sheet' 'yarn xi18n:jui' 'yarn xi18n:sheet' 'yarn xi18n:presets' && yarn xi18n:combine",
+    "xi18n:combine": "ts-node bin/combine-xmb.ts -i 'locale/source/*.xmb' -o locale/source.xmb",
+    "xi18n:char-sheet": "ng xi18n char-sheet --output-path ../../locale/source --out-file char-sheet.xmb --i18n-format xmb && ngx-extractor -i 'apps/char-sheet/**/*.ts' -f xmb -o locale/source/char-sheet.xmb",
+    "xi18n:jui": "ng xi18n jui --output-path ../../locale/source --out-file jui.xmb --i18n-format xmb && ngx-extractor -i 'libs/jui/**/*.ts' -f xmb -o locale/source/jui.xmb",
+    "xi18n:sheet": "ng xi18n sheet --output-path ../../locale/source --out-file sheet.xmb --i18n-format xmb && ngx-extractor -i 'libs/sheet/**/*.ts' -f xmb -o locale/source/sheet.xmb",
+    "xi18n:presets": "ng xi18n presets --output-path ../../locale/source --out-file presets.xmb --i18n-format xmb && ngx-extractor -i 'libs/presets/**/*.ts' -f xmb -o locale/source/presets.xmb"
   },
   "private": true,
   "dependencies": {
@@ -56,10 +62,13 @@
     "@ngrx/schematics": "6.1.2",
     "@ngrx/store-devtools": "6.1.0",
     "@nrwl/schematics": "7.1.1",
+    "@types/glob": "7.1.1",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "10.12.18",
     "codelyzer": "~4.5.0",
+    "concurrently": "4.1.0",
+    "glob": "7.1.3",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "0.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -72,7 +81,7 @@
     "ngrx-store-localstorage": "5.1.0",
     "prettier": "1.15.2",
     "protractor": "~5.4.0",
-    "ts-node": "~7.0.0",
+    "ts-node": "7.0.1",
     "tslint": "~5.11.0",
     "typescript": "~3.1.3"
   }
