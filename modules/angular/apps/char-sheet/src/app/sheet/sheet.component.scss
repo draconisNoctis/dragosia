@@ -27,13 +27,6 @@
             &.mat-icon-button {
                 margin-left: auto;
             }
-
-            &.mat-fab {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                transform: translate(-100%, 50%);
-            }
         }
 
         @media print {
@@ -43,6 +36,13 @@
 
     .mat-nav-list {
         min-width: 200px;
+    }
+
+
+    .mat-fab {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
     }
 }
 
