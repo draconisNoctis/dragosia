@@ -1,38 +1,70 @@
 @import '~@angular/material/theming';
 
 .cs-sheet {
+    .mat-drawer-container, .mat-drawer-content {
+        overflow: inherit;
+    }
+
+    .mat-sidenav {
+        overflow-y: inherit;
+
+        .mat-drawer-inner-container {
+            position: sticky;
+            width: auto;
+            height: auto;
+            top: 0;
+        }
+    }
+
     .mat-toolbar {
         position: sticky;
         top: 0;
+        z-index: 100;
+
+        > button {
+            margin-right: 8px;
+
+            &.mat-icon-button {
+                margin-left: auto;
+            }
+
+            &.mat-fab {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                transform: translate(-100%, 50%);
+            }
+        }
     }
 
     .mat-list-item {
         min-width: 200px;
     }
+}
 
-    .ancient {
-        @include mat-core(
-                mat-typography-config(
-                    $font-family: 'Jim Nightshade'
-                )
-        );
+.ancient {
+    font-family: 'Jim Nightshade';
+    @include mat-core(
+            mat-typography-config(
+                $font-family: 'Jim Nightshade'
+            )
+    );
 
-        .js-sheet .jui-page {
-            position: relative;
-            background: none;
+    .js-sheet .jui-page {
+        position: relative;
+        background: none;
 
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 0;
-                content: '';
-                background: white url("/assets/images/background.jpg") no-repeat center/100%;
-                width: 100%;
-                height: 100%;
-                z-index: -1;
-                opacity: .5;
-                filter: saturate(70%);
-            }
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            background: white url("/assets/images/background.jpg") no-repeat center/100%;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: .5;
+            filter: saturate(70%);
         }
     }
 }

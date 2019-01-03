@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
-    MatCommonModule, MatDialogModule, MatFormFieldModule, MatInputModule,
+    MatCommonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
     MatListModule,
     MatMenuModule, MatRadioModule, MatSelectModule,
     MatSidenavModule, MatStepperModule,
@@ -66,6 +66,7 @@ export function translationsFactory() {
         MatSelectModule,
         MatInputModule,
         MatRadioModule,
+        MatIconModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {

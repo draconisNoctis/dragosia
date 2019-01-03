@@ -1,28 +1,43 @@
 <mat-sidenav-container>
     <mat-sidenav [mode]="'side'" [opened]="true">
-        <mat-list>
+        <mat-nav-list>
             <ng-container *ngFor="let char of chars | async">
                 <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/', char._id ]">
                     {{ char.about.name}}
                     <span *ngIf="char._changed" class="changed">*</span>
                 </mat-list-item>
             </ng-container>
-        </mat-list>
+        </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
         <mat-toolbar>
-            <button mat-button i18n [matMenuTriggerFor]="themeMenu">Theme</button>
-            <button mat-flat-button i18n color="primary" (click)="doStore()">Save</button>
-            <button mat-stroked-button i18n color="primary" (click)="openWizard()">Create</button>
-
-            <mat-menu #themeMenu="matMenu">
-                <button mat-menu-item (click)="setTheme('default')">Default</button>
-                <button mat-menu-item (click)="setTheme('ancient')">Ancient</button>
-            </mat-menu>
+            <h1>{{ (char | async)?.about?.name }}</h1>
+            <button mat-icon-button [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
+            <button mat-fab (click)="openWizard()"><mat-icon>playlist_add</mat-icon></button>
         </mat-toolbar>
         <div [ngClass]="theme | async">
             <js-sheet class="mat-typography" (update)="doUpdate($event)" [character]="char | async"></js-sheet>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-menu #mainMenu="matMenu">
+    <button mat-menu-item (click)="openWizard()">
+        <mat-icon>playlist_add</mat-icon>
+        <span i18n>New Character</span>
+    </button>
+    <button mat-menu-item (click)="doStore()">
+        <mat-icon>save</mat-icon>
+        <span i18n>Save</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="themeMenu">
+        <mat-icon>color_lens</mat-icon>
+        <span i18n>Theme</span>
+    </button>
+</mat-menu>
+
+<mat-menu #themeMenu="matMenu">
+    <button mat-menu-item (click)="setTheme('default')">Default</button>
+    <button mat-menu-item (click)="setTheme('ancient')" class="ancient">Ancient</button>
+</mat-menu>
