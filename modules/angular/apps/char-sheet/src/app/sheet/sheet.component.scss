@@ -35,6 +35,10 @@
                 transform: translate(-100%, 50%);
             }
         }
+
+        @media print {
+            display: none;
+        }
     }
 
     .mat-nav-list {

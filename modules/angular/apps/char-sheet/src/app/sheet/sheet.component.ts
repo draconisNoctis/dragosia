@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
+    ViewChild,
+    ChangeDetectorRef
+} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICharacter } from '@jina-draicana/presets';
@@ -40,13 +47,16 @@ export class SheetComponent implements OnInit {
         return entities[id];
     }));
     
+    sidenavOpen = true;
+    
     @ViewChild(CharSheetComponent)
     sheet!: CharSheetComponent;
     
     constructor(protected readonly store : Store<CharSheetState>,
                 protected readonly route : ActivatedRoute,
                 protected readonly dialog : MatDialog,
-                protected readonly router : Router) {
+                protected readonly router : Router,
+                protected readonly cdr : ChangeDetectorRef) {
     }
     
     ngOnInit() {
@@ -75,4 +85,17 @@ export class SheetComponent implements OnInit {
             this.router.navigate([ '/', result._id ])
         }
     }
+    
+    async print() {
+        this.sidenavOpen = false;
+        await sleep(1000);
+        window.print();
+        await sleep(10);
+        this.sidenavOpen = true;
+        this.cdr.markForCheck();
+    }
+}
+
+function sleep(ms : number) : Promise<void> {
+    return new Promise<void>(resolve => setTimeout(() => resolve(), ms));
 }
