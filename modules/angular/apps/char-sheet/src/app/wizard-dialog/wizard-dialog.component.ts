@@ -79,13 +79,20 @@ export class WizardDialogComponent implements OnInit {
             return;
         }
         
+        const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === this.backgroundControl.value.race)!
+        const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.id === this.backgroundControl.value.culture)!;
+        const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.id === this.backgroundControl.value.profession)!;
+        
         const { character, costs } = applyPartials(createEmptyCharacter(), [
-            this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === this.backgroundControl.value.race)!,
-            this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.id === this.backgroundControl.value.culture)!,
-            this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.id === this.backgroundControl.value.profession)!
+            race,
+            culture,
+            profession
         ], this.selectionsControl.value);
         
         character.about.name = this.backgroundControl.value.name;
+        character.about.race = race.name;
+        character.about.culture = culture.name;
+        character.about.profession = profession.name;
         
         this.character = character;
         this.costs = costs;
