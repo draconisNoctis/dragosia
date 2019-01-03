@@ -154,6 +154,34 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "de-gh-pages": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/char-sheet/src/environments/environment.ts",
+                  "with": "apps/char-sheet/src/environments/environment.prod.ts"
+                }
+              ],
+              "baseHref": "https://draconisnoctis.github.io/dragosia/",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "i18nFile": "locale/de.xtb",
+              "i18nFormat": "xtb",
+              "i18nLocale": "de",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },

@@ -20,7 +20,7 @@ export class SheetComponent implements OnInit {
             name: new FormControl(null, Validators.required),
             race: new FormControl(null, Validators.required),
             culture: new FormControl(null, Validators.required),
-            class: new FormControl(null, Validators.required),
+            profession: new FormControl(null, Validators.required),
             description: new FormControl(null, Validators.required)
         }),
         attributes: new FormGroup({

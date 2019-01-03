@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE translationbundle [
+<!ELEMENT translationbundle (translation)*>
+<!ATTLIST translationbundle lang CDATA #REQUIRED>
+
+<!ELEMENT translation (#PCDATA|ph)*>
+<!ATTLIST translation id CDATA #REQUIRED>
+<!ATTLIST translation desc CDATA #IMPLIED>
+<!ATTLIST translation meaning CDATA #IMPLIED>
+<!ATTLIST translation xml:space (default|preserve) "default">
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<translationbundle lang="de">
+  <translation id="8235775649619498299">Charakterbogen</translation>
+  <translation id="8953033926734869941">Name</translation>
+  <translation id="1679869148678530261">Rasse</translation>
+  <translation id="79936206013046129">Kultur</translation>
+  <translation id="4902817035128594900">Beschreibung</translation>
+  <translation id="8008131619909556709">Eigenschaften</translation>
+  <translation id="6632040223751981101">Stärke</translation>
+  <translation id="2450951288627752134">Beweglichkeit</translation>
+  <translation id="5465529649433457628">Fingerfertigkeit</translation>
+  <translation id="1632323077493059273">Konstitution</translation>
+  <translation id="756813006053572492">Mut</translation>
+  <translation id="8489670130200267808">Klugheit</translation>
+  <translation id="7458174081002220540">Intuition</translation>
+  <translation id="6828638344650593860">Charisma</translation>
+  <translation id="4342625008558026850">Fähigkeiten</translation>
+  <translation id="1637444068586569722">Nahkampf</translation>
+  <translation id="2348971518300945764">Fernkampf</translation>
+  <translation id="337101541139237513">Körperlich</translation>
+  <translation id="8530621156729135816">Geistig</translation>
+  <translation id="512999736698594700">Gaben</translation>
+  <translation id="8866410934216748920">Vorteile</translation>
+  <translation id="6213989057085085654">Nachteile</translation>
+  <translation id="2041675390931385838">Gesundheit</translation>
+  <translation id="1311080303172813893">Tod</translation>
+  <translation id="3409471884938641326">Mana</translation>
+  <translation id="3045416770236753721">Bewusstlos</translation>
+  <translation id="555084565084867462">Ausrüstungsbogen</translation>
+  <translation id="3010057485486897763">Inventar</translation>
+  <translation id="5701499858274742084">Finanzen</translation>
+  <translation id="7595930936671323978">Ausrüstung</translation>
+  <translation id="4269127934271347575">Nahkampf Waffen</translation>
+  <translation id="8650499415827640724">Typ</translation>
+  <translation id="3675298821422143312">Eig.</translation>
+  <translation id="8927075220582389378">AT</translation>
+  <translation id="3229995205437916259">PA</translation>
+  <translation id="5034984824056492965">Sch</translation>
+  <translation id="3212248032259955065">Fernkampf Waffen</translation>
+  <translation id="609533585549478126">Gabe hinzufügen</translation>
+  <translation id="1616102757855967475">Alle</translation>
+  <translation id="1806667489382256324">Kategorie</translation>
+  <translation id="1650073357556875190">Eigenschaft</translation>
+  <translation id="6387879863897234206">Fähigkeit</translation>
+  <translation id="4930506384627295710">Einstellungen</translation>
+  <translation id="3885497195825665706">Weiter</translation>
+  <translation id="4531310590867542081">Hintergrund</translation>
+  <translation id="2257050785343808305">Auswahl</translation>
+  <translation id="3567096528905232171">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></translation>
+  <translation id="6846241822886534943">Fähigkeiten &amp; Gaben</translation>
+  <translation id="6794067075608705128">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.skills }}</ex>{{ budget?.skills }}</ph></translation>
+  <translation id="6489414246802244883">Talente</translation>
+  <translation id="4137971599293800094">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></translation>
+  <translation id="5674286808255988565">Erstellen</translation>
+  <translation id="7505371262892780592">Neuer Charakter</translation>
+  <translation id="3768927257183755959">Speichern</translation>
+  <translation id="7103588127254721505">Theme</translation>
+  <translation id="7049887240439736400">Drucken</translation>
+  <translation id="6333857424161463201">Preset</translation>
+  <translation id="5754117841832798663">Anfänger</translation>
+  <translation id="3080483882937310852">Normal</translation>
+  <translation id="7653178475449069959">Helden</translation>
+  <translation id="7297822327994766046">Legenden</translation>
+  <translation id="7590013429208346303">Benutzerdefiniert</translation>
+  <translation id="6885844978916799621">Budget</translation>
+  <translation id="4846236882408369646">Profession</translation>
+</translationbundle>

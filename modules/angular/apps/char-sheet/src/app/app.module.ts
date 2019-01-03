@@ -36,8 +36,8 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
     return _syncReducer(reducer);
 }
 
-export function translationsFactory() {
-    return '';
+export function translationsFactory(locale : string) {
+    return locale ? require(`raw-loader!../../../../locale/${locale}.xtb`) : '';
 }
 
 @NgModule({

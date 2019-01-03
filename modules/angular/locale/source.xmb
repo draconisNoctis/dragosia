@@ -25,7 +25,7 @@
   <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:5</source><source>src/lib/sheet/sheet.component.html:221</source><source>src/lib/sheet/sheet.component.html:241</source>Name</msg>
   <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:10</source>Race</msg>
   <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:15</source>Culture</msg>
-  <msg id="4378796785985219718"><source>src/lib/sheet/sheet.component.html:20</source>Class</msg>
+  <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:20</source>Profession</msg>
   <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:26</source>Description</msg>
   <msg id="8008131619909556709"><source>src/lib/sheet/sheet.component.html:31</source>Attributes</msg>
   <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:34</source><source>src/lib/attributes/attributes.component.html:3</source>Strength</msg>
@@ -78,7 +78,6 @@
   <msg id="3768927257183755959"><source>src/app/sheet/sheet.component.html:32</source>Save</msg>
   <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:36</source>Theme</msg>
   <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:40</source>Print</msg>
-  <msg id="6542657819791375974"><source>src/app/wizard-dialog/steps/settings/settings.component.html:8</source><ph name="INTERPOLATION"><ex>{{ preset.name }}</ex>{{ preset.name }}</ph></msg>
   <msg id="6333857424161463201"><source>src/app/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>
@@ -86,8 +85,4 @@
   <msg id="7297822327994766046"><source>src/app/wizard-dialog/steps/settings/settings.component.html:21</source>Legend</msg>
   <msg id="7590013429208346303"><source>src/app/wizard-dialog/steps/settings/settings.component.html:22</source>Custom</msg>
   <msg id="6885844978916799621"><source>src/app/wizard-dialog/steps/settings/settings.component.html:15</source>Budget</msg>
-  <msg id="1309821125108619312"><source>src/app/wizard-dialog/steps/background/background.component.html:11</source><ph name="INTERPOLATION"><ex>{{ race.name }}</ex>{{ race.name }}</ph></msg>
-  <msg id="9138834546151044245"><source>src/app/wizard-dialog/steps/background/background.component.html:21</source><ph name="INTERPOLATION"><ex>{{ culture.name }}</ex>{{ culture.name }}</ph></msg>
-  <msg id="7436388666738313597"><source>src/app/wizard-dialog/steps/background/background.component.html:31</source><ph name="INTERPOLATION"><ex>{{ profession.name }}</ex>{{ profession.name }}</ph></msg>
-  <msg id="4846236882408369646"><source>src/app/wizard-dialog/steps/background/background.component.html:28</source>Profession</msg>
 </messagebundle>

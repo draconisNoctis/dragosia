@@ -5,7 +5,7 @@
             placeholder="Preset"
             formControlName="preset"
         >
-            <mat-option *ngFor="let preset of presets" [value]="preset.id" i18n>{{ preset.name }}</mat-option>
+            <mat-option *ngFor="let preset of presets" [value]="preset.id">{{ preset.name }}</mat-option>
         </mat-select>
     </mat-form-field>
 

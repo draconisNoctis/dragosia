@@ -25,7 +25,7 @@
   <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:5</source><source>src/lib/sheet/sheet.component.html:221</source><source>src/lib/sheet/sheet.component.html:241</source>Name</msg>
   <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:10</source>Race</msg>
   <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:15</source>Culture</msg>
-  <msg id="4378796785985219718"><source>src/lib/sheet/sheet.component.html:20</source>Class</msg>
+  <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:20</source>Profession</msg>
   <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:26</source>Description</msg>
   <msg id="8008131619909556709"><source>src/lib/sheet/sheet.component.html:31</source>Attributes</msg>
   <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:34</source><source>src/lib/attributes/attributes.component.html:3</source>Strength</msg>
