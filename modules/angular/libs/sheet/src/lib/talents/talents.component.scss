@@ -1,8 +1,11 @@
 .js-talents {
     display: block;
+    position: relative;
 
     form {
         position: relative;
+        max-height: 60vh;
+        overflow-y: auto;
 
         .wrapper {
             .row {
@@ -33,11 +36,12 @@
                 }
             }
         }
+    }
 
-        button {
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+
+    button.mat-mini-fab {
+        position: absolute;
+        right: 24px;
+        top: 0;
     }
 }

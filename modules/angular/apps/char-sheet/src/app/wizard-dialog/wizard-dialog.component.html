@@ -1,64 +1,76 @@
-<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" [selectedIndex]="stepperIndex" (selectionChange)="stepperChange($event)">
     <mat-step [stepControl]="settingsControl" [editable]="false">
         <ng-template matStepLabel i18n>Settings</ng-template>
-        <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
+        <ng-container *ngIf="stepperIndex >= 0">
+            <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
 
-        <div class="sub">
-            <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
-        </div>
+            <div class="sub">
+                <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
+            </div>
+        </ng-container>
     </mat-step>
 
     <mat-step [stepControl]="backgroundControl" [editable]="false">
         <ng-template matStepLabel i18n>Background</ng-template>
-        <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+        <ng-container *ngIf="stepperIndex >= 1">
+            <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
 
-        <div class="sub">
-            <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
-        </div>
+            <div class="sub">
+                <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
+            </div>
+        </ng-container>
     </mat-step>
 
     <mat-step [stepControl]="selectionsControl" [editable]="false">
         <ng-template matStepLabel i18n>Selections</ng-template>
-        <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+        <ng-container *ngIf="stepperIndex >= 2">
+            <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
 
-        <div class="sub">
-            <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
-        </div>
+            <div class="sub">
+                <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
+            </div>
+        </ng-container>
     </mat-step>
 
     <mat-step [stepControl]="attributesControl" [editable]="false">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <js-attributes *ngIf="budget" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
+        <ng-container *ngIf="budget && stepperIndex >= 3">
+            <js-attributes [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
 
-        <div class="sub">
-            <span class="points-available" i18n>Available: {{ budget?.attributes }}</span>
+            <div class="sub">
+                <span class="points-available" i18n>Available: {{ budget?.attributes }}</span>
 
-            <button mat-button matStepperNext i18n>Next</button>
-        </div>
+                <button mat-button matStepperNext i18n>Next</button>
+            </div>
+        </ng-container>
     </mat-step>
 
     <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="false">
         <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
-        <h2 i18n>Skills</h2>
-        <js-skills *ngIf="budget" formControlName="skills" [(pointsAvailable)]="budget.skills"></js-skills>
-        <h2 i18n>Gifts</h2>
-        <js-gifts *ngIf="budget" formControlName="gifts" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.skills"></js-gifts>
+        <ng-container *ngIf="budget && stepperIndex >= 4">
+            <h2 i18n>Skills</h2>
+            <js-skills formControlName="skills" [(pointsAvailable)]="budget.skills"></js-skills>
+            <h2 i18n>Gifts</h2>
+            <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.skills"></js-gifts>
 
-        <div class="sub">
-            <span class="points-available" i18n>Available: {{ budget?.skills }}</span>
+            <div class="sub">
+                <span class="points-available" i18n>Available: {{ budget?.skills }}</span>
 
-            <button mat-button matStepperNext i18n>Next</button>
-        </div>
+                <button mat-button matStepperNext i18n>Next</button>
+            </div>
+        </ng-container>
     </mat-step>
 
     <mat-step [stepControl]="talentsControl" [editable]="false">
         <ng-template matStepLabel i18n>Talents</ng-template>
-        <js-talents *ngIf="budget" [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>
+        <ng-container *ngIf="budget && stepperIndex >= 0">
+            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>
 
-        <div class="sub">
-            <span class="points-available" i18n>Available: {{ budget?.talents }}</span>
+            <div class="sub">
+                <span class="points-available" i18n>Available: {{ budget?.talents }}</span>
 
-            <button mat-button (click)="create()" [disabled]="budget?.talents < 0" i18n>Create</button>
-        </div>
+                <button mat-button (click)="create()" [disabled]="budget?.talents < 0" i18n>Create</button>
+            </div>
+        </ng-container>
     </mat-step>
 </mat-horizontal-stepper>

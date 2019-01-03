@@ -72,28 +72,28 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             budget.setValue({
                                 attributes: 4,
                                 skills: 5,
-                                talents: 20
+                                talents: 40
                             });
                             break;
                         case 'normal':
                             budget.setValue({
                                 attributes: 12,
                                 skills: 9,
-                                talents: 30
+                                talents: 60
                             });
                             break;
                         case 'hero':
                             budget.setValue({
                                 attributes: 22,
                                 skills: 18,
-                                talents: 45
+                                talents: 80
                             });
                             break;
                         case 'legend':
                             budget.setValue({
                                 attributes: 32,
                                 skills: 25,
-                                talents: 60
+                                talents: 100
                             });
                             break;
                     }
