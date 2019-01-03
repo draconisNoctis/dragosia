@@ -51,7 +51,7 @@ export function translationsFactory() {
             { path: '', component: SheetComponent },
             { path: ':id', component: SheetComponent },
             { path: '*', redirectTo: '/' }
-        ], { initialNavigation: 'enabled' }),
+        ], { initialNavigation: 'enabled', useHash: true }),
         SheetModule,
         BrowserAnimationsModule,
         MatMenuModule,
