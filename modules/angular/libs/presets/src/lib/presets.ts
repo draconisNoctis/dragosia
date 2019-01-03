@@ -2,6 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { I18n } from '@ngx-translate/i18n-polyfill';
+import * as yaml from 'js-yaml';
 
 
 export interface ICharacterAbout {
@@ -307,7 +308,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
 export class Presets {
     protected get presets() {
         if(!this._presets) {
-            this._presets = require('./presets.json');
+            this._presets = yaml.safeLoad(require('raw-loader!./presets.yml'));
         }
         return this._presets;
     }
@@ -315,7 +316,7 @@ export class Presets {
     
     protected get races() {
         if(!this._races) {
-            this._races = require('./races.json').map((race : IRace) => {
+            this._races = yaml.safeLoad(require('raw-loader!./races.yml')).map((race : IRace) => {
                 this.mapPartial(race);
                 return race;
             });
@@ -326,7 +327,7 @@ export class Presets {
     
     protected get cultures() {
         if(!this._cultures) {
-            this._cultures = require('./cultures.json').map((culture : ICulture) => {
+            this._cultures = yaml.safeLoad(require('raw-loader!./cultures.yml')).map((culture : ICulture) => {
                 this.mapPartial(culture);
                 return culture;
             });
@@ -337,7 +338,7 @@ export class Presets {
     
     protected get professions() {
         if(!this._professions) {
-            this._professions = require('./professions.json').map((profession : IProfession) => {
+            this._professions = yaml.safeLoad(require('raw-loader!./professions.yml')).map((profession : IProfession) => {
                 this.mapPartial(profession);
                 return profession;
             });
@@ -348,7 +349,7 @@ export class Presets {
     
     protected get talents() {
         if(!this._talents) {
-            this._talents = require('./talents.json');
+            this._talents = yaml.safeLoad(require('raw-loader!./talents.yml'));
         }
         return this._talents!;
     }
@@ -356,7 +357,7 @@ export class Presets {
     
     protected get gifts() {
         if(!this._gifts) {
-            this._gifts = require('./gifts.json');
+            this._gifts = yaml.safeLoad(require('raw-loader!./gifts.yml'));
         }
         return this._gifts!;
     }
@@ -399,7 +400,7 @@ export class Presets {
             for(const talent of partial.talents) {
                 if('nOf' in talent) {
                     for(const t of talent.nOf) {
-                        Object.assign(t, this.getTalentById(t.id));
+                        Object.assign(t, this.getTalentById(t.id || t as any));
                     }
                 } else {
                     Object.assign(talent, this.getTalentById(talent.id));

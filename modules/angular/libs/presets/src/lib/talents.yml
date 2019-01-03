@@ -1,0 +1,16 @@
+- id: foo
+  category: physical
+  name: Foo
+  attribute: ST
+  skill: K
+- id: bar
+  category: physical
+  name: Bar
+  attribute: KO
+  skill: K
+- id: baz
+  category: mental
+  name: Baz
+  attribute: IN
+  skill: G
+
