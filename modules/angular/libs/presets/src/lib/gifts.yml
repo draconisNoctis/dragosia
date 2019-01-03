@@ -1,5 +1,7 @@
-- id: magic
-  name: Magic
-- id: danger-sense
-  name: Danger Sense
+- id: Magie
+  name: Magie
+- id: Gefahreninstinkt
+  name: Gefahreninstinkt
+- id: Glaube
+  name: Glaube
 

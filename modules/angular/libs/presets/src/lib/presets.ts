@@ -400,7 +400,7 @@ export class Presets {
             for(const talent of partial.talents) {
                 if('nOf' in talent) {
                     for(const t of talent.nOf) {
-                        Object.assign(t, this.getTalentById(t.id || t as any));
+                        Object.assign(t, this.getTalentById(t.id));
                     }
                 } else {
                     Object.assign(talent, this.getTalentById(talent.id));

@@ -1,22 +1,79 @@
-- id: human
-  name: Human
+- id: Menschen
+  name: Menschen
   presets:
-    - dragosia
+      - dragosia
   talents:
-    - nOf: [ "foo", "bar", "baz" ]
-      values: [ 2, 1 ]
-- id: dwarf
-  name: Dwarf
+      - id: Muttersprache
+        value: 3
+      - id: Gemeinsprache
+        value: 1
+      - id: Raufen
+        value: 0
+      - id: Werfen
+        value: 1
+      - id: Körperbeherrschung
+        value: 1
+      - id: Klettern
+        value: 0
+      - id: Singen
+        value: 0
+      - id: Tanzen
+        value: 0
+      - id: Sinnesschärfe
+        value: 0
+      - id: Schleichen
+        value: 0
+      - id: Selbstbeherrschung
+        value: 0
+      - id: Menschenkenntnis
+        value: 0
+      - id: Ausstrahlung
+        value: 0
+      - id: Orientierung
+        value: 1
+      - id: Malen/Zeichnen
+        value: 0
+      - id: Kochen
+        value: 0
+      - id: Allgemeinwissen
+        value: 0
+- id: Zwerge
+  name: Zwerge
   presets:
-    - dragosia
-  attributes:
-    strength: 1
-    courage: 1
-- id: orc
-  name: Orc
-  presets:
-    - dragosia
-  attributes:
-    strength: 1
-    constitution: 1
+      - dragosia
+  talents:
+      - id: Muttersprache
+        value: 3
+      - id: Gemeinsprache
+        value: 1
+      - id: Raufen
+        value: 0
+      - id: Werfen
+        value: 1
+      - id: Körperbeherrschung
+        value: 1
+      - id: Klettern
+        value: 0
+      - id: Singen
+        value: 0
+      - id: Tanzen
+        value: 0
+      - id: Sinnesschärfe
+        value: 0
+      - id: Schleichen
+        value: 0
+      - id: Selbstbeherrschung
+        value: 0
+      - id: Menschenkenntnis
+        value: 0
+      - id: Ausstrahlung
+        value: 0
+      - id: Orientierung
+        value: 1
+      - id: Malen/Zeichnen
+        value: 0
+      - id: Kochen
+        value: 0
+      - id: Allgemeinwissen
+        value: 0
 

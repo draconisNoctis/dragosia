@@ -1,31 +1,66 @@
-- id: warrior
-  name: Warrior
+- id: Kämpfer
+  name: Kämpfer
   cultures:
-    - generic-human
-    - generic-dwarf
-    - generic-orc
+      - Menschen
+      - Zwerge
   talents:
-    - nOf: [ "foo", "bar" ]
-      values:
-        - 1
-- id: witch
-  name: Witch
+      - nOf:
+            - id: Schwerter
+            - id: 2H-Schwerter
+            - id: Hiebwaffen
+            - id: 2H-Hiebwaffen
+            - id: Dolche
+        values:
+            - 1
+      - id: Erste Hilfe
+        value: 1
+- id: Magier
+  name: Magier
   cultures:
-    - generic-human
-    - generic-orc
+      - Menschen
+      - Zwerge
+  talents:
+      - id: Lesen/Schreiben
+        value: 2
   gifts:
-    - id: magic
-      value: 0
-- id: mage
-  name: Mage
+      - id: Magie
+        value: 2
+- id: Hexe
+  name: Hexe
   cultures:
-    - generic-human
-    - generic-dwarf
+      - Menschen
+      - Zwerge
+  talents:
+      - id: Pflanzenkunde
+        value: 2
+      - id: Erste Hilfe
+        value: 1
   gifts:
-    - id: magic
-      value: 1
-- id: shaman
-  name: Shaman
+      - id: Magie
+        value: 1
+- id: Druide
+  name: Druide
   cultures:
-    - generic-orc
+      - Menschen
+      - Zwerge
+  talents:
+      - id: Pflanzenkunde
+        value: 2
+      - id: Erste Hilfe
+        value: 1
+  gifts:
+      - id: Magie
+        value: 1
+- id: Priester
+  name: Priester
+  cultures:
+      - Menschen
+      - Zwerge
+  talents:
+      - id: Lesen/Schreiben
+        value: 1
+  gifts:
+      - id: Glaube
+        value: 2
+
 

@@ -1,16 +1,29 @@
-- id: generic-human
-  name: Generic Human
+- id: Menschen
+  name: Menschen
   races:
-    - human
-- id: generic-dwarf
-  name: Generic Dwarf
-  races:
-    - dwarf
-- id: generic-orc
-  name: Generic Orc
-  races:
-    - orc
+      - Menschen
   talents:
-    - id: foo
-      value: 1
-
+      - id: Raufen
+        value: 1
+      - id: Zechen
+        value: 1
+      - nOf:
+            - id: Schwerter
+            - id: Hiebwaffen
+            - id: Dolche
+        values: [ 1 ]
+- id: Zwerge
+  name: Zwerge
+  races:
+      - Zwerge
+  talents:
+      - id: Raufen
+        value: 1
+      - id: Zechen
+        value: 2
+      - id: Schilde
+        value: 1
+      - nOf:
+            - id: Hiebwaffen
+            - id: 2H-Hiebwaffen
+        values: [ 1, 0 ]
