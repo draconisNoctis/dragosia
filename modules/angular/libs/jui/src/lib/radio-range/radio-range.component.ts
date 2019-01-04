@@ -10,7 +10,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: RadioRangeComponent, multi: true }],
     host: {
         'class': 'jui-radio-range',
-        '[class.jui-radio-range-labeled]': 'labeled'
+        '[class.jui-radio-range-labeled]': 'labeled',
+        '[class.jui-radio-range-readonly]': 'readonly'
     }
 })
 export class RadioRangeComponent implements OnInit, ControlValueAccessor {
@@ -36,10 +37,16 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     @Input()
     get labeled() { return this._labeled }
     set labeled(labeled : boolean) {
-        this._labeled = labeled || '' == labeled as any;
+        this._labeled = labeled || '' === labeled as any;
     }
-    
     _labeled = false;
+    
+    @Input()
+    get readonly() { return this._readonly }
+    set readonly(readonly : boolean) {
+        this._readonly = readonly || '' === readonly as any;
+    }
+    _readonly = false;
     
     get entries() {
         return Array.from(new Array(this.size), (_, i) => i + 1);
@@ -67,6 +74,9 @@ export class RadioRangeComponent implements OnInit, ControlValueAccessor {
     }
     
     onClick(n : number) {
+        if(this.readonly) {
+            return;
+        }
         if(this.value === n) {
             if(!this.deselectable) {
                 return;
