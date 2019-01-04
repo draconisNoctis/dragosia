@@ -58,7 +58,19 @@ export class SheetComponent implements OnInit {
         equipment: new FormControl(),
         
         melee: new FormArray(Array.from({ length: 8 }, () => this.createMeleeWeaponControl())),
-        range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl()))
+        range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl())),
+        
+        meta: new FormGroup({
+            budget: new FormGroup({
+                attributes: new FormControl(),
+                skills: new FormControl(),
+                talents: new FormControl()
+            }),
+            exp: new FormGroup({
+                spend: new FormControl(),
+                rest: new FormControl()
+            })
+        })
     });
     
     giftsForm = this.form.get('gifts') as FormArray;

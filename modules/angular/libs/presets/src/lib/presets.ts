@@ -73,6 +73,14 @@ export interface IRangeWeapon {
     damageModification: string;
 }
 
+export interface ICharacterMeta {
+    exp: {
+        spend: number;
+        rest: number;
+    }
+    budget: ICosts
+}
+
 export interface ICharacter {
     _id: string;
     _changed?: boolean;
@@ -87,6 +95,7 @@ export interface ICharacter {
     mana: number;
     
     talents: ICharacterTalents;
+    meta: ICharacterMeta;
     
     inventory: string;
     financials: string;
@@ -199,6 +208,17 @@ export function createEmptyCharacter() : ICharacter {
         inventory: '',
         financials: '',
         equipment: '',
+        meta: {
+            budget: {
+                attributes: 0,
+                skills: 0,
+                talents: 0
+            },
+            exp: {
+                spend: 0,
+                rest: 0
+            }
+        },
         
         melee: new Array<IMeleeWeapon>(),
         range: new Array<IRangeWeapon>()

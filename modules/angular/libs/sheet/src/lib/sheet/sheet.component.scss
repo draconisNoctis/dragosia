@@ -43,7 +43,7 @@
         display: grid;
         grid-gap: 5mm;
         grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm 1fr .5cm 2cm;
+        grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm min-content 1fr .5cm 2cm;
         grid-template-areas:
             "#{gta(page-title, 20)}"
             "#{gta(about, 10)} #{gta(description, 10)}"
@@ -54,17 +54,43 @@
             "#{gta(skill-melee, 5)} #{gta(skill-range, 5)} #{gta(skill-physical, 5)} #{gta(skill-mental, 5)}"
             "#{gta(advantages-title, 10)} #{gta(gifts-title, 10)}"
             "#{gta(advantages, 10)} #{gta(gifts, 10)}"
-            "#{gta(disadvantages-title, 10)} #{gta(info, 10)}"
+            "#{gta(disadvantages-title, 10)} #{gta(budget-title, 5)} #{gta(exp-title, 5)}"
+            "#{gta(disadvantages, 10)} #{gta(budget, 5)} #{gta(exp, 5)}"
             "#{gta(disadvantages, 10)} #{gta(info, 10)}"
             "#{gta(health-title, 10)} #{gta(mana-title, 10)}"
             "#{gta(health, 10)} #{gta(mana, 10)}";
 
         @each $area in (page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
         attribute-courage, attribute-intelligence, attribute-intuition, attribute-charisma, skill-title, skill-melee, skill-range, skill-physical,
-        skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts) {
+        skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts,
+        budget-title, budget, exp-title, exp) {
             .#{$area} {
                 grid-area: $area;
             }
+        }
+
+        .budget {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: min-content min-content;
+            grid-gap: 0 2mm;
+
+            label {
+                text-align: center;
+                grid-row: 2
+            }
+
+            input {
+                box-sizing: border-box;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .exp {
+            @extend .budget;
+
+            grid-template-columns: 1fr 1fr;
         }
 
 

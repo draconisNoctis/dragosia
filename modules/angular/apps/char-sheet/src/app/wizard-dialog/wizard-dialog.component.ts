@@ -125,6 +125,9 @@ export class WizardDialogComponent implements OnInit {
         this.character.gifts = this.skillsGiftsControl.value.gifts;
         this.character.talents = this.talentsControl.value;
         
+        this.character.meta.exp.spend = this.costs.attributes * 4 + this.costs.skills * 2 + this.costs.talents;
+        this.character.meta.exp.rest = this.budget.talents;
+        
         console.log(this.character);
         this.ref.close(this.character);
     }
@@ -165,6 +168,7 @@ export class WizardDialogComponent implements OnInit {
                 character.about.race = race.name;
                 character.about.culture = culture.name;
                 character.about.profession = profession.name;
+                character.meta.budget = this.settingsControl.value.budget;
     
                 this.character = character;
                 this.costs = costs;

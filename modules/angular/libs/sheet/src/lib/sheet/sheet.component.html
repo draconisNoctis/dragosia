@@ -116,7 +116,29 @@
 
     <textarea class="disadvantages" formControlName="disadvantages"></textarea>
 
-    <div class="info">info</div>
+    <ng-container formGroupName="meta">
+        <h2 i18n class="budget-title">Start Budget</h2>
+
+        <div class="budget" formGroupName="budget">
+            <label for="budget-attributes" i18n>Attributes</label>
+            <label for="budget-skills" i18n>Skills</label>
+            <label for="budget-talents" i18n>Talents</label>
+            <input formControlName="attributes" id="budget-attributes" />
+            <input formControlName="skills" id="budget-skills" />
+            <input formControlName="talents" id="budget-talents" />
+        </div>
+
+        <h2 i18n class="exp-title">Experience</h2>
+
+        <div class="exp" formGroupName="exp">
+            <label for="exp-spend" i18n>Spend</label>
+            <label for="exp-rest" i18n>Rest</label>
+            <input formControlName="spend" id="exp-spend" />
+            <input formControlName="rest" id="exp-rest" />
+        </div>
+    </ng-container>
+
+    <div class="info"></div>
 
     <h2 i18n class="health-title">Health</h2>
 
