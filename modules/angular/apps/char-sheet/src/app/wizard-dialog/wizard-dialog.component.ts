@@ -186,6 +186,15 @@ export class WizardDialogComponent implements OnInit {
                 console.log(this.character);
                 console.log(this.costs);
                 console.log(this.budget);
+                break;
+            }
+            case 4: {
+                this.budget.skills += this.budget.attributes * 2;
+                break;
+            }
+            case 5: {
+                this.budget.talents += this.budget.skills * 2;
+                break;
             }
         }
     }
