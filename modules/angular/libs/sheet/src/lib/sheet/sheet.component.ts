@@ -61,6 +61,7 @@ export class SheetComponent implements OnInit {
         range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl())),
         
         meta: new FormGroup({
+            preset: new FormControl(),
             budget: new FormGroup({
                 attributes: new FormControl(),
                 skills: new FormControl(),
@@ -68,7 +69,7 @@ export class SheetComponent implements OnInit {
             }),
             exp: new FormGroup({
                 spend: new FormControl(),
-                rest: new FormControl()
+                total: new FormControl()
             })
         })
     });

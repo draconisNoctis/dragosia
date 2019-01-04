@@ -126,7 +126,7 @@ export class WizardDialogComponent implements OnInit {
         this.character.talents = this.talentsControl.value;
         
         this.character.meta.exp.spend = this.costs.attributes * 4 + this.costs.skills * 2 + this.costs.talents;
-        this.character.meta.exp.rest = this.budget.talents;
+        this.character.meta.exp.total = this.character.meta.exp.spend + this.budget.talents;
         
         console.log(this.character);
         this.ref.close(this.character);

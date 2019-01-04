@@ -1,5 +1,6 @@
 import {
-    ChangeDetectionStrategy, ChangeDetectorRef,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     EventEmitter,
     Input,
@@ -9,9 +10,9 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
+import { COSTS, getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
-import { pairwise, startWith } from 'rxjs/operators';
+import { pairwise, throttleTime } from 'rxjs/operators';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
@@ -21,7 +22,9 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host           : {
-        'class': 'js-gifts mat-typography'
+        'class'                  : 'js-gifts mat-typography',
+        '[class.js-gifts-button]': 'mode === "button"',
+        '[class.js-gifts-range]' : 'mode === "range"'
     },
     providers      : [ {
         provide    : NG_VALUE_ACCESSOR,
@@ -40,10 +43,15 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
         this._pointsAvailable = value;
         this.pointsAvailableChange.emit(value);
     }
+    
     get pointsAvailable() : number {
         return this._pointsAvailable;
     }
-    protected _pointsAvailable?: number;
+    
+    protected _pointsAvailable? : number;
+    
+    @Input()
+    mode : 'range' | 'button' = 'range';
     
     @Input()
     factor = 1;
@@ -51,7 +59,9 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
     @Output()
     pointsAvailableChange = new EventEmitter<number>();
     
-    gifts?: IPartialGift[];
+    COSTS = COSTS;
+    
+    gifts? : IPartialGift[];
     
     form = new FormArray([]);
     
@@ -65,16 +75,14 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
     }
     
     ngOnInit() {
-        this.form.valueChanges.pipe(
-            pairwise()
-        ).subscribe(([ previous, current ]) => {
+        this.form.valueChanges.pipe(pairwise()).subscribe(([ previous, current ]) => {
             let price = 0;
-            for(const key in previous) {
-                price += getCosts(previous[key].value, current[key].value);
+            for(const key in current) {
+                price += getCosts(previous[ key ] ? previous[ key ].value : -1, current[ key ].value);
             }
-        
+            
             if(price) {
-                this.pointsAvailable -= price;
+                this.pointsAvailable -= price * this.factor;
             }
         });
     }
@@ -83,12 +91,11 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
         this.subscription.unsubscribe();
         this.subscription = combineLatest(
             this.form.statusChanges,
-            this.form.valueChanges,
-            this.pointsAvailableChange
+            this.form.valueChanges
         )
-            .pipe(startWith([this.form.status, this.form.value, 0]))
-            .subscribe(([status, value, pointsAvailable]) => {
-                if ('VALID' === status && 0 <= pointsAvailable) {
+            .pipe(throttleTime(10))
+            .subscribe(([ status, value ]) => {
+                if('VALID' === status) {
                     fn(value);
                 } else {
                     fn(null);
@@ -100,7 +107,7 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
     }
     
     setDisabledState(isDisabled : boolean) : void {
-        if (isDisabled) {
+        if(isDisabled) {
             this.form.disable();
         } else {
             this.form.enable();
@@ -114,15 +121,17 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
         if(obj) {
             this.mins = obj.map(o => o.value);
             for(const gift of obj) {
-                this.addGift(gift);
+                if(gift.name) {
+                    this.addGift(gift);
+                }
             }
         }
     }
     
     protected addGift(gift : IGift) {
         this.form.push(new FormGroup({
-            name: new FormControl(gift.name, Validators.required),
-            value: new FormControl(gift.value, Validators.required),
+            name : new FormControl(gift.name, Validators.required),
+            value: new FormControl(gift.value || 0, Validators.required),
         }))
     }
     
@@ -144,5 +153,11 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
             this.pointsAvailable -= this.factor;
             this.cdr.markForCheck();
         }
+    }
+    
+    
+    add(index : number) {
+        const control = this.form.at(index)!.get('value')!;
+        control.setValue(control.value + 1);
     }
 }

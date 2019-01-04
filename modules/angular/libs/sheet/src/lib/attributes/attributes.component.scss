@@ -1,16 +1,34 @@
 .js-attributes {
     display: block;
 
-    form div {
+    form > div {
         display: grid;
         grid-template-columns: auto min-content;
         grid-auto-rows: auto;
 
         label, .jui-radio-range {
             padding: 8px;
+        }
+    }
 
-            &:nth-child(4n), &:nth-child(4n - 1) {
-                background: rgba(0, 0, 0, .1);
+    &-range {
+        form > div {
+            > * {
+                &:nth-child(4n), &:nth-child(4n - 1) {
+                    background: rgba(0, 0, 0, .1);
+                }
+            }
+        }
+    }
+
+    &-button {
+        form > div {
+            grid-template-columns: auto min-content min-content;
+
+            > * {
+                &:nth-child(6n), &:nth-child(6n - 1), &:nth-child(6n - 2) {
+                    background: rgba(0, 0, 0, .1);
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ import {
     MatCommonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
     MatListModule,
     MatMenuModule, MatRadioModule, MatSelectModule,
-    MatSidenavModule, MatStepperModule,
+    MatSidenavModule, MatStepperModule, MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -67,6 +67,7 @@ export function translationsFactory(locale : string) {
         MatInputModule,
         MatRadioModule,
         MatIconModule,
+        MatTabsModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {

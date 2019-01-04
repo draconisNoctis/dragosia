@@ -1,12 +1,16 @@
 <form [formGroup]="form">
     <div>
         <label i18n>Melee</label>
-        <jui-radio-range deselectable [min]="mins.melee" formControlName="melee"></jui-radio-range>
+        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.melee" formControlName="melee"></jui-radio-range>
+        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('melee')" [disabled]="pointsAvailable < COSTS[form.value.melee + 1] * factor"><mat-icon>add</mat-icon></button></div>
         <label i18n>Range</label>
-        <jui-radio-range deselectable [min]="mins.range" formControlName="range"></jui-radio-range>
+        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.range" formControlName="range"></jui-radio-range>
+        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('range')" [disabled]="pointsAvailable < COSTS[form.value.range + 1] * factor"><mat-icon>add</mat-icon></button></div>
         <label i18n>Physical</label>
-        <jui-radio-range deselectable [min]="mins.physical" formControlName="physical"></jui-radio-range>
+        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.physical" formControlName="physical"></jui-radio-range>
+        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('physical')" [disabled]="pointsAvailable < COSTS[form.value.physical + 1] * factor"><mat-icon>add</mat-icon></button></div>
         <label i18n>Mental</label>
-        <jui-radio-range deselectable [min]="mins.mental" formControlName="mental"></jui-radio-range>
+        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.mental" formControlName="mental"></jui-radio-range>
+        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('mental')" [disabled]="pointsAvailable < COSTS[form.value.mental + 1] * factor"><mat-icon>add</mat-icon></button></div>
     </div>
 </form>

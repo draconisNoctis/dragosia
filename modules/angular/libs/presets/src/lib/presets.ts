@@ -74,11 +74,12 @@ export interface IRangeWeapon {
 }
 
 export interface ICharacterMeta {
+    preset: string;
     exp: {
         spend: number;
-        rest: number;
+        total: number;
     }
-    budget: ICosts
+    budget: ICosts;
 }
 
 export interface ICharacter {
@@ -209,6 +210,7 @@ export function createEmptyCharacter() : ICharacter {
         financials: '',
         equipment: '',
         meta: {
+            preset: '',
             budget: {
                 attributes: 0,
                 skills: 0,
@@ -216,7 +218,7 @@ export function createEmptyCharacter() : ICharacter {
             },
             exp: {
                 spend: 0,
-                rest: 0
+                total: 0
             }
         },
         

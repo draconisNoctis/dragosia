@@ -42,6 +42,13 @@
         }
     }
 
+    .js-talents {
+        form {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+    }
+
     .sub {
         margin-top: auto;
         display: flex;

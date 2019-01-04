@@ -11,18 +11,36 @@
 
             label, .jui-radio-range {
                 padding: 8px;
+            }
+        }
 
+        > button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translateY(-100%);
+        }
+    }
+
+    &-range {
+        form > div {
+            > * {
                 &:nth-child(4n), &:nth-child(4n - 1) {
                     background: rgba(0, 0, 0, .1);
                 }
             }
         }
+    }
 
-        button {
-            position: absolute;
-            right: 0;
-            top: 0;
-            transform: translateY(-100%);
+    &-button {
+        form > div {
+            grid-template-columns: auto min-content min-content;
+
+            > * {
+                &:nth-child(6n), &:nth-child(6n - 1), &:nth-child(6n - 2) {
+                    background: rgba(0, 0, 0, .1);
+                }
+            }
         }
     }
 }

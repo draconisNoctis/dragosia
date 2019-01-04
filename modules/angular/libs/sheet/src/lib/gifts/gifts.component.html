@@ -2,7 +2,8 @@
     <div>
         <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
-            <jui-radio-range deselectable [min]="mins[index]" formControlName="value"></jui-radio-range>
+            <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins[index]" formControlName="value"></jui-radio-range>
+            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add(index)" [disabled]="pointsAvailable < COSTS[form.value[index] + 1] * factor"><mat-icon>add</mat-icon></button></div>
         </ng-container>
     </div>
     <button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < factor"><mat-icon>add</mat-icon></button>

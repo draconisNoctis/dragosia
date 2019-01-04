@@ -8,9 +8,9 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { getCosts } from '@jina-draicana/presets';
+import { COSTS, getCosts } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
-import { pairwise, startWith } from 'rxjs/operators';
+import { pairwise, startWith, throttleTime } from 'rxjs/operators';
 
 @Component({
     selector       : 'js-skills',
@@ -19,7 +19,9 @@ import { pairwise, startWith } from 'rxjs/operators';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host           : {
-        'class': 'js-skills mat-typography'
+        'class': 'js-skills mat-typography',
+        '[class.js-skills-button]': 'mode === "button"',
+        '[class.js-skills-range]': 'mode === "range"'
     },
     providers      : [ {
         provide    : NG_VALUE_ACCESSOR,
@@ -39,10 +41,15 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
     protected _pointsAvailable?: number;
     
     @Input()
+    mode : 'range' | 'button' = 'range';
+    
+    @Input()
     factor = 1;
     
     @Output()
     pointsAvailableChange = new EventEmitter<number>();
+    
+    COSTS = COSTS;
     
     form = new FormGroup({
         melee: new FormControl(null, Validators.required),
@@ -65,20 +72,15 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
     
     ngOnInit() {
         this.form.valueChanges.pipe(
-            startWith(null),
             pairwise()
         ).subscribe(([ previous, current ]) => {
-            if(null === previous) {
-                return;
-            }
-            
             let price = 0;
             for(const key in previous) {
                 price += getCosts(previous[key], current[key]);
             }
             
             if(price) {
-                this._pointsAvailable -= price;
+                this._pointsAvailable -= price * this.factor;
                 this.pointsAvailableChange.emit(this._pointsAvailable);
             }
         });
@@ -88,12 +90,11 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
         this.subscription.unsubscribe();
         this.subscription = combineLatest(
             this.form.statusChanges,
-            this.form.valueChanges,
-            this.pointsAvailableChange
+            this.form.valueChanges
         )
-            .pipe(startWith([this.form.status, this.form.value, 0]))
-            .subscribe(([status, value, pointsAvailable]) => {
-                if ('VALID' === status && 0 <= pointsAvailable) {
+            .pipe(throttleTime(1))
+            .subscribe(([status, value]) => {
+                if ('VALID' === status) {
                     fn(value);
                 } else {
                     fn(null)
@@ -119,5 +120,8 @@ export class SkillsComponent implements OnInit, ControlValueAccessor {
         }
     }
     
-    
+    add(type : string) {
+        const control = this.form.get(type)!;
+        control.setValue(control.value + 1);
+    }
 }

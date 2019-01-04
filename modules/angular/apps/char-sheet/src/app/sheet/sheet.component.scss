@@ -6,6 +6,7 @@
 
     .mat-drawer-container, .mat-drawer-content {
         overflow: inherit;
+        min-height: 100vh;
     }
 
     .mat-sidenav {
@@ -51,6 +52,11 @@
         @media print {
             display: none;
         }
+    }
+
+    .js-attributes, .js-skills, .js-gifts, .js-talents {
+        margin: 24px auto;
+        max-width: 800px;
     }
 }
 
