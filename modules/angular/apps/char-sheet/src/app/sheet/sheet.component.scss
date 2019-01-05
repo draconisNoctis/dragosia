@@ -2,7 +2,6 @@
 
 .cs-sheet {
     display: block;
-    border: 1px solid transparent;
 
     .mat-drawer-container, .mat-drawer-content {
         overflow: inherit;
@@ -54,8 +53,24 @@
         }
     }
 
+    .mat-tab-header {
+        position: sticky;
+        top: 64px;
+        background: white;
+        z-index: 100;
+    }
+
     .js-attributes, .js-skills, .js-gifts, .js-talents {
         margin: 24px auto;
         max-width: 800px;
+
+        button.mat-mini-fab {
+            position: fixed;
+            left: 224px;
+            bottom: 24px;
+            top: auto;
+            right: auto;
+            transform: none;
+        }
     }
 }

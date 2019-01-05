@@ -5,7 +5,7 @@ import {
     MatListModule,
     MatMenuModule, MatRadioModule, MatSelectModule,
     MatSidenavModule, MatStepperModule, MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
@@ -70,6 +70,7 @@ export function translationsFactory(locale : string) {
         MatRadioModule,
         MatIconModule,
         MatTabsModule,
+        MatTooltipModule,
         StoreModule.forRoot({
             sheet: sheetReducer
         }, {

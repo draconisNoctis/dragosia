@@ -7,7 +7,7 @@ import {
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatListModule, MatSelectModule
+    MatListModule, MatSelectModule, MatTooltipModule
 } from '@angular/material';
 import { JuiModule } from '@jina-draicana/jui';
 import { AttributesComponent } from './attributes/attributes.component';
@@ -20,7 +20,7 @@ import { TalentsComponent } from './talents/talents.component';
 
 @NgModule({
     imports        : [ CommonModule, JuiModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule,
-        MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule, MatSelectModule ],
+        MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule, MatSelectModule, MatTooltipModule ],
     declarations   : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent ],
     entryComponents: [ AddGiftDialogComponent, AddTalentDialogComponent ],
     exports        : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent ]
