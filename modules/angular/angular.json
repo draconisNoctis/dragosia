@@ -137,7 +137,6 @@
                   "with": "apps/char-sheet/src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "https://draconisnoctis.github.io/dragosia/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -155,14 +154,13 @@
                 }
               ]
             },
-            "de-gh-pages": {
+            "de": {
               "fileReplacements": [
                 {
                   "replace": "apps/char-sheet/src/environments/environment.ts",
                   "with": "apps/char-sheet/src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "https://draconisnoctis.github.io/dragosia/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,

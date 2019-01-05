@@ -1,13 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, Output } from '@angular/core';
 import { AbstractControl, ControlValueAccessor } from '@angular/forms';
 import { COSTS } from '@jina-draicana/presets';
 import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 import { debounceTime, delay, pairwise, skip, startWith, tap, throttleTime } from 'rxjs/operators';
 
-@Component({
-    selector: '__js-abstract__',
-    template: ''
-})
+@Injectable()
 export abstract class AbstractComponent implements ControlValueAccessor {
     @Input()
     get pointsAvailable() {

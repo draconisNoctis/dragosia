@@ -30,7 +30,10 @@
     "xi18n:char-sheet": "ng xi18n char-sheet --output-path ../../locale/source --out-file char-sheet.xmb --i18n-format xmb && ngx-extractor -i 'apps/char-sheet/**/*.ts' -f xmb -o locale/source/char-sheet.xmb",
     "xi18n:jui": "ng xi18n jui --output-path ../../locale/source --out-file jui.xmb --i18n-format xmb && ngx-extractor -i 'libs/jui/**/*.ts' -f xmb -o locale/source/jui.xmb",
     "xi18n:sheet": "ng xi18n sheet --output-path ../../locale/source --out-file sheet.xmb --i18n-format xmb && ngx-extractor -i 'libs/sheet/**/*.ts' -f xmb -o locale/source/sheet.xmb",
-    "xi18n:presets": "ng xi18n presets --output-path ../../locale/source --out-file presets.xmb --i18n-format xmb && ngx-extractor -i 'libs/presets/**/*.ts' -f xmb -o locale/source/presets.xmb"
+    "xi18n:presets": "ng xi18n presets --output-path ../../locale/source --out-file presets.xmb --i18n-format xmb && ngx-extractor -i 'libs/presets/**/*.ts' -f xmb -o locale/source/presets.xmb",
+    "gh-pages": "yarn gh-pages:build && yarn gh-pages:deploy",
+    "gh-pages:build": "ng build char-sheet -c de --base-href 'https://draconisnoctis.github.io/dragosia/'",
+    "gh-pages:deploy": "ngh --dir dist/apps/char-sheet"
   },
   "private": true,
   "dependencies": {
@@ -67,6 +70,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/js-yaml": "3.11.4",
     "@types/node": "10.12.18",
+    "angular-cli-ghpages": "0.5.3",
     "codelyzer": "~4.5.0",
     "concurrently": "4.1.0",
     "glob": "7.1.3",
