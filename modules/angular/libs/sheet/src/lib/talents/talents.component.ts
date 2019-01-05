@@ -20,6 +20,7 @@ import {
 } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
 import { pairwise, startWith, throttleTime } from 'rxjs/operators';
+import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
@@ -28,6 +29,8 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     styleUrls      : [ './talents.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: [ 'pointsAvailable', 'mode', 'factor' ],
+    outputs: [ 'pointsAvailableChange' ],
     host           : {
         'class'                    : 'js-talents mat-typography',
         '[class.js-talents-button]': 'mode === "button"',
@@ -39,31 +42,11 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
         multi      : true
     } ]
 })
-export class TalentsComponent implements OnInit, ControlValueAccessor {
+export class TalentsComponent extends AbstractComponent implements ControlValueAccessor {
     @Input()
     set preset(preset : string) {
         this.talents = this.presets.getTalentsForPreset(preset);
     }
-    
-    @Input()
-    set pointsAvailable(value : number) {
-        this._pointsAvailable = value;
-        this.pointsAvailableChange.emit(value);
-    }
-    
-    get pointsAvailable() : number {
-        return this._pointsAvailable;
-    }
-    
-    protected _pointsAvailable? : number;
-    
-    @Input()
-    mode : 'range' | 'button' = 'range';
-    
-    @Output()
-    pointsAvailableChange = new EventEmitter<number>();
-    
-    COSTS = COSTS;
     
     talents? : IPartialTalent[];
     
@@ -89,58 +72,14 @@ export class TalentsComponent implements OnInit, ControlValueAccessor {
         gifts   : []
     };
     
-    subscription = Subscription.EMPTY;
-    
     constructor(protected readonly dialog : MatDialog,
                 protected readonly presets : Presets,
                 protected readonly cdr : ChangeDetectorRef) {
-    }
-    
-    ngOnInit() {
-        this.form.valueChanges.pipe(
-            pairwise()
-        ).subscribe(([ previous, current ]) => {
-            let price = 0;
-            for(const key in current) {
-                for(const i in current[ key ]) {
-                    price += getCosts(previous[ key ][ i ] ? previous[ key ][ i ].value : -1, current[ key ][ i ].value);
-                }
-            }
-            
-            if(price) {
-                this.pointsAvailable -= price;
-            }
-        });
-    }
-    
-    registerOnChange(fn : any) : void {
-        this.subscription.unsubscribe();
-        this.subscription = combineLatest(
-            this.form.statusChanges,
-            this.form.valueChanges
-        )
-            .pipe(throttleTime(1))
-            .subscribe(([ status, value ]) => {
-                if('VALID' === status) {
-                    fn(value);
-                } else {
-                    fn(null);
-                }
-            });
-    }
-    
-    registerOnTouched(fn : any) : void {
-    }
-    
-    setDisabledState(isDisabled : boolean) : void {
-        if(isDisabled) {
-            this.form.disable();
-        } else {
-            this.form.enable();
-        }
+        super();
     }
     
     writeValue(obj : any) : void {
+        this.unregisterSubscriptions();
         for(const key of [ 'melee', 'range', 'physical', 'mental', 'gifts' ] as (keyof ICharacterTalents)[]) {
             const control = this.form.get(key) as FormArray;
             while(control.length) {
@@ -156,6 +95,7 @@ export class TalentsComponent implements OnInit, ControlValueAccessor {
                 }
             }
         }
+        this.registerSubscription();
     }
     
     addTalent(talent : ICharacterTalent, category : keyof ICharacterTalents) {
@@ -192,6 +132,17 @@ export class TalentsComponent implements OnInit, ControlValueAccessor {
     add(type : string, index : number) {
         const control = this.form.get([ type, index, 'value' ])!;
         control.setValue(control.value + 1);
+    }
+    
+    protected calculatePrice(previous : any, current : any) : number {
+        let price = 0;
+        for(const key in current) {
+            for(const i in current[ key ]) {
+                price += getCosts(previous[ key ][ i ] ? previous[ key ][ i ].value : -1, current[ key ][ i ].value);
+            }
+        }
+        
+        return price;
     }
     
 }

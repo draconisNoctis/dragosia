@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material';
 import { COSTS, getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
 import { combineLatest, Subscription } from 'rxjs';
 import { pairwise, throttleTime } from 'rxjs/operators';
+import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 @Component({
@@ -21,6 +22,8 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
     styleUrls      : [ './gifts.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: [ 'pointsAvailable', 'mode', 'factor' ],
+    outputs: [ 'pointsAvailableChange' ],
     host           : {
         'class'                  : 'js-gifts mat-typography',
         '[class.js-gifts-button]': 'mode === "button"',
@@ -32,34 +35,11 @@ import { AddDialogComponent } from './add-dialog/add-dialog.component';
         multi      : true
     } ]
 })
-export class GiftsComponent implements OnInit, ControlValueAccessor {
+export class GiftsComponent extends AbstractComponent implements ControlValueAccessor {
     @Input()
     set preset(preset : string) {
         this.gifts = this.presets.getGiftsForPreset(preset);
     }
-    
-    @Input()
-    set pointsAvailable(value : number) {
-        this._pointsAvailable = value;
-        this.pointsAvailableChange.emit(value);
-    }
-    
-    get pointsAvailable() : number {
-        return this._pointsAvailable;
-    }
-    
-    protected _pointsAvailable? : number;
-    
-    @Input()
-    mode : 'range' | 'button' = 'range';
-    
-    @Input()
-    factor = 1;
-    
-    @Output()
-    pointsAvailableChange = new EventEmitter<number>();
-    
-    COSTS = COSTS;
     
     gifts? : IPartialGift[];
     
@@ -67,54 +47,15 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
     
     mins : number[] = [];
     
-    subscription = Subscription.EMPTY;
     
     constructor(protected readonly dialog : MatDialog,
                 protected readonly presets : Presets,
                 protected readonly cdr : ChangeDetectorRef) {
-    }
-    
-    ngOnInit() {
-        this.form.valueChanges.pipe(pairwise()).subscribe(([ previous, current ]) => {
-            let price = 0;
-            for(const key in current) {
-                price += getCosts(previous[ key ] ? previous[ key ].value : -1, current[ key ].value);
-            }
-            
-            if(price) {
-                this.pointsAvailable -= price * this.factor;
-            }
-        });
-    }
-    
-    registerOnChange(fn : any) : void {
-        this.subscription.unsubscribe();
-        this.subscription = combineLatest(
-            this.form.statusChanges,
-            this.form.valueChanges
-        )
-            .pipe(throttleTime(10))
-            .subscribe(([ status, value ]) => {
-                if('VALID' === status) {
-                    fn(value);
-                } else {
-                    fn(null);
-                }
-            });
-    }
-    
-    registerOnTouched(fn : any) : void {
-    }
-    
-    setDisabledState(isDisabled : boolean) : void {
-        if(isDisabled) {
-            this.form.disable();
-        } else {
-            this.form.enable();
-        }
+        super();
     }
     
     writeValue(obj : any[]) : void {
+        this.unregisterSubscriptions();
         while(this.form.length) {
             this.form.removeAt(0);
         }
@@ -126,6 +67,7 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
                 }
             }
         }
+        this.registerSubscription();
     }
     
     protected addGift(gift : IGift) {
@@ -160,4 +102,14 @@ export class GiftsComponent implements OnInit, ControlValueAccessor {
         const control = this.form.at(index)!.get('value')!;
         control.setValue(control.value + 1);
     }
+    
+    protected calculatePrice(previous : any, current : any) : number {
+        let price = 0;
+        for(const key in current) {
+            price += getCosts(previous[ key ] ? previous[ key ].value : -1, current[ key ].value);
+        }
+        
+        return price;
+    }
+    
 }

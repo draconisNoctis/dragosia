@@ -1,16 +1,7 @@
-import {
-    Component,
-    OnInit,
-    ViewEncapsulation,
-    ChangeDetectionStrategy,
-    Input,
-    EventEmitter,
-    Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { COSTS, getCosts } from '@jina-draicana/presets';
-import { combineLatest, Subscription } from 'rxjs';
-import { debounceTime, map, pairwise, startWith, throttleTime } from 'rxjs/operators';
+import { getCosts } from '@jina-draicana/presets';
+import { AbstractComponent } from '../abstract.component';
 
 @Component({
     selector       : 'js-attributes',
@@ -18,6 +9,8 @@ import { debounceTime, map, pairwise, startWith, throttleTime } from 'rxjs/opera
     styleUrls      : [ './attributes.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: [ 'pointsAvailable', 'mode', 'factor' ],
+    outputs: [ 'pointsAvailableChange' ],
     host           : {
         'class': 'js-attributes mat-typography',
         '[class.js-attributes-button]': 'mode === "button"',
@@ -29,28 +22,7 @@ import { debounceTime, map, pairwise, startWith, throttleTime } from 'rxjs/opera
         multi      : true
     } ]
 })
-export class AttributesComponent implements OnInit, ControlValueAccessor {
-    @Input()
-    set pointsAvailable(value : number) {
-        this._pointsAvailable = value;
-        this.pointsAvailableChange.emit(value);
-    }
-    get pointsAvailable() : number {
-        return this._pointsAvailable;
-    }
-    protected _pointsAvailable?: number;
-    
-    @Input()
-    mode : 'range' | 'button' = 'range';
-    
-    @Input()
-    factor = 1;
-    
-    COSTS = COSTS;
-    
-    @Output()
-    pointsAvailableChange = new EventEmitter<number>();
-    
+export class AttributesComponent extends AbstractComponent implements ControlValueAccessor {
     form = new FormGroup({
         strength: new FormControl(null, Validators.required),
         agility: new FormControl(null, Validators.required),
@@ -73,63 +45,27 @@ export class AttributesComponent implements OnInit, ControlValueAccessor {
         charisma: 0
     };
     
-    subscription = Subscription.EMPTY;
-    
-    constructor() {
-    }
-    
-    ngOnInit() {
-        this.form.valueChanges.pipe(
-            pairwise()
-        ).subscribe(([ previous, current ]) => {
-            let price = 0;
-            for(const key in previous) {
-                price += getCosts(previous[key], current[key]);
-            }
-            
-            if(price) {
-                this._pointsAvailable -= price * this.factor;
-                this.pointsAvailableChange.emit(this._pointsAvailable);
-            }
-        });
-    }
-    
-    registerOnChange(fn : any) : void {
-        this.subscription.unsubscribe();
-        this.subscription = combineLatest(
-            this.form.statusChanges,
-            this.form.valueChanges
-        )
-            .pipe(throttleTime(1))
-            .subscribe(([status, value]) => {
-                if ('VALID' === status) {
-                    fn(value);
-                } else {
-                    fn(null);
-                }
-            });
-    }
-    
-    registerOnTouched(fn : any) : void {
-    }
-    
-    setDisabledState(isDisabled : boolean) : void {
-        if (isDisabled) {
-            this.form.disable();
-        } else {
-            this.form.enable();
-        }
-    }
-    
     writeValue(obj : any) : void {
+        this.unregisterSubscriptions();
         if(obj) {
             this.mins = obj;
-            this.form.setValue(obj);
+            this.form.setValue(obj, { emitEvent: false });
         }
+        this.registerSubscription();
     }
     
     add(type : string) {
         const control = this.form.get(type)!;
         control.setValue(control.value + 1);
     }
+    
+    protected calculatePrice(previous : any, current : any) : number {
+        let price = 0;
+        for(const key in current) {
+            price += getCosts(previous[key], current[key]);
+        }
+        
+        return price;
+    }
+    
 }

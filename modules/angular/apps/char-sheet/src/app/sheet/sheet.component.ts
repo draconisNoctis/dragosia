@@ -4,8 +4,8 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
-import { BehaviorSubject, combineLatest, merge, NEVER } from 'rxjs';
-import { filter, first, map, pairwise, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, merge } from 'rxjs';
+import { filter, first, map, pairwise, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
 import { SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
@@ -31,7 +31,6 @@ export class SheetComponent implements OnInit {
         select(selectAllSheets)
     );
     
-    watch = new BehaviorSubject<boolean>(false);
     
     char = combineLatest(
         this.route.paramMap.pipe(map(map => map.get('id'))),
@@ -44,14 +43,11 @@ export class SheetComponent implements OnInit {
         }),
         tap((char : ICharacter) => {
             if(char) {
-                console.log({ char });
-                this.watch.next(false);
                 this.exp = char.meta.exp.total - char.meta.exp.spend;
                 this.attributesControl.setValue(char.attributes, { emitEvent: false });
                 this.skillsControl.setValue(char.skills, { emitEvent: false });
                 this.giftsControl.setValue(char.gifts, { emitEvent: false });
                 this.talentsControl.setValue(char.talents, { emitEvent: false });
-                this.watch.next(true);
             }
         }),
         shareReplay(1)
@@ -81,7 +77,7 @@ export class SheetComponent implements OnInit {
     }
     
     ngOnInit() {
-        const exp = this._exp.pipe(pairwise(), shareReplay(1));
+        const exp = this._exp.pipe(pairwise());
         
         const obs = merge(
             this.attributesControl.valueChanges.pipe(filter(Boolean), map(attributes => ({ attributes }))),
@@ -91,33 +87,13 @@ export class SheetComponent implements OnInit {
         ).pipe(
             withLatestFrom(exp, this.char),
             map(([ partial, exp, char ]) => {
-                console.log({ partial, exp, char });
                 const costs = exp[0] - exp[1];
-                Object.assign(char, partial);
+                char = { ...char, ...partial };
                 char.meta.exp.spend += costs;
     
                 return new UpdateAction(char);
             }),
             filter(Boolean)
-        );
-        
-        // const o = this.attributesControl.valueChanges.pipe(
-        //     withLatestFrom(exp, this.char),
-        //     map(([ attributes, exp, char ]) => {
-        //         console.log({ attributes, exp, char });
-        //         if(attributes && exp[1] > 0) {
-        //             const costs = exp[0] - exp[1];
-        //             char.attributes = attributes;
-        //             char.meta.exp.spend += costs;
-        //
-        //             return new UpdateAction(char);
-        //         }
-        //     }),
-        //     filter(Boolean)
-        // );
-        
-        this.watch.pipe(
-            switchMap(w => w ? obs : NEVER)
         ).subscribe(this.store);
     }
     
