@@ -191,6 +191,9 @@
           "configurations": {
             "production": {
               "browserTarget": "char-sheet:build:production"
+            },
+            "de": {
+              "browserTarget": "char-sheet:build:de"
             }
           }
         },
