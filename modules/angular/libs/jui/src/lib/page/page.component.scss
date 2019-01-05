@@ -23,13 +23,13 @@
         padding: .25cm;
     }
 
-    @page {
-        size: A4;
-        margin: 0;
-    }
-
     @media print {
         margin: 0;
         box-shadow: none;
     }
+}
+
+@page {
+    size: A4;
+    margin: 0;
 }
