@@ -95,4 +95,5 @@
   <msg id="7297822327994766046"><source>src/app/wizard-dialog/steps/settings/settings.component.html:21</source>Legend</msg>
   <msg id="7590013429208346303"><source>src/app/wizard-dialog/steps/settings/settings.component.html:22</source>Custom</msg>
   <msg id="6885844978916799621"><source>src/app/wizard-dialog/steps/settings/settings.component.html:15</source>Budget</msg>
+  <msg id="034826f7206a203a61874e1139e85faa8a64ef4a"><source>apps/char-sheet/src/app/app.component.ts:1</source>Dragosia - Character Management</msg>
 </messagebundle>
