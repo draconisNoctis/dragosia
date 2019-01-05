@@ -54,9 +54,13 @@
         <mat-icon>playlist_add</mat-icon>
         <span i18n>New Character</span>
     </button>
-    <button mat-menu-item (click)="doStore()">
+    <button mat-menu-item (click)="doStore()" [disabled]="!(char | async)?._changed">
         <mat-icon>save</mat-icon>
-        <span i18n>Save</span>
+        <span i18n>Save Changes</span>
+    </button>
+    <button mat-menu-item (click)="doDiscard()" [disabled]="!(char | async)?._changed">
+        <mat-icon>block</mat-icon>
+        <span i18n>Discard Changes</span>
     </button>
     <button mat-menu-item [matMenuTriggerFor]="themeMenu">
         <mat-icon>color_lens</mat-icon>

@@ -6,7 +6,7 @@ import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, merge } from 'rxjs';
 import { filter, first, map, pairwise, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
-import { SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
+import { FetchOneAction, SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
@@ -111,6 +111,13 @@ export class SheetComponent implements OnInit {
         this.store.dispatch(new UpdateAction(value));
     }
     
+    doDiscard() {
+        this.char.pipe(
+            first(),
+            map(char => new FetchOneAction(char._id))
+        ).subscribe(this.store);
+    }
+    
     async openWizard() {
         const ref = this.dialog.open(WizardDialogComponent);
         
@@ -120,15 +127,6 @@ export class SheetComponent implements OnInit {
             this.store.dispatch(new StoreAction(result));
             this.router.navigate([ '/', result._id ])
         }
-    }
-    
-    async print() {
-        this.sidenavOpen = false;
-        await sleep(1000);
-        window.print();
-        await sleep(10);
-        this.sidenavOpen = true;
-        this.cdr.markForCheck();
     }
 }
 

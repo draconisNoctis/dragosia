@@ -5,6 +5,7 @@ export enum SheetActionTypes {
     SetTheme = '[Sheet] Set Theme',
     Store = '[Sheet] Store',
     RestoreAll = '[Sheet] Restore All',
+    FetchOne = '[Sheet] Fetch One',
     Update = '[Sheet] Update'
 }
 
@@ -35,6 +36,15 @@ export class RestoreAllAction implements Action {
     }
 }
 
+export class FetchOneAction implements Action {
+    readonly type = SheetActionTypes.FetchOne;
+    readonly payload : { id: string };
+    
+    constructor(id: string) {
+        this.payload = { id };
+    }
+}
+
 export class UpdateAction implements Action {
     readonly type = SheetActionTypes.Update;
     readonly payload : { character: ICharacter };
@@ -44,4 +54,4 @@ export class UpdateAction implements Action {
     }
 }
 
-export type SheetActions = SetThemeAction | StoreAction | RestoreAllAction | UpdateAction;
+export type SheetActions = SetThemeAction | StoreAction | RestoreAllAction | FetchOneAction | UpdateAction;

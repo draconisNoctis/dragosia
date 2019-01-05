@@ -25,7 +25,7 @@ export function sheetReducer(state = initialState, action : SheetActions) : Shee
         case SheetActionTypes.SetTheme:
             return { ...state, ...action.payload };
         case SheetActionTypes.RestoreAll:
-            return sheetAdapter.addMany(action.payload.characters, state);
+            return sheetAdapter.upsertMany(action.payload.characters, state);
         case SheetActionTypes.Update:
             return sheetAdapter.upsertOne({ ...action.payload.character, _changed: true }, state);
         case SheetActionTypes.Store:

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { defer, fromEvent, Subject } from 'rxjs';
 import { map, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { RestoreAllAction, SheetActionTypes, StoreAction } from './sheet.actions';
+import { FetchOneAction, RestoreAllAction, SheetActionTypes, StoreAction } from './sheet.actions';
 
 @Injectable()
 export class SheetEffects {
@@ -54,6 +54,24 @@ export class SheetEffects {
             tap(([ action, db ]) => {
                 const store = db.transaction('characters', 'readwrite').objectStore('characters');
                 store.add(action.payload.character);
+            })
+        )
+    }
+    
+    @Effect()
+    onFetchOne() {
+        return this.actions$.pipe(
+            ofType<FetchOneAction>(SheetActionTypes.FetchOne),
+            withLatestFrom(this.db),
+            switchMap(([ action, db ]) => {
+                const store = db.transaction('characters', 'readonly').objectStore('characters');
+                
+                const req = store.get(action.payload.id);
+                
+                return fromEvent(req, 'success').pipe(
+                    map(() => req.result!),
+                    map(res => new RestoreAllAction([ { ...res, _changed: undefined } ]))
+                )
             })
         )
     }
