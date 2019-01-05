@@ -302,10 +302,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-@angular/router
+@angular/platform-browser
 MIT
 
-@angular/platform-browser
+@ngx-translate/i18n-polyfill
+MIT
+
+@angular/router
 MIT
 
 @angular/material/dialog
@@ -531,9 +534,6 @@ MIT
 @angular/material/stepper
 
 @ngrx/effects
-MIT
-
-@ngx-translate/i18n-polyfill
 MIT
 
 @nrwl/nx
