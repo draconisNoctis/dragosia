@@ -1,7 +1,7 @@
 angular
 MIT
 
-@angular/material
+@angular/cdk
 MIT
 The MIT License
 
@@ -335,10 +335,7 @@ MIT
 
 @angular/material/dialog
 
-@angular/animations
-MIT
-
-@angular/cdk
+@angular/material
 MIT
 The MIT License
 
@@ -362,6 +359,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+@angular/animations
+MIT
 
 @angular/material/list
 
@@ -515,11 +515,11 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 @angular/material/tabs
 
+@angular/material/menu
+
 @angular/material/sidenav
 
 @angular/material/toolbar
-
-@angular/material/menu
 
 @ngrx/entity
 MIT
