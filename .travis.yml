@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "8"
+branches:
+  only:
+    - develop
+cache: yarn
+before_install: cd modules/angular
+script: yarn gh-pages --repo=https://GH_TOKEN@github.com/draconisNoctis/dragosia.git
