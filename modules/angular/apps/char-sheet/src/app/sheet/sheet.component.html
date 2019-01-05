@@ -62,10 +62,10 @@
         <mat-icon>color_lens</mat-icon>
         <span i18n>Theme</span>
     </button>
-    <button mat-menu-item (click)="print()">
+    <a mat-menu-item *ngIf="char | async as c" [routerLink]="[ '/print', c._id, { print: 1, close: 1 } ]" target="_blank">
         <mat-icon>print</mat-icon>
         <span i18n>Print</span>
-    </button>
+    </a>
 </mat-menu>
 
 <mat-menu #themeMenu="matMenu">

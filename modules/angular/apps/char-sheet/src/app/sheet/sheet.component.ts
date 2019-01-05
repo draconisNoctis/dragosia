@@ -18,8 +18,7 @@ import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component'
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        'class': 'cs-sheet',
-        '[class.ancient]': 'theme == "ancient"'
+        'class': 'cs-sheet'
     }
 })
 export class SheetComponent implements OnInit {
@@ -79,7 +78,7 @@ export class SheetComponent implements OnInit {
     ngOnInit() {
         const exp = this._exp.pipe(pairwise());
         
-        const obs = merge(
+        merge(
             this.attributesControl.valueChanges.pipe(filter(Boolean), map(attributes => ({ attributes }))),
             this.skillsControl.valueChanges.pipe(filter(Boolean), map(skills => ({ skills }))),
             this.giftsControl.valueChanges.pipe(filter(Boolean), map(gifts => ({ gifts }))),

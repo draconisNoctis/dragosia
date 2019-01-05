@@ -26,6 +26,7 @@ import { SettingsComponent } from './wizard-dialog/steps/settings/settings.compo
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { BackgroundComponent } from './wizard-dialog/steps/background/background.component';
 import { SelectionComponent } from './wizard-dialog/steps/selection/selection.component';
+import { PrintComponent } from './print/print.component';
 
 const _syncReducer = localStorageSync({
     keys: [ 'sheet' ],
@@ -41,7 +42,7 @@ export function translationsFactory(locale : string) {
 }
 
 @NgModule({
-    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent, SelectionComponent],
+    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent, SelectionComponent, PrintComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -49,6 +50,7 @@ export function translationsFactory(locale : string) {
         NxModule.forRoot(),
         RouterModule.forRoot([
             { path: '', component: SheetComponent },
+            { path: 'print/:id', component: PrintComponent },
             { path: ':id', component: SheetComponent },
             { path: '*', redirectTo: '/' }
         ], { initialNavigation: 'enabled', useHash: true }),
