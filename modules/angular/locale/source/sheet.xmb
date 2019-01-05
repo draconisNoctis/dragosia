@@ -21,48 +21,56 @@
 <!ELEMENT ex (#PCDATA)>
 ]>
 <messagebundle>
-  <msg id="8235775649619498299"><source>src/lib/sheet/sheet.component.html:2</source><source>src/lib/sheet/sheet.component.html:145</source>Character Sheet</msg>
-  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:5</source><source>src/lib/sheet/sheet.component.html:221</source><source>src/lib/sheet/sheet.component.html:241</source>Name</msg>
+  <msg id="8235775649619498299"><source>src/lib/sheet/sheet.component.html:2</source><source>src/lib/sheet/sheet.component.html:167</source>Character Sheet</msg>
+  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:5</source><source>src/lib/sheet/sheet.component.html:243</source><source>src/lib/sheet/sheet.component.html:263</source>Name</msg>
   <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:10</source>Race</msg>
   <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:15</source>Culture</msg>
   <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:20</source>Profession</msg>
   <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:26</source>Description</msg>
   <msg id="8008131619909556709"><source>src/lib/sheet/sheet.component.html:31</source>Attributes</msg>
   <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:34</source><source>src/lib/attributes/attributes.component.html:3</source>Strength</msg>
-  <msg id="2450951288627752134"><source>src/lib/sheet/sheet.component.html:39</source><source>src/lib/attributes/attributes.component.html:5</source>Agility</msg>
-  <msg id="5465529649433457628"><source>src/lib/sheet/sheet.component.html:44</source><source>src/lib/attributes/attributes.component.html:7</source>Dexterity</msg>
-  <msg id="1632323077493059273"><source>src/lib/sheet/sheet.component.html:49</source><source>src/lib/attributes/attributes.component.html:9</source>Constitution</msg>
-  <msg id="756813006053572492"><source>src/lib/sheet/sheet.component.html:54</source><source>src/lib/attributes/attributes.component.html:11</source>Courage</msg>
-  <msg id="8489670130200267808"><source>src/lib/sheet/sheet.component.html:59</source><source>src/lib/attributes/attributes.component.html:13</source>Intelligence</msg>
-  <msg id="7458174081002220540"><source>src/lib/sheet/sheet.component.html:64</source><source>src/lib/attributes/attributes.component.html:15</source>Intuition</msg>
-  <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:17</source>Charisma</msg>
+  <msg id="2450951288627752134"><source>src/lib/sheet/sheet.component.html:39</source><source>src/lib/attributes/attributes.component.html:6</source>Agility</msg>
+  <msg id="5465529649433457628"><source>src/lib/sheet/sheet.component.html:44</source><source>src/lib/attributes/attributes.component.html:9</source>Dexterity</msg>
+  <msg id="1632323077493059273"><source>src/lib/sheet/sheet.component.html:49</source><source>src/lib/attributes/attributes.component.html:12</source>Constitution</msg>
+  <msg id="756813006053572492"><source>src/lib/sheet/sheet.component.html:54</source><source>src/lib/attributes/attributes.component.html:15</source>Courage</msg>
+  <msg id="8489670130200267808"><source>src/lib/sheet/sheet.component.html:59</source><source>src/lib/attributes/attributes.component.html:18</source>Intelligence</msg>
+  <msg id="7458174081002220540"><source>src/lib/sheet/sheet.component.html:64</source><source>src/lib/attributes/attributes.component.html:21</source>Intuition</msg>
+  <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:24</source>Charisma</msg>
   <msg id="4342625008558026850"><source>src/lib/sheet/sheet.component.html:75</source>Skills</msg>
-  <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:147</source><source>src/lib/skills/skills.component.html:3</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
-  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:158</source><source>src/lib/skills/skills.component.html:5</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:16</source>Range</msg>
-  <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:7</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:30</source>Physical</msg>
-  <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:9</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:44</source>Mental</msg>
-  <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:58</source>Gifts</msg>
+  <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:3</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
+  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:6</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:17</source>Range</msg>
+  <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/skills/skills.component.html:9</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:32</source>Physical</msg>
+  <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:202</source><source>src/lib/skills/skills.component.html:12</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:47</source>Mental</msg>
+  <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:213</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:62</source>Gifts</msg>
   <msg id="8866410934216748920"><source>src/lib/sheet/sheet.component.html:111</source>Advantages</msg>
   <msg id="6213989057085085654"><source>src/lib/sheet/sheet.component.html:115</source>Disadvantages</msg>
-  <msg id="2041675390931385838"><source>src/lib/sheet/sheet.component.html:121</source>Health</msg>
-  <msg id="1311080303172813893"><source>src/lib/sheet/sheet.component.html:128</source>Dead</msg>
-  <msg id="3409471884938641326"><source>src/lib/sheet/sheet.component.html:132</source>Mana</msg>
-  <msg id="3045416770236753721"><source>src/lib/sheet/sheet.component.html:139</source>Senseless</msg>
-  <msg id="555084565084867462"><source>src/lib/sheet/sheet.component.html:204</source>Equipment Sheet</msg>
-  <msg id="3010057485486897763"><source>src/lib/sheet/sheet.component.html:206</source>Inventory</msg>
-  <msg id="5701499858274742084"><source>src/lib/sheet/sheet.component.html:210</source>Financials</msg>
-  <msg id="7595930936671323978"><source>src/lib/sheet/sheet.component.html:214</source>Equipment</msg>
-  <msg id="4269127934271347575"><source>src/lib/sheet/sheet.component.html:218</source>Melee Weapons</msg>
-  <msg id="8650499415827640724"><source>src/lib/sheet/sheet.component.html:222</source><source>src/lib/sheet/sheet.component.html:242</source>Type</msg>
-  <msg id="3675298821422143312"><source>src/lib/sheet/sheet.component.html:223</source><source>src/lib/sheet/sheet.component.html:243</source>Attr.</msg>
-  <msg id="8927075220582389378"><source>src/lib/sheet/sheet.component.html:224</source><source>src/lib/sheet/sheet.component.html:245</source>AT</msg>
-  <msg id="3229995205437916259"><source>src/lib/sheet/sheet.component.html:225</source>PA</msg>
-  <msg id="5034984824056492965"><source>src/lib/sheet/sheet.component.html:226</source><source>src/lib/sheet/sheet.component.html:246</source>Dmg</msg>
-  <msg id="3212248032259955065"><source>src/lib/sheet/sheet.component.html:238</source>Range Weapons</msg>
-  <msg id="8197642571840924882" meaning="distance"><source>src/lib/sheet/sheet.component.html:244</source>Range</msg>
-  <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source>Add Gift</msg>
+  <msg id="6262628629004746497"><source>src/lib/sheet/sheet.component.html:120</source>Start Budget</msg>
+  <msg id="5087190620051135252" meaning="short"><source>src/lib/sheet/sheet.component.html:123</source>Attr.</msg>
+  <msg id="6421842994322902328" meaning="short"><source>src/lib/sheet/sheet.component.html:124</source>Skills</msg>
+  <msg id="1492049433956562586" meaning="short"><source>src/lib/sheet/sheet.component.html:125</source>Talents</msg>
+  <msg id="3398353192845179101"><source>src/lib/sheet/sheet.component.html:131</source>Experience</msg>
+  <msg id="29108938894290964"><source>src/lib/sheet/sheet.component.html:134</source>Spend</msg>
+  <msg id="3448462145758383019"><source>src/lib/sheet/sheet.component.html:135</source>Total</msg>
+  <msg id="2041675390931385838"><source>src/lib/sheet/sheet.component.html:143</source>Health</msg>
+  <msg id="1311080303172813893"><source>src/lib/sheet/sheet.component.html:150</source>Dead</msg>
+  <msg id="3409471884938641326"><source>src/lib/sheet/sheet.component.html:154</source>Mana</msg>
+  <msg id="3045416770236753721"><source>src/lib/sheet/sheet.component.html:161</source>Senseless</msg>
+  <msg id="555084565084867462"><source>src/lib/sheet/sheet.component.html:226</source>Equipment Sheet</msg>
+  <msg id="3010057485486897763"><source>src/lib/sheet/sheet.component.html:228</source>Inventory</msg>
+  <msg id="5701499858274742084"><source>src/lib/sheet/sheet.component.html:232</source>Financials</msg>
+  <msg id="7595930936671323978"><source>src/lib/sheet/sheet.component.html:236</source>Equipment</msg>
+  <msg id="4269127934271347575"><source>src/lib/sheet/sheet.component.html:240</source>Melee Weapons</msg>
+  <msg id="8650499415827640724"><source>src/lib/sheet/sheet.component.html:244</source><source>src/lib/sheet/sheet.component.html:264</source>Type</msg>
+  <msg id="3675298821422143312"><source>src/lib/sheet/sheet.component.html:245</source><source>src/lib/sheet/sheet.component.html:265</source>Attr.</msg>
+  <msg id="8927075220582389378"><source>src/lib/sheet/sheet.component.html:246</source><source>src/lib/sheet/sheet.component.html:267</source>AT</msg>
+  <msg id="3229995205437916259"><source>src/lib/sheet/sheet.component.html:247</source>PA</msg>
+  <msg id="5034984824056492965"><source>src/lib/sheet/sheet.component.html:248</source><source>src/lib/sheet/sheet.component.html:268</source>Dmg</msg>
+  <msg id="3212248032259955065"><source>src/lib/sheet/sheet.component.html:260</source>Range Weapons</msg>
+  <msg id="8197642571840924882" meaning="distance"><source>src/lib/sheet/sheet.component.html:266</source>Range</msg>
+  <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/gifts/gifts.component.html:11</source><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source>Add Gift</msg>
   <msg id="1616102757855967475"><source>src/lib/talents/add-dialog/add-dialog.component.html:6</source>All</msg>
   <msg id="1806667489382256324"><source>src/lib/talents/add-dialog/add-dialog.component.html:5</source>Category</msg>
-  <msg id="1650073357556875190"><source>src/lib/talents/talents.component.html:7</source><source>src/lib/talents/talents.component.html:21</source><source>src/lib/talents/talents.component.html:35</source><source>src/lib/talents/talents.component.html:49</source><source>src/lib/talents/talents.component.html:63</source>Attribute</msg>
-  <msg id="6387879863897234206"><source>src/lib/talents/talents.component.html:10</source><source>src/lib/talents/talents.component.html:24</source><source>src/lib/talents/talents.component.html:38</source><source>src/lib/talents/talents.component.html:52</source><source>src/lib/talents/talents.component.html:66</source>Skill</msg>
+  <msg id="1650073357556875190"><source>src/lib/talents/talents.component.html:7</source><source>src/lib/talents/talents.component.html:22</source><source>src/lib/talents/talents.component.html:37</source><source>src/lib/talents/talents.component.html:52</source><source>src/lib/talents/talents.component.html:67</source>Attribute</msg>
+  <msg id="6387879863897234206"><source>src/lib/talents/talents.component.html:10</source><source>src/lib/talents/talents.component.html:25</source><source>src/lib/talents/talents.component.html:40</source><source>src/lib/talents/talents.component.html:55</source><source>src/lib/talents/talents.component.html:70</source>Skill</msg>
+  <msg id="689108718708204237"><source>src/lib/talents/talents.component.html:78</source>Add Talent</msg>
 </messagebundle>

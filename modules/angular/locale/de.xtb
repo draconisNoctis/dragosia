@@ -68,7 +68,6 @@
   <translation id="4137971599293800094">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></translation>
   <translation id="5674286808255988565">Erstellen</translation>
   <translation id="7505371262892780592">Neuer Charakter</translation>
-  <translation id="3768927257183755959">Speichern</translation>
   <translation id="7103588127254721505">Theme</translation>
   <translation id="7049887240439736400">Drucken</translation>
   <translation id="6333857424161463201">Preset</translation>
@@ -80,4 +79,14 @@
   <translation id="6885844978916799621">Budget</translation>
   <translation id="4846236882408369646">Profession</translation>
   <translation id="8197642571840924882" meaning="distance">Reichweite</translation>
+  <translation id="6262628629004746497">Startbudget</translation>
+  <translation id="3398353192845179101">Erfahrung</translation>
+  <translation id="29108938894290964">Ausgegeben</translation>
+  <translation id="4319441956121197474">Änderungen speichern</translation>
+  <translation id="3924199801748884105">Änderungen verwerfen</translation>
+  <translation id="3448462145758383019">Gesamt</translation>
+  <translation id="689108718708204237">Talent hinzufügen</translation>
+  <translation id="5087190620051135252" meaning="short">Eig.</translation>
+  <translation id="6421842994322902328" meaning="short">Fähig.</translation>
+  <translation id="1492049433956562586" meaning="short">Talente</translation>
 </translationbundle>
