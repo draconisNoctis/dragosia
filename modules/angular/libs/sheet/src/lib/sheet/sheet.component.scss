@@ -39,13 +39,17 @@
         resize: none;
     }
 
+    .name {
+        text-align: right;
+    }
+
     .jui-page:nth-child(1) {
         display: grid;
         grid-gap: 4mm;
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm min-content 1fr .5cm 2cm;
         grid-template-areas:
-            "#{gta(page-title, 20)}"
+            "#{gta(page-title, 16)} #{gta(name, 4)}"
             "#{gta(about, 10)} #{gta(description, 10)}"
             "#{gta(attribute-title, 20)}"
             "#{gta(attribute-strength, 5)} #{gta(attribute-agility, 5)} #{gta(attribute-dexterity, 5)} #{gta(attribute-constitution, 5)}"
@@ -60,7 +64,7 @@
             "#{gta(health-title, 10)} #{gta(mana-title, 10)}"
             "#{gta(health, 10)} #{gta(mana, 10)}";
 
-        @each $area in (page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
+        @each $area in (name, page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
         attribute-courage, attribute-intelligence, attribute-intuition, attribute-charisma, skill-title, skill-melee, skill-range, skill-physical,
         skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts,
         budget-title, budget, exp-title, exp) {
@@ -209,7 +213,7 @@
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm .5cm 1fr .5cm 2fr .5cm 1fr;
         grid-template-areas:
-            "#{gta(page-title, 20)}"
+            "#{gta(page-title, 16)} #{gta(name, 4)}"
             "#{gta(melee-title, 10)} #{gta(range-title, 10)}"
             "#{gta(melee, 10)} #{gta(range, 10)}"
             "#{gta(physical-title, 10)} #{gta(mental-title, 10)}"
@@ -217,7 +221,7 @@
             "#{gta(gifts-title, 20)}"
             "#{gta(gifts, 20)}";
 
-        @each $area in (page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic, gifts-title, gifts) {
+        @each $area in (name, page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic, gifts-title, gifts) {
             .#{$area} {
                 grid-area: $area;
             }
@@ -273,7 +277,7 @@
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm .5cm 1fr .5cm 1fr .5cm min-content .5cm min-content;
         grid-template-areas:
-            "#{gta(page-title, 20)}"
+            "#{gta(page-title, 16)} #{gta(name, 4)}"
             "#{gta(inventory-title, 10)} #{gta(financials-title, 10)}"
             "#{gta(inventory, 10)} #{gta(financials, 10)}"
             "#{gta(equipment-title, 20)}"
@@ -283,7 +287,7 @@
             "#{gta(range-weapons-title, 20)}"
             "#{gta(range-weapons, 20)}";
 
-        @each $area in (page-title, inventory-title, inventory, financials-title, financials, equipment-title, equipment, melee-weapons-title, melee-weapons, range-weapons-title, range-weapons) {
+        @each $area in (name, page-title, inventory-title, inventory, financials-title, financials, equipment-title, equipment, melee-weapons-title, melee-weapons, range-weapons-title, range-weapons) {
             .#{$area} {
                 grid-area: $area;
             }
