@@ -7,7 +7,10 @@ import { I18n } from '@ngx-translate/i18n-polyfill';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'mat-typography'
+    }
 })
 export class AppComponent implements OnInit {
     constructor(protected readonly title : Title,

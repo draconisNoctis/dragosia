@@ -1,0 +1,37 @@
+.js-general {
+    display: block;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+        grid-gap: 0 8px;
+
+        .description {
+            grid-column: 2;
+            grid-row-start: 1;
+            grid-row-end: span 4;
+
+            .mat-form-field-wrapper {
+                height: calc(100% - 17px);
+
+                .mat-form-field-flex {
+                    height: 100%;
+                    flex-direction: column;
+
+                    .mat-form-field-infix {
+                        flex-grow: 1;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        textarea {
+                            flex-grow: 1;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

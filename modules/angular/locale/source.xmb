@@ -22,11 +22,11 @@
 ]>
 <messagebundle>
   <msg id="8235775649619498299"><source>src/lib/sheet/sheet.component.html:3</source>Character Sheet</msg>
-  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:6</source><source>src/lib/sheet/sheet.component.html:246</source><source>src/lib/sheet/sheet.component.html:266</source>Name</msg>
-  <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:11</source>Race</msg>
-  <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:16</source>Culture</msg>
-  <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:21</source>Profession</msg>
-  <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:27</source>Description</msg>
+  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:6</source><source>src/lib/sheet/sheet.component.html:246</source><source>src/lib/sheet/sheet.component.html:266</source><source>src/lib/general/general.component.html:4</source>Name</msg>
+  <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:11</source><source>src/lib/general/general.component.html:7</source>Race</msg>
+  <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:16</source><source>src/lib/general/general.component.html:10</source>Culture</msg>
+  <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:21</source><source>src/lib/general/general.component.html:13</source>Profession</msg>
+  <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:27</source><source>src/lib/general/general.component.html:16</source>Description</msg>
   <msg id="8008131619909556709"><source>src/lib/sheet/sheet.component.html:32</source>Attributes</msg>
   <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:35</source><source>src/lib/attributes/attributes.component.html:13</source>Strength</msg>
   <msg id="2450951288627752134"><source>src/lib/sheet/sheet.component.html:40</source><source>src/lib/attributes/attributes.component.html:20</source>Agility</msg>
@@ -99,15 +99,16 @@
   <msg id="3567096528905232171"><source>src/app/wizard-dialog/wizard-dialog.component.html:41</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></msg>
   <msg id="6846241822886534943"><source>src/app/wizard-dialog/wizard-dialog.component.html:49</source>Skills &amp; Gifts</msg>
   <msg id="6794067075608705128"><source>src/app/wizard-dialog/wizard-dialog.component.html:57</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.skills }}</ex>{{ budget?.skills }}</ph></msg>
-  <msg id="6489414246802244883"><source>src/app/wizard-dialog/wizard-dialog.component.html:65</source><source>src/app/wizard-dialog/steps/settings/settings.component.html:57</source>Talents</msg>
+  <msg id="6489414246802244883"><source>src/app/wizard-dialog/wizard-dialog.component.html:65</source><source>src/app/sheet/sheet.component.html:42</source><source>src/app/wizard-dialog/steps/settings/settings.component.html:57</source>Talents</msg>
   <msg id="4137971599293800094"><source>src/app/wizard-dialog/wizard-dialog.component.html:70</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></msg>
   <msg id="5674286808255988565"><source>src/app/wizard-dialog/wizard-dialog.component.html:72</source>Create</msg>
-  <msg id="7505371262892780592"><source>src/app/sheet/sheet.component.html:19</source><source>src/app/sheet/sheet.component.html:55</source>New Character</msg>
-  <msg id="4319441956121197474"><source>src/app/sheet/sheet.component.html:60</source>Save Changes</msg>
-  <msg id="3924199801748884105"><source>src/app/sheet/sheet.component.html:64</source>Discard Changes</msg>
-  <msg id="3361286106724929890"><source>src/app/sheet/sheet.component.html:68</source><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
-  <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:73</source>Theme</msg>
-  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:77</source>Print</msg>
+  <msg id="7505371262892780592"><source>src/app/sheet/sheet.component.html:19</source><source>src/app/sheet/sheet.component.html:60</source>New Character</msg>
+  <msg id="6439365426343089851"><source>src/app/sheet/sheet.component.html:22</source>General</msg>
+  <msg id="4319441956121197474"><source>src/app/sheet/sheet.component.html:65</source>Save Changes</msg>
+  <msg id="3924199801748884105"><source>src/app/sheet/sheet.component.html:69</source>Discard Changes</msg>
+  <msg id="3361286106724929890"><source>src/app/sheet/sheet.component.html:73</source><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
+  <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:78</source>Theme</msg>
+  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:82</source>Print</msg>
   <msg id="6333857424161463201"><source>src/app/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>

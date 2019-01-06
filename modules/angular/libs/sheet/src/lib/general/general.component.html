@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+    <ng-container formGroupName="about">
+        <mat-form-field>
+            <input matInput formControlName="name" i18n-placeholder placeholder="Name"/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="race" i18n-placeholder placeholder="Race" readonly/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="culture" i18n-placeholder placeholder="Culture" readonly/>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="profession" i18n-placeholder placeholder="Profession" readonly/>
+        </mat-form-field>
+        <mat-form-field class="description">
+            <textarea matInput formControlName="description" i18n-placeholder placeholder="Description"></textarea>
+        </mat-form-field>
+    </ng-container>
+</form>
