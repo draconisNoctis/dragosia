@@ -1,7 +1,6 @@
 /// <reference types="node" />
 
 import { Injectable } from '@angular/core';
-import { I18n } from '@ngx-translate/i18n-polyfill';
 import * as yaml from 'js-yaml';
 
 
@@ -146,7 +145,7 @@ export interface IPartial {
     attributes?: Partial<ICharacterAttributes>;
     skills?: Partial<ICharacterSkills>;
     gifts?: IPartialGiftWithValue[];
-    talents?: (IPartialTalentWithValue|ISelectTalents)[]//Partial<ICharacterTalents>;
+    talents?: (IPartialTalentWithValue|ISelectTalents)[]
 }
 
 export interface IRace extends IPartial {

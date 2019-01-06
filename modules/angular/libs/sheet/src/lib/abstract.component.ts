@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Injectable, Input, Output } from '@angular/core';
+import { EventEmitter, Injectable, Input, Output } from '@angular/core';
 import { AbstractControl, ControlValueAccessor } from '@angular/forms';
-import { COSTS } from '@jina-draicana/presets';
-import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
-import { debounceTime, delay, pairwise, skip, startWith, tap, throttleTime } from 'rxjs/operators';
+import { combineLatest, Subscription } from 'rxjs';
+import { delay, pairwise, startWith } from 'rxjs/operators';
 
 @Injectable()
 export abstract class AbstractComponent implements ControlValueAccessor {
@@ -26,8 +25,6 @@ export abstract class AbstractComponent implements ControlValueAccessor {
     pointsAvailableChange = new EventEmitter<number>();
     
     abstract form : AbstractControl;
-    
-    COSTS = COSTS;
     
     private subscription = Subscription.EMPTY;
     private pointsSubscription = Subscription.EMPTY;

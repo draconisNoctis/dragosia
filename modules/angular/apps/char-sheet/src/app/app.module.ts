@@ -9,6 +9,7 @@ import {
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { isDevMode, LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
+import { PresetsModule } from '@jina-draicana/presets';
 import { SheetModule } from '@jina-draicana/sheet';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducer, StoreModule } from '@ngrx/store';
@@ -64,6 +65,7 @@ export function translationsFactory(locale : string) {
             { path: '*', redirectTo: '/' }
         ], { initialNavigation: 'enabled', useHash: true }),
         SheetModule,
+        PresetsModule,
         BrowserAnimationsModule,
         MatMenuModule,
         MatButtonModule,

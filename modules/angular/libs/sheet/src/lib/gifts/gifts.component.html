@@ -3,7 +3,7 @@
         <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < COSTS[form.value[index].value + 1] * factor"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < ((form.value[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
         </ng-container>
     </div>
 </form>
