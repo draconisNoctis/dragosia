@@ -1,7 +1,7 @@
 angular
 MIT
 
-@angular/material/form-field
+@angular/material/select
 
 undefined
 
@@ -381,7 +381,7 @@ MIT
 
 @angular/material/icon
 
-@angular/material/select
+@angular/material/form-field
 
 js-yaml
 MIT
