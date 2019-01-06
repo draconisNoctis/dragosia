@@ -16,7 +16,7 @@
             <button mat-icon-button [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
         </mat-toolbar>
         <div>
-            <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>playlist_add</mat-icon></button>
+            <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>person_add</mat-icon></button>
 
             <mat-tab-group *ngIf="char | async as _char">
                 <mat-tab label="Attributes">
@@ -51,7 +51,7 @@
 
 <mat-menu #mainMenu="matMenu">
     <button mat-menu-item (click)="openWizard()">
-        <mat-icon>playlist_add</mat-icon>
+        <mat-icon>person_add</mat-icon>
         <span i18n>New Character</span>
     </button>
     <button mat-menu-item (click)="doStore()" [disabled]="!(char | async)?._changed">
