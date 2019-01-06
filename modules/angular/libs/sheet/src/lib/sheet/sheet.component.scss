@@ -41,7 +41,7 @@
 
     .jui-page:nth-child(1) {
         display: grid;
-        grid-gap: 5mm;
+        grid-gap: 4mm;
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm min-content 1fr .5cm 2cm;
         grid-template-areas:
@@ -96,7 +96,7 @@
 
         .about {
             display: grid;
-            grid-gap: 0 5mm;
+            grid-gap: 0 4mm;
             grid-template-columns: min-content auto;
             grid-auto-rows: auto;
             align-items: center;
@@ -205,7 +205,7 @@
 
     .jui-page:nth-child(2) {
         display: grid;
-        grid-gap: 5mm;
+        grid-gap: 4mm;
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm .5cm 1fr .5cm 2fr .5cm 1fr;
         grid-template-areas:
@@ -258,10 +258,10 @@
             flex-direction: row;
             flex-wrap: wrap;
             .talent {
-                width: calc((100% - 5mm) / 2);
+                width: calc((100% - 4mm) / 2);
 
                 &:nth-child(2n - 1) {
-                    margin-right: 5mm;
+                    margin-right: 4mm;
                 }
             }
         }
@@ -269,7 +269,7 @@
 
     .jui-page:nth-child(3) {
         display: grid;
-        grid-gap: 5mm;
+        grid-gap: 4mm;
         grid-template-columns: repeat(20, 1fr);
         grid-template-rows: 1cm .5cm 1fr .5cm 1fr .5cm min-content .5cm min-content;
         grid-template-areas:
