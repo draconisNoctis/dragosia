@@ -1,9 +1,23 @@
 <form [formGroup]="form">
     <div>
+        <ng-container *ngIf="mode === 'range' && form.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </ng-container>
         <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < ((form.value[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value[index].value < 5">{{ (form.value[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value[index].value >= 5"></span>
+                <button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < ((form.value[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </ng-container>
     </div>
 </form>

@@ -1,6 +1,16 @@
 <form [formGroup]="form">
     <h2 i18n>Melee</h2>
-    <div formArrayName="melee" class=wrapper>
+    <div formArrayName="melee" class="wrapper">
+        <div class="row" *ngIf="mode === 'range' && meleeForm.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </div>
         <div class="row" *ngFor="let control of meleeForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
@@ -10,12 +20,26 @@
                 <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
             </mat-form-field>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.melee[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('melee', index)" [disabled]="form.value.melee[index].value >= 5 || pointsAvailable < ((form.value.melee[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value.melee[index].value < 5">{{ (form.value.melee[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value.melee[index].value >= 5"></span>
+                <button mat-icon-button (click)="add('melee', index)" [disabled]="form.value.melee[index].value >= 5 || pointsAvailable < ((form.value.melee[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </div>
     </div>
 
     <h2 i18n>Range</h2>
-    <div formArrayName="range" class=wrapper>
+    <div formArrayName="range" class="wrapper">
+        <div class="row" *ngIf="mode === 'range' && rangeForm.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </div>
         <div class="row" *ngFor="let control of rangeForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
@@ -25,12 +49,26 @@
                 <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
             </mat-form-field>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.range[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('range', index)" [disabled]="form.value.range[index].value >= 5 || pointsAvailable < ((form.value.range[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value.range[index].value < 5">{{ (form.value.range[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value.range[index].value >= 5"></span>
+                <button mat-icon-button (click)="add('range', index)" [disabled]="form.value.range[index].value >= 5 || pointsAvailable < ((form.value.range[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </div>
     </div>
 
     <h2 i18n>Physical</h2>
-    <div formArrayName="physical" class=wrapper>
+    <div formArrayName="physical" class="wrapper">
+        <div class="row" *ngIf="mode === 'range' && physicalForm.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </div>
         <div class="row" *ngFor="let control of physicalForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
@@ -40,12 +78,26 @@
                 <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
             </mat-form-field>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.physical[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('physical', index)" [disabled]="form.value.physical[index].value >= 5 || pointsAvailable < ((form.value.physical[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value.physical[index].value < 5">{{ (form.value.physical[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value.physical[index].value >= 5"></span>
+                <button mat-icon-button (click)="add('physical', index)" [disabled]="form.value.physical[index].value >= 5 || pointsAvailable < ((form.value.physical[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </div>
     </div>
 
     <h2 i18n>Mental</h2>
     <div formArrayName="mental" class="wrapper">
+        <div class="row" *ngIf="mode === 'range' && mentalForm.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </div>
         <div class="row" *ngFor="let control of mentalForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
@@ -55,12 +107,26 @@
                 <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
             </mat-form-field>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.mental[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('mental', index)" [disabled]="form.value.mental[index].value >= 5 || pointsAvailable < ((form.value.mental[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value.mental[index].value < 5">{{ (form.value.mental[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value.mental[index].value >= 5"></span>
+                <button mat-icon-button (click)="add('mental', index)" [disabled]="form.value.mental[index].value >= 5 || pointsAvailable < ((form.value.mental[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </div>
     </div>
 
     <h2 i18n>Gifts</h2>
-    <div formArrayName="gifts">
+    <div formArrayName="gifts" class="wrapper">
+        <div class="row" *ngIf="mode === 'range' && giftsForm.controls.length > 0">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </div>
         <div *ngFor="let control of giftsForm.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
             <mat-form-field floatLabel="never">
@@ -70,7 +136,11 @@
                 <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
             </mat-form-field>
             <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.gifts[index]" formControlName="value"></jui-radio-range>
-            <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('gifts', index)" [disabled]="form.value.gifts[index].value >= 5 || pointsAvailable < ((form.value.gifts[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+            <div *ngIf="mode === 'button'" class="button-wrapper">
+                <span i18n *ngIf="form.value.gifts[index].value < 5">{{ (form.value.gifts[index].value + 1) | costs:factor }} EP</span>
+                <span *ngIf="form.value.gifts[index].value >= 5"></span>
+                <button mat-icon-button (click)="add('gifts', index)" [disabled]="form.value.gifts[index].value >= 5 || pointsAvailable < ((form.value.gifts[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>
         </div>
     </div>
 </form>

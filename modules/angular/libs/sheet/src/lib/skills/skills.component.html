@@ -1,16 +1,42 @@
 <form [formGroup]="form">
     <div>
+        <ng-container *ngIf="mode === 'range'">
+            <span></span>
+            <ul class="legend">
+                <li>+{{ 1 | costs }}</li>
+                <li>+{{ 2 | costs }}</li>
+                <li>+{{ 3 | costs }}</li>
+                <li>+{{ 4 | costs }}</li>
+                <li>+{{ 5 | costs }}</li>
+            </ul>
+        </ng-container>
         <label i18n>Melee</label>
         <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.melee" formControlName="melee"></jui-radio-range>
-        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('melee')" [disabled]="form.value.melee >= 5 || pointsAvailable < ((form.value.melee + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+        <div *ngIf="mode === 'button'" class="button-wrapper">
+            <span i18n *ngIf="form.value.melee < 5">{{ (form.value.melee + 1) | costs:factor }} EP</span>
+            <span *ngIf="form.value.melee >= 5"></span>
+            <button mat-icon-button (click)="add('melee')" [disabled]="form.value.melee >= 5 || pointsAvailable < ((form.value.melee + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+        </div>
         <label i18n>Range</label>
         <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.range" formControlName="range"></jui-radio-range>
-        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('range')" [disabled]="form.value.range >= 5 || pointsAvailable < ((form.value.range + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+        <div *ngIf="mode === 'button'" class="button-wrapper">
+            <span i18n *ngIf="form.value.range < 5">{{ (form.value.range + 1) | costs:factor }} EP</span>
+            <span *ngIf="form.value.range >= 5"></span>
+            <button mat-icon-button (click)="add('range')" [disabled]="form.value.range >= 5 || pointsAvailable < ((form.value.range + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+        </div>
         <label i18n>Physical</label>
         <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.physical" formControlName="physical"></jui-radio-range>
-        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('physical')" [disabled]="form.value.physical >= 5 || pointsAvailable < ((form.value.physical + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+        <div *ngIf="mode === 'button'" class="button-wrapper">
+            <span i18n *ngIf="form.value.physical < 5">{{ (form.value.physical + 1) | costs:factor }} EP</span>
+            <span *ngIf="form.value.physical >= 5"></span>
+            <button mat-icon-button (click)="add('physical')" [disabled]="form.value.physical >= 5 || pointsAvailable < ((form.value.physical + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+        </div>
         <label i18n>Mental</label>
         <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.mental" formControlName="mental"></jui-radio-range>
-        <div *ngIf="mode === 'button'"><button mat-icon-button (click)="add('mental')" [disabled]="form.value.mental >= 5 || pointsAvailable < ((form.value.mental + 1) | costs:factor)"><mat-icon>add</mat-icon></button></div>
+        <div *ngIf="mode === 'button'" class="button-wrapper">
+            <span i18n *ngIf="form.value.mental < 5">{{ (form.value.mental + 1) | costs:factor }} EP</span>
+            <span *ngIf="form.value.mental >= 5"></span>
+            <button mat-icon-button (click)="add('mental')" [disabled]="form.value.mental >= 5 || pointsAvailable < ((form.value.mental + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+        </div>
     </div>
 </form>

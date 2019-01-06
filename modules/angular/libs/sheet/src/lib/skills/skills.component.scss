@@ -9,6 +9,32 @@
         label, .jui-radio-range {
             padding: 8px;
         }
+
+        .legend {
+            margin: 0;
+            padding: 0 8px;
+            display: flex;
+
+            li {
+                display: inline-block;
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            > span {
+                display: inline-block;
+                white-space: nowrap;
+                width: 40px;
+                padding-right: 8px;
+                text-align: right;
+            }
+        }
     }
 
     &-range {
