@@ -28,6 +28,7 @@ import { I18n } from '@ngx-translate/i18n-polyfill';
 import { BackgroundComponent } from './wizard-dialog/steps/background/background.component';
 import { SelectionComponent } from './wizard-dialog/steps/selection/selection.component';
 import { PrintComponent } from './print/print.component';
+import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
 
 const _syncReducer = localStorageSync({
     keys: [ 'sheet' ],
@@ -52,7 +53,7 @@ export function translationsFactory(locale : string) {
 }
 
 @NgModule({
-    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent, SelectionComponent, PrintComponent],
+    declarations: [AppComponent, SheetComponent, WizardDialogComponent, SettingsComponent, BackgroundComponent, SelectionComponent, PrintComponent, ConfirmDeleteDialogComponent],
     imports: [
         BrowserModule,
         FormsModule,
@@ -100,7 +101,7 @@ export function translationsFactory(locale : string) {
             deps: [LOCALE_ID]
         },
     ],
-    entryComponents: [WizardDialogComponent],
+    entryComponents: [WizardDialogComponent, ConfirmDeleteDialogComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

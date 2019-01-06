@@ -62,6 +62,10 @@
         <mat-icon>block</mat-icon>
         <span i18n>Discard Changes</span>
     </button>
+    <button mat-menu-item (click)="doDelete()">
+        <mat-icon color="error">delete_forever</mat-icon>
+        <span i18n>Delete Character</span>
+    </button>
     <button mat-menu-item [matMenuTriggerFor]="themeMenu">
         <mat-icon>color_lens</mat-icon>
         <span i18n>Theme</span>

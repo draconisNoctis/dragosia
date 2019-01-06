@@ -6,7 +6,10 @@ export enum SheetActionTypes {
     Store = '[Sheet] Store',
     RestoreAll = '[Sheet] Restore All',
     FetchOne = '[Sheet] Fetch One',
-    Update = '[Sheet] Update'
+    Update = '[Sheet] Update',
+    
+    Delete = '[Sheet] Delete',
+    DoDelete = '[Sheet] Do Delete',
 }
 
 export class SetThemeAction implements Action {
@@ -54,4 +57,22 @@ export class UpdateAction implements Action {
     }
 }
 
-export type SheetActions = SetThemeAction | StoreAction | RestoreAllAction | FetchOneAction | UpdateAction;
+export class DeleteAction implements Action {
+    readonly type = SheetActionTypes.Delete;
+    readonly payload : { character: ICharacter };
+    
+    constructor(character : ICharacter) {
+        this.payload = { character };
+    }
+}
+
+export class DoDeleteAction implements Action {
+    readonly type = SheetActionTypes.DoDelete;
+    readonly payload : { character: ICharacter };
+    
+    constructor(character : ICharacter) {
+        this.payload = { character };
+    }
+}
+
+export type SheetActions = SetThemeAction | StoreAction | RestoreAllAction | FetchOneAction | UpdateAction | DeleteAction | DoDeleteAction;

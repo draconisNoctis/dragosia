@@ -30,6 +30,8 @@ export function sheetReducer(state = initialState, action : SheetActions) : Shee
             return sheetAdapter.upsertOne({ ...action.payload.character, _changed: true }, state);
         case SheetActionTypes.Store:
             return sheetAdapter.upsertOne({ ...action.payload.character, _changed: undefined }, state);
+        case SheetActionTypes.DoDelete:
+            return sheetAdapter.removeOne(action.payload.character._id, state);
         default:
             return state;
     }

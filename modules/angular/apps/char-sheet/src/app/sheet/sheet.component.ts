@@ -6,7 +6,7 @@ import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, merge } from 'rxjs';
 import { filter, first, map, pairwise, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
-import { FetchOneAction, SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
+import { DeleteAction, FetchOneAction, SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
@@ -115,6 +115,13 @@ export class SheetComponent implements OnInit {
         this.char.pipe(
             first(),
             map(char => new FetchOneAction(char._id))
+        ).subscribe(this.store);
+    }
+    
+    doDelete() {
+        this.char.pipe(
+            first(),
+            map(char => new DeleteAction(char))
         ).subscribe(this.store);
     }
     
