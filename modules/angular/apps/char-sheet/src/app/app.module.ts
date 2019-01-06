@@ -8,7 +8,7 @@ import {
     MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
+import { isDevMode, LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
 import { SheetModule } from '@jina-draicana/sheet';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducer, StoreModule } from '@ngrx/store';
@@ -38,7 +38,16 @@ export function syncReducer(reducer : ActionReducer<any>) : ActionReducer<any> {
 }
 
 export function translationsFactory(locale : string) {
-    return locale ? require(`raw-loader!../../../../locale/${locale}.xtb`) : '';
+    try {
+        return locale ? require(`raw-loader!../../../../locale/${locale}.xtb`) : '';
+    } catch(e) {
+        if(!isDevMode()) {
+            console.warn('Cannot load translations for locale', locale);
+            console.warn(e);
+        }
+        
+        return '';
+    }
 }
 
 @NgModule({
