@@ -110,7 +110,8 @@
   <translation id="377005748421168323"><ph name="INTERPOLATION"><ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ph> EP</translation>
   <translation id="3361286106724929890">Charakter Löschen</translation>
   <translation id="5253915787128325560">Möchtest du den Charakter &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot; wirklich löschen?</translation>
-  <translation id="3542042671420335679"/>
-  <translation id="2807800733729323332"/>
-  <translation id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f"/>
+  <translation id="3542042671420335679">Nein</translation>
+  <translation id="2807800733729323332">Ja</translation>
+  <translation id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f">Beim Löschen des Charakters &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot; ist ein Fehler aufgetreten.</translation>
+  <translation id="6312631703574843161">Talentbogen</translation>
 </translationbundle>
