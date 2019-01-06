@@ -90,4 +90,27 @@
   <translation id="6421842994322902328" meaning="short">Fähig.</translation>
   <translation id="1492049433956562586" meaning="short">Talente</translation>
   <translation id="034826f7206a203a61874e1139e85faa8a64ef4a">Dragosia - Charakter Verwaltung</translation>
+  <translation id="6429339115481821433"><ph name="INTERPOLATION"><ex>{{ (form.value.strength + 1) | costs:factor }}</ex>{{ (form.value.strength + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="8951916213330522228"><ph name="INTERPOLATION"><ex>{{ (form.value.agility + 1) | costs:factor }}</ex>{{ (form.value.agility + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="5980584692256163257"><ph name="INTERPOLATION"><ex>{{ (form.value.dexterity + 1) | costs:factor }}</ex>{{ (form.value.dexterity + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="7710888177783989390"><ph name="INTERPOLATION"><ex>{{ (form.value.constitution + 1) | costs:factor }}</ex>{{ (form.value.constitution + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="2663633468145028274"><ph name="INTERPOLATION"><ex>{{ (form.value.courage + 1) | costs:factor }}</ex>{{ (form.value.courage + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="4627662001125896368"><ph name="INTERPOLATION"><ex>{{ (form.value.intelligence + 1) | costs:factor }}</ex>{{ (form.value.intelligence + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="6321655512567713170"><ph name="INTERPOLATION"><ex>{{ (form.value.intuition + 1) | costs:factor }}</ex>{{ (form.value.intuition + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="7804779453457845256"><ph name="INTERPOLATION"><ex>{{ (form.value.charisma + 1) | costs:factor }}</ex>{{ (form.value.charisma + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="4117381077985984749"><ph name="INTERPOLATION"><ex>{{ (form.value.melee + 1) | costs:factor }}</ex>{{ (form.value.melee + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="9121006557941351898"><ph name="INTERPOLATION"><ex>{{ (form.value.range + 1) | costs:factor }}</ex>{{ (form.value.range + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="2007131267701760601"><ph name="INTERPOLATION"><ex>{{ (form.value.physical + 1) | costs:factor }}</ex>{{ (form.value.physical + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="8229015367239449371"><ph name="INTERPOLATION"><ex>{{ (form.value.mental + 1) | costs:factor }}</ex>{{ (form.value.mental + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="944509076219772541"><ph name="INTERPOLATION"><ex>{{ (form.value[index].value + 1) | costs:factor }}</ex>{{ (form.value[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="2453998775787918218"><ph name="INTERPOLATION"><ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="6257711033908874245"><ph name="INTERPOLATION"><ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="1421563720952682901"><ph name="INTERPOLATION"><ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="8089998908836815339"><ph name="INTERPOLATION"><ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="377005748421168323"><ph name="INTERPOLATION"><ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ph> EP</translation>
+  <translation id="3361286106724929890">Charakter Löschen</translation>
+  <translation id="5253915787128325560">Möchtest du den Charakter &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot; wirklich löschen?</translation>
+  <translation id="3542042671420335679"/>
+  <translation id="2807800733729323332"/>
+  <translation id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f"/>
 </translationbundle>

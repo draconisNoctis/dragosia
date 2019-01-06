@@ -28,20 +28,20 @@
   <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:20</source>Profession</msg>
   <msg id="4902817035128594900"><source>src/lib/sheet/sheet.component.html:26</source>Description</msg>
   <msg id="8008131619909556709"><source>src/lib/sheet/sheet.component.html:31</source>Attributes</msg>
-  <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:34</source><source>src/lib/attributes/attributes.component.html:3</source>Strength</msg>
-  <msg id="2450951288627752134"><source>src/lib/sheet/sheet.component.html:39</source><source>src/lib/attributes/attributes.component.html:6</source>Agility</msg>
-  <msg id="5465529649433457628"><source>src/lib/sheet/sheet.component.html:44</source><source>src/lib/attributes/attributes.component.html:9</source>Dexterity</msg>
-  <msg id="1632323077493059273"><source>src/lib/sheet/sheet.component.html:49</source><source>src/lib/attributes/attributes.component.html:12</source>Constitution</msg>
-  <msg id="756813006053572492"><source>src/lib/sheet/sheet.component.html:54</source><source>src/lib/attributes/attributes.component.html:15</source>Courage</msg>
-  <msg id="8489670130200267808"><source>src/lib/sheet/sheet.component.html:59</source><source>src/lib/attributes/attributes.component.html:18</source>Intelligence</msg>
-  <msg id="7458174081002220540"><source>src/lib/sheet/sheet.component.html:64</source><source>src/lib/attributes/attributes.component.html:21</source>Intuition</msg>
-  <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:24</source>Charisma</msg>
+  <msg id="6632040223751981101"><source>src/lib/sheet/sheet.component.html:34</source><source>src/lib/attributes/attributes.component.html:13</source>Strength</msg>
+  <msg id="2450951288627752134"><source>src/lib/sheet/sheet.component.html:39</source><source>src/lib/attributes/attributes.component.html:20</source>Agility</msg>
+  <msg id="5465529649433457628"><source>src/lib/sheet/sheet.component.html:44</source><source>src/lib/attributes/attributes.component.html:27</source>Dexterity</msg>
+  <msg id="1632323077493059273"><source>src/lib/sheet/sheet.component.html:49</source><source>src/lib/attributes/attributes.component.html:34</source>Constitution</msg>
+  <msg id="756813006053572492"><source>src/lib/sheet/sheet.component.html:54</source><source>src/lib/attributes/attributes.component.html:41</source>Courage</msg>
+  <msg id="8489670130200267808"><source>src/lib/sheet/sheet.component.html:59</source><source>src/lib/attributes/attributes.component.html:48</source>Intelligence</msg>
+  <msg id="7458174081002220540"><source>src/lib/sheet/sheet.component.html:64</source><source>src/lib/attributes/attributes.component.html:55</source>Intuition</msg>
+  <msg id="6828638344650593860"><source>src/lib/sheet/sheet.component.html:69</source><source>src/lib/attributes/attributes.component.html:62</source>Charisma</msg>
   <msg id="4342625008558026850"><source>src/lib/sheet/sheet.component.html:75</source>Skills</msg>
-  <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:3</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
-  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:6</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:17</source>Range</msg>
-  <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/skills/skills.component.html:9</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:32</source>Physical</msg>
-  <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:202</source><source>src/lib/skills/skills.component.html:12</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:47</source>Mental</msg>
-  <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:213</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:62</source>Gifts</msg>
+  <msg id="1637444068586569722"><source>src/lib/sheet/sheet.component.html:78</source><source>src/lib/sheet/sheet.component.html:169</source><source>src/lib/skills/skills.component.html:13</source><source>src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/lib/talents/talents.component.html:2</source>Melee</msg>
+  <msg id="2348971518300945764"><source>src/lib/sheet/sheet.component.html:83</source><source>src/lib/sheet/sheet.component.html:180</source><source>src/lib/skills/skills.component.html:20</source><source>src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>src/lib/talents/talents.component.html:31</source>Range</msg>
+  <msg id="337101541139237513"><source>src/lib/sheet/sheet.component.html:88</source><source>src/lib/sheet/sheet.component.html:191</source><source>src/lib/skills/skills.component.html:27</source><source>src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>src/lib/talents/talents.component.html:60</source>Physical</msg>
+  <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:93</source><source>src/lib/sheet/sheet.component.html:202</source><source>src/lib/skills/skills.component.html:34</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:89</source>Mental</msg>
+  <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:98</source><source>src/lib/sheet/sheet.component.html:213</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:118</source>Gifts</msg>
   <msg id="8866410934216748920"><source>src/lib/sheet/sheet.component.html:111</source>Advantages</msg>
   <msg id="6213989057085085654"><source>src/lib/sheet/sheet.component.html:115</source>Disadvantages</msg>
   <msg id="6262628629004746497"><source>src/lib/sheet/sheet.component.html:120</source>Start Budget</msg>
@@ -67,12 +67,30 @@
   <msg id="5034984824056492965"><source>src/lib/sheet/sheet.component.html:248</source><source>src/lib/sheet/sheet.component.html:268</source>Dmg</msg>
   <msg id="3212248032259955065"><source>src/lib/sheet/sheet.component.html:260</source>Range Weapons</msg>
   <msg id="8197642571840924882" meaning="distance"><source>src/lib/sheet/sheet.component.html:266</source>Range</msg>
-  <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/gifts/gifts.component.html:11</source><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source>Add Gift</msg>
+  <msg id="6429339115481821433"><source>src/lib/attributes/attributes.component.html:16</source><ph name="INTERPOLATION"><ex>{{ (form.value.strength + 1) | costs:factor }}</ex>{{ (form.value.strength + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="8951916213330522228"><source>src/lib/attributes/attributes.component.html:23</source><ph name="INTERPOLATION"><ex>{{ (form.value.agility + 1) | costs:factor }}</ex>{{ (form.value.agility + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="5980584692256163257"><source>src/lib/attributes/attributes.component.html:30</source><ph name="INTERPOLATION"><ex>{{ (form.value.dexterity + 1) | costs:factor }}</ex>{{ (form.value.dexterity + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="7710888177783989390"><source>src/lib/attributes/attributes.component.html:37</source><ph name="INTERPOLATION"><ex>{{ (form.value.constitution + 1) | costs:factor }}</ex>{{ (form.value.constitution + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="2663633468145028274"><source>src/lib/attributes/attributes.component.html:44</source><ph name="INTERPOLATION"><ex>{{ (form.value.courage + 1) | costs:factor }}</ex>{{ (form.value.courage + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="4627662001125896368"><source>src/lib/attributes/attributes.component.html:51</source><ph name="INTERPOLATION"><ex>{{ (form.value.intelligence + 1) | costs:factor }}</ex>{{ (form.value.intelligence + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="6321655512567713170"><source>src/lib/attributes/attributes.component.html:58</source><ph name="INTERPOLATION"><ex>{{ (form.value.intuition + 1) | costs:factor }}</ex>{{ (form.value.intuition + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="7804779453457845256"><source>src/lib/attributes/attributes.component.html:65</source><ph name="INTERPOLATION"><ex>{{ (form.value.charisma + 1) | costs:factor }}</ex>{{ (form.value.charisma + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="4117381077985984749"><source>src/lib/skills/skills.component.html:16</source><ph name="INTERPOLATION"><ex>{{ (form.value.melee + 1) | costs:factor }}</ex>{{ (form.value.melee + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="9121006557941351898"><source>src/lib/skills/skills.component.html:23</source><ph name="INTERPOLATION"><ex>{{ (form.value.range + 1) | costs:factor }}</ex>{{ (form.value.range + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="2007131267701760601"><source>src/lib/skills/skills.component.html:30</source><ph name="INTERPOLATION"><ex>{{ (form.value.physical + 1) | costs:factor }}</ex>{{ (form.value.physical + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="8229015367239449371"><source>src/lib/skills/skills.component.html:37</source><ph name="INTERPOLATION"><ex>{{ (form.value.mental + 1) | costs:factor }}</ex>{{ (form.value.mental + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="609533585549478126"><source>src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>src/lib/gifts/gifts.component.html:25</source>Add Gift</msg>
+  <msg id="944509076219772541"><source>src/lib/gifts/gifts.component.html:17</source><ph name="INTERPOLATION"><ex>{{ (form.value[index].value + 1) | costs:factor }}</ex>{{ (form.value[index].value + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="689108718708204237"><source>src/lib/talents/add-dialog/add-dialog.component.html:1</source><source>src/lib/talents/talents.component.html:148</source>Add Talent</msg>
   <msg id="1616102757855967475"><source>src/lib/talents/add-dialog/add-dialog.component.html:6</source>All</msg>
   <msg id="1806667489382256324"><source>src/lib/talents/add-dialog/add-dialog.component.html:5</source>Category</msg>
-  <msg id="1650073357556875190"><source>src/lib/talents/talents.component.html:7</source><source>src/lib/talents/talents.component.html:22</source><source>src/lib/talents/talents.component.html:37</source><source>src/lib/talents/talents.component.html:52</source><source>src/lib/talents/talents.component.html:67</source>Attribute</msg>
-  <msg id="6387879863897234206"><source>src/lib/talents/talents.component.html:10</source><source>src/lib/talents/talents.component.html:25</source><source>src/lib/talents/talents.component.html:40</source><source>src/lib/talents/talents.component.html:55</source><source>src/lib/talents/talents.component.html:70</source>Skill</msg>
-  <msg id="689108718708204237"><source>src/lib/talents/talents.component.html:78</source>Add Talent</msg>
+  <msg id="1650073357556875190"><source>src/lib/talents/talents.component.html:17</source><source>src/lib/talents/talents.component.html:46</source><source>src/lib/talents/talents.component.html:75</source><source>src/lib/talents/talents.component.html:104</source><source>src/lib/talents/talents.component.html:133</source>Attribute</msg>
+  <msg id="6387879863897234206"><source>src/lib/talents/talents.component.html:20</source><source>src/lib/talents/talents.component.html:49</source><source>src/lib/talents/talents.component.html:78</source><source>src/lib/talents/talents.component.html:107</source><source>src/lib/talents/talents.component.html:136</source>Skill</msg>
+  <msg id="2453998775787918218"><source>src/lib/talents/talents.component.html:24</source><ph name="INTERPOLATION"><ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="6257711033908874245"><source>src/lib/talents/talents.component.html:53</source><ph name="INTERPOLATION"><ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="1421563720952682901"><source>src/lib/talents/talents.component.html:82</source><ph name="INTERPOLATION"><ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="8089998908836815339"><source>src/lib/talents/talents.component.html:111</source><ph name="INTERPOLATION"><ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ph> EP</msg>
+  <msg id="377005748421168323"><source>src/lib/talents/talents.component.html:140</source><ph name="INTERPOLATION"><ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ph> EP</msg>
   <msg id="4930506384627295710"><source>src/app/wizard-dialog/wizard-dialog.component.html:3</source>Settings</msg>
   <msg id="3885497195825665706"><source>src/app/wizard-dialog/wizard-dialog.component.html:8</source><source>src/app/wizard-dialog/wizard-dialog.component.html:19</source><source>src/app/wizard-dialog/wizard-dialog.component.html:30</source><source>src/app/wizard-dialog/wizard-dialog.component.html:43</source><source>src/app/wizard-dialog/wizard-dialog.component.html:59</source>Next</msg>
   <msg id="4531310590867542081"><source>src/app/wizard-dialog/wizard-dialog.component.html:14</source>Background</msg>
@@ -84,10 +102,11 @@
   <msg id="4137971599293800094"><source>src/app/wizard-dialog/wizard-dialog.component.html:70</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></msg>
   <msg id="5674286808255988565"><source>src/app/wizard-dialog/wizard-dialog.component.html:72</source>Create</msg>
   <msg id="7505371262892780592"><source>src/app/sheet/sheet.component.html:19</source><source>src/app/sheet/sheet.component.html:55</source>New Character</msg>
-  <msg id="4319441956121197474"><source>src/app/sheet/sheet.component.html:59</source>Save Changes</msg>
-  <msg id="3924199801748884105"><source>src/app/sheet/sheet.component.html:63</source>Discard Changes</msg>
-  <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:67</source>Theme</msg>
-  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:71</source>Print</msg>
+  <msg id="4319441956121197474"><source>src/app/sheet/sheet.component.html:60</source>Save Changes</msg>
+  <msg id="3924199801748884105"><source>src/app/sheet/sheet.component.html:64</source>Discard Changes</msg>
+  <msg id="3361286106724929890"><source>src/app/sheet/sheet.component.html:68</source><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
+  <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:73</source>Theme</msg>
+  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:77</source>Print</msg>
   <msg id="6333857424161463201"><source>src/app/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>
@@ -95,5 +114,9 @@
   <msg id="7297822327994766046"><source>src/app/wizard-dialog/steps/settings/settings.component.html:21</source>Legend</msg>
   <msg id="7590013429208346303"><source>src/app/wizard-dialog/steps/settings/settings.component.html:22</source>Custom</msg>
   <msg id="6885844978916799621"><source>src/app/wizard-dialog/steps/settings/settings.component.html:15</source>Budget</msg>
+  <msg id="5253915787128325560"><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:3</source>Do you really want to delete the character &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot;?</msg>
+  <msg id="3542042671420335679"><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:6</source>No</msg>
+  <msg id="2807800733729323332"><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:7</source>Yes</msg>
+  <msg id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f"><source>apps/char-sheet/src/app/+state/sheet.effects.ts:1</source>An Error occured while deleting character &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot;</msg>
   <msg id="034826f7206a203a61874e1139e85faa8a64ef4a"><source>apps/char-sheet/src/app/app.component.ts:1</source>Dragosia - Character Management</msg>
 </messagebundle>
