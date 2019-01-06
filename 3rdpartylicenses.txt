@@ -1,6 +1,8 @@
 angular
 MIT
 
+@angular/material/form-field
+
 undefined
 
 @angular/common
@@ -379,8 +381,6 @@ MIT
 
 @angular/material/icon
 
-@angular/material/form-field
-
 @angular/material/select
 
 js-yaml
@@ -525,6 +525,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 @angular/material/sidenav
 
 @angular/material/toolbar
+
+@angular/material/divider
 
 @ngrx/entity
 MIT
