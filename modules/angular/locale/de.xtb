@@ -115,4 +115,8 @@
   <translation id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f">Beim Löschen des Charakters &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot; ist ein Fehler aufgetreten.</translation>
   <translation id="6312631703574843161">Talentbogen</translation>
   <translation id="6439365426343089851">Allgemein</translation>
+  <translation id="7709916411635497333">Vorteil hinzufügen</translation>
+  <translation id="6692225324618907">Nachteil hinzufügen</translation>
+  <translation id="5402042915276684474">Vorteile/Nachteile</translation>
+  <translation id="5994646002341193350">Differenz: <ph name="INTERPOLATION"><ex>{{ advantagesCosts }}</ex>{{ advantagesCosts }}</ph></translation>
 </translationbundle>
