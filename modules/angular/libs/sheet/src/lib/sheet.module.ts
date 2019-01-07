@@ -19,13 +19,14 @@ import { SheetComponent } from './sheet/sheet.component';
 import { SkillsComponent } from './skills/skills.component';
 import { TalentsComponent } from './talents/talents.component';
 import { GeneralComponent } from './general/general.component';
+import { AdvantagesComponent } from './advantages/advantages.component';
 
 @NgModule({
     imports        : [ CommonModule, JuiModule, PresetsModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule, MatSelectModule, MatTooltipModule ],
-    declarations   : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent ],
+    declarations   : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent ],
     entryComponents: [ AddGiftDialogComponent, AddTalentDialogComponent ],
-    exports        : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent ]
+    exports        : [ SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent ]
 })
 export class SheetModule {
 }

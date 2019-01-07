@@ -35,6 +35,18 @@ export interface IGift {
     value: number;
 }
 
+export interface IAdvantage {
+    name: string;
+    value: number;
+    presets?: string[];
+}
+
+export interface IDisadvantage {
+    name: string;
+    value: number;
+    presets?: string[];
+}
+
 export interface ITalent {
     id?: string;
     name: string;
@@ -384,6 +396,22 @@ export class Presets {
     }
     private _gifts?: IPartialGift[];
     
+    protected get advantages() {
+        if(!this._advantages) {
+            this._advantages = yaml.safeLoad(require('raw-loader!./advantages.yml'));
+        }
+        return this._advantages!;
+    }
+    private _advantages?: IAdvantage[];
+    
+    protected get disadvantages() {
+        if(!this._disadvantages) {
+            this._disadvantages = yaml.safeLoad(require('raw-loader!./disadvantages.yml'));
+        }
+        return this._disadvantages!;
+    }
+    private _disadvantages?: IDisadvantage[];
+    
     getPresets() : IPreset[] {
         return this.presets;
     }
@@ -398,6 +426,14 @@ export class Presets {
     
     getTalentsForPreset(preset : string) {
         return this.talents.filter(t => !t.presets || t.presets.includes(preset));
+    }
+    
+    getAdvantagesForPreset(preset : string) {
+        return this.advantages.filter(a => !a.presets || a.presets.includes(preset));
+    }
+    
+    getDisadvantagesForPreset(preset : string) {
+        return this.disadvantages.filter(d => !d.presets || d.presets.includes(preset));
     }
     
     getCulturesForRace(race : string) : ICulture[] {

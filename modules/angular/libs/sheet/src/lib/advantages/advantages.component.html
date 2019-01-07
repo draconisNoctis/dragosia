@@ -1,0 +1,32 @@
+<form>
+    <div>
+        <h3 i18n>Advantages</h3>
+        <mat-form-field>
+            <mat-select [formControl]="advantageControl" i18n-placeholder placeholder="Add Advantage">
+                <mat-option *ngFor="let advantage of advantages" [value]="advantage">{{ advantage.name }} ({{ advantage.value }})</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button [disabled]="advantageControl.invalid" (click)="addAdvantage(advantageControl.value); advantageControl.reset()"><mat-icon>add</mat-icon></button>
+    </div>
+    <mat-list>
+        <mat-list-item *ngFor="let control of advantagesForm.controls; let index = index">
+            <span>{{ control.value.name }} ({{ control.value.value }})</span>
+            <button mat-icon-button (click)="removeAdvantage(index)"><mat-icon>remove</mat-icon></button>
+        </mat-list-item>
+    </mat-list>
+    <div>
+        <h3 i18n>Disadvantages</h3>
+        <mat-form-field>
+            <mat-select [formControl]="disadvantageControl" i18n-placeholder placeholder="Add Disadvantage">
+                <mat-option *ngFor="let disadvantage of disadvantages" [value]="disadvantage">{{ disadvantage.name }} ({{ disadvantage.value }})</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button [disabled]="disadvantageControl.invalid" (click)="addDisadvantage(disadvantageControl.value); disadvantageControl.reset()"><mat-icon>add</mat-icon></button>
+    </div>
+    <mat-list>
+        <mat-list-item *ngFor="let control of disadvantagesForm.controls; let index = index">
+            <span>{{ control.value.name }} ({{ control.value.value }})</span>
+            <button mat-icon-button (click)="removeDisadvantage(index)"><mat-icon>remove</mat-icon></button>
+        </mat-list-item>
+    </mat-list>
+</form>

@@ -1,0 +1,31 @@
+.js-advantages {
+    display: block;
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content auto;
+        grid-gap: 0 8px;
+
+        > div {
+            grid-row: 1;
+            display: grid;
+            grid-template-columns: auto  min-content;
+            grid-template-rows: min-content min-content;
+
+            h3 {
+                margin-bottom: 0;
+                grid-column-end: span 2;
+            }
+        }
+
+        .mat-list {
+            grid-row: 2;
+
+            .mat-list-item-content {
+                padding: 0;
+                justify-content: space-between;
+            }
+        }
+    }
+}

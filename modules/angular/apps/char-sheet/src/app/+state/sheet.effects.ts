@@ -65,7 +65,7 @@ export class SheetEffects {
             withLatestFrom(this.db),
             tap(([ action, db ]) => {
                 const store = db.transaction('characters', 'readwrite').objectStore('characters');
-                store.add(action.payload.character);
+                store.put(action.payload.character);
             })
         )
     }

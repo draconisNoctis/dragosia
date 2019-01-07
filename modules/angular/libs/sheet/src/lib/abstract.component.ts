@@ -55,6 +55,10 @@ export abstract class AbstractComponent implements ControlValueAccessor {
         this.pointsSubscription.unsubscribe();
     }
     
+    protected transformValue(value : any) : any {
+        return value;
+    }
+    
     protected registerSubscription() {
         this.pointsSubscription = this.form.valueChanges.pipe(startWith(this.form.value), pairwise()).subscribe(([ previous, current ]) => {
             const price = this.calculatePrice(previous, current);
@@ -71,7 +75,7 @@ export abstract class AbstractComponent implements ControlValueAccessor {
             .pipe(delay(10))
             .subscribe(([ status, value ]) => {
                 if('VALID' === status) {
-                    this.onChange(value);
+                    this.onChange(this.transformValue(value));
                 } else {
                     this.onChange(null);
                 }

@@ -24,6 +24,12 @@
                         <js-general [formControl]="generalControl"></js-general>
                     </ng-template>
                 </mat-tab>
+
+                <mat-tab i18n-label label="Advantages/Disadvantages">
+                    <ng-template matTabContent>
+                        <js-advantages [preset]="_char.meta.preset" [formControl]="advantagesControl"></js-advantages>
+                    </ng-template>
+                </mat-tab>
                 <mat-tab i18n-label label="Attributes">
                     <ng-template matTabContent>
                         <js-attributes [factor]="4" mode="button" [formControl]="attributesControl" [(pointsAvailable)]="exp"></js-attributes>

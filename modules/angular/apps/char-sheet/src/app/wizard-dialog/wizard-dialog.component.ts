@@ -33,10 +33,13 @@ export class WizardDialogComponent implements OnInit {
         gifts : new FormControl(null)
     });
     talentsControl = new FormControl(null, Validators.required);
+    advantagesControl = new FormControl(null, Validators.required);
     
     character? : ICharacter;
     costs? : ICosts;
     budget? : ICosts;
+    
+    advantagesCosts = 0;
     
     selections? : ISelectTalents[];
     
@@ -124,6 +127,8 @@ export class WizardDialogComponent implements OnInit {
         this.character.skills = this.skillsGiftsControl.value.skills;
         this.character.gifts = this.skillsGiftsControl.value.gifts;
         this.character.talents = this.talentsControl.value;
+        this.character.advantages = this.advantagesControl.value.advantages;
+        this.character.disadvantages = this.advantagesControl.value.disadvantages;
         
         this.character.meta.exp.spend = this.costs.attributes * 4 + this.costs.skills * 2 + this.costs.talents;
         this.character.meta.exp.total = this.character.meta.exp.spend + this.budget.talents;
@@ -183,16 +188,23 @@ export class WizardDialogComponent implements OnInit {
                     gifts: this.character.gifts
                 });
                 this.talentsControl.setValue(this.character.talents);
+                this.advantagesControl.setValue({
+                    advantages: character.advantages,
+                    disadvantages: character.disadvantages
+                });
                 console.log(this.character);
                 console.log(this.costs);
                 console.log(this.budget);
-                break;
             }
             case 4: {
-                this.budget.skills += this.budget.attributes * 2;
+                
                 break;
             }
             case 5: {
+                this.budget.skills += this.budget.attributes * 2;
+                break;
+            }
+            case 6: {
                 this.budget.talents += this.budget.skills * 2;
                 break;
             }

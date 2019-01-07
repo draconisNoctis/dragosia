@@ -44,6 +44,10 @@ export class SheetComponent implements OnInit {
             if(char) {
                 this.exp = char.meta.exp.total - char.meta.exp.spend;
                 this.generalControl.setValue(char, { emitEvent: false });
+                this.advantagesControl.setValue({
+                    advantages: char.advantages,
+                    disadvantages: char.disadvantages
+                }, { emitEvent: false });
                 this.attributesControl.setValue(char.attributes, { emitEvent: false });
                 this.skillsControl.setValue(char.skills, { emitEvent: false });
                 this.giftsControl.setValue(char.gifts, { emitEvent: false });
@@ -58,6 +62,7 @@ export class SheetComponent implements OnInit {
     skillsControl = new FormControl();
     giftsControl = new FormControl();
     talentsControl = new FormControl();
+    advantagesControl = new FormControl();
     
     get exp() {
         return this._exp.getValue();
@@ -82,6 +87,7 @@ export class SheetComponent implements OnInit {
         
         merge(
             this.generalControl.valueChanges.pipe(filter(Boolean)),
+            this.advantagesControl.valueChanges.pipe(filter(Boolean)),
             this.attributesControl.valueChanges.pipe(filter(Boolean), map(attributes => ({ attributes }))),
             this.skillsControl.valueChanges.pipe(filter(Boolean), map(skills => ({ skills }))),
             this.giftsControl.valueChanges.pipe(filter(Boolean), map(gifts => ({ gifts }))),
