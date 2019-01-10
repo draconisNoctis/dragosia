@@ -22,7 +22,7 @@
 ]>
 <messagebundle>
   <msg id="8235775649619498299"><source>src/lib/sheet/sheet.component.html:3</source>Character Sheet</msg>
-  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:6</source><source>src/lib/sheet/sheet.component.html:246</source><source>src/lib/sheet/sheet.component.html:266</source><source>src/lib/general/general.component.html:4</source>Name</msg>
+  <msg id="8953033926734869941"><source>src/lib/sheet/sheet.component.html:6</source><source>src/lib/sheet/sheet.component.html:246</source><source>src/lib/sheet/sheet.component.html:266</source><source>src/lib/general/general.component.html:4</source><source>src/lib/advantages/advantages.component.html:25</source><source>src/lib/advantages/advantages.component.html:72</source>Name</msg>
   <msg id="1679869148678530261"><source>src/lib/sheet/sheet.component.html:11</source><source>src/lib/general/general.component.html:7</source>Race</msg>
   <msg id="79936206013046129"><source>src/lib/sheet/sheet.component.html:16</source><source>src/lib/general/general.component.html:10</source>Culture</msg>
   <msg id="4846236882408369646"><source>src/lib/sheet/sheet.component.html:21</source><source>src/lib/general/general.component.html:13</source>Profession</msg>
@@ -43,7 +43,7 @@
   <msg id="8530621156729135816"><source>src/lib/sheet/sheet.component.html:94</source><source>src/lib/sheet/sheet.component.html:204</source><source>src/lib/skills/skills.component.html:34</source><source>src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>src/lib/talents/talents.component.html:89</source>Mental</msg>
   <msg id="512999736698594700"><source>src/lib/sheet/sheet.component.html:99</source><source>src/lib/sheet/sheet.component.html:215</source><source>src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>src/lib/talents/talents.component.html:118</source>Gifts</msg>
   <msg id="8866410934216748920"><source>src/lib/sheet/sheet.component.html:112</source><source>src/lib/advantages/advantages.component.html:3</source>Advantages</msg>
-  <msg id="6213989057085085654"><source>src/lib/sheet/sheet.component.html:116</source><source>src/lib/advantages/advantages.component.html:18</source>Disadvantages</msg>
+  <msg id="6213989057085085654"><source>src/lib/sheet/sheet.component.html:116</source><source>src/lib/advantages/advantages.component.html:50</source>Disadvantages</msg>
   <msg id="6262628629004746497"><source>src/lib/sheet/sheet.component.html:121</source>Start Budget</msg>
   <msg id="5087190620051135252" meaning="short"><source>src/lib/sheet/sheet.component.html:124</source>Attr.</msg>
   <msg id="6421842994322902328" meaning="short"><source>src/lib/sheet/sheet.component.html:125</source>Skills</msg>
@@ -92,8 +92,11 @@
   <msg id="1421563720952682901"><source>src/lib/talents/talents.component.html:82</source><ph name="INTERPOLATION"><ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ph> EP</msg>
   <msg id="8089998908836815339"><source>src/lib/talents/talents.component.html:111</source><ph name="INTERPOLATION"><ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ph> EP</msg>
   <msg id="377005748421168323"><source>src/lib/talents/talents.component.html:140</source><ph name="INTERPOLATION"><ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ph> EP</msg>
-  <msg id="7709916411635497333"><source>src/lib/advantages/advantages.component.html:5</source>Add Advantage</msg>
-  <msg id="6692225324618907"><source>src/lib/advantages/advantages.component.html:20</source>Add Disadvantage</msg>
+  <msg id="7590013429208346303"><source>src/lib/advantages/advantages.component.html:11</source><source>src/lib/advantages/advantages.component.html:58</source>Custom</msg>
+  <msg id="7709916411635497333"><source>src/lib/advantages/advantages.component.html:6</source>Add Advantage</msg>
+  <msg id="4041129587394796892"><source>src/lib/advantages/advantages.component.html:15</source><source>src/lib/advantages/advantages.component.html:62</source>Specialization</msg>
+  <msg id="6555318547274416232"><source>src/lib/advantages/advantages.component.html:28</source><source>src/lib/advantages/advantages.component.html:75</source>Value</msg>
+  <msg id="6692225324618907"><source>src/lib/advantages/advantages.component.html:53</source>Add Disadvantage</msg>
   <msg id="4930506384627295710"><source>src/app/wizard-dialog/wizard-dialog.component.html:3</source>Settings</msg>
   <msg id="3885497195825665706"><source>src/app/wizard-dialog/wizard-dialog.component.html:8</source><source>src/app/wizard-dialog/wizard-dialog.component.html:19</source><source>src/app/wizard-dialog/wizard-dialog.component.html:30</source><source>src/app/wizard-dialog/wizard-dialog.component.html:43</source><source>src/app/wizard-dialog/wizard-dialog.component.html:56</source><source>src/app/wizard-dialog/wizard-dialog.component.html:72</source>Next</msg>
   <msg id="4531310590867542081"><source>src/app/wizard-dialog/wizard-dialog.component.html:14</source>Background</msg>
@@ -112,13 +115,13 @@
   <msg id="3924199801748884105"><source>src/app/sheet/sheet.component.html:75</source>Discard Changes</msg>
   <msg id="3361286106724929890"><source>src/app/sheet/sheet.component.html:79</source><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
   <msg id="7103588127254721505"><source>src/app/sheet/sheet.component.html:84</source>Theme</msg>
-  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:88</source>Print</msg>
+  <msg id="8257364975276272655"><source>src/app/sheet/sheet.component.html:88</source>Presentation Mode</msg>
+  <msg id="7049887240439736400"><source>src/app/sheet/sheet.component.html:92</source>Print</msg>
   <msg id="6333857424161463201"><source>src/app/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>
   <msg id="7653178475449069959"><source>src/app/wizard-dialog/steps/settings/settings.component.html:20</source>Hero</msg>
   <msg id="7297822327994766046"><source>src/app/wizard-dialog/steps/settings/settings.component.html:21</source>Legend</msg>
-  <msg id="7590013429208346303"><source>src/app/wizard-dialog/steps/settings/settings.component.html:22</source>Custom</msg>
   <msg id="6885844978916799621"><source>src/app/wizard-dialog/steps/settings/settings.component.html:15</source>Budget</msg>
   <msg id="5253915787128325560"><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:3</source>Do you really want to delete the character &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot;?</msg>
   <msg id="3542042671420335679"><source>src/app/confirm-delete-dialog/confirm-delete-dialog.component.html:6</source>No</msg>

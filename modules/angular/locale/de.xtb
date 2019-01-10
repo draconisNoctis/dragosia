@@ -119,4 +119,7 @@
   <translation id="6692225324618907">Nachteil hinzufügen</translation>
   <translation id="5402042915276684474">Vorteile/Nachteile</translation>
   <translation id="5994646002341193350">Differenz: <ph name="INTERPOLATION"><ex>{{ advantagesCosts }}</ex>{{ advantagesCosts }}</ph></translation>
+  <translation id="4041129587394796892">Spezialisierung</translation>
+  <translation id="6555318547274416232">Wert</translation>
+  <translation id="8257364975276272655">Präsentationsmodus</translation>
 </translationbundle>
