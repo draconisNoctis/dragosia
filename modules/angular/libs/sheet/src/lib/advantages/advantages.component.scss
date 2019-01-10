@@ -5,27 +5,52 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: min-content auto;
-        grid-gap: 0 8px;
+        grid-gap: 0 24px;
 
         > div {
             grid-row: 1;
             display: grid;
-            grid-template-columns: auto  min-content;
-            grid-template-rows: min-content min-content;
+            grid-template-columns: 1fr 1fr min-content;
+            grid-template-rows: min-content 1fr 1fr;
+            grid-gap: 0 8px;
+
+            .mat-form-field:nth-child(5) {
+                grid-column-end: span 2;
+            }
 
             h3 {
                 margin-bottom: 0;
-                grid-column-end: span 2;
+                grid-column-end: span 3;
             }
         }
 
         .mat-list {
             grid-row: 2;
 
+            .mat-list-item {
+                height: auto;
+            }
+
             .mat-list-item-content {
                 padding: 0;
                 justify-content: space-between;
+
+                .mat-list-text {
+                    flex-direction: row;
+
+                    .mat-line:first-child {
+                        margin-right: .5em;
+                    }
+                    .mat-line:last-child {
+                        margin-left: auto;
+                    }
+                }
             }
+        }
+
+        .mat-form-field-infix {
+            width: 100%;
+            min-width: 50px;
         }
     }
 }

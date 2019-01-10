@@ -111,11 +111,11 @@
 
     <h2 i18n class="advantages-title">Advantages</h2>
 
-    <textarea class="advantages" formControlName="advantages"></textarea>
+    <textarea class="advantages" readonly>{{ form.value.advantages | advantagesToString }}</textarea>
 
     <h2 i18n class="disadvantages-title">Disadvantages</h2>
 
-    <textarea class="disadvantages" formControlName="disadvantages"></textarea>
+    <textarea class="disadvantages" readonly>{{ form.value.disadvantages | advantagesToString }}</textarea>
 
     <ng-container formGroupName="meta">
         <h2 i18n class="budget-title">Start Budget</h2>

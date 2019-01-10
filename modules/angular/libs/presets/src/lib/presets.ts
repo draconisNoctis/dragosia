@@ -38,12 +38,16 @@ export interface IGift {
 export interface IAdvantage {
     name: string;
     value: number;
+    specialization?: string;
+    custom?: boolean;
     presets?: string[];
 }
 
 export interface IDisadvantage {
     name: string;
     value: number;
+    specialization?: string;
+    custom?: boolean;
     presets?: string[];
 }
 
@@ -101,8 +105,8 @@ export interface ICharacter {
     attributes: ICharacterAttributes;
     skills: ICharacterSkills;
     gifts: IGift[];
-    advantages: string;
-    disadvantages: string;
+    advantages: IAdvantage[];
+    disadvantages: IDisadvantage[];
     health: number;
     mana: number;
     
@@ -205,16 +209,16 @@ export function createEmptyCharacter() : ICharacter {
             mental: 0
         },
         talents: {
-            melee: new Array<ICharacterTalent>(),
-            range: new Array<ICharacterTalent>(),
-            physical: new Array<ICharacterTalent>(),
-            mental: new Array<ICharacterTalent>(),
-            gifts: new Array<ICharacterTalent>()
+            melee: [],
+            range: [],
+            physical: [],
+            mental: [],
+            gifts: []
         },
-        gifts: new Array<IGift>(),
+        gifts: [],
         
-        advantages: '',
-        disadvantages: '',
+        advantages: [],
+        disadvantages: [],
         health: 0,
         mana: 0,
         inventory: '',
@@ -233,8 +237,8 @@ export function createEmptyCharacter() : ICharacter {
             }
         },
         
-        melee: new Array<IMeleeWeapon>(),
-        range: new Array<IRangeWeapon>()
+        melee: [],
+        range: []
     }
 }
 

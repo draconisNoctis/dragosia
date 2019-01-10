@@ -3,6 +3,8 @@ import { FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from
 import { IAdvantage, IDisadvantage, Presets } from '@jina-draicana/presets';
 import { AbstractComponent } from '../abstract.component';
 
+const CUSTOM_REGEXP = /^(.*)\s*\((\d+)\)$/;
+
 @Component({
     selector       : 'js-advantages',
     templateUrl    : './advantages.component.html',
@@ -30,8 +32,24 @@ export class AdvantagesComponent extends AbstractComponent {
     advantages? : IAdvantage[];
     disadvantages? : IDisadvantage[];
     
-    advantageControl = new FormControl(null, Validators.required);
-    disadvantageControl = new FormControl(null, Validators.required);
+    customAdvantageControl = new FormGroup({
+        name: new FormControl(null, Validators.required),
+        value: new FormControl(null, Validators.required)
+    });
+    
+    customDisadvantageControl = new FormGroup({
+        name: new FormControl(null, Validators.required),
+        value: new FormControl(null, Validators.required)
+    });
+    
+    advantageForm = new FormGroup({
+        advantage: new FormControl(null, Validators.required),
+        specialization: new FormControl(null)
+    });
+    disadvantageForm = new FormGroup({
+        disadvantage: new FormControl(null, Validators.required),
+        specialization: new FormControl(null)
+    });
     
     advantagesForm = new FormArray([]);
     disadvantagesForm = new FormArray([]);
@@ -60,21 +78,55 @@ export class AdvantagesComponent extends AbstractComponent {
         return 0;
     }
     
-    protected transformValue(value : any) : any {
-        return {
-            advantages: value.advantages.map(a => a.name).join(', '),
-            disadvantages: value.disadvantages.map(d => d.name).join(', ')
-        }
-    }
+    // protected transformValue(value : any) : any {
+    //     return {
+    //         advantages: value.advantages.map(a => a.name).join(', '),
+    //         disadvantages: value.disadvantages.map(d => d.name).join(', ')
+    //     }
+    // }
     
-    addAdvantage(advantage : IAdvantage) {
+    addAdvantage(advantage?: IAdvantage) {
+        if(!advantage) {
+            if(this.advantageForm.value.advantage === 'custom') {
+                advantage = {
+                    name: this.customAdvantageControl.value.name,
+                    specialization: this.advantageForm.value.specialization || undefined,
+                    value: this.customAdvantageControl.value.value,
+                    custom: true
+                }
+            } else {
+                advantage = {
+                    ...this.advantageForm.value.advantage,
+                    specialization: this.advantageForm.value.specialization || undefined
+                } as IAdvantage
+            }
+        }
         const control = new FormControl(advantage);
         this.advantagesForm.push(control);
+        this.advantageForm.reset();
+        this.customAdvantageControl.reset();
     }
     
-    addDisadvantage(disadvantage : IDisadvantage) {
+    addDisadvantage(disadvantage?: IDisadvantage) {
+        if(!disadvantage) {
+            if(this.disadvantageForm.value.disadvantage === 'custom') {
+                disadvantage = {
+                    name: this.customDisadvantageControl.value.name,
+                    specialization: this.disadvantageForm.value.specialization || undefined,
+                    value: this.customDisadvantageControl.value.value,
+                    custom: true
+                }
+            } else {
+                disadvantage = {
+                    ...this.disadvantageForm.value.disadvantage,
+                    specialization: this.disadvantageForm.value.specialization || undefined
+                } as IDisadvantage
+            }
+        }
         const control = new FormControl(disadvantage);
         this.disadvantagesForm.push(control);
+        this.disadvantageForm.reset();
+        this.customDisadvantageControl.reset();
     }
     
     removeAdvantage(index : number) {
@@ -87,7 +139,7 @@ export class AdvantagesComponent extends AbstractComponent {
         this.form.updateValueAndValidity();
     }
     
-    writeValue(obj : any) : void {
+    writeValue(obj : { advantages: IAdvantage[], disadvantages: IDisadvantage[] }) : void {
         this.unregisterSubscriptions();
         while(this.advantagesForm.length) {
             this.advantagesForm.removeAt(0);
@@ -96,13 +148,36 @@ export class AdvantagesComponent extends AbstractComponent {
             this.disadvantagesForm.removeAt(0);
         }
         
-        for(const advantage of obj.advantages.trim().split(/\s*,\s*/).filter(Boolean)) {
-            this.addAdvantage(this.advantages.find(a => a.name === advantage) || { name: advantage, value: 0 });
+        console.log(obj);
+        
+        for(const advantage of obj.advantages) {
+            this.addAdvantage(advantage);
         }
         
-        for(const disadvantage of obj.disadvantages.trim().split(/\s*,\s*/).filter(Boolean)) {
-            this.addDisadvantage(this.disadvantages.find(d => d.name === disadvantage) || { name: disadvantage, value: 0 });
+        for(const disadvantage of obj.disadvantages) {
+            this.addDisadvantage(disadvantage);
         }
+        
+        // for(const advantage of obj.advantages.trim().split(/\s*,\s*/).filter(Boolean)) {
+        //     const match = CUSTOM_REGEXP.exec(advantage);
+        //     if(match) {
+        //         this.addAdvantage({ name: advantage, custom: true, value: +match[2] })
+        //     } else {
+        //         this.addAdvantage(this.advantages.find(a => a.name === advantage) || { name: advantage, value: 0 });
+        //     }
+        // }
+        //
+        // for(const disadvantage of obj.disadvantages.trim().split(/\s*,\s*/).filter(Boolean)) {
+        //     const match = CUSTOM_REGEXP.exec(disadvantage);
+        //     if(match) {
+        //         this.addDisadvantage({ name: disadvantage, custom: true, value: +match[2] })
+        //     } else {
+        //         this.addDisadvantage(this.disadvantages.find(d => d.name === disadvantage) || {
+        //             name : disadvantage,
+        //             value: 0
+        //         });
+        //     }
+        // }
         
         this.form.updateValueAndValidity();
         this.registerSubscription();
