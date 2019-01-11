@@ -139,7 +139,7 @@ export class AdvantagesComponent extends AbstractComponent {
         this.form.updateValueAndValidity();
     }
     
-    writeValue(obj : { advantages: IAdvantage[], disadvantages: IDisadvantage[] }) : void {
+    writeValue(obj : null|{ advantages: IAdvantage[], disadvantages: IDisadvantage[] }) : void {
         this.unregisterSubscriptions();
         while(this.advantagesForm.length) {
             this.advantagesForm.removeAt(0);
@@ -148,14 +148,15 @@ export class AdvantagesComponent extends AbstractComponent {
             this.disadvantagesForm.removeAt(0);
         }
         
-        console.log(obj);
-        
-        for(const advantage of obj.advantages) {
-            this.addAdvantage(advantage);
-        }
-        
-        for(const disadvantage of obj.disadvantages) {
-            this.addDisadvantage(disadvantage);
+        if(obj) {
+            for(const advantage of obj.advantages) {
+                this.addAdvantage(advantage);
+            }
+    
+            for(const disadvantage of obj.disadvantages) {
+                this.addDisadvantage(disadvantage);
+            }
+            this.form.updateValueAndValidity();
         }
         
         // for(const advantage of obj.advantages.trim().split(/\s*,\s*/).filter(Boolean)) {
@@ -179,7 +180,7 @@ export class AdvantagesComponent extends AbstractComponent {
         //     }
         // }
         
-        this.form.updateValueAndValidity();
+        
         this.registerSubscription();
     }
 }

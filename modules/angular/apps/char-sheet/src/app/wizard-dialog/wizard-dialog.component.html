@@ -1,5 +1,5 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" [selectedIndex]="stepperIndex" (selectionChange)="stepperChange($event)">
-    <mat-step [stepControl]="settingsControl" [editable]="false">
+    <mat-step [stepControl]="settingsControl" [editable]="true">
         <ng-template matStepLabel i18n>Settings</ng-template>
         <ng-container *ngIf="stepperIndex >= 0">
             <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
@@ -10,7 +10,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="backgroundControl" [editable]="false">
+    <mat-step [stepControl]="backgroundControl" [editable]="true">
         <ng-template matStepLabel i18n>Background</ng-template>
         <ng-container *ngIf="stepperIndex >= 1">
             <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
@@ -21,7 +21,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="selectionsControl" [editable]="false">
+    <mat-step [stepControl]="selectionsControl" [editable]="true">
         <ng-template matStepLabel i18n>Selections</ng-template>
         <ng-container *ngIf="stepperIndex >= 2">
             <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
@@ -32,7 +32,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="advantagesControl" [editable]="false">
+    <mat-step [stepControl]="advantagesControl" [editable]="true">
         <ng-template matStepLabel i18n>Advantages/Disadvantages</ng-template>
         <ng-container *ngIf="stepperIndex >= 3">
             <js-advantages [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="advantagesCosts"></js-advantages>
@@ -45,7 +45,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="attributesControl" [editable]="false">
+    <mat-step [stepControl]="attributesControl" [editable]="true">
         <ng-template matStepLabel i18n>Attributes</ng-template>
         <ng-container *ngIf="budget && stepperIndex >= 4">
             <js-attributes [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
@@ -58,7 +58,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="false">
+    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="true">
         <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
         <ng-container *ngIf="budget && stepperIndex >= 5">
             <h2 i18n>Skills</h2>
@@ -74,7 +74,7 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="talentsControl" [editable]="false">
+    <mat-step [stepControl]="talentsControl" [editable]="true">
         <ng-template matStepLabel i18n>Talents</ng-template>
         <ng-container *ngIf="budget && stepperIndex >= 6">
             <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>

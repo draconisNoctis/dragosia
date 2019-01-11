@@ -132,6 +132,8 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     writeValue(obj : any) : void {
         if(obj) {
             this.form.patchValue(obj);
+        } else {
+            this.form.reset();
         }
     }
     

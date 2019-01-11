@@ -50,6 +50,8 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
         if(obj) {
             this.mins = obj;
             this.form.setValue(obj, { emitEvent: false });
+        } else {
+            this.form.reset(undefined, { emitEvent: false });
         }
         this.registerSubscription();
     }

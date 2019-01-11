@@ -18,7 +18,7 @@ import { delay, filter } from 'rxjs/operators';
     templateUrl    : './wizard-dialog.component.html',
     styleUrls      : [ './wizard-dialog.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         'class': 'cs-wizard-dialog mat-typography'
     }
@@ -76,8 +76,12 @@ export class WizardDialogComponent {
     
     stepperChange(event : StepperSelectionEvent) {
         this.stepperIndex = event.selectedIndex;
-        
+    
         switch(this.stepperIndex) {
+            case 0: {
+                this.settingsControl.reset();
+                break;
+            }
             case 2: {
                 const value = this.backgroundControl.value;
                 const selections = getPartialSelections([
@@ -119,32 +123,46 @@ export class WizardDialogComponent {
                     skills    : this.settingsControl.value.budget.skills - costs.skills,
                     talents   : this.settingsControl.value.budget.talents - costs.talents
                 };
-                this.attributesControl.setValue(this.character.attributes);
-                this.skillsGiftsControl.setValue({
-                    skills: this.character.skills,
-                    gifts: this.character.gifts
-                });
-                this.talentsControl.setValue(this.character.talents);
                 this.advantagesControl.setValue({
                     advantages: character.advantages,
                     disadvantages: character.disadvantages
                 });
+                console.log(this.settingsControl.value);
                 console.log(this.character);
                 console.log(this.costs);
                 console.log(this.budget);
             }
             case 4: {
-                
+                this.budget.attributes = this.settingsControl.value.budget.attributes - this.costs.attributes;
+                this.attributesControl.setValue(this.character.attributes);
                 break;
             }
             case 5: {
+                this.budget.skills = this.settingsControl.value.budget.skills - this.costs.skills;
                 this.budget.skills += this.budget.attributes * 2;
+                this.skillsGiftsControl.setValue({
+                    skills: this.character.skills,
+                    gifts: this.character.gifts
+                });
                 break;
             }
             case 6: {
+                this.budget.talents = this.settingsControl.value.budget.talents - this.costs.talents;
                 this.budget.talents += this.budget.skills * 2;
+                this.talentsControl.setValue(this.character.talents);
                 break;
             }
         }
+    
+        switch(this.stepperIndex) {
+            case 0: this.backgroundControl.reset();
+            case 1: this.selectionsControl.reset();
+            case 2: this.advantagesControl.reset();
+            case 3: this.attributesControl.reset();
+            case 4: this.skillsGiftsControl.reset();
+            case 5: this.talentsControl.reset();
+        }
+        
+        // this.cd
     }
 }

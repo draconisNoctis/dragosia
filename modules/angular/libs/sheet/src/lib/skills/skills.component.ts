@@ -42,6 +42,8 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         if(obj) {
             this.form.setValue(obj, { emitEvent: false });
             this.mins = obj;
+        } else {
+            this.form.reset(undefined, { emitEvent: false });
         }
         this.registerSubscription();
     }
