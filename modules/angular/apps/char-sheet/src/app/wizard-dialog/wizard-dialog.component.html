@@ -53,7 +53,7 @@
             <div class="sub">
                 <span class="points-available" i18n>Available: {{ budget?.attributes }}</span>
 
-                <button mat-button matStepperNext i18n>Next</button>
+                <button mat-button matStepperNext i18n [disabled]="budget?.attributes < 0">Next</button>
             </div>
         </ng-container>
     </mat-step>
@@ -69,7 +69,7 @@
             <div class="sub">
                 <span class="points-available" i18n>Available: {{ budget?.skills }}</span>
 
-                <button mat-button matStepperNext i18n>Next</button>
+                <button mat-button matStepperNext i18n [disabled]="budget?.skills < 0">Next</button>
             </div>
         </ng-container>
     </mat-step>

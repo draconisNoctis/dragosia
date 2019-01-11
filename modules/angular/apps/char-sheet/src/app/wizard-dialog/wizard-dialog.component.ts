@@ -23,7 +23,7 @@ import { delay, filter } from 'rxjs/operators';
         'class': 'cs-wizard-dialog mat-typography'
     }
 })
-export class WizardDialogComponent implements OnInit {
+export class WizardDialogComponent {
     settingsControl = new FormControl(null, Validators.required);
     backgroundControl = new FormControl(null, Validators.required);
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
@@ -51,69 +51,6 @@ export class WizardDialogComponent implements OnInit {
     constructor(protected readonly presets : Presets,
                 protected readonly ref : MatDialogRef<WizardDialogComponent>) {
     }
-    
-    ngOnInit() {
-        // this.backgroundControl.valueChanges.subscribe(value => {
-        //     if(value && value.race && value.culture && value.profession) {
-        //         const selections = getPartialSelections([
-        //             this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === value.race)!,
-        //             this.presets.getCulturesForRace(value.race).find(c => c.id === value.culture)!,
-        //             this.presets.getProfessionsForCulture(value.culture).find(p => p.id === value.profession)!
-        //         ]);
-        //
-        //         this.selections = selections;
-        //
-        //         if(selections.length) {
-        //             this.selectionsControl.enable();
-        //         } else {
-        //             this.selectionsControl.disable();
-        //             this.createCharacter();
-        //         }
-        //     }
-        // });
-        //
-        // this.selectionsControl.valueChanges.pipe(filter(Boolean), delay(1)).subscribe(() => {
-        //     this.createCharacter();
-        // })
-    }
-    
-    // createCharacter() {
-    //     if((!this.selections || this.selections.length > 0) && (!this.selectionsControl.value || this.selectionsControl.value.length !== this.selections.length)) {
-    //         return;
-    //     }
-    //
-    //     const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === this.backgroundControl.value.race)!
-    //     const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.id === this.backgroundControl.value.culture)!;
-    //     const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.id === this.backgroundControl.value.profession)!;
-    //
-    //     const { character, costs } = applyPartials(createEmptyCharacter(), [
-    //         race,
-    //         culture,
-    //         profession
-    //     ], this.selectionsControl.value);
-    //
-    //     character.about.name = this.backgroundControl.value.name;
-    //     character.about.race = race.name;
-    //     character.about.culture = culture.name;
-    //     character.about.profession = profession.name;
-    //
-    //     this.character = character;
-    //     this.costs = costs;
-    //     this.budget = {
-    //         attributes: this.settingsControl.value.budget.attributes - costs.attributes,
-    //         skills    : this.settingsControl.value.budget.skills - costs.skills,
-    //         talents   : this.settingsControl.value.budget.talents - costs.talents
-    //     };
-    //     this.attributesControl.setValue(this.character.attributes);
-    //     this.skillsGiftsControl.setValue({
-    //         skills: this.character.skills,
-    //         gifts: this.character.gifts
-    //     });
-    //     this.talentsControl.setValue(this.character.talents);
-    //     console.log(this.character);
-    //     console.log(this.costs);
-    //     console.log(this.budget);
-    // }
     
     nextAfterBackground() {
         this.stepper.next();
