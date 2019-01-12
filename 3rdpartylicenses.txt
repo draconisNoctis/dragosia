@@ -379,6 +379,9 @@ MIT
 @ngrx/effects
 MIT
 
+@ngrx/store-devtools
+MIT
+
 @ngx-translate/i18n-polyfill
 MIT
 
