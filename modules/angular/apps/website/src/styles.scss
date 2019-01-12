@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import "theme";
+
+@import url("https://unpkg.com/normalize.css@5.0.0/normalize.css");
+@import url('https://fonts.googleapis.com/css?family=Jim+Nightshade');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+@include mat-core();
+
+@include angular-material-theme($dragosia-theme);
+
+body {
+    background: map-get(map-get($dragosia-theme, background), background);
+}
+
+
+.ancient {
+    font-family: 'Jim Nightshade';
+    font-weight: 100;
+}

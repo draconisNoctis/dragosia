@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+$dragosia-primary: mat-palette($mat-deep-purple);
+$dragosia-accent: mat-palette($mat-red, 700, 300, 900);
+$dragosia-warn: mat-palette($mat-deep-orange);
+
+$dragosia-theme: mat-dark-theme($dragosia-primary, $dragosia-accent, $dragosia-warn);
+
+$dragosia-theme: map-merge($dragosia-theme, (
+    background: map-merge(map-get($dragosia-theme, background), (
+        background: #111
+    ))
+));

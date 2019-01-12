@@ -22,6 +22,12 @@
     },
     "presets": {
       "tags": []
+    },
+    "website": {
+      "tags": []
+    },
+    "website-e2e": {
+      "tags": []
     }
   }
 }
