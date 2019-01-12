@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducer, ActionReducerMap, StoreModule } from '@ngrx/store';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { NxModule } from '@nrwl/nx';
 import { localStorageSync } from 'ngrx-store-localstorage';
@@ -60,6 +61,7 @@ export function translationsFactory(locale : string) {
         StoreModule.forRoot({} as ActionReducerMap<WebsiteState>, {
             metaReducers: [ syncReducer ]
         }),
+        StoreDevtoolsModule.instrument(),
         EffectsModule.forRoot([]),
         RouterModule.forRoot([
             { path: 'dcm', loadChildren: './modules/dcm/dcm.module#DcmModule' },
