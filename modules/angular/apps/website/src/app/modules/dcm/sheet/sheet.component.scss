@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import "../../../../theme";
 
 .cs-sheet {
     display: block;
@@ -56,7 +56,6 @@
     .mat-tab-header {
         position: sticky;
         top: 64px;
-        background: white;
         z-index: 100;
     }
 

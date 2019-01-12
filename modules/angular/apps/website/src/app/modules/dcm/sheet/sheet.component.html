@@ -2,7 +2,7 @@
     <mat-sidenav [mode]="'side'" [opened]="sidenavOpen">
         <mat-nav-list>
             <ng-container *ngFor="let char of chars | async">
-                <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/', char._id ]">
+                <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/dcm', char._id ]">
                     {{ char.about.name}} ({{ char.meta.exp.spend }}/{{ char.meta.exp.total }})
                     <span *ngIf="char._changed" class="changed">*</span>
                 </mat-list-item>

@@ -10,6 +10,15 @@
 
 @include angular-material-theme($dragosia-theme);
 
+
+:root {
+    --content-background-color: white;
+    --border-color: #666;
+    --text-color: #333;
+    --font-family: Roboto;
+    font-size: 62.5%;
+}
+
 body {
     background: map-get(map-get($dragosia-theme, background), background);
 }
@@ -18,4 +27,44 @@ body {
 .ancient {
     font-family: 'Jim Nightshade';
     font-weight: 100;
+}
+
+
+.ancient {
+    font-family: 'Jim Nightshade';
+    font-weight: 100;
+    @include mat-core(
+            mat-typography-config(
+                $font-family: 'Jim Nightshade'
+            )
+    );
+
+    .js-sheet .jui-page {
+        position: relative;
+        background: none;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: -2;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            background: white url("/assets/images/background.jpg") no-repeat center/100%;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: .5;
+            filter: saturate(70%);
+        }
+    }
 }
