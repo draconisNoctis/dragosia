@@ -15,7 +15,7 @@
         z-index: -1;
     }
 
-    a {
+    a:not(.mat-flat-button) {
         transform: translateY(4px);
         > h1 {
             font-family: 'Jim Nightshade';
