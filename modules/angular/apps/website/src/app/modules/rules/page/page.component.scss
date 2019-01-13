@@ -15,7 +15,7 @@
         bottom: 0;
         background: url('/assets/images/background.jpg');
         background-size: cover;
-        z-index: 0;
+        z-index: -1;
         opacity: .05;
         filter: blur(2px) grayscale(100%);
     }
@@ -27,16 +27,28 @@
         align-items: flex-start;
         width: 100%;
         max-width: 1024px;
-        padding: 24px 0;
+        padding: 24px 8px;
+        box-sizing: border-box;
         margin: 0 auto;
+
+        @media screen and (max-width: 800px) {
+            flex-direction: column-reverse;
+            align-items: stretch;
+            justify-content: flex-end;
+        }
 
         .mat-card {
             &:nth-child(1) {
                 flex-grow: 1;
 
+                @media screen and (max-width: 800px) {
+                    flex-grow: 0;
+                }
+
                 h1, h2, h3 {
                     font-family: 'Jim Nightshade';
                     font-weight: 100;
+                    margin-top: 0;
                 }
 
                 code {
@@ -65,6 +77,14 @@
                 top: 88px;
                 margin-left: 8px;
                 width: 250px;
+                box-sizing: border-box;
+
+                @media screen and (max-width: 800px) {
+                    position: static;
+                    margin-left: 0;
+                    width: auto;
+                    margin-bottom: 8px;
+                }
 
                 ul {
                     margin: 0;

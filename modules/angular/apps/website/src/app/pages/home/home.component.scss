@@ -38,6 +38,11 @@
             min-width: calc(70%);
             text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.1);
             animation: home-show-dragosia 1s ease-out;
+
+            @media screen and (max-width: 800px) {
+                font-size: 64px;
+                text-shadow: 5px 5px 5px rgba(255, 255, 255, 0.1);
+            }
         }
 
         > .mat-nav-list {
@@ -49,6 +54,11 @@
             justify-content: flex-start;
             margin-top: -25px;
             animation: home-show-links .5s 1s ease-out both;
+
+            @media screen and (max-width: 800px) {
+                margin-top: 0;
+                padding-left: 0;
+            }
 
             .mat-list-item {
                 white-space: nowrap;

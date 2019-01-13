@@ -31,7 +31,8 @@
         align-items: stretch;
         width: 100%;
         max-width: 1024px;
-        padding: 24px 0;
+        padding: 24px 8px;
+        box-sizing: border-box;
         margin: 0 auto;
 
         a:not(:last-child) {
@@ -52,7 +53,21 @@
 
     .dw-website-header {
         form {
+            display: block;
             margin: 0 auto;
+        }
+
+        .search {
+            display: none;
+        }
+
+        @media screen and (max-width: 800px) {
+            h1 {
+                display: none;
+            }
+            .get-started {
+                display: none;
+            }
         }
     }
 }
