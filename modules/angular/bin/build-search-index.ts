@@ -1,14 +1,17 @@
-import * as lunr from 'lunr';
-import { parse, Renderer } from 'marked';
 import * as fs from 'fs-extra';
 import * as glob from 'glob';
+import * as lunr from 'lunr';
+import { parse, Renderer } from 'marked';
 import * as path from 'path';
+
+require('lunr-languages/lunr.stemmer.support')(lunr);
+require('lunr-languages/lunr.de')(lunr);
 
 async function main() {
     const rootDir = path.resolve(`${__dirname}/../../rules`);
     const files = glob.sync(`${rootDir}/**/*.md`);
     
-    const docs : { id: string, doc: string }[] = [];
+    const docs : { id : string, doc : string }[] = [];
     
     for(const file of files) {
         const doc = await renderMarkdownFile(file);
@@ -24,13 +27,22 @@ async function main() {
     const index = lunr(function() {
         this.ref('id');
         this.field('doc');
+        this.metadataWhitelist = [ 'position' ];
+        
+        this.use((lunr as any).de);
         
         for(const doc of docs) {
             this.add(doc);
         }
     });
     
-    console.log(`export const SEARCH_INDEX = ${JSON.stringify(index, null, 2)};
+    const DOCS : { [ key : string ] : string } = {};
+    for(const doc of docs) {
+        DOCS[ doc.id ] = doc.doc;
+    }
+    
+    console.log(`export const DOCS = ${JSON.stringify(DOCS, null, 2)};
+export const SEARCH_INDEX = ${JSON.stringify(index, null, 2)};
 export default SEARCH_INDEX;`);
 }
 

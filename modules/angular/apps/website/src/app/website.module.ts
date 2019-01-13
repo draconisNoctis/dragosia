@@ -168,6 +168,7 @@ export function markedOptionsFactory(router : Router, location : LocationStrateg
         RouterModule.forRoot([
             { path: 'dcm', loadChildren: './modules/dcm/dcm.module#DcmModule' },
             { path: 'r', loadChildren: './modules/rules/rules.module#RulesModule' },
+            { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
             { path: '', component: HomeComponent },
             { path: '*', redirectTo: '/' }
         ], { initialNavigation: 'enabled' }),
