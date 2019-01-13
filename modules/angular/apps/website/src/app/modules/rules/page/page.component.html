@@ -16,7 +16,7 @@
             <markdown [src]="markdownUrl | async" (load)="onMarkdownDocumentLoad($event)" (click)="onMarkdownDocumentClick($event)"></markdown>
         </mat-card-content>
     </mat-card>
-    <mat-card *ngIf="index.length > 0 && index[0].children.length > 0">
+    <mat-card *ngIf="index.length > 1 || (index.length > 0 && index[0].children.length > 0)">
         <mat-card-content>
             <ng-container *ngTemplateOutlet="indexList; context: { $implicit: index }"></ng-container>
         </mat-card-content>
