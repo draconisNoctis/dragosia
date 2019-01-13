@@ -1,5 +1,6 @@
 import { APP_BASE_HREF, DOCUMENT, LocationStrategy } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lexer, Slugger } from 'marked';
 import { Observable } from 'rxjs';
@@ -22,6 +23,8 @@ export interface IPageIndexEntry {
     }
 })
 export class PageComponent implements OnInit {
+    searchControl = new FormControl(null, Validators.required);
+    
     displayBackButton = this.route.paramMap.pipe(
         map(m => m.has('page'))
     );
@@ -82,5 +85,14 @@ export class PageComponent implements OnInit {
             $event.preventDefault();
             this.router.navigate(JSON.parse(unescape(link.dataset.routeHref)));
         }
+    }
+    
+    search() {
+        if(!this.searchControl.valid) {
+            return;
+        }
+        this.router.navigate([ '/search'], {
+            queryParams: { q: this.searchControl.value }
+        })
     }
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule, MatCardModule,
     MatFormFieldModule,
@@ -16,6 +17,8 @@ import { PageComponent } from './page/page.component';
     declarations   : [PageComponent],
     imports        : [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         RouterModule.forChild([
             { path: ':page', component: PageComponent },
             { path: '', component: PageComponent },

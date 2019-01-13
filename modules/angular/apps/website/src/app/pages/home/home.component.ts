@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector       : 'dw-home',
@@ -10,12 +12,18 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
         'class': 'dw-home'
     }
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+    searchControl = new FormControl(null, Validators.required);
     
-    constructor() {
+    constructor(protected readonly router : Router) {
     }
     
-    ngOnInit() {
+    search() {
+        if(!this.searchControl.valid) {
+            return;
+        }
+        this.router.navigate([ '/search'], {
+            queryParams: { q: this.searchControl.value }
+        })
     }
-    
 }

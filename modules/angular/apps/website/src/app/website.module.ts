@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { isDevMode, LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
     MatDividerModule,
@@ -152,6 +153,8 @@ export function markedOptionsFactory(router : Router, location : LocationStrateg
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
         MatToolbarModule,
         MatDividerModule,
         MatListModule,
