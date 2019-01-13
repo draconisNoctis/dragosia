@@ -16,6 +16,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@dragosia/generic/*": [
+        "_generic/*"
+      ],
       "@jina-draicana/jui": [
         "libs/jui/src/index.ts"
       ],
