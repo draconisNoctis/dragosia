@@ -23,6 +23,15 @@ body {
     background: map-get(map-get($dragosia-theme, background), background);
 }
 
+a {
+    color: mat-color(map-get($dragosia-theme, accent));
+    text-decoration: none;
+
+    &:hover {
+        color: mat-color(map-get($dragosia-theme, accent), lighter);
+    }
+}
+
 
 .ancient {
     font-family: 'Jim Nightshade';

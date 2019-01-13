@@ -167,12 +167,19 @@
             "tsConfig": "apps/website/tsconfig.app.json",
             "assets": [
               "apps/website/src/favicon.ico",
-              "apps/website/src/assets"
+              "apps/website/src/assets",
+              {
+                "glob": "**/*.md",
+                "input": "../rules",
+                "output": "./assets/rules"
+              }
             ],
             "styles": [
               "apps/website/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js"
+            ]
           },
           "configurations": {
             "production": {

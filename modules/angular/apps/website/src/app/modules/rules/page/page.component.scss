@@ -1,0 +1,131 @@
+@import "../../../../theme";
+
+.dw-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('/assets/images/background.jpg');
+        background-size: cover;
+        z-index: 0;
+        opacity: .05;
+        filter: blur(2px) grayscale(100%);
+    }
+
+    > * {
+        z-index: 1;
+    }
+
+    .mat-toolbar {
+        background: none;
+        align-items: center;
+    }
+
+    .content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 1024px;
+        padding: 24px 0;
+        margin: 0 auto;
+
+        .mat-card {
+            &:nth-child(1) {
+                flex-grow: 1;
+
+                h1, h2, h3 {
+                    font-family: 'Jim Nightshade';
+                }
+
+                code {
+                    display: inline-block;
+                    border: 1px solid mat-color(map-get($dragosia-theme, primary));
+                    border-radius: 2px;
+                    padding: 2px 4px;
+                    background: rgba(mat-color(map-get($dragosia-theme, primary)), .1);
+                }
+
+                pre > code {
+                    display: block;
+                    padding: 8px;
+                }
+
+                blockquote {
+                    background: rgba(mat-color(map-get($dragosia-theme, primary), lighter), .1);
+                    border-left: 4px solid mat-color(map-get($dragosia-theme, primary));
+                    margin: 1em 0;
+                    padding: 8px 8px 8px 24px;
+                }
+            }
+
+            &:nth-child(2) {
+                position: sticky;
+                top: 88px;
+                margin-left: 8px;
+                width: 250px;
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        list-style: none;
+                    }
+
+                    ul {
+                        padding-left: 1em;
+                    }
+                }
+            }
+        }
+    }
+
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+
+        form {
+            margin-left: auto;
+        }
+
+        .mat-flat-button {
+            margin-left: 8px;
+        }
+
+        .mat-form-field {
+            font-size: 12px;
+
+            &-wrapper {
+                padding-bottom: 0;
+            }
+
+            &-underline {
+                bottom: 0;
+            }
+        }
+    }
+
+    .footer {
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+
+            a {
+                color: map-get(map-get($dragosia-theme, foreground), hint-text);
+            }
+        }
+    }
+}
