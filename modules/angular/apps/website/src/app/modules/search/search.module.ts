@@ -15,9 +15,13 @@ import * as lunr from 'lunr';
 import { Index } from 'lunr';
 import { ComponentsModule } from '../../components/components.module';
 import { SearchComponent } from './search/search.component';
+import { LUNR_INDEX } from './tokens';
 
-require('lunr-languages/lunr.stemmer.support')(lunr);
-require('lunr-languages/lunr.de')(lunr);
+import * as lunrStemmerSupport from 'lunr-languages/lunr.stemmer.support';
+import * as lunrDe from 'lunr-languages/lunr.de';
+
+lunrStemmerSupport(lunr);
+lunrDe(lunr);
 
 
 export function lunrIndexFactory() {
@@ -43,7 +47,7 @@ export function lunrIndexFactory() {
         ComponentsModule
     ],
     providers      : [
-        { provide: Index, useFactory: lunrIndexFactory }
+        { provide: LUNR_INDEX, useFactory: lunrIndexFactory }
     ]
 })
 export class SearchModule {

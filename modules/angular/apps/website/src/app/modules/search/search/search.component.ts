@@ -1,10 +1,11 @@
 import { LocationStrategy } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DOCS } from '@dragosia/generic/search-index';
-import { Index } from 'lunr';
+import * as lunr from 'lunr';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
+import { LUNR_INDEX } from '../tokens';
 
 
 const RANGE_EXPANSION = 50;
@@ -40,15 +41,15 @@ export class SearchComponent {
             const title = doc.split(/\n/)[ 0 ];
             const routerLink = [ '/r', result.ref ];
             const ranges : [ number, number ][] = [];
-            
+
             const keywords = Object.keys(result.matchData.metadata);
-            
+
             for(const keyword of keywords) {
                 for(const [ start, length ] of result.matchData.metadata[ keyword ].doc.position) {
                     ranges.push([ start, start + length ]);
                 }
             }
-    
+
             let last = ranges[ 0 ].slice();
             for(let i = 1; i < ranges.length;) {
                 if(last[ 1 ] >= ranges[ i ][ 0 ]) {
@@ -59,15 +60,15 @@ export class SearchComponent {
                     ++i;
                 }
             }
-    
-    
+
+
             let start: number;
             let startInSentence: boolean;
             let end: number;
             let endInSentence: boolean;
-            
+
             const r : any[] = [];
-            
+
             for(const range of ranges) {
                 start = range[ 0 ];
                 startInSentence = true;
@@ -83,8 +84,8 @@ export class SearchComponent {
                 if(start === 0 || doc.charAt(start).match(/[.\n]/)) {
                     startInSentence = false;
                 }
-                
-                
+
+
                 end = range[1];
                 endInSentence = true;
                 while(end < doc.length && end < range[ 1 ] + RANGE_EXPANSION) {
@@ -99,7 +100,7 @@ export class SearchComponent {
                         break;
                     }
                 }
-                
+
                 r.push({
                     start,
                     end,
@@ -107,7 +108,7 @@ export class SearchComponent {
                     endInSentence
                 })
             }
-            
+
             const text = r.map((t, i, a) => {
                let str =  doc.substr(t.start, t.end - t.start);
                if(t.startInSentence && 0 === i) {
@@ -118,7 +119,7 @@ export class SearchComponent {
                }
                return str;
             }).join(' … ');
-            
+
             return {
                 title,
                 keywords,
@@ -132,7 +133,7 @@ export class SearchComponent {
     
     constructor(protected readonly route : ActivatedRoute,
                 protected readonly router : Router,
-                protected readonly index : Index,
+                @Inject(LUNR_INDEX) protected readonly index : any/*lunr.Index*/,
                 protected readonly locationStrategy : LocationStrategy) {
     }
 }
