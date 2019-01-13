@@ -32,10 +32,10 @@ export class SearchComponent {
                     return `${t}~${1 + t.length / 5 | 0}`
                 }).join(' '));
             } else {
-                return [];
+                return null;
             }
         }),
-        map(results => results.map(result => {
+        map(results => results && results.map(result => {
             const doc = DOCS[ result.ref ];
             const title = doc.split(/\n/)[ 0 ];
             const routerLink = [ '/r', result.ref ];

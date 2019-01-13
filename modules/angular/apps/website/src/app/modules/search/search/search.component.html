@@ -1,15 +1,25 @@
 <dw-website-header [query]="query | async"></dw-website-header>
 
 <div class="content">
-    <a *ngFor="let res of result | async" [routerLink]="res.routerLink">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>{{ res.title }}</mat-card-title>
-                <mat-card-subtitle>{{ res.link }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>{{ res.text }}</mat-card-content>
+    <ng-container *ngIf="result | async as $result; else: noQuery">
+        <a *ngFor="let res of $result" [routerLink]="res.routerLink">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>{{ res.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ res.link }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>{{ res.text }}</mat-card-content>
+            </mat-card>
+        </a>
+        <mat-card *ngIf="0 === $result.length" class="no-result">
+            <mat-card-content i18n>No results for query "{{ query | async }}".</mat-card-content>
         </mat-card>
-    </a>
+    </ng-container>
+    <ng-template #noQuery>
+        <mat-card class="no-query">
+            <mat-card-content i18n>Enter query to start a search...</mat-card-content>
+        </mat-card>
+    </ng-template>
 </div>
 
 <dw-website-footer></dw-website-footer>
