@@ -1,14 +1,6 @@
-<mat-toolbar class="mat-elevation-z4 header">
+<dw-website-header>
     <a *ngIf="displayBackButton | async" mat-icon-button [routerLink]="[ '/r' ]"><mat-icon>arrow_back</mat-icon></a>
-    <form (submit)="search()">
-        <mat-form-field>
-            <input matInput [formControl]="searchControl" type="search" i18n-placeholder placeholder="Search..." />
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-        <button mat-flat-button i18n>Go</button>
-    </form>
-    <a mat-flat-button color="accent" i18n>Get started</a>
-</mat-toolbar>
+</dw-website-header>
 
 <div class="content">
     <mat-card>

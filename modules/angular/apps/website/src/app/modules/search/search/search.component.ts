@@ -1,11 +1,10 @@
 import { LocationStrategy } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DOCS } from '@dragosia/generic/search-index';
 import { Index } from 'lunr';
 import { Observable } from 'rxjs';
-import { distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 
 const RANGE_EXPANSION = 50;
@@ -20,15 +19,13 @@ const RANGE_EXPANSION = 50;
         'class': 'dw-search'
     }
 })
-export class SearchComponent implements OnInit {
-    searchForm = new FormGroup({
-        q: new FormControl()
-    }, { updateOn: 'submit' });
+export class SearchComponent {
+    query = this.route.queryParamMap.pipe(
+        map(m => m.get('q') || ''),
+        distinctUntilChanged()
+    );
     
-    result : Observable<any[]> = this.route.queryParamMap.pipe(
-        map(m => m.get('q')),
-        distinctUntilChanged(),
-        tap(q => this.searchForm.patchValue({ q }, { emitEvent: false })),
+    result : Observable<any[]> = this.query.pipe(
         map(q => {
             if(q) {
                 return this.index.search(q.split(/\s+/).map(t => {
@@ -137,15 +134,5 @@ export class SearchComponent implements OnInit {
                 protected readonly router : Router,
                 protected readonly index : Index,
                 protected readonly locationStrategy : LocationStrategy) {
-    }
-    
-    ngOnInit() {
-        this.searchForm.valueChanges.pipe(
-            tap(value => this.router.navigate([ '.' ], {
-                queryParams: value,
-                relativeTo : this.route
-            }))
-        ).subscribe();
-        this.result.subscribe();
     }
 }

@@ -24,11 +24,6 @@
         z-index: 1;
     }
 
-    .mat-toolbar {
-        background: none;
-        align-items: center;
-    }
-
     .content {
         flex-grow: 1;
         display: flex;
@@ -45,6 +40,7 @@
 
                 h1, h2, h3 {
                     font-family: 'Jim Nightshade';
+                    font-weight: 100;
                 }
 
                 code {
@@ -86,32 +82,6 @@
                         padding-left: 1em;
                     }
                 }
-            }
-        }
-    }
-
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-
-        form {
-            margin-left: auto;
-        }
-
-        .mat-flat-button {
-            margin-left: 8px;
-        }
-
-        .mat-form-field {
-            font-size: 12px;
-
-            &-wrapper {
-                padding-bottom: 0;
-            }
-
-            &-underline {
-                bottom: 0;
             }
         }
     }

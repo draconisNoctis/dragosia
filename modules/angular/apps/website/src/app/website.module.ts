@@ -22,6 +22,7 @@ import { NxModule } from '@nrwl/nx';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { WebsiteState } from './+state/website.state';
+import { ComponentsModule } from './components/components.module';
 import { HomeComponent } from './pages/home/home.component';
 
 import { WebsiteComponent } from './website.component';
@@ -182,7 +183,8 @@ export function markedOptionsFactory(router : Router, location : LocationStrateg
                 useFactory: markedOptionsFactory,
                 deps: [ Router, LocationStrategy ]
             }
-        })
+        }),
+        ComponentsModule
     ],
     providers   : [
         I18n,

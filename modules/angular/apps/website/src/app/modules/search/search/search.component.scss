@@ -24,11 +24,6 @@
         z-index: 1;
     }
 
-    .mat-toolbar {
-        background: none;
-        align-items: center;
-    }
-
     .content {
         flex-grow: 1;
         display: flex;
@@ -55,29 +50,9 @@
         }
     }
 
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-
+    .dw-website-header {
         form {
             margin: 0 auto;
-        }
-
-        .mat-flat-button {
-            margin-left: 8px;
-        }
-
-        .mat-form-field {
-            font-size: 12px;
-
-            &-wrapper {
-                padding-bottom: 0;
-            }
-
-            &-underline {
-                bottom: 0;
-            }
         }
     }
 

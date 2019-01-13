@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { MarkdownModule } from 'ngx-markdown';
+import { ComponentsModule } from '../../components/components.module';
 import { PageComponent } from './page/page.component';
 
 
@@ -30,7 +31,8 @@ import { PageComponent } from './page/page.component';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatCardModule
+        MatCardModule,
+        ComponentsModule
     ],
     providers      : []
 })

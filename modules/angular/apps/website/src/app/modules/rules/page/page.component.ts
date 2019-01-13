@@ -23,8 +23,6 @@ export interface IPageIndexEntry {
     }
 })
 export class PageComponent implements OnInit {
-    searchControl = new FormControl(null, Validators.required);
-    
     displayBackButton = this.route.paramMap.pipe(
         map(m => m.has('page'))
     );
@@ -85,14 +83,5 @@ export class PageComponent implements OnInit {
             $event.preventDefault();
             this.router.navigate(JSON.parse(unescape(link.dataset.routeHref)));
         }
-    }
-    
-    search() {
-        if(!this.searchControl.valid) {
-            return;
-        }
-        this.router.navigate([ '/search'], {
-            queryParams: { q: this.searchControl.value }
-        })
     }
 }

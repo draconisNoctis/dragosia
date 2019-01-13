@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import SEARCH_INDEX from '@dragosia/generic/search-index';
 import * as lunr from 'lunr';
 import { Index } from 'lunr';
+import { ComponentsModule } from '../../components/components.module';
 import { SearchComponent } from './search/search.component';
 
 require('lunr-languages/lunr.stemmer.support')(lunr);
@@ -38,7 +39,8 @@ export function lunrIndexFactory() {
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MatCardModule
+        MatCardModule,
+        ComponentsModule
     ],
     providers      : [
         { provide: Index, useFactory: lunrIndexFactory }

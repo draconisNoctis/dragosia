@@ -24,27 +24,6 @@
         z-index: 1;
     }
 
-    .mat-toolbar {
-        background: none;
-        align-items: center;
-        /*position: relative;
-        overflow: hidden;
-
-        &:before {
-            position: absolute;
-            background: url('/assets/images/background.jpg');
-            background-size: cover;
-            content: '';
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            box-shadow: inset 0 0 0 100px rgba(255, 255, 255, 0.1);
-            opacity: .05;
-            filter: blur(10px);
-        }*/
-    }
-
     .content {
         flex-grow: 1;
         display: flex;
@@ -80,28 +59,6 @@
                     justify-content: center;
                     text-shadow: 4px 4px 2px rgba(0, 0, 0, .4);
                 }
-            }
-        }
-    }
-
-    .header {
-        form {
-            margin-left: auto;
-        }
-
-        .mat-flat-button {
-            margin-left: 8px;
-        }
-
-        .mat-form-field {
-            font-size: 12px;
-
-            &-wrapper {
-                padding-bottom: 0;
-            }
-
-            &-underline {
-                bottom: 0;
             }
         }
     }
