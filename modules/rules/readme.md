@@ -1,4 +1,4 @@
 # Dragosia Basisregelwerk
 
-- [**Charakterwerte**](./characterwerte.md)
+- [**Charakterwerte**](./charakterwerte.md)
 - [**Proben**](./proben.md)

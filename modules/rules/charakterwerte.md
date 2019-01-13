@@ -1,8 +1,6 @@
-# Dragosia Basisregelwerk
+# Charakterwerte
 
-## Charakterwerte
-
-### Eigenschaften
+## Eigenschaften
 
 Die instgesamt acht Eigenschaften, vier körperliche und vier geistige, 
 stellen die grundsätzlichen körperlichen und geisten Fähigkeiten eines Charakters dar.
@@ -24,7 +22,7 @@ Charisma            CH
 ```
 
 
-### Fähigkeiten
+## Fähigkeiten
 
 Die vier Grundfähigkeiten und stellen ähnlich wie die Eigenschaften die grundsätzlichen Fähigkeiten des Charakters dar.
 
@@ -36,21 +34,23 @@ Geistig             G
 ```
 
 
-### Gaben
+## Gaben
 
-Regeltechnisch sind Gaben erlernbare Fähigkeiten und können Vorraussetzung für bestimmte Talente, Vor- oder Nachteile sein.
+Gaben sind regeltechnisch erlernbare Fähigkeiten und können Vorraussetzung für bestimmte Talente, Vor- oder Nachteile sein.
 
-***Beispiel:** Die Gabe `Magie` ermöglicht das wirken von Zaubern und magischen Effekten.*
+> ***Beispiel:***  
+> *Die Gabe `Magie` ermöglicht das wirken von Zaubern und magischen Effekten.*
 
 
-### Talente
+## Talente
 
 Die Talente stellen die spezialisierten Fähigkeiten des Charakters dar.
 
-***Beispiel:** Das Talent `Erste Hilfe` ermöglicht die Versorgung von Wunden und Verletzungen.*
+> ***Beispiel:***  
+> *Das Talent `Erste Hilfe` ermöglicht die Versorgung von Wunden und Verletzungen.*
 
 
-### Werte
+## Wertebereich
 
 Die Werte von Eigenschaften, Fähigkeiten, Gaben und Talenten reichen von `nicht vorhanden` bis `5`,
 wobei Eigenschaften einen Startwert von `1` und Fähigkeiten einen Startwert von `0` haben.
