@@ -37,6 +37,7 @@
             margin: 0;
             min-width: calc(70%);
             text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.1);
+            animation: home-show-dragosia 1s ease-out;
         }
 
         > .mat-nav-list {
@@ -47,6 +48,7 @@
             padding-left: 350px;
             justify-content: flex-start;
             margin-top: -25px;
+            animation: home-show-links .5s 1s ease-out both;
 
             .mat-list-item {
                 white-space: nowrap;
@@ -61,5 +63,25 @@
                 }
             }
         }
+    }
+}
+
+@keyframes home-show-dragosia {
+    from {
+        opacity: 0;
+        transform: translateX(-40%)
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes home-show-links {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
