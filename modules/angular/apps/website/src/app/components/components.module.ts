@@ -9,6 +9,7 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import { WebsiteHeaderComponent } from './website-header/website-header.component';
+import { WebsiteFooterComponent } from './website-footer/website-footer.component';
 
 @NgModule({
     imports     : [
@@ -21,8 +22,8 @@ import { WebsiteHeaderComponent } from './website-header/website-header.componen
         MatInputModule,
         MatIconModule
     ],
-    declarations: [ WebsiteHeaderComponent ],
-    exports     : [ WebsiteHeaderComponent ]
+    declarations: [ WebsiteHeaderComponent, WebsiteFooterComponent ],
+    exports     : [ WebsiteHeaderComponent, WebsiteFooterComponent ]
 })
 export class ComponentsModule {
 }

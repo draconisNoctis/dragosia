@@ -1,0 +1,14 @@
+@import "../../../theme";
+
+.dw-website-footer {
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+
+        a {
+            color: map-get(map-get($dragosia-theme, foreground), hint-text);
+        }
+    }
+}
