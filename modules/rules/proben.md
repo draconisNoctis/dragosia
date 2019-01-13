@@ -1,8 +1,10 @@
-# Würfel
+# Proben
+
+## Würfel
 
 Es werden 20-seitige Würfel benötigt, je nach Charakterstufe zwischen 5 und 15.
 
-# Proben
+## Proben
 
 Bei einer Probe wird anhand der Eigenschaften, Fähigkeiten, Gaben und Talente,
 die darstellen, wie gut ein Charakter etwas allgemein kann,
@@ -14,7 +16,7 @@ geprüft wie gut er es gerade im speziellen Umsetzen kann.
 
 Wie oft eine Probe erforderlich ist, hängt vom Abenteuer und vom Spielstil der Gruppe ab.
 
-## Würfeln
+### Würfeln
 
 Um eine Probe zu würfeln, muss zunächst bestimmt werden, mit wie vielen Würfeln gewürfelt werden muss.
 Bei einer normalen `Talentprobe` addiert man zu dem `Talentwert` die Werte für die, zu dem Talent gehörende,
@@ -40,7 +42,7 @@ Sehr schwere Probe  8 Erfolge
 Unmöglich Probe     12 Erfolge
 ```
 
-## Sammelproben
+### Sammelproben
 
 Teilweise ist es nötig, mehrere Proben zu summieren um ein größeres Ergebnis zu erhalten.
 Hierbei werden die Güte der einzelnen Proben addiert und jede Probe dauert eine gewisse Zeit.
@@ -52,7 +54,7 @@ Teilweise können auch Proben von verschiedenen Charakteren addiert werden, fall
 > Jede Probe bedeutet hierbei eine Zeitspanne von 2 Minuten. Für jede Erfolgreiche Probe klettert der Charakter ein Stück nach oben,
 > bei einer mislungenen Probe kommt der Charakter an dieser Stelle nicht weiter nach oben und muss ein Stück absteigen.*
 
-## Vergleichende Probe
+### Vergleichende Probe
 
 Eine `Vergleichende Probe` wird gewürfelt, um zwei Proben direkt mit einander vergleichen zu können.
 Hierbei gilt die Probenschwierigkeit nur, um zwischen Erfolg und Misserfolg zu entscheiden.
@@ -60,11 +62,11 @@ Hierbei gilt die Probenschwierigkeit nur, um zwischen Erfolg und Misserfolg zu e
 > [Probenschwierigkeit] = 1
 > [Güte] = [Erfolge]
 
-## Gabenprobe
+### Gabenprobe
 
 Eine Gabenprobe wird auf `[Gabe] [Gabe] [Eigenschaft]` gewürfelt.
 
-## Eigenschaftsprobe
+### Eigenschaftsprobe
 
 Körperliche Eigeschaftsproben werden auf `[Eigenschaft] [Eigenschaft] [K]` gewürfelt, geistige auf `[Eigenschaft] [Eignschaft] [G]`.
 
