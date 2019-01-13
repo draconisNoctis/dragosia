@@ -105,10 +105,11 @@ function cleanUrl(sanitize, base, href) {
             var prot = decodeURIComponent(unescape(href))
                 .replace(/[^\w:]/g, '')
                 .toLowerCase();
+    
+            if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
+                return null;
+            }
         } catch (e) {
-            return null;
-        }
-        if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
             return null;
         }
     }

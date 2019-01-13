@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+import { APP_BASE_HREF, DOCUMENT, LocationStrategy } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lexer, Slugger } from 'marked';
@@ -28,14 +28,15 @@ export class PageComponent implements OnInit {
     
     markdownUrl : Observable<string> = this.route.paramMap.pipe(
         map(m => m.get('page') || 'readme'),
-        map(page => `/assets/rules/${page}.md`)
+        map(page => `${this.locationStrategy.getBaseHref()}/assets/rules/${page}.md`)
     );
     
     index : IPageIndexEntry[] = [];
     
     constructor(protected readonly route : ActivatedRoute,
                 protected readonly router : Router,
-                @Inject(DOCUMENT) protected readonly document : any) {
+                @Inject(DOCUMENT) protected readonly document : any,
+                protected readonly locationStrategy : LocationStrategy) {
     }
     
     ngOnInit() {
