@@ -8,6 +8,7 @@ import {
     MatInputModule,
     MatToolbarModule
 } from '@angular/material';
+import { RouterModule } from '@angular/router';
 import { WebsiteHeaderComponent } from './website-header/website-header.component';
 import { WebsiteFooterComponent } from './website-footer/website-footer.component';
 
@@ -16,6 +17,7 @@ import { WebsiteFooterComponent } from './website-footer/website-footer.componen
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule,
         MatToolbarModule,
         MatButtonModule,
         MatFormFieldModule,

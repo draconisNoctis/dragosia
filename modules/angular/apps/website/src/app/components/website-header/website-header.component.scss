@@ -1,3 +1,5 @@
+@import "../../../theme";
+
 .dw-website-header {
     position: sticky;
     top: 0;
@@ -11,6 +13,16 @@
         bottom: 0;
         content: '';
         z-index: -1;
+    }
+
+    a {
+        transform: translateY(4px);
+        > h1 {
+            font-family: 'Jim Nightshade';
+            font-size: 36px;
+            font-weight: 100;
+            color: map-get(map-get($dragosia-theme, foreground), base);
+        }
     }
 
     &:before {

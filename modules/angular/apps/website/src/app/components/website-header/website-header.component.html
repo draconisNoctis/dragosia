@@ -1,5 +1,6 @@
 <mat-toolbar class="mat-elevation-z4 header">
     <ng-content></ng-content>
+    <a [routerLink]="[ '/' ]"><h1>Dragosia</h1></a>
     <form (submit)="search()" [formGroup]="searchForm">
         <mat-form-field>
             <input matInput formControlName="q" type="search" i18n-placeholder placeholder="Search..."/>
