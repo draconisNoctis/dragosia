@@ -19,7 +19,7 @@ require('lunr-languages/lunr.stemmer.support')(lunr);
 require('lunr-languages/lunr.de')(lunr);
 
 
-function lunrIndexFactory() {
+export function lunrIndexFactory() {
     return Index.load(SEARCH_INDEX);
 }
 
