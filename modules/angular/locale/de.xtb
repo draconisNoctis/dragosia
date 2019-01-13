@@ -127,4 +127,6 @@
   <translation id="4645345687322304891">Regeln</translation>
   <translation id="7092329814522771127">Charakter Manager</translation>
   <translation id="473706958781869860">Dragosia @ Github</translation>
+  <translation id="9072927010120079382">Keine Suchergebnisse für &quot;<ph name="INTERPOLATION"><ex>{{ query | async }}</ex>{{ query | async }}</ph>&quot;.</translation>
+  <translation id="8688982360057766039">Begriff eingeben um die Suche zu starten...</translation>
 </translationbundle>

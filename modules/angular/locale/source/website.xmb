@@ -21,12 +21,12 @@
 <!ELEMENT ex (#PCDATA)>
 ]>
 <messagebundle>
-  <msg id="8854094932942190741"><source>src/app/pages/home/home.component.html:4</source>Search...</msg>
-  <msg id="7297944290589265560"><source>src/app/pages/home/home.component.html:7</source>Go</msg>
-  <msg id="3163044740176820503"><source>src/app/pages/home/home.component.html:9</source>Get started</msg>
-  <msg id="4645345687322304891"><source>src/app/pages/home/home.component.html:15</source>Rules</msg>
-  <msg id="7092329814522771127"><source>src/app/pages/home/home.component.html:16</source>Character Manager</msg>
-  <msg id="473706958781869860"><source>src/app/pages/home/home.component.html:22</source>Dragosia @ Github</msg>
+  <msg id="8854094932942190741"><source>src/app/components/website-header/website-header.component.html:6</source>Search...</msg>
+  <msg id="7297944290589265560"><source>src/app/components/website-header/website-header.component.html:9</source>Go</msg>
+  <msg id="3163044740176820503"><source>src/app/components/website-header/website-header.component.html:12</source>Get started</msg>
+  <msg id="473706958781869860"><source>src/app/components/website-footer/website-footer.component.html:3</source>Dragosia @ Github</msg>
+  <msg id="4645345687322304891"><source>src/app/pages/home/home.component.html:6</source>Rules</msg>
+  <msg id="7092329814522771127"><source>src/app/pages/home/home.component.html:7</source>Character Manager</msg>
   <msg id="8235775649619498299"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:3</source><source>src/app/modules/dcm/sheet/sheet.component.html:53</source>Character Sheet</msg>
   <msg id="8953033926734869941"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:246</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:266</source><source>../../libs/sheet/src/lib/general/general.component.html:4</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:25</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:72</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:3</source>Name</msg>
   <msg id="1679869148678530261"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:11</source><source>../../libs/sheet/src/lib/general/general.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:8</source>Race</msg>
@@ -132,5 +132,7 @@
   <msg id="5253915787128325560"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:3</source>Do you really want to delete the character &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot;?</msg>
   <msg id="3542042671420335679"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:6</source>No</msg>
   <msg id="2807800733729323332"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:7</source>Yes</msg>
+  <msg id="9072927010120079382"><source>src/app/modules/search/search/search.component.html:15</source>No results for query &quot;<ph name="INTERPOLATION"><ex>{{ query | async }}</ex>{{ query | async }}</ph>&quot;.</msg>
+  <msg id="8688982360057766039"><source>src/app/modules/search/search/search.component.html:20</source>Enter query to start a search...</msg>
   <msg id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f"><source>apps/website/src/app/modules/dcm/+state/sheet.effects.ts:1</source>An Error occured while deleting character &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot;</msg>
 </messagebundle>
