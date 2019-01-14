@@ -2,3 +2,4 @@
 
 - [**Charakterwerte**](./charakterwerte.md)
 - [**Proben**](./proben.md)
+- [**Characterstatus**](./charakterstatus.md)
