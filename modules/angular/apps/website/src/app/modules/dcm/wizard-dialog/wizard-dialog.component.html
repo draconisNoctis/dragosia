@@ -32,22 +32,9 @@
         </ng-container>
     </mat-step>
 
-    <mat-step [stepControl]="advantagesControl" [editable]="true">
-        <ng-template matStepLabel i18n>Advantages/Disadvantages</ng-template>
-        <ng-container *ngIf="stepperIndex >= 3">
-            <js-advantages [factor]="1" [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="advantagesCosts"></js-advantages>
-
-            <div class="sub">
-                <span class="balance" i18n>Balance: {{ advantagesCosts }}</span>
-
-                <button mat-button matStepperNext i18n [disabled]="advantagesCosts < 0">Next</button>
-            </div>
-        </ng-container>
-    </mat-step>
-
     <mat-step [stepControl]="attributesControl" [editable]="true">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <ng-container *ngIf="budget && stepperIndex >= 4">
+        <ng-container *ngIf="budget && stepperIndex >= 3">
             <js-attributes [factor]="1" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
 
             <div class="sub">
@@ -60,7 +47,7 @@
 
     <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="true">
         <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
-        <ng-container *ngIf="budget && stepperIndex >= 5">
+        <ng-container *ngIf="budget && stepperIndex >= 4">
             <h2 i18n>Skills</h2>
             <js-skills [factor]="1" formControlName="skills" [(pointsAvailable)]="budget.skills"></js-skills>
             <h2 i18n>Gifts</h2>
@@ -70,6 +57,19 @@
                 <span class="points-available" i18n>Available: {{ budget?.skills }}</span>
 
                 <button mat-button matStepperNext i18n [disabled]="budget?.skills < 0">Next</button>
+            </div>
+        </ng-container>
+    </mat-step>
+
+    <mat-step [stepControl]="advantagesControl" [editable]="true">
+        <ng-template matStepLabel i18n>Advantages/Disadvantages</ng-template>
+        <ng-container *ngIf="budget && stepperIndex >= 5">
+            <js-advantages [factor]="1" [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-advantages>
+
+            <div class="sub">
+                <span class="balance" i18n>Available: {{ budget?.talents }}</span>
+
+                <button mat-button matStepperNext i18n [disabled]="budget?.talents < 0">Next</button>
             </div>
         </ng-container>
     </mat-step>

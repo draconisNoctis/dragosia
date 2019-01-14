@@ -22,7 +22,7 @@ export abstract class AbstractComponent implements ControlValueAccessor {
         this._factor = factor;
     }
     get factor() {
-        return this._factor || this.defaultFactor;
+        return null == this._factor ? this.defaultFactor : this._factor;
     }
     _factor?: number|null;
     

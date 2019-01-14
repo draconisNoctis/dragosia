@@ -67,26 +67,24 @@ export class AdvantagesComponent extends AbstractComponent {
     }
     
     protected calculatePrice(previous : any, current : any) : number {
-        let price = 0;
+        let currentPrice = 0;
         for(const advantage of current.advantages) {
-            price -= advantage.value;
+            currentPrice -= advantage.value;
         }
         for(const disadvantage of current.disadvantages) {
-            price += disadvantage.value;
+            currentPrice += disadvantage.value;
         }
         
-        this.pointsAvailable = price;
-        this.pointsAvailableChange.emit(price);
+        let previousPrice = 0;
+        for(const advantage of previous.advantages) {
+            previousPrice -= advantage.value;
+        }
+        for(const disadvantage of previous.disadvantages) {
+            previousPrice += disadvantage.value;
+        }
         
-        return 0;
+        return (currentPrice - previousPrice) * -1;
     }
-    
-    // protected transformValue(value : any) : any {
-    //     return {
-    //         advantages: value.advantages.map(a => a.name).join(', '),
-    //         disadvantages: value.disadvantages.map(d => d.name).join(', ')
-    //     }
-    // }
     
     addAdvantage(advantage?: IAdvantage) {
         if(!advantage) {
@@ -161,28 +159,6 @@ export class AdvantagesComponent extends AbstractComponent {
             }
             this.form.updateValueAndValidity();
         }
-        
-        // for(const advantage of obj.advantages.trim().split(/\s*,\s*/).filter(Boolean)) {
-        //     const match = CUSTOM_REGEXP.exec(advantage);
-        //     if(match) {
-        //         this.addAdvantage({ name: advantage, custom: true, value: +match[2] })
-        //     } else {
-        //         this.addAdvantage(this.advantages.find(a => a.name === advantage) || { name: advantage, value: 0 });
-        //     }
-        // }
-        //
-        // for(const disadvantage of obj.disadvantages.trim().split(/\s*,\s*/).filter(Boolean)) {
-        //     const match = CUSTOM_REGEXP.exec(disadvantage);
-        //     if(match) {
-        //         this.addDisadvantage({ name: disadvantage, custom: true, value: +match[2] })
-        //     } else {
-        //         this.addDisadvantage(this.disadvantages.find(d => d.name === disadvantage) || {
-        //             name : disadvantage,
-        //             value: 0
-        //         });
-        //     }
-        // }
-        
         
         this.registerSubscription();
     }

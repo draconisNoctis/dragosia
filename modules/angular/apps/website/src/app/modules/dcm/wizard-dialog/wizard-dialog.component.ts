@@ -40,8 +40,6 @@ export class WizardDialogComponent {
     costs? : ICosts;
     budget? : ICosts;
     
-    advantagesCosts = 0;
-    
     selections? : ISelectTalents[];
     
     @ViewChild(MatHorizontalStepper)
@@ -124,21 +122,15 @@ export class WizardDialogComponent {
                     skills    : this.settingsControl.value.budget.skills - costs.skills,
                     talents   : this.settingsControl.value.budget.talents - costs.talents
                 };
-                this.advantagesControl.setValue({
-                    advantages: character.advantages,
-                    disadvantages: character.disadvantages
-                });
+                
+                this.budget.attributes = this.settingsControl.value.budget.attributes - this.costs.attributes;
+                this.attributesControl.setValue(this.character.attributes);
                 console.log(this.settingsControl.value);
                 console.log(this.character);
                 console.log(this.costs);
                 console.log(this.budget);
             }
             case 4: {
-                this.budget.attributes = this.settingsControl.value.budget.attributes - this.costs.attributes;
-                this.attributesControl.setValue(this.character.attributes);
-                break;
-            }
-            case 5: {
                 this.budget.skills = this.settingsControl.value.budget.skills - this.costs.skills;
                 this.budget.skills += this.budget.attributes * FACTOR_ATTRIBUTES / FACTOR_SKILLS;
                 this.skillsGiftsControl.setValue({
@@ -147,9 +139,16 @@ export class WizardDialogComponent {
                 });
                 break;
             }
-            case 6: {
+            case 5: {
                 this.budget.talents = this.settingsControl.value.budget.talents - this.costs.talents;
                 this.budget.talents += this.budget.skills * FACTOR_SKILLS / FACTOR_TALENTS;
+                this.advantagesControl.setValue({
+                    advantages: this.character.advantages,
+                    disadvantages: this.character.disadvantages
+                });
+                break;
+            }
+            case 6: {
                 this.talentsControl.setValue(this.character.talents);
                 break;
             }
@@ -158,9 +157,9 @@ export class WizardDialogComponent {
         switch(this.stepperIndex) {
             case 0: this.backgroundControl.reset();
             case 1: this.selectionsControl.reset();
-            case 2: this.advantagesControl.reset();
-            case 3: this.attributesControl.reset();
-            case 4: this.skillsGiftsControl.reset();
+            case 2: this.attributesControl.reset();
+            case 3: this.skillsGiftsControl.reset();
+            case 4: this.advantagesControl.reset();
             case 5: this.talentsControl.reset();
         }
         
