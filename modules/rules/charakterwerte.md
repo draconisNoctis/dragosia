@@ -2,7 +2,7 @@
 
 ## Eigenschaften
 
-Die instgesamt acht Eigenschaften, vier körperliche und vier geistige, 
+Die insgesamt acht Eigenschaften, vier körperliche und vier geistige, 
 stellen die grundsätzlichen körperlichen und geisten Fähigkeiten eines Charakters dar.
 
 **Körperlich**
@@ -24,7 +24,7 @@ Charisma            CH
 
 ## Fähigkeiten
 
-Die vier Grundfähigkeiten und stellen ähnlich wie die Eigenschaften die grundsätzlichen Fähigkeiten des Charakters dar.
+Die vier Grundfähigkeiten stellen ähnlich wie die Eigenschaften die grundsätzlichen Fähigkeiten des Charakters dar.
 
 ```
 Nahkampf            N
