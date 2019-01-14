@@ -11,6 +11,7 @@ import {
     ISelectTalents,
     Presets
 } from '@jina-draicana/presets';
+import { FACTOR_ATTRIBUTES, FACTOR_SKILLS, FACTOR_TALENTS } from '@jina-draicana/sheet';
 import { delay, filter } from 'rxjs/operators';
 
 @Component({
@@ -139,7 +140,7 @@ export class WizardDialogComponent {
             }
             case 5: {
                 this.budget.skills = this.settingsControl.value.budget.skills - this.costs.skills;
-                this.budget.skills += this.budget.attributes * 2;
+                this.budget.skills += this.budget.attributes * FACTOR_ATTRIBUTES / FACTOR_SKILLS;
                 this.skillsGiftsControl.setValue({
                     skills: this.character.skills,
                     gifts: this.character.gifts
@@ -148,7 +149,7 @@ export class WizardDialogComponent {
             }
             case 6: {
                 this.budget.talents = this.settingsControl.value.budget.talents - this.costs.talents;
-                this.budget.talents += this.budget.skills * 2;
+                this.budget.talents += this.budget.skills * FACTOR_SKILLS / FACTOR_TALENTS;
                 this.talentsControl.setValue(this.character.talents);
                 break;
             }

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { getCosts } from '@jina-draicana/presets';
+import { FACTOR_SKILLS } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 
 @Component({
@@ -29,6 +30,8 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         physical: new FormControl(null, Validators.required),
         mental: new FormControl(null, Validators.required)
     });
+    
+    protected defaultFactor = FACTOR_SKILLS;
     
     mins = {
         melee: 0,

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { IAdvantage, IDisadvantage, Presets } from '@jina-draicana/presets';
+import { FACTOR_ADVANTAGES } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 
 const CUSTOM_REGEXP = /^(.*)\s*\((\d+)\)$/;
@@ -28,6 +29,8 @@ export class AdvantagesComponent extends AbstractComponent {
         this.advantages = this.presets.getAdvantagesForPreset(preset);
         this.disadvantages = this.presets.getDisadvantagesForPreset(preset);
     }
+    
+    protected defaultFactor = FACTOR_ADVANTAGES;
     
     advantages? : IAdvantage[];
     disadvantages? : IDisadvantage[];

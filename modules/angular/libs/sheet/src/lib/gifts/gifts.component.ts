@@ -1,18 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { COSTS, getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
-import { combineLatest, Subscription } from 'rxjs';
-import { pairwise, throttleTime } from 'rxjs/operators';
+import { getCosts, IGift, IPartialGift, Presets } from '@jina-draicana/presets';
+import { FACTOR_SKILLS } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
@@ -40,6 +30,8 @@ export class GiftsComponent extends AbstractComponent implements ControlValueAcc
     set preset(preset : string) {
         this.gifts = this.presets.getGiftsForPreset(preset);
     }
+    
+    protected defaultFactor = FACTOR_SKILLS;
     
     gifts? : IPartialGift[];
     

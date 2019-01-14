@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { getCosts } from '@jina-draicana/presets';
+import { FACTOR_ATTRIBUTES } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 
 @Component({
@@ -23,6 +24,8 @@ import { AbstractComponent } from '../abstract.component';
     } ]
 })
 export class AttributesComponent extends AbstractComponent implements ControlValueAccessor {
+    protected defaultFactor = FACTOR_ATTRIBUTES;
+    
     form = new FormGroup({
         strength: new FormControl(null, Validators.required),
         agility: new FormControl(null, Validators.required),

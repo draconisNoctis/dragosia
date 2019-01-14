@@ -19,6 +19,7 @@ import { AbstractComponent } from '../abstract.component';
     } ]
 })
 export class GeneralComponent extends AbstractComponent {
+    protected defaultFactor = 0;
     
     form = new FormGroup({
         about: new FormGroup({

@@ -1,25 +1,8 @@
-import {
-    Component,
-    OnInit,
-    ViewEncapsulation,
-    ChangeDetectionStrategy,
-    Input,
-    Output,
-    EventEmitter, ChangeDetectorRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import {
-    COSTS,
-    getCosts,
-    ICharacterTalent,
-    ICharacterTalents, IGift,
-    IPartialTalent,
-    ITalent,
-    Presets
-} from '@jina-draicana/presets';
-import { combineLatest, Subscription } from 'rxjs';
-import { pairwise, startWith, throttleTime } from 'rxjs/operators';
+import { getCosts, ICharacterTalent, ICharacterTalents, IPartialTalent, Presets } from '@jina-draicana/presets';
+import { FACTOR_TALENTS } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
@@ -47,6 +30,8 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     set preset(preset : string) {
         this.talents = this.presets.getTalentsForPreset(preset);
     }
+    
+    protected defaultFactor = FACTOR_TALENTS;
     
     talents? : IPartialTalent[];
     

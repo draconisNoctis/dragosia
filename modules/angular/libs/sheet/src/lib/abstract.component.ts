@@ -15,8 +15,16 @@ export abstract class AbstractComponent implements ControlValueAccessor {
     }
     private _pointsAvailable = 0;
     
+    protected abstract defaultFactor: number;
+    
     @Input()
-    factor = 1;
+    set factor(factor : number|null) {
+        this._factor = factor;
+    }
+    get factor() {
+        return this._factor || this.defaultFactor;
+    }
+    _factor?: number|null;
     
     @Input()
     mode : 'range' | 'button' = 'range';
