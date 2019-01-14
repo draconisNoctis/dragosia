@@ -2,6 +2,7 @@
 
 - [**Charakterwerte**](./charakterwerte.md)
 - [**Proben**](./proben.md)
-- [**Characterstatus**](./charakterstatus.md)
+- [**Charakterstatus**](./charakterstatus.md)
+- [**Kampf**](./kampf.md)
 - [**Vorteile**](./vorteile.md)
 - [**Nachteile**](./nachteile.md)
