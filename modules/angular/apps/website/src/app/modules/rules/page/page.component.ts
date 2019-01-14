@@ -24,7 +24,8 @@ export interface IPageIndexEntry {
 })
 export class PageComponent implements OnInit {
     displayBackButton = this.route.paramMap.pipe(
-        map(m => m.has('page'))
+        map(m => m.get('page')),
+        map(page => !!page && page !== 'readme')
     );
     
     markdownUrl : Observable<string> = this.route.paramMap.pipe(
