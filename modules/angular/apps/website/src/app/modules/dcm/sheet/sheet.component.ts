@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    OnInit,
+    ViewEncapsulation
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, merge } from 'rxjs';
-import { filter, first, map, pairwise, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
+import { filter, first, map, pairwise, scan, shareReplay, startWith, tap, withLatestFrom } from 'rxjs/operators';
 import { DeleteAction, FetchOneAction, SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
@@ -73,13 +81,25 @@ export class SheetComponent implements OnInit {
     
     protected _exp = new BehaviorSubject<number|null>(null);
     
-    sidenavOpen = true;
+    sidenavToggle = new EventEmitter<void|boolean>();
+    
+    isMobile = this.breakpointObserver.observe('(max-width: 1024px)').pipe(map(v => v.matches));
+    
+    isDesktop = this.isMobile.pipe(map(v => !v));
+    
+    sidenavOpen = combineLatest(
+        this.isDesktop,
+        this.sidenavToggle.pipe(startWith(false), scan<boolean, void|boolean>((t, c) => null == c ? !t : c, false))
+    ).pipe(
+        map(([ isDesktop, isOpen ]) => isDesktop || isOpen)
+    );
     
     constructor(protected readonly store : Store<CharSheetState>,
                 protected readonly route : ActivatedRoute,
                 protected readonly dialog : MatDialog,
                 protected readonly router : Router,
-                protected readonly cdr : ChangeDetectorRef) {
+                protected readonly cdr : ChangeDetectorRef,
+                protected readonly breakpointObserver : BreakpointObserver) {
     }
     
     ngOnInit() {
@@ -135,13 +155,16 @@ export class SheetComponent implements OnInit {
     }
     
     async openWizard() {
-        const ref = this.dialog.open(WizardDialogComponent);
+        const ref = this.dialog.open(WizardDialogComponent, {
+            maxWidth: '100vw',
+            maxHeight: '90vh'
+        });
         
         const result = await ref.afterClosed().toPromise();
         
         if(result) {
             this.store.dispatch(new StoreAction(result));
-            this.router.navigate([ '/', result._id ])
+            this.router.navigate([ '/dcm', result._id ])
         }
     }
 }

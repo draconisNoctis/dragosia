@@ -16,6 +16,7 @@
             <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
                 <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
             </div>
         </ng-container>
@@ -27,6 +28,7 @@
             <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
                 <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
             </div>
         </ng-container>
@@ -38,6 +40,8 @@
             <js-attributes [factor]="1" [formControl]="attributesControl" [(pointsAvailable)]="budget.attributes"></js-attributes>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
+
                 <span class="points-available" i18n>Available: {{ budget?.attributes }}</span>
 
                 <button mat-button matStepperNext i18n [disabled]="budget?.attributes < 0">Next</button>
@@ -54,6 +58,8 @@
             <js-gifts [factor]="1" formControlName="gifts" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.skills"></js-gifts>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
+
                 <span class="points-available" i18n>Available: {{ budget?.skills }}</span>
 
                 <button mat-button matStepperNext i18n [disabled]="budget?.skills < 0">Next</button>
@@ -62,11 +68,13 @@
     </mat-step>
 
     <mat-step [stepControl]="advantagesControl" [editable]="true">
-        <ng-template matStepLabel i18n>Advantages/Disadvantages</ng-template>
+        <ng-template matStepLabel i18n>Advantages & Disadvantages</ng-template>
         <ng-container *ngIf="budget && stepperIndex >= 5">
             <js-advantages [factor]="1" [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-advantages>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
+
                 <span class="balance" i18n>Available: {{ budget?.talents }}</span>
 
                 <button mat-button matStepperNext i18n [disabled]="budget?.talents < 0">Next</button>
@@ -80,6 +88,8 @@
             <js-talents [factor]="1" [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [(pointsAvailable)]="budget.talents"></js-talents>
 
             <div class="sub">
+                <button mat-button matStepperPrevious i18n>Previous</button>
+
                 <span class="points-available" i18n>Available: {{ budget?.talents }}</span>
 
                 <button mat-button (click)="create()" [disabled]="budget?.talents < 0" i18n>Create</button>

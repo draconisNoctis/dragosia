@@ -1,10 +1,12 @@
-<dw-website-header></dw-website-header>
+<dw-website-header>
+    <button *ngIf="isMobile | async" class="char-toggle" mat-icon-button i18n-matTooltip matTooltip="Toggle Charakters" (click)="sidenavToggle.emit()"><mat-icon>people</mat-icon></button>
+</dw-website-header>
 
 <mat-sidenav-container>
-    <mat-sidenav [mode]="'side'" [opened]="sidenavOpen">
+    <mat-sidenav [mode]="(isDesktop | async) ? 'side' : 'over'" [opened]="sidenavOpen | async" (closed)="sidenavToggle.emit(false)" #sidenav="matSidenav">
         <mat-nav-list>
             <ng-container *ngFor="let char of chars | async">
-                <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/dcm', char._id ]">
+                <mat-list-item *ngIf="char.about?.name" [routerLink]="[ '/dcm', char._id ]" (click)="sidenav.close()">
                     {{ char.about.name}} ({{ char.meta.exp.spend }}/{{ char.meta.exp.total }})
                     <span *ngIf="char._changed" class="changed">*</span>
                 </mat-list-item>
@@ -15,7 +17,7 @@
     <mat-sidenav-content>
         <mat-toolbar>
             <h1 *ngIf="char | async as _char">{{ _char.about.name }} ({{ _char.meta.exp.spend }}/{{ _char.meta.exp.total }})</h1>
-            <button mat-icon-button [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
+            <button mat-icon-button class="dcm-menu" [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
 
             <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>person_add</mat-icon></button>
         </mat-toolbar>

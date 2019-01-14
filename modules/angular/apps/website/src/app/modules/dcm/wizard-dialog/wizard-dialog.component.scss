@@ -1,43 +1,69 @@
 .cs-wizard-dialog {
 
     .mat-stepper-horizontal {
-        display: flex;
-        flex-direction: row;
-
-        .mat-horizontal-stepper-header-container {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
         .mat-stepper-horizontal-line {
             display: none;
         }
 
-        .mat-horizontal-stepper-header {
-            padding: 8px;
-            height: auto;
-        }
-
-        .mat-horizontal-content-container {
-            padding: 0 0 0 24px;
-            min-width: 360px;
-
+        @media screen and (min-width: 801px) {
             display: flex;
             flex-direction: row;
+
+            .mat-horizontal-stepper-header-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .mat-horizontal-stepper-header {
+                padding: 8px;
+                height: auto;
+            }
+
+            .mat-horizontal-content-container {
+                padding: 0 0 0 24px;
+                min-width: 360px;
+
+                display: flex;
+                flex-direction: row;
+            }
+
+            .mat-horizontal-stepper-content {
+                flex-grow: 1;
+                min-width: 100%;
+                min-height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                &[aria-expanded=false] {
+                    width: 0;
+                    min-width: 0;
+                    min-height: 0;
+                }
+            }
+
+            .mat-step-label {
+                max-width: 100px;
+                white-space: normal;
+            }
         }
 
-        .mat-horizontal-stepper-content {
-            flex-grow: 1;
-            min-width: 100%;
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        @media screen and (max-width: 800px) {
+            .mat-step-icon:not(.mat-step-icon-selected) {
+                &, & + .mat-step-label {
+                    display: none;
+                }
+            }
 
-            &[aria-expanded=false] {
-                width: 0;
-                min-width: 0;
-                min-height: 0;
+            .mat-step-header {
+                background: none;
+                padding: 0;
+            }
+
+
+            .mat-horizontal-content-container {
+                padding: 0 0 24px;
+                min-width: 260px;
             }
         }
     }
@@ -56,14 +82,8 @@
         justify-content: space-between;
         align-items: center;
 
-        .details {
-
-        }
-
         button {
-            margin: 8px 0 0 8px;
-
-            &:first-of-type {
+            &:last-of-type {
                 margin-left: auto;
             }
         }
