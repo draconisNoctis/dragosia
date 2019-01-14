@@ -7,7 +7,7 @@ Es werden 20-seitige Würfel benötigt, je nach Charakterstufe zwischen 5 und 15
 ## Proben
 
 Bei einer Probe wird anhand der Eigenschaften, Fähigkeiten, Gaben und Talente,
-die darstellen, wie gut ein Charakter etwas allgemein kann,
+die darstellen wie gut ein Charakter etwas allgemein kann,
 geprüft wie gut er es gerade im speziellen Umsetzen kann.
 
 > ***Beispiel:***  
@@ -29,7 +29,7 @@ Die Standard `Probenschwelle` beträgt hierbei `11`, d.h. jeder Würfel, der ein
 Wenn die Anzahl der Erfolge größer oder gleich der `Probenschwierigkeit` ist, ist die Probe gelungen.
 
 Für manche Proben ist es dann noch erforderlich, die `Güte` der Probe festzustellen,
-die Güte ist die Anzahl Erfolge größer/gleich der Probenschwierigkeit, wobei die Güte bei einer mislungenen Probe auch negative ausfallen kann.
+die Güte ist die Anzahl Erfolge größer/gleich der Probenschwierigkeit, wobei die Güte bei einer misslungenen Probe auch negative ausfallen kann.
 
 > [Güte] = [Erfolge] - [Probenschwierigkeit] + 1
 
@@ -52,7 +52,7 @@ Teilweise können auch Proben von verschiedenen Charakteren addiert werden, fall
 > ***Beispiel:***  
 > *Vom Meister wurde festgelegt, dass insgesamt 10 Erfolge benötigt werden um eine 20 Schritt hohe Felswand zu erklimmen.
 > Jede Probe bedeutet hierbei eine Zeitspanne von 2 Minuten. Für jede Erfolgreiche Probe klettert der Charakter ein Stück nach oben,
-> bei einer mislungenen Probe kommt der Charakter an dieser Stelle nicht weiter nach oben und muss ein Stück absteigen.*
+> bei einer misslungenen Probe kommt der Charakter an dieser Stelle nicht weiter nach oben und muss ein Stück absteigen.*
 
 ### Vergleichende Probe
 
