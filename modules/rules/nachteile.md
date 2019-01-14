@@ -1,7 +1,5 @@
 # Nachteile
 
-# Vorteile
-
 | Type | Name | Vorraussetzungen | Bonus EP | Beschreibung | Info |
 |:----:|------|:-----------------|:--------:|--------------|------|
 |Allgemein|Angst vor||3|Der Charakter hat Angst vor etwas bestimmten|Muss spezialisiert werden|
