@@ -4,3 +4,4 @@
 - [**Proben**](./proben.md)
 - [**Characterstatus**](./charakterstatus.md)
 - [**Vorteile**](./vorteile.md)
+- [**Nachteile**](./nachteile.md)
