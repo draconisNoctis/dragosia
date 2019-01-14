@@ -70,6 +70,34 @@
                     margin: 1em 0;
                     padding: 8px 8px 8px 24px;
                 }
+
+                table {
+                    border-collapse: collapse;
+
+                    th {
+                        background: rgba(mat-color(map-get($dragosia-theme, primary)), .2);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        text-align: left;
+                        padding: 4px 8px;
+                        border: 1px solid mat-color(map-get($dragosia-theme, primary));
+
+                        &[align="center"] {
+                            text-align: center;
+                        }
+                        &[align="right"] {
+                            text-align: right;
+                        }
+                    }
+
+                    tr:hover {
+                        td {
+                            background: rgba(mat-color(map-get($dragosia-theme, primary), lighter), .2);
+                        }
+                    }
+                }
             }
 
             &:nth-child(2) {
