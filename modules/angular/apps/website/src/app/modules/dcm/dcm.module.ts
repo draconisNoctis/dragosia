@@ -23,6 +23,7 @@ import { PresetsModule } from '@jina-draicana/presets';
 import { SheetModule } from '@jina-draicana/sheet';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { ComponentsModule } from '../../components/components.module';
 import { SheetEffects } from './+state/sheet.effects';
 import { sheetReducer } from './+state/sheet.reducer';
 import { ConfirmDeleteDialogComponent } from './confirm-delete-dialog/confirm-delete-dialog.component';
@@ -64,7 +65,8 @@ import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
         MatTabsModule,
         MatTooltipModule,
         StoreModule.forFeature('sheet', sheetReducer),
-        EffectsModule.forFeature([ SheetEffects ])
+        EffectsModule.forFeature([ SheetEffects ]),
+        ComponentsModule
     ],
     providers      : [],
     entryComponents: [ WizardDialogComponent, ConfirmDeleteDialogComponent ],

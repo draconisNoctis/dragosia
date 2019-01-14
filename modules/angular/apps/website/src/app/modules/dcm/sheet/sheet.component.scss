@@ -1,11 +1,27 @@
 @import "../../../../theme";
 
 .cs-sheet {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-    .mat-drawer-container, .mat-drawer-content {
+    .mat-drawer-container {
         overflow: inherit;
-        min-height: 100vh;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        //min-height: 100vh;
+    }
+
+    .mat-drawer {
+        position: relative;
+    }
+
+    .mat-drawer-content {
+        flex-grow: 1;
+        margin-left: 0 !important;
+        height: auto;
     }
 
     .mat-sidenav {
@@ -24,12 +40,20 @@
         top: 0;
         z-index: 100;
 
-        > button {
+        > button:not(.mat-fab) {
             margin-right: 8px;
 
             &.mat-icon-button {
                 margin-left: auto;
             }
+        }
+
+        .mat-fab {
+            position: absolute;
+            right: 96px;
+            bottom: 0;
+            transform: translateY(50%);
+            z-index: 100;
         }
 
         @media print {
@@ -42,21 +66,15 @@
     }
 
 
-    .mat-fab {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        z-index: 100;
-
-        @media print {
-            display: none;
-        }
-    }
 
     .mat-tab-header {
         position: sticky;
         top: 64px;
         z-index: 100;
+    }
+
+    .sheet-wrapper {
+        padding: 24px;
     }
 
     .js-general, .js-advantages, .js-attributes, .js-skills, .js-gifts, .js-talents {
@@ -65,10 +83,9 @@
 
         button.mat-mini-fab {
             position: fixed;
-            left: 224px;
-            bottom: 24px;
+            right: 96px;
+            bottom: 80px;
             top: auto;
-            right: auto;
             transform: none;
         }
     }

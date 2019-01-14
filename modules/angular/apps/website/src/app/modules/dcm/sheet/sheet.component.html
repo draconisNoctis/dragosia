@@ -1,3 +1,5 @@
+<dw-website-header></dw-website-header>
+
 <mat-sidenav-container>
     <mat-sidenav [mode]="'side'" [opened]="sidenavOpen">
         <mat-nav-list>
@@ -14,10 +16,10 @@
         <mat-toolbar>
             <h1 *ngIf="char | async as _char">{{ _char.about.name }} ({{ _char.meta.exp.spend }}/{{ _char.meta.exp.total }})</h1>
             <button mat-icon-button [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
-        </mat-toolbar>
-        <div>
-            <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>person_add</mat-icon></button>
 
+            <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>person_add</mat-icon></button>
+        </mat-toolbar>
+        <div class="sheet-wrapper">
             <mat-tab-group *ngIf="char | async as _char">
                 <mat-tab i18n-label label="General">
                     <ng-template matTabContent>
@@ -59,6 +61,8 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<dw-website-footer></dw-website-footer>
 
 <mat-menu #mainMenu="matMenu">
     <button mat-menu-item (click)="openWizard()">
