@@ -70,7 +70,11 @@ export class PageComponent implements OnInit {
                     stack[stack.length - 2].children.push(entry);
                     stack[stack.length - 1] = entry;
                 } else {
-                    stack.pop();
+                    while(token.depth < stack.length) {
+                        stack.pop();
+                    }
+                    stack[stack.length - 1].children.push(entry);
+                    stack.push(entry);
                 }
             }
         }
