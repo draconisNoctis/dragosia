@@ -124,8 +124,7 @@ export class SearchComponent {
                 title,
                 keywords,
                 routerLink,
-                link: this.locationStrategy.getBaseHref().replace(/\/$/, '')
-                    + this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(routerLink).toString()),
+                link: location.origin + this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(routerLink).toString()),
                 text
             }
         }))
