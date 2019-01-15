@@ -5,7 +5,8 @@
 <div class="content">
     <mat-card>
         <mat-card-content>
-            <markdown [src]="markdownUrl | async" (load)="onMarkdownDocumentLoad($event)" (click)="onMarkdownDocumentClick($event)"></markdown>
+            <jui-markdown [src]="markdownUrl | async" (parsed)="onMarkdownDocumentParsed($event)"></jui-markdown>
+            <!--<jui-markdown juiMarkdown="> [Güte] = [Erfolge] - [Probenschwierigkeit] + 1"></jui-markdown>-->
         </mat-card-content>
     </mat-card>
     <mat-card *ngIf="index.length > 0 && index[0].children.length > 0">

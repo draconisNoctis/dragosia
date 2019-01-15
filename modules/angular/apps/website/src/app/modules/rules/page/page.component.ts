@@ -2,6 +2,7 @@ import { APP_BASE_HREF, DOCUMENT, LocationStrategy } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Token } from '@jina-draicana/jui';
 import { lexer, Slugger } from 'marked';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
@@ -51,26 +52,31 @@ export class PageComponent implements OnInit {
         ).subscribe();
     }
     
-    onMarkdownDocumentLoad(str : string) {
-        const tokens = lexer(str);
-        const slugger = new Slugger();
-        
+    onMarkdownDocumentParsed(tokens : Token[]) {
+        const headings = [ '', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
         this.index = [];
         const stack : IPageIndexEntry[] = [ { name: 'root', id: '', children: this.index }];
         for(const token of tokens) {
-            if(token.type === 'heading') {
-                const entry = { name: token.text, id: slugger.slug(token.text), children: [] };
+            if(token.type === 'h1' || token.type === 'h2' || token.type === 'h3' || token.type === 'h4' || token.type === 'h5' || token.type === 'h6') {
+                const level = headings.indexOf(token.type);
+                const text = token.children.reduce((t, c) => {
+                    if(c.type === 'text') {
+                        return t + c.text;
+                    }
+                    return t;
+                }, '');
+                const entry = { name: text, id: token.slug, children: [] };
                 
-                if(token.depth > stack.length - 1) {
+                if(level > stack.length - 1) {
                     if(stack.length) {
                         stack[stack.length - 1]!.children.push(entry);
                     }
                     stack.push(entry);
-                } else if(token.depth === stack.length - 1) {
+                } else if(level === stack.length - 1) {
                     stack[stack.length - 2].children.push(entry);
                     stack[stack.length - 1] = entry;
                 } else {
-                    while(token.depth < stack.length) {
+                    while(level < stack.length) {
                         stack.pop();
                     }
                     stack[stack.length - 1].children.push(entry);
