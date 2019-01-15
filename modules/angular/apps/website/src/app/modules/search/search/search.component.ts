@@ -39,7 +39,7 @@ export class SearchComponent {
         map(results => results && results.map(result => {
             const doc = DOCS[ result.ref ];
             const title = doc.split(/\n/)[ 0 ];
-            const routerLink = [ '/r', result.ref ];
+            const routerLink = [ '/rules', result.ref ];
             const ranges : [ number, number ][] = [];
 
             const keywords = Object.keys(result.matchData.metadata);

@@ -49,7 +49,7 @@ export class RulesLinkComponent extends LinkComponent {
     get href() {
         if(this.isInternal) {
             const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            const route = [ '/r', page ];
+            const route = [ '/rules', page ];
             return this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route).toString());
         }
     }
@@ -68,7 +68,7 @@ export class RulesLinkComponent extends LinkComponent {
     onClick($event : MouseEvent) {
         if(this.isInternal) {
             const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            this.router.navigate([ '/r', page ]);
+            this.router.navigate([ '/rules', page ]);
             $event.preventDefault();
         }
     }
@@ -187,9 +187,9 @@ export class RulesTableHeaderComponent extends TableHeaderComponent {
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forChild([
-            { path: ':page', component: PageComponent },
-            { path: '', component: PageComponent },
-            { path: '*', redirectTo: '/' }
+            { path: ':type/:page', component: PageComponent },
+            { path: ':type', component: PageComponent },
+            // { path: '*', redirectTo: '/' }
         ]),
         MatToolbarModule,
         MatIconModule,
@@ -209,5 +209,5 @@ export class RulesTableHeaderComponent extends TableHeaderComponent {
     entryComponents: [ RulesLinkComponent, RulesTableComponent, RulesTableHeaderComponent ],
     providers      : []
 })
-export class RulesModule {
+export class MdpModule {
 }

@@ -172,6 +172,11 @@
                 "glob": "**/*.md",
                 "input": "../rules",
                 "output": "./assets/rules"
+              },
+              {
+                "glob": "**/*.md",
+                "input": "../abenteuer",
+                "output": "./assets/abenteuer"
               }
             ],
             "styles": [

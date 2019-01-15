@@ -30,8 +30,8 @@ export class PageComponent implements OnInit {
     );
     
     markdownUrl : Observable<string> = this.route.paramMap.pipe(
-        map(m => m.get('page') || 'readme'),
-        map(page => `${this.locationStrategy.getBaseHref().replace(/\/$/, '')}/assets/rules/${page}.md`)
+        map(m => m.get('type') + '/' + (m.get('page') || 'readme')),
+        map(page => `${this.locationStrategy.getBaseHref().replace(/\/$/, '')}/assets/${page}.md`)
     );
     
     index : IPageIndexEntry[] = [];
