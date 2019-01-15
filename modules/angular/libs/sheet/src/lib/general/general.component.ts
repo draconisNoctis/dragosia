@@ -10,7 +10,7 @@ import { AbstractComponent } from '../abstract.component';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        'class': 'js-general'
+        'class': 'js-general mat-typography'
     },
     providers      : [ {
         provide    : NG_VALUE_ACCESSOR,
