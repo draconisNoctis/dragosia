@@ -67,7 +67,8 @@ export class RulesLinkComponent extends LinkComponent {
     @HostListener('click', [ '$event' ])
     onClick($event : MouseEvent) {
         if(this.isInternal) {
-            this.router.navigateByUrl(this.href);
+            const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
+            this.router.navigate([ '/r', page ]);
             $event.preventDefault();
         }
     }
