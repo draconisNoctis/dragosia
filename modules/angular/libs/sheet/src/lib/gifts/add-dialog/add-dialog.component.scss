@@ -2,7 +2,7 @@
     position: relative;
     display: block;
 
-    .mat-icon-button {
+    > .mat-icon-button {
         position: absolute;
         top: 0;
         right: 0;
@@ -18,6 +18,19 @@
             background: none;
             width: 100%;
             height: 100%;
+        }
+    }
+
+    .custom-wrapper {
+        display: flex;
+        flex-direction: row;
+
+        .mat-form-field {
+            flex-grow: 1
+        }
+
+        button {
+            margin-left: 8px;
         }
     }
 }

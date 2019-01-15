@@ -2,6 +2,12 @@
 <button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
 
 <div matDialogContent>
+    <form class="custom-wrapper">
+        <mat-form-field>
+            <input matInput [formControl]="customGiftControl" i18n-placeholder placeholder="Custom" />
+        </mat-form-field>
+        <button mat-icon-button [disabled]="customGiftControl.invalid" [matDialogClose]="{ name: customGiftControl.value }"><mat-icon>add</mat-icon></button>
+    </form>
     <mat-selection-list>
         <mat-list-item *ngFor="let gift of gifts"><button [matDialogClose]="gift">{{ gift.name }}</button></mat-list-item>
     </mat-selection-list>
