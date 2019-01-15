@@ -129,6 +129,6 @@
   <translation id="9072927010120079382">Keine Suchergebnisse für &quot;<ph name="INTERPOLATION"><ex>{{ query | async }}</ex>{{ query | async }}</ph>&quot;.</translation>
   <translation id="8688982360057766039">Begriff eingeben um die Suche zu starten...</translation>
   <translation id="4452427314943113135">Zurück</translation>
-  <translation id="8679962642627293685"/>
+  <translation id="8679962642627293685">Vor- &amp; Nachteile</translation>
   <translation id="7357940174291348023">Charaktere ein-/ausblenden</translation>
 </translationbundle>
