@@ -9,11 +9,33 @@
         <mat-option value="physical" i18n>Physical</mat-option>
         <mat-option value="mental" i18n>Mental</mat-option>
         <mat-option value="gifts" i18n>Gifts</mat-option>
+        <mat-option value="custom" i18n>Custom</mat-option>
     </mat-select>
 </mat-form-field>
 
 <div matDialogContent>
-    <mat-selection-list>
+    <mat-selection-list *ngIf="filter.value !== 'custom'">
         <mat-list-item *ngFor="let talent of filteredTalents | async"><button [matDialogClose]="talent">{{ talent.name }} ({{talent.attribute}} - {{talent.skill}})</button></mat-list-item>
     </mat-selection-list>
+    <form [formGroup]="customTalentControl" *ngIf="filter.value === 'custom'">
+        <mat-form-field>
+            <input matInput formControlName="name" i18n-placeholder placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select formControlName="category" i18n-placeholder placeholder="Category">
+                <mat-option value="melee" i18n>Melee</mat-option>
+                <mat-option value="range" i18n>Range</mat-option>
+                <mat-option value="physical" i18n>Physical</mat-option>
+                <mat-option value="mental" i18n>Mental</mat-option>
+                <mat-option value="gifts" i18n>Gifts</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+        </mat-form-field>
+        <button mat-icon-button [disabled]="customTalentControl.invalid" [matDialogClose]="customTalentControl.value"><mat-icon>add</mat-icon></button>
+    </form>
 </div>

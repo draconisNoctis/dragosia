@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { IPartialTalent } from '@jina-draicana/presets';
 import { map, startWith } from 'rxjs/operators';
@@ -11,13 +11,20 @@ import { map, startWith } from 'rxjs/operators';
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host           : {
-        'class': 'js-add-dialog'
+        'class': 'js-add-dialog mat-typography'
     }
 })
 export class AddDialogComponent implements OnInit {
     talents : IPartialTalent[];
     
     filter = new FormControl(null);
+    
+    customTalentControl = new FormGroup({
+        name: new FormControl(null, Validators.required),
+        category: new FormControl(null, Validators.required),
+        attribute: new FormControl(null, Validators.required),
+        skill: new FormControl(null, Validators.required)
+    });
     
     filteredTalents = this.filter.valueChanges.pipe(
         startWith(''),
@@ -31,5 +38,15 @@ export class AddDialogComponent implements OnInit {
     }
     
     ngOnInit() {
+        const map = {
+            melee: 'N',
+            range: 'F',
+            physical: 'K',
+            mental: 'G',
+            gifts: ''
+        };
+        this.customTalentControl.get('category')!.valueChanges.subscribe(value => {
+            this.customTalentControl.get('skill')!.setValue(map[value], { emitEvent: false });
+        })
     }
 }

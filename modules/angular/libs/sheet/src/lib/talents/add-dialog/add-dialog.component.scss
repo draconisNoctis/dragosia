@@ -2,11 +2,15 @@
     position: relative;
     display: block;
 
-    .mat-icon-button {
+    > .mat-icon-button {
         position: absolute;
         top: 0;
         right: 0;
         transform: translate(50%, -50%);
+    }
+
+    .mat-form-field {
+        width: 100%;
     }
 
     .mat-selection-list {
@@ -18,6 +22,19 @@
             background: none;
             width: 100%;
             height: 100%;
+        }
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr min-content;
+        grid-auto-rows: auto;
+        grid-gap: 0 8px;
+
+        .mat-form-field {
+            &:nth-child(1), &:nth-child(2) {
+                grid-column-end: span 3;
+            }
         }
     }
 }
