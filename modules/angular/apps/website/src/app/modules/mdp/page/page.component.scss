@@ -133,7 +133,7 @@
                 position: sticky;
                 top: 88px;
                 margin-left: 8px;
-                width: 250px;
+                min-width: 200px;
                 box-sizing: border-box;
 
                 @media screen and (max-width: 800px) {
