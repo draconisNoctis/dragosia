@@ -51,6 +51,8 @@ export class RulesLinkComponent extends LinkComponent {
             const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
             const route = [ '/rules', page ];
             return this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route).toString());
+        } else {
+            return this.token.href;
         }
     }
     
@@ -62,6 +64,7 @@ export class RulesLinkComponent extends LinkComponent {
                 protected readonly locationStrategy : LocationStrategy,
                 protected readonly router : Router) {
         super(token, injector, config);
+        console.log(token, this.isInternal);
     }
     
     @HostListener('click', [ '$event' ])

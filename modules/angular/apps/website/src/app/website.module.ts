@@ -73,6 +73,7 @@ export function translationsFactory(locale : string) {
         RouterModule.forRoot([
             { path: 'dcm', loadChildren: './modules/dcm/dcm.module#DcmModule' },
             { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
+            { path: 'utils', loadChildren: './modules/utils/utils.module#UtilsModule' },
             { path: '', component: HomeComponent },
             { path: '', loadChildren: './modules/mdp/mdp.module#MdpModule' },
             { path: '**', redirectTo: '/' }

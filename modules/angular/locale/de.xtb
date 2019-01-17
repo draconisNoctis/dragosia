@@ -131,4 +131,13 @@
   <translation id="4452427314943113135">Zurück</translation>
   <translation id="8679962642627293685">Vor- &amp; Nachteile</translation>
   <translation id="7357940174291348023">Charaktere ein-/ausblenden</translation>
+  <translation id="3686315288514138686">Wahrscheinlichkeiten</translation>
+  <translation id="5963653123239768443">Schwelle</translation>
+  <translation id="6227029411187131996">(<ph name="INTERPOLATION"><ex>{{ row.successes }}</ex>{{ row.successes }}</ph> Erfolge)</translation>
+  <translation id="2713553834825601516">Würfel</translation>
+  <translation id="78e563acaffc3be704c8a4edfe7cb5952d0a3049">Einfach</translation>
+  <translation id="077e90416bdae39a40441d0b94c5a9e8fcad4514">Normal</translation>
+  <translation id="4304211a1b4689b42421cec0cbf069b97b44a6ab">Schwer</translation>
+  <translation id="403e473cade7aeca983c1df1dea1be27a4d509b9">Sehr schwer</translation>
+  <translation id="5c0bdef2838f1a32571c71b91b0ef6a950757477">Unmöglich</translation>
 </translationbundle>

@@ -136,5 +136,14 @@
   <msg id="2807800733729323332"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:7</source>Yes</msg>
   <msg id="9072927010120079382"><source>src/app/modules/search/search/search.component.html:15</source>No results for query &quot;<ph name="INTERPOLATION"><ex>{{ query | async }}</ex>{{ query | async }}</ph>&quot;.</msg>
   <msg id="8688982360057766039"><source>src/app/modules/search/search/search.component.html:20</source>Enter query to start a search...</msg>
+  <msg id="3686315288514138686"><source>src/app/modules/utils/probability/probability.component.html:6</source>Probabilities</msg>
+  <msg id="5963653123239768443"><source>src/app/modules/utils/probability/probability.component.html:13</source>Threshold</msg>
+  <msg id="6227029411187131996"><source>src/app/modules/utils/probability/probability.component.html:25</source>(<ph name="INTERPOLATION"><ex>{{ row.successes }}</ex>{{ row.successes }}</ph> Successes)</msg>
+  <msg id="2713553834825601516"><source>src/app/modules/utils/probability/probability.component.html:31</source>Dices</msg>
   <msg id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f"><source>apps/website/src/app/modules/dcm/+state/sheet.effects.ts:1</source>An Error occured while deleting character &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot;</msg>
+  <msg id="78e563acaffc3be704c8a4edfe7cb5952d0a3049"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Easy</msg>
+  <msg id="077e90416bdae39a40441d0b94c5a9e8fcad4514"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Normal</msg>
+  <msg id="4304211a1b4689b42421cec0cbf069b97b44a6ab"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Difficult</msg>
+  <msg id="403e473cade7aeca983c1df1dea1be27a4d509b9"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Very Difficult</msg>
+  <msg id="5c0bdef2838f1a32571c71b91b0ef6a950757477"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Impossible</msg>
 </messagebundle>

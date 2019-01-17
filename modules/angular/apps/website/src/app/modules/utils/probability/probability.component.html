@@ -1,0 +1,53 @@
+<dw-website-header></dw-website-header>
+
+<div class="content">
+    <mat-card>
+        <mat-card-header>
+            <h1 mat-title i18n>Probabilities</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="table">
+                <ng-container matColumnDef="label">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <mat-form-field>
+                            <mat-select [formControl]="threshold" i18n-placeholder placeholder="Threshold">
+                                <mat-option [value]="8">- 3</mat-option>
+                                <mat-option [value]="9">- 2</mat-option>
+                                <mat-option [value]="10">- 1</mat-option>
+                                <mat-option [value]="11">+/- 0</mat-option>
+                                <mat-option [value]="12">+ 1</mat-option>
+                                <mat-option [value]="13">+ 2</mat-option>
+                                <mat-option [value]="14">+ 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </th>
+                    <th mat-header-cell *matCellDef="let row">{{ row.label }}<br/>
+                        <small i18n>({{ row.successes }} Successes)</small>
+                    </th>
+                </ng-container>
+                <ng-container *ngFor="let dices of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; let index = index">
+                    <ng-container [matColumnDef]="'dices:' + dices">
+                        <th mat-header-cell *matHeaderCellDef>{{ dices }}<br/>
+                            <small i18n>Dices</small>
+                        </th>
+                        <td mat-cell *matCellDef="let row"
+                            [class.very-bad]="row.percentage[index] > 0 && row.percentage[index] < 25"
+                            [class.bad]="row.percentage[index] >= 25 && row.percentage[index] < 50"
+                            [class.fair]="row.percentage[index] >= 50 && row.percentage[index] < 60"
+                            [class.good]="row.percentage[index] >= 60 && row.percentage[index] < 80"
+                            [class.very-good]="row.percentage[index] >= 80">
+                            <ng-container *ngIf="row.percentage[index] > 0">{{ row.percentage[index] | number:'1.0-1' }}
+                                %
+                            </ng-container>
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<dw-website-footer></dw-website-footer>

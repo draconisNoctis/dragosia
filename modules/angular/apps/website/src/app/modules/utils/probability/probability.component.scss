@@ -1,0 +1,88 @@
+@import "../../../../theme";
+
+.dw-probabilty {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('/assets/images/background.jpg');
+        background-size: cover;
+        z-index: 0;
+        opacity: .05;
+        filter: blur(2px) grayscale(100%);
+    }
+
+    > * {
+        z-index: 1;
+    }
+
+    table {
+        width: 100%;
+
+        .mat-form-field {
+            width: 100%;
+        }
+
+        .mat-form-field-infix {
+            width: 100%;
+        }
+
+        thead {
+            th.mat-header-cell {
+                text-align: center;
+
+                &:last-of-type {
+                    padding-right: 0;
+                }
+            }
+        }
+
+        tbody {
+            td.mat-cell {
+                text-align: right;
+                padding: 16px 8px;
+
+                &.very-bad {
+                    background: rgba(red, .3);
+                }
+                &.bad {
+                    background: rgba(orange, .3);
+                }
+                &.fair {
+                    background: rgba(yellow, .3);
+                }
+                &.good {
+                    background: rgba(lightgreen, .3);
+                }
+                &.very-good {
+                    background: rgba(green, .3);
+                }
+            }
+        }
+    }
+
+    .content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 1024px;
+        padding: 24px 8px;
+        box-sizing: border-box;
+        margin: 0 auto;
+
+        h1 {
+            font-family: 'Jim Nightshade';
+            font-size: 30px;
+        }
+    }
+}
