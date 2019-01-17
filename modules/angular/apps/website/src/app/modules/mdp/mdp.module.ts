@@ -64,7 +64,6 @@ export class RulesLinkComponent extends LinkComponent {
                 protected readonly locationStrategy : LocationStrategy,
                 protected readonly router : Router) {
         super(token, injector, config);
-        console.log(token, this.isInternal);
     }
     
     @HostListener('click', [ '$event' ])
