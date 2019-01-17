@@ -7,3 +7,6 @@
 - [**Schicksalspunkte**](./schicksalspunkte.md)
 - [**Vorteile**](./vorteile.md)
 - [**Nachteile**](./nachteile.md)
+
+
+- [**Wahrscheinlichkeitstabelle**](https://draconisnoctis.github.io/dragosia/utils/wahrscheinlichkeiten)
