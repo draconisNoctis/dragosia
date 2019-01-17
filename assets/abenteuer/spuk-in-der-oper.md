@@ -17,11 +17,14 @@ Nun muss die Gruppe erstmal einen Ausweg aus dem dunklen Kellerlabyrinth finden.
 
 Immer mal wieder sieht die Gruppe im Augenwinkel eine Erscheinung aber nichts genaues. `Sinnesschärfe-Probe`
 
-Als die Gruppe gerade die Treppe hinauf steigt, erscheint der `Geist von Severia` hinter ihnen und Jagt sie aus dem Keller `Mut-Probe`.
+Als die Gruppe gerade die Treppe hinauf steigt, erscheint der `Geist von Perdita` hinter ihnen und Jagt sie aus dem Keller `Mut-Probe`.
 
-Falls die Gruppe nun versucht das Gebäude zu verlassen, werden sie von verschiedenen Geistern daran gehindert
+Falls die Gruppe nun versucht das Gebäude zu verlassen oder wieder in den Keller zu gelangen werden sie vom 
+`Geist von Perdita` davon abgehalten.
+
+~~Falls die Gruppe nun versucht das Gebäude zu verlassen, werden sie von verschiedenen Geistern daran gehindert
  (`Geist von Kassandra`, `Geist von Pietro`, `Geist des Musikdirektors`). 
-An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Severia` gehindert.
+An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Perdita` gehindert.~~
 
 ## Proben
 
@@ -33,21 +36,40 @@ An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Sever
 0 Erfolge   Der Charakter fällt in Ohnmacht
 ```
 
+## Beschreibung der Geister
+
+### Perdita van Tees
+
+Korpulente dunkelhaarige Frau in ihren Mittleren Jahren. Hinter ihrer vollbusigen Brust verbirgt sich ein imenses Organ,
+welches die auch als Geist nicht verloren hat. Gekleidet ist sie in ein elegantes dunkles Abendkleid.
+
+### Der Musikdirektor (Name tbd)
+
+Ein grauhaariger älterer Herr in Zylinder und Abendgarderobe. Trägt einen Schnauzer und lange Kotletten.
+
+### Kassandra
+
+Eine recht junge und zierliche, jedoch relativ große blonde Frau. Gekleidet in ein weißes Sommerkleid.
+
+### Pietro
+
+Schwarzhaariger Mann mit markanten Gesichtszügen, gekleidet in ein lockeres weißes Hemd und dunkle Plunderhose.
+
 ## Anhänge
 
 ### Zeitungsartikel
 
 > **Oper wird geschlossen**  
 > *Nach dem verschwinden der Primadonna und dem Tod von 2 Sängern und dem Musikdirektors muss die Oper ihre Pforten schließen*  
-> Es war ein herber Rückschlag für die Oper als die Primadonna Severia spurlos verschwunden ist. Danach wurde immer wieder
+> Es war ein herber Rückschlag für die Oper als die Primadonna Perdita spurlos verschwunden ist. Danach wurde immer wieder
 > über finanziele Probleme der Oper spekuliert. Nach Angaben von Opernmitarbeitern soll es danach immer wieder zu teils
 > schweren Unfällen gekommen sein. Als dann innerhalb kurzer Zeit zwei Sänger als auch der Musikdirekter verstorben sind,
 > war das Schicksal der Oper wohl nicht mehr aufzuhalten.
 
 ### Tagebucheinträge
 
-> **Im Büro des Managers**  
-> Nach dem Verschwinden unserer Primadonna `Severia` werden die Besucherzahlen immer geringer.
+> **Im Büro des Opernvorstehers**  
+> Nach dem Verschwinden unserer Primadonna `Perdita van Tees` werden die Besucherzahlen immer geringer.
 > Ich weiß nicht, wie lange wir das finanziel noch durchhalten können. `Kassandra` ist einfach kein gleichwertiger Ersatz...
 
 > **In der Garderobe der Primadonna**  
@@ -55,7 +77,7 @@ An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Sever
 
 > **Hinter den Kulissen**
 > `Kassandra` drängt mich immer mehr, ihr die Gelegenheit zu geben, bei einer Vorstellung die Primadonna zu sein.
-> Sie hat aber einfach nicht die Klasse von `Severia` und diese vermutlich auch nie erreichen, sie währe ein schlechter Ersatz.
+> Sie hat aber einfach nicht die Klasse von `Perdita` und diese vermutlich auch nie erreichen, sie währe ein schlechter Ersatz.
 
 > **tbd**  
 > `Pietro` versucht mich mittlerweile auch davon zu Überzeugen, dass `Kassandra` die Rolle der Primadonna verdient habe.
@@ -74,4 +96,8 @@ An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Sever
 
 > **tbd**  
 > Ich glaube, ich verliere langsam den Verstand. Ich hätte heute schwören können, ich hätte im Keller aus den Augenwinkeln
-> `Severia` gesehen, doch als ich genauer hinsah, war dort niemand.
+> `Perdita` gesehen, doch als ich genauer hinsah, war dort niemand.
+
+> **tbd**
+> Ich hätte schwören können, dass mich vorhin jemand die Treppe herrunter stoßen wollte. Doch nachdem ich mich gefangen
+> und umgedreht hatte, war dort niemand...
