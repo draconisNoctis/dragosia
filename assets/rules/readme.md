@@ -4,6 +4,7 @@
 - [**Proben**](./proben.md)
 - [**Charakterstatus**](./charakterstatus.md)
 - [**Kampf**](./kampf.md)
+- [**Rüstung**](./rüstung.md)
 - [**Schicksalspunkte**](./schicksalspunkte.md)
 - [**Sonstige Regeln**](./sonstige-regeln.md)
 
