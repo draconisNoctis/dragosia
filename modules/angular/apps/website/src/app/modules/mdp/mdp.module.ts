@@ -33,7 +33,7 @@ import { IMarkdownConfig, MARKDOWN_CONFIG, MARKDOWN_TOKEN } from '../../../../..
 import { ComponentsModule } from '../../components/components.module';
 import { PageComponent } from './page/page.component';
 
-const RULE_PAGE_REGEXP = /^\.\/([\w\/äöüÄÖÜß]+)\.md/i;
+const RULE_PAGE_REGEXP = /^\.\/([\w\/äöüÄÖÜß-]+)\.md/i;
 
 @Component({
     selector: 'a[__rules_markdown__]',
