@@ -169,14 +169,9 @@
               "apps/website/src/favicon.ico",
               "apps/website/src/assets",
               {
-                "glob": "**/*.md",
-                "input": "../rules",
-                "output": "./assets/rules"
-              },
-              {
-                "glob": "**/*.md",
-                "input": "../abenteuer",
-                "output": "./assets/abenteuer"
+                "glob": "{rules,hintergrund,abenteuer}/**/*.md",
+                "input": "../",
+                "output": "./assets"
               }
             ],
             "styles": [

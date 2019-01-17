@@ -26,7 +26,8 @@
   <msg id="3163044740176820503"><source>src/app/components/website-header/website-header.component.html:12</source>Get started</msg>
   <msg id="473706958781869860"><source>src/app/components/website-footer/website-footer.component.html:3</source>Dragosia @ Github</msg>
   <msg id="4645345687322304891"><source>src/app/pages/home/home.component.html:6</source>Rules</msg>
-  <msg id="7092329814522771127"><source>src/app/pages/home/home.component.html:7</source>Character Manager</msg>
+  <msg id="4531310590867542081"><source>src/app/pages/home/home.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:14</source>Background</msg>
+  <msg id="7092329814522771127"><source>src/app/pages/home/home.component.html:8</source>Character Manager</msg>
   <msg id="8235775649619498299"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:3</source><source>src/app/modules/dcm/sheet/sheet.component.html:57</source>Character Sheet</msg>
   <msg id="8953033926734869941"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:246</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:266</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:22</source><source>../../libs/sheet/src/lib/general/general.component.html:4</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:25</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:72</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:3</source>Name</msg>
   <msg id="1679869148678530261"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:11</source><source>../../libs/sheet/src/lib/general/general.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:8</source>Race</msg>
@@ -105,7 +106,6 @@
   <msg id="6692225324618907"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:53</source>Add Disadvantage</msg>
   <msg id="4930506384627295710"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:3</source>Settings</msg>
   <msg id="3885497195825665706"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:8</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:20</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:32</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:47</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:65</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:80</source>Next</msg>
-  <msg id="4531310590867542081"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:14</source>Background</msg>
   <msg id="4452427314943113135"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:19</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:31</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:43</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:61</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:76</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:91</source>Previous</msg>
   <msg id="2257050785343808305"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:26</source>Selections</msg>
   <msg id="3567096528905232171"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:45</source>Available: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></msg>
@@ -119,12 +119,14 @@
   <msg id="7505371262892780592"><source>src/app/modules/dcm/sheet/sheet.component.html:22</source><source>src/app/modules/dcm/sheet/sheet.component.html:72</source>New Character</msg>
   <msg id="6439365426343089851"><source>src/app/modules/dcm/sheet/sheet.component.html:26</source>General</msg>
   <msg id="5402042915276684474"><source>src/app/modules/dcm/sheet/sheet.component.html:32</source>Advantages/Disadvantages</msg>
-  <msg id="4319441956121197474"><source>src/app/modules/dcm/sheet/sheet.component.html:77</source>Save Changes</msg>
-  <msg id="3924199801748884105"><source>src/app/modules/dcm/sheet/sheet.component.html:81</source>Discard Changes</msg>
-  <msg id="3361286106724929890"><source>src/app/modules/dcm/sheet/sheet.component.html:85</source><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
-  <msg id="7103588127254721505"><source>src/app/modules/dcm/sheet/sheet.component.html:90</source>Theme</msg>
-  <msg id="8257364975276272655"><source>src/app/modules/dcm/sheet/sheet.component.html:94</source>Presentation Mode</msg>
-  <msg id="7049887240439736400"><source>src/app/modules/dcm/sheet/sheet.component.html:98</source>Print</msg>
+  <msg id="6948665149717579872"><source>src/app/modules/dcm/sheet/sheet.component.html:76</source>Import Character</msg>
+  <msg id="4319441956121197474"><source>src/app/modules/dcm/sheet/sheet.component.html:82</source>Save Changes</msg>
+  <msg id="3924199801748884105"><source>src/app/modules/dcm/sheet/sheet.component.html:86</source>Discard Changes</msg>
+  <msg id="3361286106724929890"><source>src/app/modules/dcm/sheet/sheet.component.html:90</source><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
+  <msg id="5411931426354196722"><source>src/app/modules/dcm/sheet/sheet.component.html:94</source>Export Character</msg>
+  <msg id="7103588127254721505"><source>src/app/modules/dcm/sheet/sheet.component.html:99</source>Theme</msg>
+  <msg id="8257364975276272655"><source>src/app/modules/dcm/sheet/sheet.component.html:103</source>Presentation Mode</msg>
+  <msg id="7049887240439736400"><source>src/app/modules/dcm/sheet/sheet.component.html:107</source>Print</msg>
   <msg id="6333857424161463201"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>

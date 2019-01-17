@@ -33,7 +33,7 @@ import { IMarkdownConfig, MARKDOWN_CONFIG, MARKDOWN_TOKEN } from '../../../../..
 import { ComponentsModule } from '../../components/components.module';
 import { PageComponent } from './page/page.component';
 
-const RULE_PAGE_REGEXP = /^\.\/([\w\/äöüÄÖÜß-]+)\.md/i;
+const RULE_PAGE_REGEXP = /^\.\/(?:([\w\/äöüÄÖÜß-]+)\/)?([\w\/äöüÄÖÜß-]+)\.md/i;
 
 @Component({
     selector: 'a[__rules_markdown__]',
@@ -48,8 +48,8 @@ export class RulesLinkComponent extends LinkComponent {
     @HostBinding('attr.href')
     get href() {
         if(this.isInternal) {
-            const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            const route = [ '/rules', page ];
+            const [ _, dir, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
+            const route = dir ? [ this.router.routerState.snapshot.url, dir, page ] : [ this.router.routerState.snapshot.url, page ];
             return this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route).toString());
         } else {
             return this.token.href;
@@ -69,9 +69,10 @@ export class RulesLinkComponent extends LinkComponent {
     @HostListener('click', [ '$event' ])
     onClick($event : MouseEvent) {
         if(this.isInternal) {
-            const [ _, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            this.router.navigate([ '/rules', page ]);
             $event.preventDefault();
+            const [ _, dir, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
+            const route = dir ? [ this.router.routerState.snapshot.url, dir, page ] : [ this.router.routerState.snapshot.url, page ];
+            this.router.navigate(route);
         }
     }
 }
@@ -189,6 +190,7 @@ export class RulesTableHeaderComponent extends TableHeaderComponent {
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forChild([
+            { path: ':type/:dir/:page', component: PageComponent },
             { path: ':type/:page', component: PageComponent },
             { path: ':type', component: PageComponent },
             // { path: '*', redirectTo: '/' }
