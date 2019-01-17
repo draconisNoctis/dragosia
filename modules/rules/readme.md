@@ -5,6 +5,9 @@
 - [**Charakterstatus**](./charakterstatus.md)
 - [**Kampf**](./kampf.md)
 - [**Schicksalspunkte**](./schicksalspunkte.md)
+- [**Sonstige Regeln**](./sonstige-regeln.md)
+
+
 - [**Vorteile**](./vorteile.md)
 - [**Nachteile**](./nachteile.md)
 
