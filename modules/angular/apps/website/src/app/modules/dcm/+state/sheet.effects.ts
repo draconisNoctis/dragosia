@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { I18n } from '@ngx-translate/i18n-polyfill';
-import { defer, fromEvent, Subject } from 'rxjs';
-import { filter, map, mapTo, mergeMap, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { defer, fromEvent, fromEventPattern, Subject } from 'rxjs';
+import { filter, flatMap, map, mapTo, mergeMap, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import {
     DeleteAction,
-    DoDeleteAction,
-    FetchOneAction,
+    DoDeleteAction, ExportAction,
+    FetchOneAction, ImportAction,
     RestoreAllAction,
     SheetActionTypes,
     StoreAction
@@ -128,6 +128,42 @@ export class SheetEffects {
                     })
                 )
             })
+        )
+    }
+    
+    @Effect({ dispatch: false })
+    export() {
+        return this.actions$.pipe(
+            ofType<ExportAction>(SheetActionTypes.Export),
+            tap(action => {
+                const jsonStr = JSON.stringify(action.payload.character);
+                const blob = new Blob([ jsonStr ], { type: 'application/octet-binary' });
+    
+                const url = URL.createObjectURL(blob);
+    
+                const a = document.createElement('a');
+                a.href = url;
+                a.target = '_blank';
+                a.download = `${action.payload.character.about.name}.json`;
+                a.click();
+            })
+        )
+    }
+    
+    @Effect()
+    import() {
+        return this.actions$.pipe(
+            ofType<ImportAction>(SheetActionTypes.Import),
+            flatMap(action => {
+                const reader = new FileReader();
+    
+                reader.readAsText(action.payload.data);
+                
+                return fromEvent(reader, 'load').pipe(
+                    map(() => JSON.parse(reader.result as string))
+                );
+            }),
+            map(char => new StoreAction(char))
         )
     }
 }

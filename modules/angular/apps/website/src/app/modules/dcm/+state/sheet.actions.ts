@@ -10,6 +10,9 @@ export enum SheetActionTypes {
     
     Delete = '[Sheet] Delete',
     DoDelete = '[Sheet] Do Delete',
+    
+    Export = '[Sheet] Export',
+    Import = '[Sheet] Import'
 }
 
 export class SetThemeAction implements Action {
@@ -72,6 +75,24 @@ export class DoDeleteAction implements Action {
     
     constructor(character : ICharacter) {
         this.payload = { character };
+    }
+}
+
+export class ExportAction implements Action {
+    readonly type = SheetActionTypes.Export;
+    readonly payload : { character: ICharacter };
+    
+    constructor(character : ICharacter) {
+        this.payload = { character };
+    }
+}
+
+export class ImportAction implements Action {
+    readonly type = SheetActionTypes.Import;
+    readonly payload : { data: Blob };
+    
+    constructor(data : Blob) {
+        this.payload = { data };
     }
 }
 

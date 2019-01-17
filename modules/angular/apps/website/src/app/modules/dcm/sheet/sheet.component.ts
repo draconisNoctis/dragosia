@@ -14,7 +14,14 @@ import { ICharacter } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, merge } from 'rxjs';
 import { filter, first, map, pairwise, scan, shareReplay, startWith, tap, withLatestFrom } from 'rxjs/operators';
-import { DeleteAction, FetchOneAction, SetThemeAction, StoreAction, UpdateAction } from '../+state/sheet.actions';
+import {
+    DeleteAction,
+    ExportAction,
+    FetchOneAction, ImportAction,
+    SetThemeAction,
+    StoreAction,
+    UpdateAction
+} from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
@@ -166,6 +173,23 @@ export class SheetComponent implements OnInit {
             this.store.dispatch(new StoreAction(result));
             this.router.navigate([ '/dcm', result._id ])
         }
+    }
+    
+    export() {
+        this.char.pipe(
+            first(),
+            map(char => new ExportAction(char))
+        ).subscribe(this.store);
+    }
+    
+    import(event : Event) {
+        const target = event.target as HTMLInputElement;
+        
+        this.store.dispatch(new ImportAction(target.files[0]));
+        
+        target.type = 'text';
+        target.value = '';
+        target.type = 'file';
     }
 }
 

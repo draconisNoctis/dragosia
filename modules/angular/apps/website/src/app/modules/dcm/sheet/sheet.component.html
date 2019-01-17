@@ -66,11 +66,16 @@
 
 <dw-website-footer></dw-website-footer>
 
-<mat-menu #mainMenu="matMenu">
+<mat-menu #mainMenu="matMenu" class="sheet-menu">
     <button mat-menu-item (click)="openWizard()">
         <mat-icon>person_add</mat-icon>
         <span i18n>New Character</span>
     </button>
+    <label mat-menu-item for="import-char">
+        <mat-icon>cloud_upload</mat-icon>
+        <span i18n>Import Character</span>
+        <input type="file" id="import-char" (change)="import($event)" />
+    </label>
     <mat-divider></mat-divider>
     <button mat-menu-item (click)="doStore()" [disabled]="!(char | async)?._changed">
         <mat-icon>save</mat-icon>
@@ -83,6 +88,10 @@
     <button mat-menu-item (click)="doDelete()" [disabled]="!(char | async)">
         <mat-icon color="warn">delete_forever</mat-icon>
         <span i18n>Delete Character</span>
+    </button>
+    <button mat-menu-item (click)="export()" [disabled]="!(char | async)">
+        <mat-icon>cloud_download</mat-icon>
+        <span i18n>Export Character</span>
     </button>
     <mat-divider></mat-divider>
     <button mat-menu-item [matMenuTriggerFor]="themeMenu">

@@ -48,7 +48,6 @@
     }
 
 
-
     .mat-tab-header {
         position: sticky;
         top: 64px;
@@ -78,5 +77,11 @@
                 right: 8px;
             }
         }
+    }
+}
+
+.sheet-menu {
+    input[type="file"] {
+        display: none;
     }
 }
