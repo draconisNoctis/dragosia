@@ -11,7 +11,7 @@ incompatible:
 type: physical
 name: Eisern I
 value: 5
-description: Erlaubt dem Kämpfer die ersten 1 Wunden zu komplett ignorieren. Die 2. Wunde bedeutet dann auch nur einen Abzug von einem Würfel. 5 Wunden bedeuten trotzdem den Tod.
+description: Erlaubt dem Kämpfer die erste 1 Wunden komplett zu ignorieren. Die 2. Wunde bedeutet dann auch nur einen Abzug von einem Würfel. 5 Wunden bedeuten trotzdem den Tod.
 requirements:
   attributes:
       constitution: 2
