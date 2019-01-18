@@ -537,7 +537,7 @@ export class Presets {
             case 'courage': return this.i18n('Courage');
             case 'intuition': return this.i18n('Intuition');
             case 'intelligence': return this.i18n('Intelligence');
-            case 'charisma': return this.i18n('Intelligence');
+            case 'charisma': return this.i18n('Charisma');
         }
     }
     
