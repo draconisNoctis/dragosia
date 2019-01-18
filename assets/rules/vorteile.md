@@ -13,5 +13,5 @@
 |Körper|Resitenz gegen Krankheit I/II|`KO:` 2/4|3/8|Erhöht die Anzahl an Würfeln bei Krankheiten-Proben um 3/5||
 |Körper|Standfest|`K:` 3 `AG:` 2|3|Erhöt die Anzahl an Würfeln für Proben auf Balance um 3||
 |Körper|Regeneration I/II/III|`KO:` 1/2/3|3/8/13|Erhöt die Anzahl an Würfeln für die Probe um eine Wunde zu heilen um 1/2/3||
-|Geist|Geistige Festung I/II|`G:` 2/3|3/8|Erhöt die Anzahl an Würfeln gegen Beeinflussung/Einsicht der eigenen Gedanken um 3/5||
+|Geist|Geistige Festung I/II|`G:` 2/4|3/8|Erhöt die Anzahl an Würfeln gegen Beeinflussung/Einsicht der eigenen Gedanken um 3/5||
 |Allgemein|Glück||5|Erhöht die Anzahl der Schips um 1W3|Nicht kompatibel mit Vorteil Glück||

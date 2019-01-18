@@ -9,8 +9,8 @@
 - [**Sonstige Regeln**](./sonstige-regeln.md)
 
 
-- [**Vorteile**](./vorteile.md)
-- [**Nachteile**](./nachteile.md)
+- [**Vorteile**](https://draconisnoctis.github.io/dragosia/vorteile)
+- [**Nachteile**](https://draconisnoctis.github.io/dragosia/nachteile)
 
 
 - [**Wahrscheinlichkeitstabelle**](https://draconisnoctis.github.io/dragosia/utils/wahrscheinlichkeiten)
