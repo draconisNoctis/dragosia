@@ -18,7 +18,7 @@ import {
     MatInputModule,
     MatToolbarModule
 } from '@angular/material';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, UrlTree } from '@angular/router';
 import {
     JuiMarkdownModule,
     LinkComponent,
@@ -32,8 +32,6 @@ import {
 import { IMarkdownConfig, MARKDOWN_CONFIG, MARKDOWN_TOKEN } from '../../../../../../libs/jui/src/lib/markdown/config';
 import { ComponentsModule } from '../../components/components.module';
 import { PageComponent } from './page/page.component';
-
-// const RULE_PAGE_REGEXP = /^\.\/(?:([\w\/äöüÄÖÜß-]+)\/)?([\w\/äöüÄÖÜß-]+)\.md/i;
 
 const RULE_PAGE_REGEXP = /^(\.{1,2})\/([\w\/äöüÄÖÜß-]+)\.md(?:#(\S+))?/;
 
@@ -50,11 +48,22 @@ export class RulesLinkComponent extends LinkComponent {
     @HostBinding('attr.href')
     get href() {
         if(this.isInternal) {
+            return this.locationStrategy.prepareExternalUrl(this.internalRoute.toString());
+        } else {
+            return this.token.href;
+        }
+    }
+    
+    get internalRoute() : UrlTree|null {
+        if(this.isInternal) {
             const [ _, base, path, fragment ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            
+        
             const current = this.router.routerState.snapshot.url.split(/\//);
             current.shift();
             current[0] = `/${current[0]}`;
+            if(current.length > 1) {
+                current.pop();
+            }
             const route = [ ...current, base, ...path.split(/\//)];
             for(let i = 1; i < route.length; ++i) {
                 if(route[i] === '..') {
@@ -65,10 +74,10 @@ export class RulesLinkComponent extends LinkComponent {
                     --i;
                 }
             }
-            const href = this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route, { fragment }).toString());
-            return href;
+            
+            return this.router.createUrlTree(route, { fragment });
         } else {
-            return this.token.href;
+            return null
         }
     }
     
@@ -84,9 +93,9 @@ export class RulesLinkComponent extends LinkComponent {
     
     @HostListener('click', [ '$event' ])
     onClick($event : MouseEvent) {
-        if(this.isInternal) {
+        if(this.isInternal && !$event.ctrlKey && $event.button != 1) {
             $event.preventDefault();
-            this.router.navigateByUrl(this.href);
+            this.router.navigateByUrl(this.internalRoute);
         }
     }
 }
