@@ -75,7 +75,7 @@ export class MarkdownComponent extends AbstractMarkdownComponent {
             this.tokens = this.parser.parse(text);
             this.parsed.emit(this.tokens);
             this.cdr.markForCheck();
-        });
+        }, err => this.error.emit(err));
     }
     
     @Output()
@@ -83,6 +83,9 @@ export class MarkdownComponent extends AbstractMarkdownComponent {
     
     @Output()
     parsed = new EventEmitter<Token[]>();
+    
+    @Output()
+    error = new EventEmitter<any>();
     
     tokens?: Tokens.BlockToken[];
     

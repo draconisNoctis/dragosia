@@ -5,7 +5,7 @@
 <div class="content">
     <mat-card>
         <mat-card-content>
-            <jui-markdown [src]="markdownUrl | async" (parsed)="onMarkdownDocumentParsed($event)"></jui-markdown>
+            <jui-markdown [src]="markdownUrl | async" (parsed)="onMarkdownDocumentParsed($event)" (error)="onError()"></jui-markdown>
             <!--<jui-markdown juiMarkdown="> [Güte] = [Erfolge] - [Probenschwierigkeit] + 1"></jui-markdown>-->
         </mat-card-content>
     </mat-card>

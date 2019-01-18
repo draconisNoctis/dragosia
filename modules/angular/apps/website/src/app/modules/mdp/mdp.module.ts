@@ -33,7 +33,9 @@ import { IMarkdownConfig, MARKDOWN_CONFIG, MARKDOWN_TOKEN } from '../../../../..
 import { ComponentsModule } from '../../components/components.module';
 import { PageComponent } from './page/page.component';
 
-const RULE_PAGE_REGEXP = /^\.\/(?:([\w\/äöüÄÖÜß-]+)\/)?([\w\/äöüÄÖÜß-]+)\.md/i;
+// const RULE_PAGE_REGEXP = /^\.\/(?:([\w\/äöüÄÖÜß-]+)\/)?([\w\/äöüÄÖÜß-]+)\.md/i;
+
+const RULE_PAGE_REGEXP = /^(\.{1,2})\/([\w\/äöüÄÖÜß-]+)\.md(?:#(\S+))?/;
 
 @Component({
     selector: 'a[__rules_markdown__]',
@@ -48,9 +50,23 @@ export class RulesLinkComponent extends LinkComponent {
     @HostBinding('attr.href')
     get href() {
         if(this.isInternal) {
-            const [ _, dir, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            const route = dir ? [ this.router.routerState.snapshot.url, dir, page ] : [ this.router.routerState.snapshot.url, page ];
-            return this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route).toString());
+            const [ _, base, path, fragment ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
+            
+            const current = this.router.routerState.snapshot.url.split(/\//);
+            current.shift();
+            current[0] = `/${current[0]}`;
+            const route = [ ...current, base, ...path.split(/\//)];
+            for(let i = 1; i < route.length; ++i) {
+                if(route[i] === '..') {
+                    route.splice(i - 1, 2);
+                    i -= 2;
+                } else if(route[i] === '.') {
+                    route.splice(i, 1);
+                    --i;
+                }
+            }
+            const href = this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(route, { fragment }).toString());
+            return href;
         } else {
             return this.token.href;
         }
@@ -70,9 +86,7 @@ export class RulesLinkComponent extends LinkComponent {
     onClick($event : MouseEvent) {
         if(this.isInternal) {
             $event.preventDefault();
-            const [ _, dir, page ] = RULE_PAGE_REGEXP.exec(this.token.href)!;
-            const route = dir ? [ this.router.routerState.snapshot.url, dir, page ] : [ this.router.routerState.snapshot.url, page ];
-            this.router.navigate(route);
+            this.router.navigateByUrl(this.href);
         }
     }
 }
