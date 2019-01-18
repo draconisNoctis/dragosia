@@ -175,4 +175,6 @@
   <translation id="4181594468527095644">Nicht kompatibel mit dem Nachteil
                                     <ph name="START_TAG_CODE"><ex>&lt;code&gt;</ex>&lt;code&gt;</ph><ph name="INTERPOLATION"><ex>{{ row.incompatible.disadvantages[0] }}</ex>{{ row.incompatible.disadvantages[0] }}</ph><ph name="CLOSE_TAG_CODE"><ex>&lt;/code&gt;</ex>&lt;/code&gt;</ph>.</translation>
   <translation id="5040455051672803712">Nicht kompatibel mit den Nachteilen</translation>
+  <translation id="b5a9cab5ff9b9bcd914150e5924760a9090f3903">Charisma</translation>
+  <translation id="95cc97954e5a355baf4a963c9a460400c8e2c071" meaning="short">CH</translation>
 </translationbundle>

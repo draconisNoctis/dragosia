@@ -37,14 +37,16 @@
   <msg id="8fec10287f18328b24cd744d60b3b811e33ddc96"><source>libs/presets/src/lib/presets.ts:1</source>Constitution</msg>
   <msg id="180886a91fe2df1528ac29eab84d85b552f9b059"><source>libs/presets/src/lib/presets.ts:1</source>Courage</msg>
   <msg id="93a153d64a3b06eea75272f29f875313b0d64fda"><source>libs/presets/src/lib/presets.ts:1</source>Intuition</msg>
-  <msg id="8031155db31bbda57ee1eed1ff5b0b80ca3db362"><source>libs/presets/src/lib/presets.ts:1</source><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
+  <msg id="8031155db31bbda57ee1eed1ff5b0b80ca3db362"><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
+  <msg id="b5a9cab5ff9b9bcd914150e5924760a9090f3903"><source>libs/presets/src/lib/presets.ts:1</source>Charisma</msg>
   <msg id="ea32b205e587d744f9555b4d3b44895b4feef3e2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Strength</msg>
   <msg id="8e963c1a5f25a5210525a1d73aa04333d367cdec" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Agility</msg>
   <msg id="c5f35edfe70096845d7ed3614f9b6b1558b867f9" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Dexterity</msg>
   <msg id="30fdb56aee2c4bcd56ad5128eb77f581b9363587" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Constitution</msg>
   <msg id="b9e61ac319f8d262aa24332c9e70d23c6f9785ce" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Courage</msg>
   <msg id="3ca964117c4dcac440ed7572f15df364185d80d2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Intuition</msg>
-  <msg id="bff90b5f9de3d8c6965d07df3e1a278599f4f5b2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
+  <msg id="bff90b5f9de3d8c6965d07df3e1a278599f4f5b2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
+  <msg id="95cc97954e5a355baf4a963c9a460400c8e2c071" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Charisma</msg>
   <msg id="8235775649619498299"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:3</source><source>src/app/modules/dcm/sheet/sheet.component.html:57</source>Character Sheet</msg>
   <msg id="8953033926734869941"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:246</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:266</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:22</source><source>../../libs/sheet/src/lib/general/general.component.html:4</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:25</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:72</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:3</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:21</source>Name</msg>
   <msg id="1679869148678530261"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:11</source><source>../../libs/sheet/src/lib/general/general.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:8</source>Race</msg>

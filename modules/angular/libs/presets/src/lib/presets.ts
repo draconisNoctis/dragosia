@@ -550,7 +550,7 @@ export class Presets {
             case 'courage': return this.i18n({ value:'Courage', meaning: 'short' });
             case 'intuition': return this.i18n({ value:'Intuition', meaning: 'short' });
             case 'intelligence': return this.i18n({ value:'Intelligence', meaning: 'short' });
-            case 'charisma': return this.i18n({ value:'Intelligence', meaning: 'short' });
+            case 'charisma': return this.i18n({ value:'Charisma', meaning: 'short' });
         }
     }
 }
