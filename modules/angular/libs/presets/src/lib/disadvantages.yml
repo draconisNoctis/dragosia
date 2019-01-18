@@ -1,4 +1,103 @@
-- name: Jähzorn
-  value: 3
-- name: Rachsucht
-  value: 5
+type: common
+name: Jähzorn
+value: 3
+description: tdb
+
+---
+
+type: common
+name: Rachsucht
+value: 3
+description: tdb
+
+---
+
+type: common
+name: Angst vor ...
+value: 3
+description: Der Charakter hat so starke Angst, dass er in bestimmten Situationen davon behindert wird.
+
+---
+
+type: common
+name: Starke Angst vor ...
+value: 5
+description: Siehe `Angst vor...`, jedoch entweder stärker oder häufiger ausgelöst.
+
+---
+
+type: common
+name: Geiz
+value: 3
+description: tbd
+
+---
+
+type: common
+name: Lichtempfindlich I
+value: 3
+description: Der Charakter geht ungerne in die Sonne und meidet diese so weit möglich. Verringert die Anzahl der Würfel für alle Proben im Tageslicht um 1.
+incompatible:
+    disadvantages:
+        - Lichtempfindlich II
+
+---
+
+type: common
+name: Lichtempfindlich II
+value: 3
+description: Siehe `Lichtempfindlich I`, jedoch um 2 Würfel erschwert.
+incompatible:
+    disadvantages:
+        - Lichtempfindlich I
+
+---
+
+type: common
+name: Gesucht I
+value: 3
+description: Der Charakter wird in einer Stadt gesucht.
+incompatible:
+    disadvantages:
+        - Gesucht II
+        - Gesucht III
+
+---
+
+type: common
+name: Gesucht II
+value: 5
+description: Der Charakter wird in einem Bezirk gesucht.
+incompatible:
+    disadvantages:
+        - Gesucht I
+        - Gesucht III
+
+---
+
+type: common
+name: Gesucht III
+value: 8
+description: Der Charakter wird in einem Land gesucht.
+incompatible:
+    disadvantages:
+        - Gesucht I
+        - Gesucht II
+
+---
+
+type: common
+name: Stigma
+value: 8
+description: Verringert die Anzahl der Würfel für gesellschaftliche Proben um 3
+info: Muss zu Spielbeginn erkauft werden.
+
+---
+
+type: common
+name: Pech
+value: 5
+description: Veringert die Anzahl der Schips um 1W3
+incompatible:
+    advantages:
+        - Glück

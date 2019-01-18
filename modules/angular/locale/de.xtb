@@ -142,4 +142,37 @@
   <translation id="5c0bdef2838f1a32571c71b91b0ef6a950757477">Unmöglich</translation>
   <translation id="6948665149717579872">Import Charakter</translation>
   <translation id="5411931426354196722">Export Character</translation>
+  <translation id="15a268c774e6b76eb787c9a9c40c5b3eecb4c6bf">Allgemein</translation>
+  <translation id="2d09ae0eecd3e42bc7f52aafc727981c0513dbd7">Gabe</translation>
+  <translation id="85137fc3f722a0edd8229cf250e6680181db94a5">Nahkampf</translation>
+  <translation id="0427b9c1f10441c6f4c53f1788242e2a97954be1">Fernkampf</translation>
+  <translation id="52d17495613f20185920b3f2abcd3a056f572e72">Körperlich</translation>
+  <translation id="084adf985bbef7aa94d87165f8bcff47abd4af70">Geistig</translation>
+  <translation id="d2ec5361f72e61484d4928d10205b5e4d92e3220" meaning="short">N</translation>
+  <translation id="17eec633ad2a7925685eb1ae34ce040c2269645f" meaning="short">F</translation>
+  <translation id="6eb63ab45974286622ad4f4024fad6faeaed3ce4" meaning="short">K</translation>
+  <translation id="21b2567de8aba4b37de2f8bec9c1e8a3785dc890" meaning="short">G</translation>
+  <translation id="240fe9736823deb2a412ca570a41b0bc4c1c5ec7">Stärke</translation>
+  <translation id="5e7e89b5dad51068fb36989abe7650bb97df0ec3">Agilität</translation>
+  <translation id="641fc45e8d6661e6226cd4d83acb8a2b0e58e905">Fingerfertigkeit</translation>
+  <translation id="8fec10287f18328b24cd744d60b3b811e33ddc96">Konstitution</translation>
+  <translation id="180886a91fe2df1528ac29eab84d85b552f9b059">Mut</translation>
+  <translation id="93a153d64a3b06eea75272f29f875313b0d64fda">Intuition</translation>
+  <translation id="8031155db31bbda57ee1eed1ff5b0b80ca3db362">Klugheit</translation>
+  <translation id="ea32b205e587d744f9555b4d3b44895b4feef3e2" meaning="short">ST</translation>
+  <translation id="8e963c1a5f25a5210525a1d73aa04333d367cdec" meaning="short">AG</translation>
+  <translation id="c5f35edfe70096845d7ed3614f9b6b1558b867f9" meaning="short">FF</translation>
+  <translation id="30fdb56aee2c4bcd56ad5128eb77f581b9363587" meaning="short">KO</translation>
+  <translation id="b9e61ac319f8d262aa24332c9e70d23c6f9785ce" meaning="short">MU</translation>
+  <translation id="3ca964117c4dcac440ed7572f15df364185d80d2" meaning="short">IN</translation>
+  <translation id="bff90b5f9de3d8c6965d07df3e1a278599f4f5b2" meaning="short">KL</translation>
+  <translation id="8829497237648100098">Filter</translation>
+  <translation id="1991740644022678534">Bedingungen</translation>
+  <translation id="314315645942131479">Anmerkung</translation>
+  <translation id="8301924700928654726"> Nicht kompatibel mit dem Vorteil <ph name="START_TAG_CODE"><ex>&lt;code&gt;</ex>&lt;code&gt;</ph><ph name="INTERPOLATION"><ex>{{ row.incompatible.advantages[0] }}</ex>{{ row.incompatible.advantages[0] }}</ph><ph name="CLOSE_TAG_CODE"><ex>&lt;/code&gt;</ex>&lt;/code&gt;</ph>.</translation>
+  <translation id="8068462513072736344">Nicht kompatibel mit den Vorteilen</translation>
+  <translation id="42160814379287693"> und</translation>
+  <translation id="4181594468527095644">Nicht kompatibel mit dem Nachteil
+                                    <ph name="START_TAG_CODE"><ex>&lt;code&gt;</ex>&lt;code&gt;</ph><ph name="INTERPOLATION"><ex>{{ row.incompatible.disadvantages[0] }}</ex>{{ row.incompatible.disadvantages[0] }}</ph><ph name="CLOSE_TAG_CODE"><ex>&lt;/code&gt;</ex>&lt;/code&gt;</ph>.</translation>
+  <translation id="5040455051672803712">Nicht kompatibel mit den Nachteilen</translation>
 </translationbundle>

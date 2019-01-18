@@ -21,4 +21,28 @@
 <!ELEMENT ex (#PCDATA)>
 ]>
 <messagebundle>
+  <msg id="15a268c774e6b76eb787c9a9c40c5b3eecb4c6bf"><source>libs/presets/src/lib/presets.ts:1</source>Common</msg>
+  <msg id="2d09ae0eecd3e42bc7f52aafc727981c0513dbd7"><source>libs/presets/src/lib/presets.ts:1</source>Gift</msg>
+  <msg id="85137fc3f722a0edd8229cf250e6680181db94a5"><source>libs/presets/src/lib/presets.ts:1</source>Melee</msg>
+  <msg id="0427b9c1f10441c6f4c53f1788242e2a97954be1"><source>libs/presets/src/lib/presets.ts:1</source>Range</msg>
+  <msg id="52d17495613f20185920b3f2abcd3a056f572e72"><source>libs/presets/src/lib/presets.ts:1</source>Physical</msg>
+  <msg id="084adf985bbef7aa94d87165f8bcff47abd4af70"><source>libs/presets/src/lib/presets.ts:1</source>Mental</msg>
+  <msg id="d2ec5361f72e61484d4928d10205b5e4d92e3220" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Melee</msg>
+  <msg id="17eec633ad2a7925685eb1ae34ce040c2269645f" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Range</msg>
+  <msg id="6eb63ab45974286622ad4f4024fad6faeaed3ce4" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Physical</msg>
+  <msg id="21b2567de8aba4b37de2f8bec9c1e8a3785dc890" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Mental</msg>
+  <msg id="240fe9736823deb2a412ca570a41b0bc4c1c5ec7"><source>libs/presets/src/lib/presets.ts:1</source>Strength</msg>
+  <msg id="5e7e89b5dad51068fb36989abe7650bb97df0ec3"><source>libs/presets/src/lib/presets.ts:1</source>Agility</msg>
+  <msg id="641fc45e8d6661e6226cd4d83acb8a2b0e58e905"><source>libs/presets/src/lib/presets.ts:1</source>Dexterity</msg>
+  <msg id="8fec10287f18328b24cd744d60b3b811e33ddc96"><source>libs/presets/src/lib/presets.ts:1</source>Constitution</msg>
+  <msg id="180886a91fe2df1528ac29eab84d85b552f9b059"><source>libs/presets/src/lib/presets.ts:1</source>Courage</msg>
+  <msg id="93a153d64a3b06eea75272f29f875313b0d64fda"><source>libs/presets/src/lib/presets.ts:1</source>Intuition</msg>
+  <msg id="8031155db31bbda57ee1eed1ff5b0b80ca3db362"><source>libs/presets/src/lib/presets.ts:1</source><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
+  <msg id="ea32b205e587d744f9555b4d3b44895b4feef3e2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Strength</msg>
+  <msg id="8e963c1a5f25a5210525a1d73aa04333d367cdec" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Agility</msg>
+  <msg id="c5f35edfe70096845d7ed3614f9b6b1558b867f9" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Dexterity</msg>
+  <msg id="30fdb56aee2c4bcd56ad5128eb77f581b9363587" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Constitution</msg>
+  <msg id="b9e61ac319f8d262aa24332c9e70d23c6f9785ce" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Courage</msg>
+  <msg id="3ca964117c4dcac440ed7572f15df364185d80d2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source>Intuition</msg>
+  <msg id="bff90b5f9de3d8c6965d07df3e1a278599f4f5b2" meaning="short"><source>libs/presets/src/lib/presets.ts:1</source><source>libs/presets/src/lib/presets.ts:1</source>Intelligence</msg>
 </messagebundle>

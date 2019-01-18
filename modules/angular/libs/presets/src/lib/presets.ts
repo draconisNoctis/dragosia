@@ -1,6 +1,7 @@
 /// <reference types="node" />
 
 import { Injectable } from '@angular/core';
+import { I18n } from '@ngx-translate/i18n-polyfill';
 import * as yaml from 'js-yaml';
 
 
@@ -33,6 +34,30 @@ export interface ICharacterSkills {
 export interface IGift {
     name: string;
     value: number;
+}
+
+export interface IAdvantageDisadvantageDetails {
+    type: keyof ICharacterSkills | 'gift' | 'common';
+    typeGiftName?: string;
+    multi?: boolean;
+    description: string;
+    info?: string;
+    requirements?: {
+        attributes?: {
+            [a in keyof ICharacterAttributes]?: number;
+        };
+        skills?: {
+            [s in keyof ICharacterSkills]?: number;
+        };
+        gifts?: {
+            [name: string]: number;
+        }
+    };
+    incompatible?: {
+        gifts?: string[];
+        advantages: string[];
+        disadvantages: string[];
+    }
 }
 
 export interface IAdvantage {
@@ -402,19 +427,21 @@ export class Presets {
     
     protected get advantages() {
         if(!this._advantages) {
-            this._advantages = yaml.safeLoad(require('raw-loader!./advantages.yml'));
+            this._advantages = yaml.safeLoadAll(require('raw-loader!./advantages.yml'));
         }
         return this._advantages!;
     }
-    private _advantages?: IAdvantage[];
+    private _advantages?: (IAdvantage & IAdvantageDisadvantageDetails)[];
     
     protected get disadvantages() {
         if(!this._disadvantages) {
-            this._disadvantages = yaml.safeLoad(require('raw-loader!./disadvantages.yml'));
+            this._disadvantages = yaml.safeLoadAll(require('raw-loader!./disadvantages.yml'));
         }
         return this._disadvantages!;
     }
-    private _disadvantages?: IDisadvantage[];
+    private _disadvantages?: (IDisadvantage & IAdvantageDisadvantageDetails)[];
+    
+    constructor(protected readonly i18n : I18n) {}
     
     getPresets() : IPreset[] {
         return this.presets;
@@ -472,6 +499,58 @@ export class Presets {
             for(const gift of partial.gifts) {
                 Object.assign(gift, this.getGiftById(gift.id));
             }
+        }
+    }
+    
+    getTypeName(type : keyof ICharacterSkills | 'common' | 'gift') {
+        switch(type) {
+            case 'common': return this.i18n('Common');
+            case 'gift': return this.i18n('Gift');
+            default: return this.getSkillName(type);
+        }
+    }
+    
+    getSkillName(name : keyof ICharacterSkills) {
+        switch(name) {
+            case 'melee': return this.i18n('Melee');
+            case 'range': return this.i18n('Range');
+            case 'physical': return this.i18n('Physical');
+            case 'mental': return this.i18n('Mental');
+        }
+    }
+    
+    getSkillNameShort(name : keyof ICharacterSkills) {
+        switch(name) {
+            case 'melee': return this.i18n({ value: 'Melee', meaning: 'short' });
+            case 'range': return this.i18n({ value: 'Range', meaning: 'short' });
+            case 'physical': return this.i18n({ value: 'Physical', meaning: 'short' });
+            case 'mental': return this.i18n({ value: 'Mental', meaning: 'short' });
+        }
+    }
+    
+    getAttributeName(name : keyof ICharacterAttributes) {
+        switch(name) {
+            case 'strength': return this.i18n('Strength');
+            case 'agility': return this.i18n('Agility');
+            case 'dexterity': return this.i18n('Dexterity');
+            case 'constitution': return this.i18n('Constitution');
+            case 'courage': return this.i18n('Courage');
+            case 'intuition': return this.i18n('Intuition');
+            case 'intelligence': return this.i18n('Intelligence');
+            case 'charisma': return this.i18n('Intelligence');
+        }
+    }
+    
+    getAttributeNameShort(name : keyof ICharacterAttributes) {
+        switch(name) {
+            case 'strength': return this.i18n({ value:'Strength', meaning: 'short' });
+            case 'agility': return this.i18n({ value:'Agility', meaning: 'short' });
+            case 'dexterity': return this.i18n({ value:'Dexterity', meaning: 'short' });
+            case 'constitution': return this.i18n({ value:'Constitution', meaning: 'short' });
+            case 'courage': return this.i18n({ value:'Courage', meaning: 'short' });
+            case 'intuition': return this.i18n({ value:'Intuition', meaning: 'short' });
+            case 'intelligence': return this.i18n({ value:'Intelligence', meaning: 'short' });
+            case 'charisma': return this.i18n({ value:'Intelligence', meaning: 'short' });
         }
     }
 }

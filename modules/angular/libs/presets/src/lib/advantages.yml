@@ -1,4 +1,318 @@
-- name: Eisern I
-  value: 3
-- name: Eisern II
-  value: 8
+type: common
+name: Glück
+value: 5
+description: Erhöht die Anzahl der Schips um 1W3
+incompatible:
+  disadvantages:
+      - Pech
+
+---
+
+type: physical
+name: Eisern I
+value: 5
+description: Erlaubt dem Kämpfer die ersten 1 Wunden zu komplett ignorieren. Die 2. Wunde bedeutet dann auch nur einen Abzug von einem Würfel. 5 Wunden bedeuten trotzdem den Tod.
+requirements:
+  attributes:
+      constitution: 2
+  skills:
+      physical: 2
+incompatible:
+  advantages:
+      - Eisern II
+
+---
+
+type: physical
+name: Eisern II
+value: 13
+description: Siehe Eisern I, jedoch können bis zu 2 Wunden ignoriert werden.
+requirements:
+  attributes:
+      constitution: 4
+  skills:
+      physical: 4
+incompatible:
+  advantages:
+      - Eisern I
+
+---
+
+type: physical
+name: Gutes Aussehen I
+value: 3
+description: Erhöt die Anzahl der Würfel für gesellschaftliche Proben um 1.
+info: Kann nur zu Spielbeginn erkauft werden.
+requirements:
+  attributes:
+      charisma: 2
+incompatible:
+  advantages:
+      - Gutes Aussehen II
+
+---
+
+type: physical
+name: Gutes Aussehen II
+value: 8
+description: Siehe Gutes Aussehen I, jedoch 3 Würfel.
+info: Kann nur zu Spielbeginn erkauft werden.
+requirements:
+  attributes:
+      charisma: 4
+incompatible:
+  advantages:
+      - Gutes Aussehen I
+
+---
+
+type: physical
+name: Resistenz gegen Gifte I
+value: 3
+description: Erhöht die Anzahl an Würfeln bei Gift-Proben um 3.
+requirements:
+  attributes:
+      constitution: 2
+incompatible:
+  advantages:
+      - Resistenz gegen Gifte II
+
+---
+
+type: physical
+name: Resistenz gegen Gifte II
+value: 8
+description: Siehe Resistenz gegen Gifte I, jedoch 5 Würfel.
+requirements:
+  attributes:
+      constitution: 4
+incompatible:
+  advantages:
+      - Resistenz gegen Gifte I
+
+---
+
+type: physical
+name: Resistenz gegen Krankheiten I
+value: 3
+description: Erhöht die Anzahl an Würfeln bei Gift-Proben um 3.
+requirements:
+  attributes:
+      constitution: 2
+incompatible:
+  advantages:
+      - Resistenz gegen Krankheiten II
+
+---
+
+type: physical
+name: Resistenz gegen Krankheiten II
+value: 8
+description: Siehe Resistenz gegen Krankheiten I, jedoch 5 Würfel.
+requirements:
+  attributes:
+      constitution: 4
+incompatible:
+  advantages:
+      - Resistenz gegen Krankheiten I
+
+---
+
+type: physical
+name: Standfest
+value: 3
+description: Erhöt die Anzahl an Würfeln für Proben auf Balance um 3
+requirements:
+  skills:
+      physical: 3
+  attributes:
+      agility: 2
+
+---
+
+type: physical
+name: Regeneration I
+value: 3
+description: Erhöt die Anzahl an Würfeln für die Probe um eine Wunde zu heilen um 1/2/3
+requirements:
+  attribute:
+      constitution: 1
+incompatible:
+  advantages:
+      - Regeneration II
+      - Regeneration III
+
+---
+
+type: physical
+name: Regeneration II
+value: 8
+description: Siehe Regeneration I, jedoch 2 Würfel.
+requirements:
+  attribute:
+      constitution: 2
+incompatible:
+  advantages:
+      - Regeneration I
+      - Regeneration III
+
+---
+
+type: physical
+name: Regeneration III
+value: 13
+description: Siehe Regeneration I, jedoch 3 Würfel.
+requirements:
+  attribute:
+      constitution: 4
+incompatible:
+  advantages:
+      - Regeneration I
+      - Regeneration II
+
+---
+
+type: mental
+name: Geistige Festung I
+value: 3
+description: Erhöt die Anzahl an Würfeln gegen Beeinflussung/Einsicht der eigenen Gedanken um 3.
+requirements:
+  skills:
+      mental: 2
+incompatible:
+  advantages:
+      - Geistige Festung II
+
+---
+
+type: mental
+name: Geistige Festung II
+value: 8
+description: Siehe Geistige Festung I, jedoch mit 5. Würfeln
+requirements:
+  skills:
+      mental: 4
+incompatible:
+  advantages:
+      - Geistige Festung I
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Ausdauernde Zauberei I
+value: 3
+description: Erhöt die Anzahl an Würfeln zum Mana reduzieren nach Zaubern um 1 Würfel
+requirements:
+  gifts:
+      Magie: 2
+incompatible:
+  advantages:
+      - Ausdauernde Zauberei II
+      - Ausdauernde Zauberei III
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Ausdauernde Zauberei II
+value: 8
+description: Siehe Ausdauernde Zauberei I, jedoch 2 Würfel.
+requirements:
+  gifts:
+      Magie: 3
+incompatible:
+  advantages:
+      - Ausdauernde Zauberei I
+      - Ausdauernde Zauberei III
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Ausdauernde Zauberei III
+value: 13
+description: Siehe Ausdauernde Zauberei I, jedoch 3 Würfel.
+requirements:
+  gifts:
+      Magie: 5
+incompatible:
+  advantages:
+      - Ausdauernde Zauberei I
+      - Ausdauernde Zauberei II
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Magische Regeneration I
+value: 3
+description: Erhöt die Anzahl an Würfeln für die Probe um eine Mana-Wunde zu heilen um 1/2/3
+requirements:
+  gifts:
+      Magie: 1
+incompatible:
+  advantages:
+      - Magische Regeneration II
+      - Magische Regeneration III
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Magische Regeneration II
+value: 8
+description: Siehe Magische Regeneration I, jedoch 2 Würfel.
+requirements:
+  gifts:
+      Magie: 2
+incompatible:
+  advantages:
+      - Magische Regeneration I
+      - Magische Regeneration III
+
+---
+type: gift
+typeGiftName: Magie
+name: Magische Regeneration III
+value: 13
+description: Siehe Magische Regeneration I, jedoch 3 Würfel.
+requirements:
+  gifts:
+      Magie: 4
+incompatible:
+  advantages:
+      - Magische Regeneration I
+      - Magische Regeneration II
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Stählerner Geist I
+value: 5
+description: Erlaubt dem Magiekunden die ersten 1 Wunden zu komplett ignorieren. Die 2. Wunde bedeutet dann auch nur einen Abzug von einem Würfel. 5 Wunden bedeuten trotzdem die Bewusstlosigkeit.
+requirements:
+  attributes:
+      constitution: 2
+  gifts:
+      Magie: 2
+incompatible:
+  advantages:
+      - Stählerner Geist II
+
+---
+
+type: gift
+typeGiftName: Magie
+name: Stählerner Geist II
+value: 13
+description: Siehe Stählerner Geist I, jedoch bis zu zwei Wunden.
+requirements:
+  attributes:
+      constitution: 4
+  gifts:
+      Magie: 4
+incompatible:
+  advantages:
+      - Stählerner Geist I

@@ -1,0 +1,82 @@
+@import "../../../../theme";
+
+.dw-advantages-disadvantages {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('/assets/images/background.jpg');
+        background-size: cover;
+        z-index: -1;
+        opacity: .05;
+        filter: blur(2px) grayscale(100%);
+    }
+
+    .content {
+        flex-grow: 1;
+        width: 100%;
+        max-width: 1024px;
+        padding: 24px 8px;
+        box-sizing: border-box;
+        margin: 0 auto;
+
+        code {
+            display: inline-block;
+            border: 1px solid mat-color(map-get($dragosia-theme, primary));
+            border-radius: 2px;
+            padding: 2px 4px;
+            background: rgba(mat-color(map-get($dragosia-theme, primary)), .1);
+        }
+
+        .mat-card {
+            .mat-card-header {
+                .mat-form-field {
+                    margin-left: auto;
+                }
+            }
+
+            h1 {
+                font-family: 'Jim Nightshade';
+                font-weight: 100;
+                font-size: 3.6rem;
+                margin-top: 0;
+            }
+
+            table {
+                width: 100%;
+
+                tr.expand-details-row {
+                    height: 0;
+
+                    .details {
+                        display: grid;
+                        grid-template-columns: auto min-content;
+                        grid-template-rows: auto auto;
+                        overflow: hidden;
+                        grid-gap: 0 16px;
+
+                        &-description {
+                            grid-row-end: span 2;
+                        }
+
+                        &-info, &-incompatible {
+                            width: 300px;
+                        }
+                    }
+                }
+
+                tr.expand-trigger-row:not(.expand-trigger-row-expanded):hover {
+                    background: map-get(map-get($dragosia-theme, background), hover);
+                }
+            }
+        }
+    }
+}

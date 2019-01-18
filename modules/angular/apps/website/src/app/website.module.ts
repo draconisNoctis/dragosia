@@ -75,6 +75,7 @@ export function translationsFactory(locale : string) {
             { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
             { path: 'utils', loadChildren: './modules/utils/utils.module#UtilsModule' },
             { path: '', component: HomeComponent },
+            { path: '', loadChildren: './modules/presets/presets.module#PresetsModule' },
             { path: '', loadChildren: './modules/mdp/mdp.module#MdpModule' },
             { path: '**', redirectTo: '/' }
         ], { initialNavigation: 'enabled' }),
@@ -82,7 +83,7 @@ export function translationsFactory(locale : string) {
     ],
     providers   : [
         I18n,
-        { provide: TRANSLATIONS_FORMAT, useValue: 'xlf' },
+        { provide: TRANSLATIONS_FORMAT, useValue: 'xtb' },
         {
             provide   : TRANSLATIONS,
             useFactory: translationsFactory,

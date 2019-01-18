@@ -1,0 +1,105 @@
+<dw-website-header></dw-website-header>
+
+<div class="content">
+    <mat-card>
+        <mat-card-header>
+            <h1 mat-card-title *ngIf="(mode | async) === 'ADVANTAGES'" i18n>Advantages</h1>
+            <h1 mat-card-title *ngIf="(mode | async) === 'DISADVANTAGES'" i18n>Disadvantages</h1>
+
+            <mat-form-field>
+                <input type="search" matInput i18n-placeholder placeholder="Filter" [formControl]="filterControl" />
+            </mat-form-field>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource | async" matSort multiTemplateDataRows>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Type</th>
+                    <td mat-cell *matCellDef="let row">{{ row.type }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Name</th>
+                    <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="requirements">
+                    <th mat-header-cell *matHeaderCellDef i18n>Requirements</th>
+                    <td mat-cell *matCellDef="let row">
+                        <ng-container *ngIf="row.requirements">
+                            <span class="requirement gift" *ngFor="let g of row.requirements.gifts | keyvalue">
+                                <code>{{ g.key }}:</code> {{ g.value }}
+                            </span>
+                            <span class="requirement attribute" *ngFor="let a of row.requirements.attributes | keyvalue">
+                                <code>{{ getAttributeNameShort(a.key) }}:</code> {{ a.value }}
+                            </span>
+                            <span class="requirement skill" *ngFor="let s of row.requirements.skills | keyvalue">
+                                <code>{{ getSkillNameShort(s.key) }}:</code> {{ s.value }}<br/>
+                            </span>
+                        </ng-container>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="value">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header i18n>Value</th>
+                    <td mat-cell *matCellDef="let row">{{ row.value }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="details">
+                    <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
+                        <div class="details"
+                             [@details]="expanded.has(row.name) ? 'expanded' : 'collapsed'">
+                            <div class="details-description">
+                                <p [juiMarkdown]="row.description"></p>
+                            </div>
+                            <div class="details-info" *ngIf="row.info">
+                                <h3 i18n>Info</h3>
+                                <p [juiMarkdown]="row.info"></p>
+                            </div>
+                            <div class="details-incompatible" *ngIf="row.incompatible?.advantages?.length > 0 || row.incompatible?.disadvantages?.length">
+                                <p class="incompatible advantage" *ngIf="row.incompatible?.advantages?.length === 1"
+                                     i18n>
+                                    Not compatible with the advantage <code>{{ row.incompatible.advantages[0] }}</code>.
+                                </p>
+                                <p class="incompatible advantage" *ngIf="row.incompatible?.advantages?.length > 1">
+                                    <ng-container i18n>Not compatible with the advantages</ng-container>
+                                    <ng-container
+                                        *ngFor="let a of row.incompatible.advantages; let first = first; let last = last">
+                                        <ng-container *ngIf="!first && !last">,</ng-container>
+                                        <ng-container *ngIf="last" i18n> and</ng-container>
+                                        <code>{{ a }}</code>
+                                    </ng-container>
+                                </p>
+                                <p class="incompatible disadvantage"
+                                     *ngIf="row.incompatible?.disadvantages?.length === 1" i18n>
+                                    Not compatible with the disadvantage
+                                    <code>{{ row.incompatible.disadvantages[0] }}</code>.
+                                </p>
+                                <p class="incompatible disadvantage"
+                                     *ngIf="row.incompatible?.disadvantages?.length > 1">
+                                    <ng-container i18n>Not compatible with the disadvantages</ng-container>
+                                    <ng-container
+                                        *ngFor="let d of row.incompatible.disadvantages; let first = first; let last = last">
+                                        <ng-container *ngIf="!first && !last">,</ng-container>
+                                        <ng-container *ngIf="last" i18n> and</ng-container>
+                                        <code>{{ d }}</code>
+                                    </ng-container>
+                                </p>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                            class="expand-trigger-row"
+                            [class.expand-trigger-row-expanded]="expanded.has(row.name)"
+                            (click)="expanded.has(row.name) ? expanded.delete(row.name) : expanded.add(row.name)"></tr>
+                <tr mat-row *matRowDef="let row; columns: [ 'details' ];" class="expand-details-row"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[ 25, 50, 100 ]"></mat-paginator>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<dw-website-footer></dw-website-footer>
