@@ -38,6 +38,9 @@
 
         .mat-card {
             .mat-card-header {
+                &-text {
+                    margin-left: 0;
+                }
                 .mat-form-field {
                     margin-left: auto;
                 }
@@ -53,8 +56,35 @@
             table {
                 width: 100%;
 
+                @media screen and (max-width: 600px) {
+                    .requirements-column {
+                        display: none;
+                    }
+
+
+                    th.mat-header-cell, td.mat-cell {
+                        padding: 8px;
+                        &:first-of-type {
+                            padding-left: 8px;
+                        }
+
+                        &:last-of-type {
+                            padding-right: 8px;
+                        }
+                    }
+
+                    .details-requirements {
+                        display: block !important;
+                    }
+                }
+
+
                 tr.expand-details-row {
                     height: 0;
+
+                    td {
+                        padding: 0 !important;
+                    }
 
                     .details {
                         display: grid;
@@ -69,6 +99,15 @@
 
                         &-info, &-incompatible {
                             width: 300px;
+                        }
+
+                        &-requirements {
+                            display: none;
+                        }
+
+                        @media screen and (max-width: 600px) {
+                            grid-template-columns: auto;
+                            grid-template-rows: repeat(auto-fit, auto);
                         }
                     }
                 }

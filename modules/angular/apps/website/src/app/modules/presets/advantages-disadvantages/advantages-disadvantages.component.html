@@ -23,8 +23,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="requirements">
-                    <th mat-header-cell *matHeaderCellDef i18n>Requirements</th>
-                    <td mat-cell *matCellDef="let row">
+                    <th mat-header-cell *matHeaderCellDef class="requirements-column" i18n>Requirements</th>
+                    <td mat-cell *matCellDef="let row" class="requirements-column">
                         <ng-container *ngIf="row.requirements">
                             <span class="requirement gift" *ngFor="let g of row.requirements.gifts | keyvalue">
                                 <code>{{ g.key }}:</code> {{ g.value }}
@@ -54,6 +54,18 @@
                             <div class="details-info" *ngIf="row.info">
                                 <h3 i18n>Info</h3>
                                 <p [juiMarkdown]="row.info"></p>
+                            </div>
+                            <div class="details-requirements" *ngIf="row.requirements">
+                                <h3 i18n>Requirements</h3>
+                                <span class="requirement gift" *ngFor="let g of row.requirements.gifts | keyvalue">
+                                    <code>{{ g.key }}:</code> {{ g.value }}
+                                </span>
+                                        <span class="requirement attribute" *ngFor="let a of row.requirements.attributes | keyvalue">
+                                    <code>{{ getAttributeNameShort(a.key) }}:</code> {{ a.value }}
+                                </span>
+                                        <span class="requirement skill" *ngFor="let s of row.requirements.skills | keyvalue">
+                                    <code>{{ getSkillNameShort(s.key) }}:</code> {{ s.value }}<br/>
+                                </span>
                             </div>
                             <div class="details-incompatible" *ngIf="row.incompatible?.advantages?.length > 0 || row.incompatible?.disadvantages?.length">
                                 <p class="incompatible advantage" *ngIf="row.incompatible?.advantages?.length === 1"
