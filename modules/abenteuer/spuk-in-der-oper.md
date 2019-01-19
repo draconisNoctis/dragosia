@@ -19,12 +19,16 @@ Immer mal wieder sieht die Gruppe im Augenwinkel eine Erscheinung aber nichts ge
 
 Als die Gruppe gerade die Treppe hinauf steigt, erscheint der `Geist von Perdita` hinter ihnen und Jagt sie aus dem Keller `Mut-Probe`.
 
+### 3. Oper Erkunden
+
+Nun muss die Gruppe die Oper erkunden und herrausfinden, was es mit den Geistern auf sich hat.
+
 Falls die Gruppe nun versucht das Gebäude zu verlassen oder wieder in den Keller zu gelangen werden sie vom 
 `Geist von Perdita` davon abgehalten.
 
-~~Falls die Gruppe nun versucht das Gebäude zu verlassen, werden sie von verschiedenen Geistern daran gehindert
- (`Geist von Kassandra`, `Geist von Pietro`, `Geist des Musikdirektors`). 
-An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Perdita` gehindert.~~
+### 4. Geister Austreibung
+
+Um die Geister zu Erlösen, müssen sie die sterblichen Überrest von `Perdita` verbrennen.
 
 ## Proben
 
@@ -43,19 +47,54 @@ An dem Versuch wieder in den Keller zu gelangen, werden sie vom `Geist von Perdi
 Korpulente dunkelhaarige Frau in ihren Mittleren Jahren. Hinter ihrer vollbusigen Brust verbirgt sich ein imenses Organ,
 welches die auch als Geist nicht verloren hat. Gekleidet ist sie in ein elegantes dunkles Abendkleid.
 
-### Der Musikdirektor (Name tbd)
+### Augusto Clemens (Musikdirektor)
 
 Ein grauhaariger älterer Herr in Zylinder und Abendgarderobe. Trägt einen Schnauzer und lange Kotletten.
 
-### Kassandra
+### Kassandra Scheschko
 
 Eine recht junge und zierliche, jedoch relativ große blonde Frau. Gekleidet in ein weißes Sommerkleid.
 
-### Pietro
+### Pietro Langornie
 
 Schwarzhaariger Mann mit markanten Gesichtszügen, gekleidet in ein lockeres weißes Hemd und dunkle Plunderhose.
 
 ## Anhänge
+
+### Lexikoneinträge
+
+> **Spektrale Erscheinung**  
+> Spektrale Erscheinungen können körperlos oder verkörpert auftreten.
+> 
+> *Siehe auch `Spuk`, `Gespenst`*
+
+> **Spuk**  
+> Ein Spuk ist eine körperlose spektrale Erscheinung.
+
+> **Gespenst**  
+> Ein Gespenst ist eine verkörperte spektrale Erscheinung. Es kann massive Gegenstände durchqueren und sogar durch Mauern gehen.
+> Nur von Salz und geschmiedetem Eisen lässt es sich abhalten bzw. verteiben.  
+> Im allgemeinen kann ein Gespenst von einem Geisterbeschwörer gebannt werden, weiteren Möglichkeiten kommen auf das jeweilige Gespenst an.
+> 
+> *Siehe auch*
+>   - *`Poltergeist`*
+>   - *`Ruheloser Geist`*
+
+> **Geist**  
+> *Siehe auch `Seele` oder `Gespenst`*
+
+> **Ruheloser Geist**  
+> Ein Ruherloser Geist ist ein Gespenst, was durch eine innere Überzeugung daran gehindert worden ist, in die Unterwelt hinab zu steigen.
+> Verbreitet sind z.B. Rachegelüste oder dringende unerledigte Aufgaben.  
+> Sobald der Grund zum verbleib im Diesseits erledigt wurde, geht ein ruheloser Geist im allgemeinen in die Unterwelt über.
+> Die Wahrscheinlichkeit für die Entstehung eines ruhelosen Geistes lässt sich durch eine angemesse Bestattung verringert,
+> durch eine Feuerbestattung, nach anerkannter Lehrmeinung, sogar komplett verhindern. Das Verbrennen der sterblichen
+> Überreste kann einen ruhelosen Geist ebenfalls in die Unterwelt schicken.
+
+> **Poltergeist**  
+> Poltergeist sind ruhelose Geister, die schon so lange im Diesseits verblieben sind, dass sie Wahnsinnig geworden sind
+> und gar nicht mehr wissen, warum sie im Diesseits verblieben sind. Daher wird auch dessen Erfüllung, sie nicht in die 
+> Unterwelt schicken.
 
 ### Zeitungsartikel
 
