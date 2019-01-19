@@ -3,30 +3,50 @@ import * as glob from 'glob';
 import * as lunr from 'lunr';
 import { parse, Renderer } from 'marked';
 import * as path from 'path';
+import * as yaml from 'js-yaml';
 
 require('lunr-languages/lunr.stemmer.support')(lunr);
 require('lunr-languages/lunr.de')(lunr);
 
 async function main() {
-    const rootDir = path.resolve(`${__dirname}/../../rules`);
-    const files = glob.sync(`${rootDir}/**/*.md`);
+    const rootDir = path.resolve(`${__dirname}/../..`);
+    const files = glob.sync(`${rootDir}/{rules,hintergrund}/**/*.md`);
     
-    const docs : { id : string, doc : string }[] = [];
+    const docs : { id : string, title, body : string }[] = [];
     
     for(const file of files) {
-        const doc = await renderMarkdownFile(file);
+        const body = await renderMarkdownFile(file);
         const filename = file.substr(rootDir.length);
         const id = filename.substr(1, filename.length - 4);
+        const title = body.trim().split(/\r?\n/)[0];
         
         docs.push({
             id,
-            doc
+            title,
+            body
+        })
+    }
+    
+    for(const { id, title, file } of [
+        { id: 'vorteile', title: 'Vorteile', file: `${rootDir}/angular/libs/presets/src/lib/advantages.yml` },
+        { id: 'nachteile', title: 'Nachteile', file: `${rootDir}/angular/libs/presets/src/lib/disadvantages.yml` }
+    ]) {
+        
+        const body = yaml.safeLoadAll(await fs.readFile(file, 'utf8')).reduce((body, { name, description, info }) => {
+            return body + `${name}\n${markdownToString(description)}${info ? '\n' + markdownToString(info) : ''}\n\n`
+        }, '');
+        
+        docs.push({
+            id,
+            title,
+            body
         })
     }
     
     const index = lunr(function() {
         this.ref('id');
-        this.field('doc');
+        this.field('title');
+        this.field('body');
         this.metadataWhitelist = [ 'position' ];
         
         this.use((lunr as any).de);
@@ -36,14 +56,19 @@ async function main() {
         }
     });
     
-    const DOCS : { [ key : string ] : string } = {};
-    for(const doc of docs) {
-        DOCS[ doc.id ] = doc.doc;
+    const DOCS : {
+        [ key : string ] : {
+            title: string;
+            body: string
+        }
+    } = {};
+    
+    for(const { id, title, body } of docs) {
+        DOCS[ id ] = { title, body };
     }
     
     console.log(`export const DOCS = ${JSON.stringify(DOCS, null, 2)};
-export const SEARCH_INDEX = ${JSON.stringify(index, null, 2)};
-export default SEARCH_INDEX;`);
+export const SEARCH_INDEX = ${JSON.stringify(index, null, 2)};`);
 }
 
 if(require.main === module) {
@@ -127,10 +152,14 @@ export class TextRenderer extends Renderer {
     }
 }
 
-export async function renderMarkdownFile(file : string) : Promise<string> {
-    const markdown = await fs.readFile(file, 'utf8');
-    
+export function markdownToString(markdown : string) : string {
     return parse(markdown, {
         renderer: new TextRenderer()
     })
+}
+
+export async function renderMarkdownFile(file : string) : Promise<string> {
+    const markdown = await fs.readFile(file, 'utf8');
+    
+    return markdownToString(markdown);
 }

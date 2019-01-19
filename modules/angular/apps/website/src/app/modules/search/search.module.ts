@@ -10,7 +10,7 @@ import {
     MatToolbarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import SEARCH_INDEX from '@dragosia/generic/search-index';
+import { SEARCH_INDEX } from '@dragosia/generic/search-index';
 import * as lunr from 'lunr';
 import { Index } from 'lunr';
 import { ComponentsModule } from '../../components/components.module';

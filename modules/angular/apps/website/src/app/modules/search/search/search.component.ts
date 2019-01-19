@@ -2,7 +2,6 @@ import { LocationStrategy } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DOCS } from '@dragosia/generic/search-index';
-import * as lunr from 'lunr';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { LUNR_INDEX } from '../tokens';
@@ -30,7 +29,7 @@ export class SearchComponent {
         map(q => {
             if(q) {
                 return this.index.search(q.split(/\s+/).map(t => {
-                    return `${t}~${1 + t.length / 5 | 0}`
+                    return `${t}~${Math.round(t.length / 5)}`
                 }).join(' '));
             } else {
                 return null;
@@ -38,14 +37,14 @@ export class SearchComponent {
         }),
         map(results => results && results.map(result => {
             const doc = DOCS[ result.ref ];
-            const title = doc.split(/\n/)[ 0 ];
-            const routerLink = [ '/rules', result.ref ];
+            const title = doc.title;
+            const routerLink = [ '/', ...result.ref.split(/\//) ];
             const ranges : [ number, number ][] = [];
 
             const keywords = Object.keys(result.matchData.metadata);
-
+            
             for(const keyword of keywords) {
-                for(const [ start, length ] of result.matchData.metadata[ keyword ].doc.position) {
+                for(const [ start, length ] of result.matchData.metadata[ keyword ].body.position) {
                     ranges.push([ start, start + length ]);
                 }
             }
@@ -73,7 +72,7 @@ export class SearchComponent {
                 start = range[ 0 ];
                 startInSentence = true;
                 while(start >= 0 && start > range[ 0 ] - RANGE_EXPANSION) {
-                    if(!doc.charAt(start).match(/[.\n]/)) {
+                    if(!doc.body.charAt(start).match(/[.\n]/)) {
                         --start;
                     } else {
                         ++start;
@@ -81,18 +80,18 @@ export class SearchComponent {
                     }
                 }
                 start = Math.max(0, start);
-                if(start === 0 || doc.charAt(start).match(/[.\n]/)) {
+                if(start === 0 || doc.body.charAt(start).match(/[.\n]/)) {
                     startInSentence = false;
                 }
 
 
                 end = range[1];
                 endInSentence = true;
-                while(end < doc.length && end < range[ 1 ] + RANGE_EXPANSION) {
-                    if(!doc.charAt(end).match(/[.\n]/)) {
+                while(end < doc.body.length && end < range[ 1 ] + RANGE_EXPANSION) {
+                    if(!doc.body.charAt(end).match(/[.\n]/)) {
                         ++end;
                     } else {
-                        if(doc.charAt(end) === '.') {
+                        if(doc.body.charAt(end) === '.') {
                             ++end;
                         } else {
                             endInSentence = false;
@@ -110,7 +109,7 @@ export class SearchComponent {
             }
 
             const text = r.map((t, i, a) => {
-               let str =  doc.substr(t.start, t.end - t.start);
+               let str =  doc.body.substr(t.start, t.end - t.start);
                if(t.startInSentence && 0 === i) {
                    str = '…' + str;
                }
@@ -124,7 +123,7 @@ export class SearchComponent {
                 title,
                 keywords,
                 routerLink,
-                link: location.origin + this.locationStrategy.prepareExternalUrl(this.router.createUrlTree(routerLink).toString()),
+                link: location.origin + this.locationStrategy.prepareExternalUrl(decodeURI(this.router.createUrlTree(routerLink).toString())),
                 text
             }
         }))
