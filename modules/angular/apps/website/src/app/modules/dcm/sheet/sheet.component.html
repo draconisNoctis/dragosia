@@ -76,36 +76,38 @@
         <span i18n>Import Character</span>
         <input type="file" id="import-char" (change)="import($event)" />
     </label>
-    <mat-divider></mat-divider>
-    <button mat-menu-item (click)="doStore()" [disabled]="!(char | async)?._changed">
-        <mat-icon>save</mat-icon>
-        <span i18n>Save Changes</span>
-    </button>
-    <button mat-menu-item (click)="doDiscard()" [disabled]="!(char | async)?._changed">
-        <mat-icon>block</mat-icon>
-        <span i18n>Discard Changes</span>
-    </button>
-    <button mat-menu-item (click)="doDelete()" [disabled]="!(char | async)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-        <span i18n>Delete Character</span>
-    </button>
-    <button mat-menu-item (click)="export()" [disabled]="!(char | async)">
-        <mat-icon>cloud_download</mat-icon>
-        <span i18n>Export Character</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item [matMenuTriggerFor]="themeMenu">
-        <mat-icon>color_lens</mat-icon>
-        <span i18n>Theme</span>
-    </button>
-    <a mat-menu-item *ngIf="char | async as c" [routerLink]="[ '..', 'print', c._id ]" target="_blank">
-        <mat-icon>cast</mat-icon>
-        <span i18n>Presentation Mode</span>
-    </a>
-    <a mat-menu-item *ngIf="char | async as c" [routerLink]="[ '..', 'print', c._id, { print: 1, close: 1 } ]" target="_blank">
-        <mat-icon>print</mat-icon>
-        <span i18n>Print</span>
-    </a>
+    <ng-container *ngIf="char | async as _char">
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="doStore(_char)">
+            <mat-icon>save</mat-icon>
+            <span i18n>Save Changes</span>
+        </button>
+        <button mat-menu-item (click)="doDiscard(_char)" [disabled]="!_char?._changed">
+            <mat-icon>block</mat-icon>
+            <span i18n>Discard Changes</span>
+        </button>
+        <button mat-menu-item (click)="doDelete(_char)">
+            <mat-icon color="warn">delete_forever</mat-icon>
+            <span i18n>Delete Character</span>
+        </button>
+        <button mat-menu-item (click)="export(_char)">
+            <mat-icon>cloud_download</mat-icon>
+            <span i18n>Export Character</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item [matMenuTriggerFor]="themeMenu">
+            <mat-icon>color_lens</mat-icon>
+            <span i18n>Theme</span>
+        </button>
+        <a mat-menu-item *ngIf="char | async as c" [routerLink]="[ '..', 'print', c._id ]" target="_blank">
+            <mat-icon>cast</mat-icon>
+            <span i18n>Presentation Mode</span>
+        </a>
+        <a mat-menu-item *ngIf="char | async as c" [routerLink]="[ '..', 'print', c._id, { print: 1, close: 1 } ]" target="_blank">
+            <mat-icon>print</mat-icon>
+            <span i18n>Print</span>
+        </a>
+    </ng-container>
 </mat-menu>
 
 <mat-menu #themeMenu="matMenu">

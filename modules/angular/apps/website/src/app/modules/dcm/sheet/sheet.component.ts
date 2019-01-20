@@ -136,29 +136,20 @@ export class SheetComponent implements OnInit {
         this.store.dispatch(new SetThemeAction(theme));
     }
     
-    doStore() {
-        this.char.pipe(
-            first(),
-            map(char => new StoreAction(char))
-        ).subscribe(this.store);
+    doStore(char : ICharacter) {
+        this.store.dispatch(new StoreAction(char));
     }
     
     doUpdate(value : ICharacter) {
         this.store.dispatch(new UpdateAction(value));
     }
     
-    doDiscard() {
-        this.char.pipe(
-            first(),
-            map(char => new FetchOneAction(char._id))
-        ).subscribe(this.store);
+    doDiscard(char : ICharacter) {
+        this.store.dispatch(new FetchOneAction(char._id));
     }
     
-    doDelete() {
-        this.char.pipe(
-            first(),
-            map(char => new DeleteAction(char))
-        ).subscribe(this.store);
+    doDelete(char : ICharacter) {
+        this.store.dispatch(new DeleteAction(char));
     }
     
     async openWizard() {
@@ -175,11 +166,8 @@ export class SheetComponent implements OnInit {
         }
     }
     
-    export() {
-        this.char.pipe(
-            first(),
-            map(char => new ExportAction(char))
-        ).subscribe(this.store);
+    export(char : ICharacter) {
+        this.store.dispatch(new ExportAction(char));
     }
     
     import(event : Event) {

@@ -145,7 +145,11 @@ export class SheetEffects {
                 a.href = url;
                 a.target = '_blank';
                 a.download = `${action.payload.character.about.name}.json`;
-                a.click();
+    
+                var evt = document.createEvent("MouseEvents");
+                evt.initMouseEvent("click", true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null);
+    
+                a.dispatchEvent(evt);
             })
         )
     }
