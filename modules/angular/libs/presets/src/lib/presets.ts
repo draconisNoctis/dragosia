@@ -158,13 +158,13 @@ export interface ICosts {
 }
 
 export interface IPartialTalent extends ITalent {
-    id: string;
+    // id: string;
     category: keyof ICharacterTalents;
     presets?: string[];
 }
 
 export interface IPartialGift {
-    id: string;
+    // id: string;
     name: string;
     presets?: string[];
 }
@@ -190,19 +190,19 @@ export interface IPartial {
 }
 
 export interface IRace extends IPartial {
-    id: string;
+    // id: string;
     name: string;
     presets: string[];
 }
 
 export interface ICulture extends IPartial {
-    id: string;
+    // id: string;
     name: string;
     races: string[];
 }
 
 export interface IProfession extends IPartial {
-    id: string;
+    // id: string;
     name: string;
     cultures: string[]
 }
@@ -370,7 +370,7 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
 export class Presets {
     protected get presets() {
         if(!this._presets) {
-            this._presets = yaml.safeLoad(require('raw-loader!./presets.yml'));
+            this._presets = yaml.safeLoadAll(require('raw-loader!./presets.yml'));
         }
         return this._presets;
     }
@@ -378,7 +378,7 @@ export class Presets {
     
     protected get races() {
         if(!this._races) {
-            this._races = yaml.safeLoad(require('raw-loader!./races.yml')).map((race : IRace) => {
+            this._races = yaml.safeLoadAll(require('raw-loader!./races.yml')).map((race : IRace) => {
                 this.mapPartial(race);
                 return race;
             });
@@ -389,7 +389,7 @@ export class Presets {
     
     protected get cultures() {
         if(!this._cultures) {
-            this._cultures = yaml.safeLoad(require('raw-loader!./cultures.yml')).map((culture : ICulture) => {
+            this._cultures = yaml.safeLoadAll(require('raw-loader!./cultures.yml')).map((culture : ICulture) => {
                 this.mapPartial(culture);
                 return culture;
             });
@@ -400,7 +400,7 @@ export class Presets {
     
     protected get professions() {
         if(!this._professions) {
-            this._professions = yaml.safeLoad(require('raw-loader!./professions.yml')).map((profession : IProfession) => {
+            this._professions = yaml.safeLoadAll(require('raw-loader!./professions.yml')).map((profession : IProfession) => {
                 this.mapPartial(profession);
                 return profession;
             });
@@ -411,7 +411,7 @@ export class Presets {
     
     protected get talents() {
         if(!this._talents) {
-            this._talents = yaml.safeLoad(require('raw-loader!./talents.yml'));
+            this._talents = yaml.safeLoadAll(require('raw-loader!./talents.yml'));
         }
         return this._talents!;
     }
@@ -419,7 +419,7 @@ export class Presets {
     
     protected get gifts() {
         if(!this._gifts) {
-            this._gifts = yaml.safeLoad(require('raw-loader!./gifts.yml'));
+            this._gifts = yaml.safeLoadAll(require('raw-loader!./gifts.yml'));
         }
         return this._gifts!;
     }
@@ -475,12 +475,12 @@ export class Presets {
         return this.professions.filter(profession => profession.cultures.includes(culture));
     }
     
-    getTalentById(id : string) {
-        return this.talents.find(t => t.id === id);
+    getTalentByName(name : string) {
+        return this.talents.find(t => t.name === name);
     }
     
-    getGiftById(id : string) {
-        return this.gifts.find(g => g.id === id);
+    getGiftByName(name : string) {
+        return this.gifts.find(g => g.name === name);
     }
     
     mapPartial(partial : IPartial) {
@@ -488,16 +488,16 @@ export class Presets {
             for(const talent of partial.talents) {
                 if('nOf' in talent) {
                     for(const t of talent.nOf) {
-                        Object.assign(t, this.getTalentById(t.id));
+                        Object.assign(t, this.getTalentByName(t.name));
                     }
                 } else {
-                    Object.assign(talent, this.getTalentById(talent.id));
+                    Object.assign(talent, this.getTalentByName(talent.name));
                 }
             }
         }
         if(partial.gifts) {
             for(const gift of partial.gifts) {
-                Object.assign(gift, this.getGiftById(gift.id));
+                Object.assign(gift, this.getGiftByName(gift.name));
             }
         }
     }

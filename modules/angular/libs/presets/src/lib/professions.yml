@@ -1,66 +1,73 @@
-- id: Kämpfer
-  name: Kämpfer
-  cultures:
-      - Menschen
-      - Zwerge
-  talents:
-      - nOf:
-            - id: Schwerter
-            - id: 2H-Schwerter
-            - id: Hiebwaffen
-            - id: 2H-Hiebwaffen
-            - id: Dolche
-        values:
-            - 1
-      - id: Erste Hilfe
-        value: 1
-- id: Magier
-  name: Magier
-  cultures:
-      - Menschen
-      - Zwerge
-  talents:
-      - id: Lesen/Schreiben
-        value: 2
-  gifts:
-      - id: Magie
-        value: 2
-- id: Hexe
-  name: Hexe
-  cultures:
-      - Menschen
-      - Zwerge
-  talents:
-      - id: Pflanzenkunde
-        value: 2
-      - id: Erste Hilfe
-        value: 1
-  gifts:
-      - id: Magie
-        value: 1
-- id: Druide
-  name: Druide
-  cultures:
-      - Menschen
-      - Zwerge
-  talents:
-      - id: Pflanzenkunde
-        value: 2
-      - id: Erste Hilfe
-        value: 1
-  gifts:
-      - id: Magie
-        value: 1
-- id: Priester
-  name: Priester
-  cultures:
-      - Menschen
-      - Zwerge
-  talents:
-      - id: Lesen/Schreiben
-        value: 1
-  gifts:
-      - id: Glaube
-        value: 2
+name: Kämpfer
+cultures:
+  - Menschen
+  - Zwerge
+talents:
+  - nOf:
+        - name: Schwerter
+        - name: 2H-Schwerter
+        - name: Hiebwaffen
+        - name: 2H-Hiebwaffen
+        - name: Dolche
+    values:
+        - 1
+  - name: Erste Hilfe
+    value: 1
+
+---
+
+name: Magier
+cultures:
+  - Menschen
+  - Zwerge
+talents:
+  - name: Lesen/Schreiben
+    value: 2
+gifts:
+  - name: Magie
+    value: 2
+
+---
+
+name: Hexe
+cultures:
+  - Menschen
+  - Zwerge
+talents:
+  - name: Pflanzenkunde
+    value: 2
+  - name: Erste Hilfe
+    value: 1
+gifts:
+  - name: Magie
+    value: 1
+
+---
+
+name: Drunamee
+cultures:
+  - Menschen
+  - Zwerge
+talents:
+  - name: Pflanzenkunde
+    value: 2
+  - name: Erste Hilfe
+    value: 1
+gifts:
+  - name: Magie
+    value: 1
+
+---
+
+name: Priester
+cultures:
+  - Menschen
+  - Zwerge
+talents:
+  - name: Lesen/Schreiben
+    value: 1
+gifts:
+  - name: Glaube
+    value: 2
 
 

@@ -1,7 +1,9 @@
-- id: Magie
-  name: Magie
-- id: Gefahreninstinkt
-  name: Gefahreninstinkt
-- id: Glaube
-  name: Glaube
+name: Magie
 
+---
+
+name: Gefahreninstinkt
+
+---
+
+name: Glaube

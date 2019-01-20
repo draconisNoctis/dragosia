@@ -72,7 +72,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
                 culture.enable();
                 this.cultures = this.presets.getCulturesForRace(value);
                 
-                if(!this.cultures.some(c => c.id === culture.value)) {
+                if(!this.cultures.some(c => c.name === culture.value)) {
                     culture.reset();
                 }
             } else {
@@ -88,7 +88,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
                 profession.enable();
                 this.professions = this.presets.getProfessionsForCulture(value);
                 
-                if(!this.professions.some(p => p.id === profession.value)) {
+                if(!this.professions.some(p => p.name === profession.value)) {
                     profession.reset();
                 }
             } else {

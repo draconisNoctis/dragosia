@@ -1,79 +1,80 @@
-- id: Menschen
-  name: Menschen
-  presets:
-      - dragosia
-  talents:
-      - id: Muttersprache
-        value: 3
-      - id: Gemeinsprache
-        value: 1
-      - id: Raufen
-        value: 0
-      - id: Werfen
-        value: 1
-      - id: Körperbeherrschung
-        value: 1
-      - id: Klettern
-        value: 0
-      - id: Singen
-        value: 0
-      - id: Tanzen
-        value: 0
-      - id: Sinnesschärfe
-        value: 0
-      - id: Schleichen
-        value: 0
-      - id: Selbstbeherrschung
-        value: 0
-      - id: Menschenkenntnis
-        value: 0
-      - id: Ausstrahlung
-        value: 0
-      - id: Orientierung
-        value: 1
-      - id: Malen/Zeichnen
-        value: 0
-      - id: Kochen
-        value: 0
-      - id: Allgemeinwissen
-        value: 0
-- id: Zwerge
-  name: Zwerge
-  presets:
-      - dragosia
-  talents:
-      - id: Muttersprache
-        value: 3
-      - id: Gemeinsprache
-        value: 1
-      - id: Raufen
-        value: 0
-      - id: Werfen
-        value: 1
-      - id: Körperbeherrschung
-        value: 1
-      - id: Klettern
-        value: 0
-      - id: Singen
-        value: 0
-      - id: Tanzen
-        value: 0
-      - id: Sinnesschärfe
-        value: 0
-      - id: Schleichen
-        value: 0
-      - id: Selbstbeherrschung
-        value: 0
-      - id: Menschenkenntnis
-        value: 0
-      - id: Ausstrahlung
-        value: 0
-      - id: Orientierung
-        value: 1
-      - id: Malen/Zeichnen
-        value: 0
-      - id: Kochen
-        value: 0
-      - id: Allgemeinwissen
-        value: 0
+name: Menschen
+presets:
+  - dragosia
+talents:
+  - name: Muttersprache
+    value: 3
+  - name: Gemeinsprache
+    value: 1
+  - name: Raufen
+    value: 0
+  - name: Werfen
+    value: 1
+  - name: Körperbeherrschung
+    value: 1
+  - name: Klettern
+    value: 0
+  - name: Singen
+    value: 0
+  - name: Tanzen
+    value: 0
+  - name: Sinnesschärfe
+    value: 0
+  - name: Schleichen
+    value: 0
+  - name: Selbstbeherrschung
+    value: 0
+  - name: Menschenkenntnis
+    value: 0
+  - name: Ausstrahlung
+    value: 0
+  - name: Orientierung
+    value: 1
+  - name: Malen/Zeichnen
+    value: 0
+  - name: Kochen
+    value: 0
+  - name: Allgemeinwissen
+    value: 0
+
+---
+
+name: Zwerge
+presets:
+  - dragosia
+talents:
+  - name: Muttersprache
+    value: 3
+  - name: Gemeinsprache
+    value: 1
+  - name: Raufen
+    value: 0
+  - name: Werfen
+    value: 1
+  - name: Körperbeherrschung
+    value: 1
+  - name: Klettern
+    value: 0
+  - name: Singen
+    value: 0
+  - name: Tanzen
+    value: 0
+  - name: Sinnesschärfe
+    value: 0
+  - name: Schleichen
+    value: 0
+  - name: Selbstbeherrschung
+    value: 0
+  - name: Menschenkenntnis
+    value: 0
+  - name: Ausstrahlung
+    value: 0
+  - name: Orientierung
+    value: 1
+  - name: Malen/Zeichnen
+    value: 0
+  - name: Kochen
+    value: 0
+  - name: Allgemeinwissen
+    value: 0
 

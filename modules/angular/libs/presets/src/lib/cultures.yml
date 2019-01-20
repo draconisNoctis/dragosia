@@ -1,29 +1,30 @@
-- id: Menschen
-  name: Menschen
-  races:
-      - Menschen
-  talents:
-      - id: Raufen
-        value: 1
-      - id: Zechen
-        value: 1
-      - nOf:
-            - id: Schwerter
-            - id: Hiebwaffen
-            - id: Dolche
-        values: [ 1 ]
-- id: Zwerge
-  name: Zwerge
-  races:
-      - Zwerge
-  talents:
-      - id: Raufen
-        value: 1
-      - id: Zechen
-        value: 2
-      - id: Schilde
-        value: 1
-      - nOf:
-            - id: Hiebwaffen
-            - id: 2H-Hiebwaffen
-        values: [ 1, 0 ]
+name: Menschen
+races:
+  - Menschen
+talents:
+  - name: Raufen
+    value: 1
+  - name: Zechen
+    value: 1
+  - nOf:
+        - name: Schwerter
+        - name: Hiebwaffen
+        - name: Dolche
+    values: [ 1 ]
+
+---
+
+name: Zwerge
+races:
+  - Zwerge
+talents:
+  - name: Raufen
+    value: 1
+  - name: Zechen
+    value: 2
+  - name: Schilde
+    value: 1
+  - nOf:
+        - name: Hiebwaffen
+        - name: 2H-Hiebwaffen
+    values: [ 1, 0 ]

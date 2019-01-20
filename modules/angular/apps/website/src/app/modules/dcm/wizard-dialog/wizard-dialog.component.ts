@@ -84,9 +84,9 @@ export class WizardDialogComponent {
             case 2: {
                 const value = this.backgroundControl.value;
                 const selections = getPartialSelections([
-                    this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === value.race)!,
-                    this.presets.getCulturesForRace(value.race).find(c => c.id === value.culture)!,
-                    this.presets.getProfessionsForCulture(value.culture).find(p => p.id === value.profession)!
+                    this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === value.race)!,
+                    this.presets.getCulturesForRace(value.race).find(c => c.name === value.culture)!,
+                    this.presets.getProfessionsForCulture(value.culture).find(p => p.name === value.profession)!
                 ]);
     
                 this.selections = selections;
@@ -99,9 +99,9 @@ export class WizardDialogComponent {
                 }
             }
             case 3: {
-                const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.id === this.backgroundControl.value.race)!
-                const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.id === this.backgroundControl.value.culture)!;
-                const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.id === this.backgroundControl.value.profession)!;
+                const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === this.backgroundControl.value.race)!
+                const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.name === this.backgroundControl.value.culture)!;
+                const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.name === this.backgroundControl.value.profession)!;
     
                 const { character, costs } = applyPartials(createEmptyCharacter(), [
                     race,
