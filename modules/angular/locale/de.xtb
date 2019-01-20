@@ -22,7 +22,7 @@
   <translation id="4902817035128594900">Beschreibung</translation>
   <translation id="8008131619909556709">Eigenschaften</translation>
   <translation id="6632040223751981101">Stärke</translation>
-  <translation id="2450951288627752134">Beweglichkeit</translation>
+  <translation id="2450951288627752134">Agilität</translation>
   <translation id="5465529649433457628">Fingerfertigkeit</translation>
   <translation id="1632323077493059273">Konstitution</translation>
   <translation id="756813006053572492">Mut</translation>
@@ -140,8 +140,8 @@
   <translation id="4304211a1b4689b42421cec0cbf069b97b44a6ab">Schwer</translation>
   <translation id="403e473cade7aeca983c1df1dea1be27a4d509b9">Sehr schwer</translation>
   <translation id="5c0bdef2838f1a32571c71b91b0ef6a950757477">Unmöglich</translation>
-  <translation id="6948665149717579872">Import Charakter</translation>
-  <translation id="5411931426354196722">Export Character</translation>
+  <translation id="6948665149717579872">Charakter importieren</translation>
+  <translation id="5411931426354196722">Charakter importieren</translation>
   <translation id="15a268c774e6b76eb787c9a9c40c5b3eecb4c6bf">Allgemein</translation>
   <translation id="2d09ae0eecd3e42bc7f52aafc727981c0513dbd7">Gabe</translation>
   <translation id="85137fc3f722a0edd8229cf250e6680181db94a5">Nahkampf</translation>
