@@ -1,6 +1,6 @@
 # Hintergrund
 
-- [**Zeitrechnung](./zeitrechnung.md)
+- [**Zeitrechnung**](./zeitrechnung.md)
 
 - [**Religion der Menschen**](./religionen/menschen.md)
 
