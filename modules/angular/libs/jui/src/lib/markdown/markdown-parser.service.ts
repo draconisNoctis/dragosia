@@ -106,7 +106,7 @@ export class JsonRenderer extends Renderer {
     }
     
     codespan(code : string) : string {
-        return JSON.stringify({ type: 'codespan', code }) + ',\n';
+        return JSON.stringify({ type: 'codespan', code: this.unescape(code) }) + ',\n';
     }
     
     br() : string {
@@ -147,10 +147,12 @@ export class JsonRenderer extends Renderer {
     }
     
     protected unescape(text) {
-        return text.replace(/&quot;/g, '"');
+        return text.replace(/&quot;/g, '"')
+            .replace(/&#(\d{2,5});/g, (_, n) => String.fromCharCode(+n));
     }
     
     text(text : string) : string {
+        console.log({ text });
         return JSON.stringify({ type: 'text', text: this.unescape(text) }) + ',\n';
     }
 }
