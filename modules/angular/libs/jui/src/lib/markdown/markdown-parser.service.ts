@@ -152,7 +152,6 @@ export class JsonRenderer extends Renderer {
     }
     
     text(text : string) : string {
-        console.log({ text });
         return JSON.stringify({ type: 'text', text: this.unescape(text) }) + ',\n';
     }
 }
