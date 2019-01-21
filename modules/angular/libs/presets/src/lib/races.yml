@@ -1,80 +1,60 @@
-name: Menschen
+name: Base
+abstract: true
 presets:
-  - dragosia
+    - dragosia
 talents:
-  - name: Muttersprache
-    value: 3
-  - name: Gemeinsprache
-    value: 1
-  - name: Raufen
-    value: 0
-  - name: Werfen
-    value: 1
-  - name: Körperbeherrschung
-    value: 1
-  - name: Klettern
-    value: 0
-  - name: Singen
-    value: 0
-  - name: Tanzen
-    value: 0
-  - name: Sinnesschärfe
-    value: 0
-  - name: Schleichen
-    value: 0
-  - name: Selbstbeherrschung
-    value: 0
-  - name: Menschenkenntnis
-    value: 0
-  - name: Ausstrahlung
-    value: 0
-  - name: Orientierung
-    value: 1
-  - name: Malen/Zeichnen
-    value: 0
-  - name: Kochen
-    value: 0
-  - name: Allgemeinwissen
-    value: 0
+    - name: Raufen
+      value: 0
+    - name: Werfen
+      value: 1
+    - name: Körperbeherrschung
+      value: 1
+    - name: Klettern
+      value: 0
+    - name: Singen
+      value: 0
+    - name: Tanzen
+      value: 0
+    - name: Sinnesschärfe
+      value: 0
+    - name: Schleichen
+      value: 0
+    - name: Selbstbeherrschung
+      value: 0
+    - name: Menschenkenntnis
+      value: 0
+    - name: Ausstrahlung
+      value: 0
+    - name: Orientierung
+      value: 1
+    - name: Malen/Zeichnen
+      value: 0
+    - name: Kochen
+      value: 0
+    - name: Allgemeinwissen
+      value: 0
+
+---
+
+name: Menschen
+extends: Base
+presets:
+    - dragosia
+talents:
+    - name: Muttersprache
+      value: 3
+    - name: Gemeinsprache
+      value: 1
 
 ---
 
 name: Zwerge
+extends: Base
 presets:
-  - dragosia
+    - dragosia
 talents:
-  - name: Muttersprache
-    value: 3
-  - name: Gemeinsprache
-    value: 1
-  - name: Raufen
-    value: 0
-  - name: Werfen
-    value: 1
-  - name: Körperbeherrschung
-    value: 1
-  - name: Klettern
-    value: 0
-  - name: Singen
-    value: 0
-  - name: Tanzen
-    value: 0
-  - name: Sinnesschärfe
-    value: 0
-  - name: Schleichen
-    value: 0
-  - name: Selbstbeherrschung
-    value: 0
-  - name: Menschenkenntnis
-    value: 0
-  - name: Ausstrahlung
-    value: 0
-  - name: Orientierung
-    value: 1
-  - name: Malen/Zeichnen
-    value: 0
-  - name: Kochen
-    value: 0
-  - name: Allgemeinwissen
-    value: 0
+    - name: Muttersprache
+      value: 3
+    - name: Gemeinsprache
+      value: 1
 

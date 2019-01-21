@@ -183,6 +183,8 @@ export interface ISelectTalents {
 }
 
 export interface IPartial {
+    extends?: string;
+    abstract?: boolean;
     attributes?: Partial<ICharacterAttributes>;
     skills?: Partial<ICharacterSkills>;
     gifts?: IPartialGiftWithValue[];
@@ -448,7 +450,7 @@ export class Presets {
     }
     
     getRacesForPreset(preset : string) : IRace[] {
-        return this.races.filter(race => race.presets.includes(preset));
+        return this.races.filter(race => !race.abstract && race.presets.includes(preset)).map(p => this.resolvePartial('races', p));
     }
     
     getGiftsForPreset(preset : string) {
@@ -468,11 +470,11 @@ export class Presets {
     }
     
     getCulturesForRace(race : string) : ICulture[] {
-        return this.cultures.filter(culture => culture.races.includes(race));
+        return this.cultures.filter(culture => !culture.abstract && culture.races.includes(race)).map(p => this.resolvePartial('cultures', p));
     }
     
     getProfessionsForCulture(culture : string) : IProfession[] {
-        return this.professions.filter(profession => profession.cultures.includes(culture));
+        return this.professions.filter(profession => !profession.abstract && profession.cultures.includes(culture)).map(p => this.resolvePartial('professions', p));
     }
     
     getTalentByName(name : string) {
@@ -481,6 +483,29 @@ export class Presets {
     
     getGiftByName(name : string) {
         return this.gifts.find(g => g.name === name);
+    }
+    
+    protected resolvePartial<T extends IPartial>(type: 'races'|'cultures'|'professions', partial : T) : T {
+        if(!partial.extends) {
+            return partial;
+        }
+        
+        const parent = this[type].find(p => p.name === partial.extends);
+     
+        console.assert(!!parent);
+        
+        return this.mergePartials<T>(parent, partial);
+    }
+    
+    protected mergePartials<T extends IPartial>(a : IPartial, b : IPartial) : T {
+        const res = { ...a, ...b } as T;
+        
+        res.attributes = { ...a.attributes, ...b.attributes };
+        res.skills = { ...a.skills, ...b.skills };
+        res.gifts = [ ...(a.gifts || []), ...(b.gifts || []) ];
+        res.talents = [ ...(a.talents || []), ...(b.talents || []) ];
+        
+        return res;
     }
     
     mapPartial(partial : IPartial) {
