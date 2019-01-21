@@ -490,7 +490,7 @@ export class Presets {
             return partial;
         }
         
-        const parent = this[type].find(p => p.name === partial.extends);
+        const parent = this[type as any].find(p => p.name === partial.extends);
      
         console.assert(!!parent);
         
