@@ -37,7 +37,7 @@
             margin: 0;
             min-width: calc(70%);
             text-shadow: 10px 10px 10px rgba(255, 255, 255, 0.1);
-            animation: home-show-dragosia 1s ease-out;
+            animation: home-show-dragosia 1s ease-out, home-move-dragosia 30s 1s linear alternate infinite;
 
             @media screen and (max-width: 800px) {
                 font-size: 64px;
@@ -94,6 +94,30 @@
     to {
         opacity: 1;
         transform: none;
+    }
+}
+
+@keyframes home-move-dragosia {
+    from {
+        transform: translate(0, 0);
+    }
+    10% {
+        transform: translate(-5px, -10px)
+    }
+    24% {
+        transform: translate(-10px, 15px)
+    }
+    40% {
+        transform: translate(5px, -5px)
+    }
+    60% {
+        transform: translate(-20px, -5px)
+    }
+    80% {
+        transform: translate(10px, -10px)
+    }
+    90% {
+        transform: translate(15px, 5px)
     }
 }
 
