@@ -68,6 +68,8 @@ Ist der Gott der Meere, Seen, Flüssen und allen weiteren fließenden oder stehe
 
 *auch Barkhal oder Embusko*
 
+Ist der Gott von Lug und Betrug aber auch der Gewitztheit und Schläue.
+
 ## Die Legende von der Schöpfung (unvollendet)
 
 > Am Anfang war das Sein und das Nichtsein und in dem Sein fanden sich Avus und Auia, aus deren Zusammenkunft sich Valo gebar; 
@@ -85,4 +87,4 @@ Gevatter Tod ist der der Begleiter der sterbenden und Toten, auch bekannt als Mo
 ihren Weg ins Jenseits finden. Diejenigen, welche auf dem Meer gestorben sind, geleitet er zu Lagus. Jene, die ihr 
 Leben und ihren Tod dem Kampf, der Ehre und der Gerechtigkeit werden in den Hallen von Pugna erwartet. Alle anderen, 
 die ein ehrenwertes Leben gelebt haben finden ihren Weg in die Reiche von Himes oder Somnu, jene jedoch, wie ein Leben 
-voller schändlicher Taten gelebt haben, leiden in den Verliesen von Insidaee eine Ewigkeit lang.
+voller schändlicher Taten gelebt haben, leiden im Reich von Amanek eine Ewigkeit lang.
