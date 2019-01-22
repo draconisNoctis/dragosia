@@ -125,6 +125,7 @@ export interface ICharacterMeta {
 export interface ICharacter {
     _id: string;
     _changed?: boolean;
+    provider : 'local'|'firebase';
     
     about: ICharacterAbout;
     attributes: ICharacterAttributes;
@@ -212,6 +213,7 @@ export interface IProfession extends IPartial {
 export function createEmptyCharacter() : ICharacter {
     return {
         _id: (Math.random() * 1000000 | 0).toString(16),
+        provider: 'local',
         about: {
             name: '',
             description: '',
