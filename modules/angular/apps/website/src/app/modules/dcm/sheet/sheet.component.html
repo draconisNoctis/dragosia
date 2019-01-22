@@ -18,8 +18,6 @@
         <mat-toolbar>
             <h1 *ngIf="char | async as _char">{{ _char.about.name }} ({{ _char.meta.exp.spend }}/{{ _char.meta.exp.total }})</h1>
             <button mat-icon-button class="dcm-menu" [matMenuTriggerFor]="mainMenu"><mat-icon>more_vert</mat-icon></button>
-
-            <button mat-fab (click)="openWizard()" matTooltip="New Character" i18n-matTooltip><mat-icon>person_add</mat-icon></button>
         </mat-toolbar>
         <div class="sheet-wrapper">
             <mat-tab-group *ngIf="char | async as _char">
@@ -74,7 +72,6 @@
     <button mat-menu-item for="import-char" [matMenuTriggerFor]="importMenu">
         <mat-icon>cloud_upload</mat-icon>
         <span i18n>Import Character</span>
-        <input type="file" id="import-char" (change)="import($event)" />
     </button>
     <ng-container *ngIf="char | async as _char">
         <mat-divider></mat-divider>

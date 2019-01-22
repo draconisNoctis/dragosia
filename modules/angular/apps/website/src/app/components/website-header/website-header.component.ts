@@ -24,7 +24,7 @@ export class WebsiteHeaderComponent {
     });
     
     constructor(protected readonly router : Router,
-                protected readonly firebaseAuth : AngularFireAuth) {
+                public readonly firebaseAuth : AngularFireAuth) {
     }
     
     search() {
