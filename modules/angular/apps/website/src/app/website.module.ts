@@ -1,30 +1,35 @@
-import { LocationStrategy } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { isDevMode, LOCALE_ID, NgModule, TRANSLATIONS, TRANSLATIONS_FORMAT } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-    MatButtonModule,
+    MatButtonModule, MatCardModule,
     MatDividerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
+    MatListModule, MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { ActionReducer, ActionReducerMap, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { NxModule } from '@nrwl/nx';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { environment } from '../environments/environment';
 import { WebsiteState } from './+state/website.state';
 import { ComponentsModule } from './components/components.module';
+import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './pages/home/home.component';
 
 import { WebsiteComponent } from './website.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const _syncReducer = localStorageSync({
     keys     : [ 'sheet' ],
@@ -50,7 +55,7 @@ export function translationsFactory(locale : string) {
 }
 
 @NgModule({
-    declarations: [ WebsiteComponent, HomeComponent ],
+    declarations: [ WebsiteComponent, HomeComponent, LoginComponent ],
     imports     : [
         BrowserModule,
         HttpClientModule,
@@ -64,6 +69,8 @@ export function translationsFactory(locale : string) {
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,
+        MatTabsModule,
+        MatCardModule,
         NxModule.forRoot(),
         StoreModule.forRoot({} as ActionReducerMap<WebsiteState>, {
             metaReducers: [ syncReducer ]
@@ -75,11 +82,15 @@ export function translationsFactory(locale : string) {
             { path: 'search', loadChildren: './modules/search/search.module#SearchModule' },
             { path: 'utils', loadChildren: './modules/utils/utils.module#UtilsModule' },
             { path: '', component: HomeComponent },
+            { path: 'login', component: LoginComponent, canActivate: [ AuthGuard ] },
             { path: '', loadChildren: './modules/presets/presets.module#PresetsModule' },
             { path: '', loadChildren: './modules/mdp/mdp.module#MdpModule' },
             { path: '**', redirectTo: '/' }
         ], { initialNavigation: 'enabled' }),
-        ComponentsModule
+        ComponentsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule
     ],
     providers   : [
         I18n,

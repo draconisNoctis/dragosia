@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -22,7 +23,8 @@ export class WebsiteHeaderComponent {
         q: new FormControl(null, Validators.required)
     });
     
-    constructor(protected readonly router : Router) {
+    constructor(protected readonly router : Router,
+                protected readonly firebaseAuth : AngularFireAuth) {
     }
     
     search() {
@@ -32,5 +34,9 @@ export class WebsiteHeaderComponent {
         this.router.navigate([ '/search'], {
             queryParams: this.searchForm.value
         })
+    }
+    
+    logout() {
+        this.firebaseAuth.auth.signOut();
     }
 }

@@ -15,7 +15,7 @@
         z-index: -1;
     }
 
-    a:not(.search):not(.get-started) {
+    a:not(.search):not(.get-started):not(.login):not(.logout) {
         transform: translateY(4px);
         > h1 {
             font-family: 'Jim Nightshade';

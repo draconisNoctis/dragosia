@@ -1,0 +1,36 @@
+<dw-website-header></dw-website-header>
+
+<mat-card>
+    <mat-tab-group>
+        <mat-tab i18n-label label="Login">
+            <form [formGroup]="loginForm">
+                <mat-form-field>
+                    <input matInput formControlName="email" i18n-placeholder placeholder="E-Mail" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" formControlName="password" i18n-placeholder placeholder="Password" />
+                </mat-form-field>
+
+                <button mat-button color="accent" (click)="loginWithEmailAndPassword()" i18n>Login</button>
+                <mat-divider></mat-divider>
+                <button mat-button type="button" (click)="loginWithGoogle()" i18n>Login with Google</button>
+            </form>
+
+        </mat-tab>
+
+        <mat-tab i18n-label label="Register">
+            <form [formGroup]="registerForm">
+                <mat-form-field>
+                    <input matInput formControlName="email" i18n-placeholder placeholder="E-Mail" />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" formControlName="password" i18n-placeholder placeholder="Password" />
+                </mat-form-field>
+
+                <button mat-button color="accent" (click)="registerWithEmailAndPassword()" i18n>Register</button>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>
+
+<dw-website-footer></dw-website-footer>

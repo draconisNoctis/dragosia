@@ -1,0 +1,51 @@
+@import "../../../theme";
+
+.dw-login {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('/assets/images/background.jpg');
+        background-size: cover;
+        z-index: 0;
+        opacity: .05;
+        filter: blur(2px) grayscale(100%);
+    }
+
+    > * {
+        z-index: 1;
+    }
+
+
+    .mat-card {
+        align-self: center;
+
+        .mat-divider-horizontal {
+            position: static;
+        }
+    }
+
+
+    .mat-tab-group {
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 16px;
+
+            .mat-form-field {
+
+            }
+        }
+    }
+}
