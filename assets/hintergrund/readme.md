@@ -2,6 +2,7 @@
 
 - Allgemein
     - [**Zeitrechnung**](./zeitrechnung.md)
+    - [**Geldsystem**](./geldsystem.md)
 - Menschen
     - [**Religion der Menschen**](./religionen/menschen.md)
 - [**Die Zwerge**](./völker/zwerge.md)
