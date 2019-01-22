@@ -7,6 +7,7 @@ import {
     OnInit,
     ViewEncapsulation
 } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +25,7 @@ import {
 } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
+import { CHARACTER_PROVIDER } from '@jina-draicana/sheet';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
 
 @Component({
@@ -106,7 +108,8 @@ export class SheetComponent implements OnInit {
                 protected readonly dialog : MatDialog,
                 protected readonly router : Router,
                 protected readonly cdr : ChangeDetectorRef,
-                protected readonly breakpointObserver : BreakpointObserver) {
+                protected readonly breakpointObserver : BreakpointObserver,
+                public readonly firebaseAuth : AngularFireAuth) {
     }
     
     ngOnInit() {
@@ -152,7 +155,7 @@ export class SheetComponent implements OnInit {
         this.store.dispatch(new DeleteAction(char));
     }
     
-    async openWizard() {
+    async openWizard(provider : CHARACTER_PROVIDER) {
         const ref = this.dialog.open(WizardDialogComponent, {
             maxWidth: '100vw',
             maxHeight: '90vh'
@@ -161,7 +164,7 @@ export class SheetComponent implements OnInit {
         const result = await ref.afterClosed().toPromise();
         
         if(result) {
-            this.store.dispatch(new StoreAction(result));
+            this.store.dispatch(new StoreAction({ ...result, provider }));
             this.router.navigate([ '/dcm', result._id ])
         }
     }
@@ -170,10 +173,10 @@ export class SheetComponent implements OnInit {
         this.store.dispatch(new ExportAction(char));
     }
     
-    import(event : Event) {
+    import(event : Event, provider: CHARACTER_PROVIDER) {
         const target = event.target as HTMLInputElement;
         
-        this.store.dispatch(new ImportAction(target.files[0]));
+        this.store.dispatch(new ImportAction(target.files[0], provider));
         
         target.type = 'text';
         target.value = '';

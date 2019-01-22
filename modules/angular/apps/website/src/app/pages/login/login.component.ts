@@ -32,8 +32,9 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
     
-    loginWithGoogle() {
-        this.firebaseAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    async loginWithGoogle() {
+        await this.firebaseAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        this.router.navigate([ '/' ]);
     }
     
     async loginWithEmailAndPassword() {

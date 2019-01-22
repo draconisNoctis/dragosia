@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import * as yaml from 'js-yaml';
 import { CHARACTER_PROVIDER, CURRENT_CHARACTER_VERSION } from '../../../sheet/src/lib/character.service';
+import * as uuid from 'uuid';
 
 
 export interface ICharacterAbout {
@@ -126,6 +127,7 @@ export interface ICharacterMeta {
 export interface ICharacter {
     _id: string;
     _changed?: boolean;
+    _user?: string;
     provider : CHARACTER_PROVIDER;
     version: number;
     
@@ -212,10 +214,10 @@ export interface IProfession extends IPartial {
     cultures: string[]
 }
 
-export function createEmptyCharacter(provider: CHARACTER_PROVIDER) : ICharacter {
+export function createEmptyCharacter() : ICharacter {
     return {
-        _id: (Math.random() * 1000000 | 0).toString(16),
-        provider,
+        _id: uuid(),
+        provider: null!,
         version: CURRENT_CHARACTER_VERSION,
         about: {
             name: '',

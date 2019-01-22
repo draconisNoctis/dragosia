@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ICharacter } from '@jina-draicana/presets';
 import { combineLatest, Observable, throwError } from 'rxjs';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
+import { CharacterFirebaseService } from './character/character-firebase.service';
 import { CharacterLocalService } from './character/character-local.service';
 
 export const CURRENT_CHARACTER_VERSION = 1;
@@ -12,7 +13,7 @@ export const CURRENT_CHARACTER_VERSION = 1;
 export class CharacterService {
     readonly services : [ CHARACTER_PROVIDER, ICharacterService ][];
     
-    readonly versions : [ number, (char : ICharacter) => ICharacter ] = [
+    readonly versions : [ number, (char : ICharacter) => ICharacter ][] = [
         [1, (char : ICharacter) => {
             if(!char.provider) {
                 char.provider = 'local';
@@ -21,8 +22,11 @@ export class CharacterService {
         } ]
     ] as any;
     
-    constructor(local : CharacterLocalService) {
-        this.services = [ [ 'local', local] ];
+    constructor(local : CharacterLocalService, firebase : CharacterFirebaseService) {
+        this.services = [
+            [ 'firebase', firebase ],
+            [ 'local', local]
+        ];
     }
     
     protected exec<T>(fn : (service : ICharacterService) => Observable<T>) : Observable<T[]>;
@@ -78,7 +82,6 @@ export class CharacterService {
                     .filter((c, i, a) => i === a.findIndex(c1 => c1._id === c._id))
                     .map(char => this.patchCharacter(char));
                 
-                
                 return characters;
             })
         )
@@ -92,6 +95,7 @@ export class CharacterService {
     }
     
     put(character : ICharacter) : Observable<void> {
+        character = this.patchCharacter(character);
         return this.exec<void>(service => service.put(character), character.provider);
     }
     

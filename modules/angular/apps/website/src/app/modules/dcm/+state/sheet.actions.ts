@@ -1,5 +1,6 @@
 import { ICharacter } from '@jina-draicana/presets';
 import { Action } from '@ngrx/store';
+import { CHARACTER_PROVIDER } from '../../../../../../../libs/sheet/src/lib/character.service';
 
 export enum SheetActionTypes {
     SetTheme = '[Sheet] Set Theme',
@@ -89,10 +90,10 @@ export class ExportAction implements Action {
 
 export class ImportAction implements Action {
     readonly type = SheetActionTypes.Import;
-    readonly payload : { data: Blob };
+    readonly payload : { data: Blob, provider : CHARACTER_PROVIDER };
     
-    constructor(data : Blob) {
-        this.payload = { data };
+    constructor(data : Blob, provider : CHARACTER_PROVIDER) {
+        this.payload = { data, provider };
     }
 }
 

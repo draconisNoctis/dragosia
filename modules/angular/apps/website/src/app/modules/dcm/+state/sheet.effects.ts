@@ -110,7 +110,8 @@ export class SheetEffects {
                 reader.readAsText(action.payload.data);
                 
                 return fromEvent(reader, 'load').pipe(
-                    map(() => JSON.parse(reader.result as string))
+                    map(() => JSON.parse(reader.result as string)),
+                    tap(char => char.provider = action.payload.provider)
                 );
             }),
             map(char => new StoreAction(char))

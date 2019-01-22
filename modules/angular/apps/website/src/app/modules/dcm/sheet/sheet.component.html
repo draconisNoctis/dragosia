@@ -67,15 +67,15 @@
 <dw-website-footer></dw-website-footer>
 
 <mat-menu #mainMenu="matMenu" class="sheet-menu">
-    <button mat-menu-item (click)="openWizard()">
+    <button mat-menu-item [matMenuTriggerFor]="createMenu">
         <mat-icon>person_add</mat-icon>
         <span i18n>New Character</span>
     </button>
-    <label mat-menu-item for="import-char">
+    <button mat-menu-item for="import-char" [matMenuTriggerFor]="importMenu">
         <mat-icon>cloud_upload</mat-icon>
         <span i18n>Import Character</span>
         <input type="file" id="import-char" (change)="import($event)" />
-    </label>
+    </button>
     <ng-container *ngIf="char | async as _char">
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="doStore(_char)">
@@ -110,7 +110,23 @@
     </ng-container>
 </mat-menu>
 
-<mat-menu #themeMenu="matMenu">
+<mat-menu #createMenu="matMenu" class="sheet-menu">
+    <button mat-menu-item (click)="openWizard('local')" i18n>Local</button>
+    <button mat-menu-item (click)="openWizard('firebase')" [disabled]="!(firebaseAuth.user | async)" i18n>Server</button>
+</mat-menu>
+
+<mat-menu #importMenu="matMenu" class="sheet-menu">
+    <label mat-menu-item for="import-local" i18n>
+        <span i18n>Local</span>
+        <input type="file" id="import-local" (change)="import($event, 'local')" />
+    </label>
+    <button mat-menu-item [disabled]="!(firebaseAuth.user | async)" i18n>
+        <label for="import-server" i18n>Server</label>
+        <input type="file" id="import-server" (change)="import($event, 'firebase')" [disabled]="!(firebaseAuth.user | async)" />
+    </button>
+</mat-menu>
+
+<mat-menu #themeMenu="matMenu" class="sheet-menu">
     <button mat-menu-item (click)="setTheme('default')">Default</button>
     <button mat-menu-item (click)="setTheme('ancient')" class="ancient">Ancient</button>
 </mat-menu>
