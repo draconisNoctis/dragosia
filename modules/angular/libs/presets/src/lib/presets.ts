@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import * as yaml from 'js-yaml';
+import { CHARACTER_PROVIDER, CURRENT_CHARACTER_VERSION } from '../../../sheet/src/lib/character.service';
 
 
 export interface ICharacterAbout {
@@ -125,7 +126,8 @@ export interface ICharacterMeta {
 export interface ICharacter {
     _id: string;
     _changed?: boolean;
-    provider : 'local'|'firebase';
+    provider : CHARACTER_PROVIDER;
+    version: number;
     
     about: ICharacterAbout;
     attributes: ICharacterAttributes;
@@ -210,10 +212,11 @@ export interface IProfession extends IPartial {
     cultures: string[]
 }
 
-export function createEmptyCharacter() : ICharacter {
+export function createEmptyCharacter(provider: CHARACTER_PROVIDER) : ICharacter {
     return {
         _id: (Math.random() * 1000000 | 0).toString(16),
-        provider: 'local',
+        provider,
+        version: CURRENT_CHARACTER_VERSION,
         about: {
             name: '',
             description: '',

@@ -37,7 +37,7 @@ export class SheetEffects {
     onStore() {
         return this.actions$.pipe(
             ofType<StoreAction>(SheetActionTypes.Store),
-            tap(action => this.characterService.put(action.payload.character))
+            switchMap(action => this.characterService.put(action.payload.character))
         )
     }
     
@@ -46,7 +46,6 @@ export class SheetEffects {
         return this.actions$.pipe(
             ofType<FetchOneAction>(SheetActionTypes.FetchOne),
             switchMap(action => this.characterService.get(action.payload.id)),
-            tap(char => console.log(char)),
             map(char => new RestoreAllAction([ { ...char, _changed: undefined } ]))
         )
     }

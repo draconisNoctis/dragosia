@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '@jina-draicana/presets';
 import { combineLatest, Observable, throwError } from 'rxjs';
-import { filter, first, map, switchMap } from 'rxjs/operators';
+import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { CharacterLocalService } from './character/character-local.service';
+
+export const CURRENT_CHARACTER_VERSION = 1;
 
 @Injectable({
     providedIn: 'root'
@@ -43,6 +45,7 @@ export class CharacterService {
         }
         
         return providerService[1].isAvailable().pipe(
+            tap(foo => console.log(foo)),
             switchMap(isAvailable => {
                 if(!isAvailable) {
                     throw new Error(`Provider "${provider}" is not available`);
@@ -53,11 +56,27 @@ export class CharacterService {
         )
     }
     
+    protected patchCharacter(char : ICharacter) : ICharacter {
+        let version = char.version || 0;
+        
+        for(const [ v, patcher ] of this.versions) {
+            if(v > version) {
+                char = patcher(char);
+                char.version = v;
+            } else {
+                break;
+            }
+        }
+        
+        return char;
+    }
+    
     getAll() : Observable<ICharacter[]> {
         return this.exec<ICharacter[]>(service => service.getAll()).pipe(
             map(results => {
                 const characters = results.reduce<ICharacter[]>((t, c) => t.concat(c), [])
-                    .filter((c, i, a) => i === a.findIndex(c1 => c1._id === c._id));
+                    .filter((c, i, a) => i === a.findIndex(c1 => c1._id === c._id))
+                    .map(char => this.patchCharacter(char));
                 
                 
                 return characters;
@@ -67,7 +86,8 @@ export class CharacterService {
     
     get(id : string) : Observable<ICharacter> {
         return this.exec<ICharacter>(service => service.get(id)).pipe(
-            map(results => results.find(Boolean))
+            map(results => results.find(Boolean)),
+            map(char => char && this.patchCharacter(char))
         )
     }
     
