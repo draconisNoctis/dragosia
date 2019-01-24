@@ -9,7 +9,7 @@
     - [**Die Zwerge**](./völker/zwerge.md)
     - [**Die Orks**](./völker/orks.md)
 - Sonstiges
-    - [**Nosferatur**](./nosferatu.md)
+    - [**Nosferatu**](./nosferatu.md)
     - [**Lykaner**](./lykaner.md)
 - Charaktererstellung
     - [**Vorteile**](https://draconisnoctis.github.io/dragosia/vorteile)
