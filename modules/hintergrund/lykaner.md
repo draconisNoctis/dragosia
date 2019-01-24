@@ -8,7 +8,7 @@ den Kontakt mit der Zivilisation zu meiden und werden äußerst aggresiv, falls 
 In der Gesellschaft sind Werwölfe geächtet und werden verjagt oder getötet, falls sie erkannt werden. Bei den Orks haben
 sie jedoch als mächtige Krieger ein hohes Ansehen.
 
-Werwölfe werden entweder als solche Gebohren oder sie werden in einer Vollmondnacht von einem gebissen. Sollte die Wunde
+Werwölfe werden entweder als solche Geboren oder sie werden in einer Vollmondnacht von einem gebissen. Sollte die Wunde
 nicht bis zum nächsten Vollmond entsprechend behandelt werden, wird man in dieser Nacht selber zu einem Werwolf.
 
 ## Verhältnis zu Nosferatu
