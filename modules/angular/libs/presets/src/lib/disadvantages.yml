@@ -45,7 +45,7 @@ incompatible:
 
 type: common
 name: Lichtempfindlich II
-value: 3
+value: 5
 description: Siehe `Lichtempfindlich I`, jedoch um 2 Würfel erschwert.
 incompatible:
     disadvantages:
