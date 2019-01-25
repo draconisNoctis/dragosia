@@ -17,7 +17,16 @@ Herz überleben aber auch sie nicht. Sollte ein Vampir nicht getötet werden leb
 
 Ein Vampir wird entweder durch ein `Ritual der Wandlung` in einen solchen Verwandelt oder er wird als solcher Geboren.
 Hierbei reicht es aus, wenn ein Elternteil ein Vampir war. Viele reinrassige Vampire sehen gewandelte Vampire als Vampire 
-zweiter Klasse an und behandeln diese entsprechend.
+zweiter Klasse an und behandeln diese entsprechend. Geborene Vampire sind meist von besonderer Schönheit (Vorteil: `Gutes Aussehen I/II`),
+gewandelte behalten ihr bisheriges Aussehen. Ein gewandelter Vampir altert nicht weiter, daher gilt es unter Vampiren als 
+Frevel ein Kind zu wandeln. Geborene Vampire altern mindestens bis zum Ende ihrer Pupertät, meist aber noch einige Jahre weiter.
+
+Vampirblut hat eine äußerst heilsamme Wirkung auf die meisten Geschöpfe, doch wer mit Vampirblut in seinem Körper stirbt,
+kann selber als Vampir wieder auferstehen.
+
+Vampire können sich Nachts in verschiedene Tiere verwandeln. Eine `Menschengroße Fledermaus`, einen `Schwarm Fledermäuse`
+oder auch einen großen `Wolf`. Die Masse des Vampirs bleibt bei diesen Verwandlungen jedoch immer gleich. Erfahrene Vampire
+können sogar ihre Kleidung mitverwandeln.
 
 ## Verhältnis zu den Lykanern
 
@@ -31,7 +40,8 @@ Ein Treffer einer silbernen Waffe verursacht eine Vampir-Wunde.
 
 Möglicher Nachteil: `Blutgier`
 
-Vampire sterben nur, bei 5 körplichen und 5 Vampir-Wunden, ansonsten verlieren sie nur das Bewusstsein.
+Vampire sterben nur, bei 5 körplichen und 5 Vampir-Wunden, ansonsten verlieren sie nur das Bewusstsein. Sie können körperliche
+Wunden mit ihrer Vampir-Kraft heilen.
 
 Jeder Vampir verfügt über den Nachteil `Lichtempfindlich II`.
 
