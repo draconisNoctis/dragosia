@@ -9,9 +9,14 @@
         display: none;
     }
 
-    .budget {
+    .attributes, .skills, .talents {
         display: flex;
         flex-direction: row;
+        align-items: flex-start;
+
+        label {
+            min-width: 120px;
+        }
 
         .mat-form-field {
             flex-grow: 1;
