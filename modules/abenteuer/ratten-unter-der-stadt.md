@@ -10,3 +10,13 @@ Die Gruppe sollte jetzt hinter dem Dieb her jagen. Durch die ganze Stadt bis zu 
 Wer aus der Gruppe eine `Agilitäts-Probe` schafft, sieht gerade noch, wie der Dieb im Brunnen verschwindet.
 
 Unter der Stadt erstreckt sich ein verzweigtes Netz von Tunneln, welche zum Teil die Brunnen miteinander verbinden.
+
+## Gegner
+
+|Typ|AT|PA|DMG|KO|Sonstiges|
+|---|:-:|:-:|:-:|:-:|---------|
+|Goblinwache|3|3|3|2||
+|Goblinaufseher|5|5|4|3||
+|Ork|6|6|4|4||
+|Ork Schamana|4|4|1|4|Wirkt einen Schlachtenzauber (+3 auf AT/DMG/KO) auf alle befreundeten Einheiten in Reichweite|
+|Ork Häuptling|8|6|5|6||
