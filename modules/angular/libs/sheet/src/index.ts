@@ -5,3 +5,4 @@ export * from './lib/factors';
 export * from './lib/character.service'
 export * from './lib/character/character-local.service'
 export * from './lib/character/character-firebase.service'
+export * from './lib/raise/raise.service';
