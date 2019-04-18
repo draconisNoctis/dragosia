@@ -75,17 +75,36 @@
         }
     }
 
+    .step-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(white, .1);
+
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
     .sub {
-        margin-top: auto;
+        margin-top: 8px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
 
         button {
-            &:last-of-type {
+            &:only-child {
                 margin-left: auto;
             }
         }
+    }
+
+    .valid {
+        color: #009900;
+    }
+
+    .invalid {
+        color: #bb0000;
     }
 }

@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, Input } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { getCosts } from '@jina-draicana/presets';
 import { FACTOR_ATTRIBUTES } from '../factors';
 import { AbstractComponent } from '../abstract.component';
+import { RaiseService } from '../raise/raise.service';
 
 @Component({
     selector       : 'js-attributes',
@@ -24,8 +25,14 @@ import { AbstractComponent } from '../abstract.component';
     } ]
 })
 export class AttributesComponent extends AbstractComponent implements ControlValueAccessor {
+    @Input()
+    max = Infinity;
+
+    @Input()
+    budget = Infinity;
+
     protected defaultFactor = FACTOR_ATTRIBUTES;
-    
+
     form = new FormGroup({
         strength: new FormControl(null, Validators.required),
         agility: new FormControl(null, Validators.required),
@@ -36,7 +43,7 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
         intuition: new FormControl(null, Validators.required),
         charisma: new FormControl(null, Validators.required)
     });
-    
+
     mins = {
         strength: 0,
         agility: 0,
@@ -47,7 +54,11 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
         intuition: 0,
         charisma: 0
     };
-    
+
+    constructor(protected readonly raiseService : RaiseService) {
+        super();
+    }
+
     writeValue(obj : any) : void {
         this.unregisterSubscriptions();
         if(obj) {
@@ -58,19 +69,30 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
         }
         this.registerSubscription();
     }
-    
+
     add(type : string) {
         const control = this.form.get(type)!;
         control.setValue(control.value + 1);
     }
-    
+
+    remove(type : string) {
+        const control = this.form.get(type)!;
+        control.setValue(control.value - 1);
+    }
+
+    getCostsForNext(type : string) {
+        const control = this.form.get(type)!;
+
+        return this.raiseService.getRaiseCosts(control.value + 1, 'E');
+    }
+
     protected calculatePrice(previous : any, current : any) : number {
         let price = 0;
         for(const key in current) {
             price += getCosts(previous[key], current[key]);
         }
-        
+
         return price;
     }
-    
+
 }

@@ -5,6 +5,7 @@ import { I18n } from '@ngx-translate/i18n-polyfill';
 import * as yaml from 'js-yaml';
 import { CHARACTER_PROVIDER, CURRENT_CHARACTER_VERSION } from '../../../sheet/src/lib/character.service';
 import * as uuid from 'uuid';
+import { RaiseService, Level } from '@jina-draicana/sheet';
 
 
 export interface ICharacterAbout {
@@ -121,7 +122,7 @@ export interface ICharacterMeta {
         spend: number;
         total: number;
     }
-    budget: ICosts;
+    points: IPoints
 }
 
 export interface ICharacter {
@@ -130,7 +131,7 @@ export interface ICharacter {
     _user?: string;
     provider : CHARACTER_PROVIDER;
     version: number;
-    
+
     about: ICharacterAbout;
     attributes: ICharacterAttributes;
     skills: ICharacterSkills;
@@ -139,14 +140,14 @@ export interface ICharacter {
     disadvantages: IDisadvantage[];
     health: number;
     mana: number;
-    
+
     talents: ICharacterTalents;
     meta: ICharacterMeta;
-    
+
     inventory: string;
     financials: string;
     equipment: string;
-    
+
     melee: IMeleeWeapon[];
     range: IRangeWeapon[];
 }
@@ -162,16 +163,33 @@ export interface ICosts {
     talents: number;
 }
 
+export interface IPoints {
+    attributes: {
+        min: number;
+        max: number;
+    };
+    skills: {
+        min: number;
+        max: number;
+    };
+    talents: {
+        min: number;
+        max: number;
+    };
+}
+
 export interface IPartialTalent extends ITalent {
     // id: string;
     category: keyof ICharacterTalents;
     presets?: string[];
+    level: Level;
 }
 
 export interface IPartialGift {
     // id: string;
     name: string;
     presets?: string[];
+    level: Level;
 }
 
 export interface IPartialGiftWithValue extends IPartialGift {
@@ -250,7 +268,7 @@ export function createEmptyCharacter() : ICharacter {
             gifts: []
         },
         gifts: [],
-        
+
         advantages: [],
         disadvantages: [],
         health: 0,
@@ -260,17 +278,31 @@ export function createEmptyCharacter() : ICharacter {
         equipment: '',
         meta: {
             preset: '',
-            budget: {
-                attributes: 0,
-                skills: 0,
-                talents: 0
+            // budget: {
+            //     attributes: 0,
+            //     skills: 0,
+            //     talents: 0
+            // },
+            points: {
+                attributes: {
+                    max: 0,
+                    min: 0
+                },
+                skills: {
+                    max: 0,
+                    min: 0
+                },
+                talents: {
+                    max: 0,
+                    min: 0
+                }
             },
             exp: {
                 spend: 0,
                 total: 0
             }
         },
-        
+
         melee: [],
         range: []
     }
@@ -295,13 +327,13 @@ export function getCosts(current : number, next : number) : number {
             costs -= COSTS[n];
         }
     }
-    
+
     return costs;
 }
 
 export function getPartialSelections(partials : IPartial[]) : ISelectTalents[] {
     const selections : ISelectTalents[] = [];
-    
+
     for(const partial of partials) {
         if(partial.talents) {
             for(const t of partial.talents) {
@@ -311,25 +343,28 @@ export function getPartialSelections(partials : IPartial[]) : ISelectTalents[] {
             }
         }
     }
-    
+
     return selections;
 }
 
-export function applyPartials(char : ICharacter, partials : IPartial[], selections : number[][]) : { character: ICharacter, costs: ICosts } {
+export function applyPartials(char : ICharacter, raiseService : RaiseService, partials : IPartial[], selections : number[][]) : ICharacter {
     const character = cloneCharacter(char);
-    const costs : ICosts = { attributes: 0, skills: 0, talents: 0 };
-    
+    // let spend = 0;
+    // const costs : ICosts = { attributes: 0, skills: 0, talents: 0 };
+
     let i = 0;
     for(const partial of partials) {
         if(partial.attributes) {
             for(const attr in partial.attributes) {
-                costs.attributes += getCosts(character.attributes[attr], character.attributes[attr] + partial.attributes[attr]);
+                // spend += raiseService.getRaiseCosts(character.attributes[attr] + partial.attributes[attr], 'E', { from: character.attributes[attr] });
+                // costs.attributes += getCosts(character.attributes[attr], character.attributes[attr] + partial.attributes[attr]);
                 character.attributes[attr] += partial.attributes[attr];
             }
         }
         if(partial.skills) {
             for(const skill in partial.skills) {
-                costs.skills += getCosts(character.skills[skill], character.skills[skill] + partial.skills[skill]);
+                // spend += raiseService.getRaiseCosts(character.skills[skill] + partial.skills[skill], 'F', { from: character.skills[skill] });
+                // costs.skills += getCosts(character.skills[skill], character.skills[skill] + partial.skills[skill]);
                 character.skills[skill] += partial.skills[skill];
             }
         }
@@ -337,10 +372,12 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
             for(const gift of partial.gifts) {
                 const existingGift = character.gifts.find(g => g.name === gift.name);
                 if(existingGift) {
-                    costs.skills += getCosts(existingGift.value, existingGift.value + gift.value);
+                    // costs.skills += getCosts(existingGift.value, existingGift.value + gift.value);
+                    // spend += raiseService.getRaiseCosts(existingGift.value + gift.value, gift.level, { from: existingGift.value });
                     existingGift.value += gift.value;
                 } else {
-                    costs.skills += getCosts(-1, gift.value);
+                    // costs.skills += getCosts(-1, gift.value);
+                    // spend += raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 });
                     character.gifts.push(gift);
                 }
             }
@@ -357,20 +394,23 @@ export function applyPartials(char : ICharacter, partials : IPartial[], selectio
                 }
                 for(const talent of talents) {
                     const existingTalent = character.talents[ talent.category ].find(t => t.name === talent.name);
-    
+
                     if(existingTalent) {
-                        costs.talents += getCosts(existingTalent.value, existingTalent.value + talent.value);
+                        // costs.talents += getCosts(existingTalent.value, existingTalent.value + talent.value);
+                        // spend += raiseService.getRaiseCosts(existingTalent.value + talent.value, talent.level, { from: existingTalent.value });
                         existingTalent.value += talent.value;
                     } else {
-                        costs.talents += getCosts(-1, talent.value);
+                        // costs.talents += getCosts(-1, talent.value);
+                        // spend += raiseService.getRaiseCosts(talent.value, talent.level, { from: 0 });
                         character.talents[ talent.category ].push(talent);
                     }
                 }
             }
         }
     }
-    
-    return { character, costs };
+
+    return character;
+    // return { character, spend };
 }
 
 @Injectable({
@@ -384,7 +424,7 @@ export class Presets {
         return this._presets;
     }
     private _presets?: IPreset[];
-    
+
     protected get races() {
         if(!this._races) {
             this._races = yaml.safeLoadAll(require('raw-loader!./races.yml')).map((race : IRace) => {
@@ -395,7 +435,7 @@ export class Presets {
         return this._races!;
     }
     private _races?: IRace[];
-    
+
     protected get cultures() {
         if(!this._cultures) {
             this._cultures = yaml.safeLoadAll(require('raw-loader!./cultures.yml')).map((culture : ICulture) => {
@@ -406,7 +446,7 @@ export class Presets {
         return this._cultures!;
     }
     private _cultures?: ICulture[];
-    
+
     protected get professions() {
         if(!this._professions) {
             this._professions = yaml.safeLoadAll(require('raw-loader!./professions.yml')).map((profession : IProfession) => {
@@ -417,7 +457,7 @@ export class Presets {
         return this._professions!;
     }
     private _professions?: IProfession[];
-    
+
     protected get talents() {
         if(!this._talents) {
             this._talents = yaml.safeLoadAll(require('raw-loader!./talents.yml'));
@@ -425,7 +465,7 @@ export class Presets {
         return this._talents!;
     }
     private _talents?: IPartialTalent[];
-    
+
     protected get gifts() {
         if(!this._gifts) {
             this._gifts = yaml.safeLoadAll(require('raw-loader!./gifts.yml'));
@@ -433,7 +473,7 @@ export class Presets {
         return this._gifts!;
     }
     private _gifts?: IPartialGift[];
-    
+
     protected get advantages() {
         if(!this._advantages) {
             this._advantages = yaml.safeLoadAll(require('raw-loader!./advantages.yml'));
@@ -441,7 +481,7 @@ export class Presets {
         return this._advantages!;
     }
     private _advantages?: (IAdvantage & IAdvantageDisadvantageDetails)[];
-    
+
     protected get disadvantages() {
         if(!this._disadvantages) {
             this._disadvantages = yaml.safeLoadAll(require('raw-loader!./disadvantages.yml'));
@@ -449,72 +489,72 @@ export class Presets {
         return this._disadvantages!;
     }
     private _disadvantages?: (IDisadvantage & IAdvantageDisadvantageDetails)[];
-    
+
     constructor(protected readonly i18n : I18n) {}
-    
+
     getPresets() : IPreset[] {
         return this.presets;
     }
-    
+
     getRacesForPreset(preset : string) : IRace[] {
         return this.races.filter(race => !race.abstract && race.presets.includes(preset)).map(p => this.resolvePartial('races', p));
     }
-    
+
     getGiftsForPreset(preset : string) {
         return this.gifts.filter(g => !g.presets || g.presets.includes(preset));
     }
-    
+
     getTalentsForPreset(preset : string) {
         return this.talents.filter(t => !t.presets || t.presets.includes(preset));
     }
-    
+
     getAdvantagesForPreset(preset : string) {
         return this.advantages.filter(a => !a.presets || a.presets.includes(preset));
     }
-    
+
     getDisadvantagesForPreset(preset : string) {
         return this.disadvantages.filter(d => !d.presets || d.presets.includes(preset));
     }
-    
+
     getCulturesForRace(race : string) : ICulture[] {
         return this.cultures.filter(culture => !culture.abstract && culture.races.includes(race)).map(p => this.resolvePartial('cultures', p));
     }
-    
+
     getProfessionsForCulture(culture : string) : IProfession[] {
         return this.professions.filter(profession => !profession.abstract && profession.cultures.includes(culture)).map(p => this.resolvePartial('professions', p));
     }
-    
+
     getTalentByName(name : string) {
         return this.talents.find(t => t.name === name);
     }
-    
+
     getGiftByName(name : string) {
         return this.gifts.find(g => g.name === name);
     }
-    
+
     protected resolvePartial<T extends IPartial>(type: 'races'|'cultures'|'professions', partial : T) : T {
         if(!partial.extends) {
             return partial;
         }
-        
+
         const parent = this[type as any].find(p => p.name === partial.extends);
-     
+
         console.assert(!!parent);
-        
+
         return this.mergePartials<T>(parent, partial);
     }
-    
+
     protected mergePartials<T extends IPartial>(a : IPartial, b : IPartial) : T {
         const res = { ...a, ...b } as T;
-        
+
         res.attributes = { ...a.attributes, ...b.attributes };
         res.skills = { ...a.skills, ...b.skills };
         res.gifts = [ ...(a.gifts || []), ...(b.gifts || []) ];
         res.talents = [ ...(a.talents || []), ...(b.talents || []) ];
-        
+
         return res;
     }
-    
+
     mapPartial(partial : IPartial) {
         if(partial.talents) {
             for(const talent of partial.talents) {
@@ -533,7 +573,7 @@ export class Presets {
             }
         }
     }
-    
+
     getTypeName(type : keyof ICharacterSkills | 'common' | 'gift') {
         switch(type) {
             case 'common': return this.i18n('Common');
@@ -541,7 +581,7 @@ export class Presets {
             default: return this.getSkillName(type);
         }
     }
-    
+
     getSkillName(name : keyof ICharacterSkills) {
         switch(name) {
             case 'melee': return this.i18n('Melee');
@@ -550,7 +590,7 @@ export class Presets {
             case 'mental': return this.i18n('Mental');
         }
     }
-    
+
     getSkillNameShort(name : keyof ICharacterSkills) {
         switch(name) {
             case 'melee': return this.i18n({ value: 'Melee', meaning: 'short' });
@@ -559,7 +599,7 @@ export class Presets {
             case 'mental': return this.i18n({ value: 'Mental', meaning: 'short' });
         }
     }
-    
+
     getAttributeName(name : keyof ICharacterAttributes) {
         switch(name) {
             case 'strength': return this.i18n('Strength');
@@ -572,7 +612,7 @@ export class Presets {
             case 'charisma': return this.i18n('Charisma');
         }
     }
-    
+
     getAttributeNameShort(name : keyof ICharacterAttributes) {
         switch(name) {
             case 'strength': return this.i18n({ value:'Strength', meaning: 'short' });

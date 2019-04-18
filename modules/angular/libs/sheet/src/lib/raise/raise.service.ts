@@ -34,7 +34,7 @@ export class FibonacciRaiseService implements RaiseService {
         }
 
         let sum = 0;
-        while(++from < to) {
+        while(from++ < to) {
             sum += Math.round(this.getFibonacci(from + 1) * this.multipliers[level]);
         }
 

@@ -1,6 +1,6 @@
 <form [formGroup]="form">
     <div>
-        <ng-container *ngIf="mode === 'range'">
+        <!--<ng-container *ngIf="mode === 'range'">
             <span></span>
             <ul class="legend">
                 <li>+{{ 1 | costs }}</li>
@@ -9,62 +9,94 @@
                 <li>+{{ 4 | costs }}</li>
                 <li>+{{ 5 | costs }}</li>
             </ul>
-        </ng-container>
+        </ng-container>-->
         <label i18n>Strength</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.strength" formControlName="strength"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.strength" formControlName="strength"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('strength')" [disabled]="form.value.strength <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.strength" [max]="max" formControlName="strength" />
+        <div><button mat-icon-button (click)="add('strength')" [disabled]="form.value.strength >= max || budget < getCostsForNext('strength')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('strength') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.strength < 5">{{ (form.value.strength + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.strength >= 5"></span>
             <button mat-icon-button (click)="add('strength')" [disabled]="form.value.strength >= 5 || pointsAvailable < ((form.value.strength + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Agility</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.agility" formControlName="agility"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.agility" formControlName="agility"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('agility')" [disabled]="form.value.agility <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.agility" [max]="max" formControlName="agility" />
+        <div><button mat-icon-button (click)="add('agility')" [disabled]="form.value.agility >= max || budget < getCostsForNext('agility')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('agility') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.agility < 5">{{ (form.value.agility + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.agility >= 5"></span>
             <button mat-icon-button (click)="add('agility')" [disabled]="form.value.agility >= 5 || pointsAvailable < ((form.value.agility + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Dexterity</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.dexterity" formControlName="dexterity"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.dexterity" formControlName="dexterity"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('dexterity')" [disabled]="form.value.dexterity <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.dexterity" [max]="max" formControlName="dexterity" />
+        <div><button mat-icon-button (click)="add('dexterity')" [disabled]="form.value.dexterity >= max || budget < getCostsForNext('dexterity')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('dexterity') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.dexterity < 5">{{ (form.value.dexterity + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.dexterity >= 5"></span>
             <button mat-icon-button (click)="add('dexterity')" [disabled]="form.value.dexterity >= 5 || pointsAvailable < ((form.value.dexterity + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Constitution</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.constitution" formControlName="constitution"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.constitution" formControlName="constitution"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('constitution')" [disabled]="form.value.constitution <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.constitution" [max]="max" formControlName="constitution" />
+        <div><button mat-icon-button (click)="add('constitution')" [disabled]="form.value.constitution >= max || budget < getCostsForNext('constitution')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('constitution') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.constitution < 5">{{ (form.value.constitution + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.constitution >= 5"></span>
             <button mat-icon-button (click)="add('constitution')" [disabled]="form.value.constitution >= 5 || pointsAvailable < ((form.value.constitution + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Courage</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.courage" formControlName="courage"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.courage" formControlName="courage"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('courage')" [disabled]="form.value.courage <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.courage" [max]="max" formControlName="courage" />
+        <div><button mat-icon-button (click)="add('courage')" [disabled]="form.value.courage >= max || budget < getCostsForNext('courage')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('courage') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.courage < 5">{{ (form.value.courage + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.courage >= 5"></span>
             <button mat-icon-button (click)="add('courage')" [disabled]="form.value.courage >= 5 || pointsAvailable < ((form.value.courage + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Intelligence</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.intelligence" formControlName="intelligence"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.intelligence" formControlName="intelligence"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('intelligence')" [disabled]="form.value.intelligence <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.intelligence" [max]="max" formControlName="intelligence" />
+        <div><button mat-icon-button (click)="add('intelligence')" [disabled]="form.value.intelligence >= max || budget < getCostsForNext('intelligence')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('intelligence') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.intelligence < 5">{{ (form.value.intelligence + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.intelligence >= 5"></span>
             <button mat-icon-button (click)="add('intelligence')" [disabled]="form.value.intelligence >= 5 || pointsAvailable < ((form.value.intelligence + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Intuition</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.intuition" formControlName="intuition"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.intuition" formControlName="intuition"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('intuition')" [disabled]="form.value.intuition <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.intuition" [max]="max" formControlName="intuition" />
+        <div><button mat-icon-button (click)="add('intuition')" [disabled]="form.value.intuition >= max || budget < getCostsForNext('intuition')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('intuition') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.intuition < 5">{{ (form.value.intuition + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.intuition >= 5"></span>
             <button mat-icon-button (click)="add('intuition')" [disabled]="form.value.intuition >= 5 || pointsAvailable < ((form.value.intuition + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
         <label i18n>Charisma</label>
-        <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.charisma" formControlName="charisma"></jui-radio-range>
-        <div *ngIf="mode === 'button'" class="button-wrapper">
+        <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins.charisma" formControlName="charisma"></jui-radio-range>-->
+        <div><button mat-icon-button (click)="remove('charisma')" [disabled]="form.value.charisma <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.charisma" [max]="max" formControlName="charisma" />
+        <div><button mat-icon-button (click)="add('charisma')" [disabled]="form.value.charisma >= max || budget < getCostsForNext('charisma')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('charisma') }}</span></div>
+        <!--<div *ngIf="mode === 'button'" class="button-wrapper">
             <span i18n *ngIf="form.value.charisma < 5">{{ (form.value.charisma + 1) | costs:factor }} EP</span>
             <span *ngIf="form.value.charisma >= 5"></span>
             <button mat-icon-button (click)="add('charisma')" [disabled]="form.value.charisma >= 5 || pointsAvailable < ((form.value.charisma + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
-        </div>
+        </div>-->
     </div>
 </form>
