@@ -30,17 +30,17 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     set preset(preset : string) {
         this.talents = this.presets.getTalentsForPreset(preset);
     }
-    
+
     protected defaultFactor = FACTOR_TALENTS;
-    
+
     talents? : IPartialTalent[];
-    
+
     meleeForm = new FormArray([]);
     rangeForm = new FormArray([]);
     physicalForm = new FormArray([]);
     mentalForm = new FormArray([]);
     giftsForm = new FormArray([]);
-    
+
     form = new FormGroup({
         melee   : this.meleeForm,
         range   : this.rangeForm,
@@ -48,7 +48,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
         mental  : this.mentalForm,
         gifts   : this.giftsForm
     });
-    
+
     mins : { [P in keyof ICharacterTalents] : number[] } = {
         melee   : [],
         range   : [],
@@ -56,13 +56,13 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
         mental  : [],
         gifts   : []
     };
-    
+
     constructor(protected readonly dialog : MatDialog,
                 protected readonly presets : Presets,
                 protected readonly cdr : ChangeDetectorRef) {
         super();
     }
-    
+
     writeValue(obj : any) : void {
         this.unregisterSubscriptions();
         for(const key of [ 'melee', 'range', 'physical', 'mental', 'gifts' ] as (keyof ICharacterTalents)[]) {
@@ -70,7 +70,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
             while(control.length) {
                 control.removeAt(0);
             }
-            
+
             if(obj) {
                 this.mins[ key ] = obj[ key ].map(o => o.value);
                 for(const talent of obj[ key ]) {
@@ -82,7 +82,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
         }
         this.registerSubscription();
     }
-    
+
     addTalent(talent : ICharacterTalent, category : keyof ICharacterTalents) {
         (this.form.get(category) as FormArray).push(new FormGroup({
             attribute: new FormControl(talent.attribute, Validators.required),
@@ -91,8 +91,8 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
             value    : new FormControl(talent.value || 0, Validators.required)
         }))
     }
-    
-    
+
+
     async openAddDialog() {
         const v : ICharacterTalents = this.form.value;
         const ref = this.dialog.open(AddDialogComponent, {
@@ -102,23 +102,23 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
                 })
             }
         });
-        
+
         const result = await ref.afterClosed().toPromise();
-        
+
         if(result) {
             this.addTalent(result, result.category);
             this.mins[ result.category ].push(0);
-            this.pointsAvailable -= 1;
+            // this.pointsAvailable -= 1;
             this.cdr.markForCheck();
         }
     }
-    
-    
+
+
     add(type : string, index : number) {
         const control = this.form.get([ type, index, 'value' ])!;
         control.setValue(control.value + 1);
     }
-    
+
     protected calculatePrice(previous : any, current : any) : number {
         let price = 0;
         for(const key in current) {
@@ -126,8 +126,8 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
                 price += getCosts(previous[ key ][ i ] ? previous[ key ][ i ].value : -1, current[ key ][ i ].value);
             }
         }
-        
+
         return price;
     }
-    
+
 }

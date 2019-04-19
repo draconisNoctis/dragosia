@@ -34,22 +34,22 @@
                 </mat-tab>
                 <mat-tab i18n-label label="Attributes">
                     <ng-template matTabContent>
-                        <js-attributes mode="button" [formControl]="attributesControl" [(pointsAvailable)]="exp"></js-attributes>
+                        <js-attributes mode="button" [formControl]="attributesControl"></js-attributes>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Skills">
                     <ng-template matTabContent>
-                        <js-skills mode="button" [formControl]="skillsControl" [(pointsAvailable)]="exp"></js-skills>
+                        <js-skills mode="button" [formControl]="skillsControl"></js-skills>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Gifts">
                     <ng-template matTabContent>
-                        <js-gifts [preset]="_char.meta.preset" mode="button" [formControl]="giftsControl" [(pointsAvailable)]="exp"></js-gifts>
+                        <js-gifts [preset]="_char.meta.preset" mode="button" [formControl]="giftsControl"></js-gifts>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Talents">
                     <ng-template matTabContent>
-                        <js-talents [preset]="_char.meta.preset" mode="button" [formControl]="talentsControl" [(pointsAvailable)]="exp"></js-talents>
+                        <js-talents [preset]="_char.meta.preset" mode="button" [formControl]="talentsControl"></js-talents>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Character Sheet">

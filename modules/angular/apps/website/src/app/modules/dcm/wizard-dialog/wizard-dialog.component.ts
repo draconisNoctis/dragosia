@@ -10,7 +10,9 @@ import {
     ICosts,
     ISelectTalents,
     Presets,
-    ICharacterAttributes
+    ICharacterAttributes,
+    ICharacterSkills,
+    IGift
 } from '@jina-draicana/presets';
 import { FACTOR_ATTRIBUTES, FACTOR_SKILLS, FACTOR_TALENTS, RaiseService } from '@jina-draicana/sheet';
 import { delay, filter } from 'rxjs/operators';
@@ -27,14 +29,14 @@ import { delay, filter } from 'rxjs/operators';
 })
 export class WizardDialogComponent implements OnInit {
     settingsControl = new FormControl(null, Validators.required);
-    backgroundControl = new FormControl(null, Validators.required);
+    backgroundControl = new FormControl({ name: 'Alrik' }, Validators.required);
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
     attributesControl = new FormControl(null, [ Validators.required, ({ value}) => {
         if(!value) {
             return null;
         }
 
-        if(this.attributeCosts(value) < this.character!.meta.points.attributes.min) {
+        if(this.attributesCosts(value) < this.character!.meta.points.attributes.min) {
             return { min: this.character!.meta.points.attributes.min }
         }
 
@@ -59,7 +61,7 @@ export class WizardDialogComponent implements OnInit {
     stepperIndex = 0;
 
     get spend() {
-        return this.spendForAttributes;
+        return this.spendForAttributes + this.spendForSkills + this.spendForGifts;
     }
 
     get spendForAttributes() {
@@ -67,7 +69,23 @@ export class WizardDialogComponent implements OnInit {
             return 0;
         }
 
-        return this.attributeCosts(this.character.attributes);
+        return this.attributesCosts(this.character.attributes);
+    }
+
+    get spendForSkills() {
+        if(!this.character) {
+            return 0;
+        }
+
+        return this.skillsCosts(this.character.skills);
+    }
+
+    get spendForGifts() {
+        if(!this.character) {
+            return 0;
+        }
+
+        return this.giftsCosts(this.character.gifts);
     }
 
     constructor(protected readonly presets : Presets,
@@ -76,11 +94,26 @@ export class WizardDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        if(this.presets.getPresets().length === 1) {
+            this.settingsControl.setValue({ preset: this.presets.getPresets()[0].id });
+        }
+
         this.attributesControl.valueChanges.subscribe(value => {
             if(value && this.character) {
                 this.character.attributes = value;
             }
-        })
+        });
+
+        this.skillsGiftsControl.valueChanges.subscribe(value => {
+            if(value && this.character) {
+                if(value.skills) {
+                    this.character.skills = value.skills;
+                }
+                if(value.gifts) {
+                    this.character.gifts = value.gifts;
+                }
+            }
+        });
     }
 
     nextAfterBackground() {
@@ -206,15 +239,33 @@ export class WizardDialogComponent implements OnInit {
     }
 
 
-    protected attributeCosts(attributes : ICharacterAttributes) : number {
+    protected attributesCosts(attributes : ICharacterAttributes) : number {
         return Object.keys(attributes).reduce((t, attr) => {
             return t + this.raiseService.getRaiseCosts(attributes[attr], 'E', { from: 0 });
         }, 0);
     }
 
-    protected attributeDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
+    protected attributesDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
         return Object.keys(current).reduce((t, attr) => {
             return t + this.raiseService.getRaiseCosts(current[attr], 'E', { from: previous[attr] });
+        }, 0);
+    }
+
+    protected skillsCosts(skills : ICharacterSkills) : number {
+        return Object.keys(skills).reduce((t, skill) => {
+            return t + this.raiseService.getRaiseCosts(skills[skill], 'F', { from: 0 });
+        }, 0);
+    }
+
+    protected skillsDiffCosts(current : ICharacterSkills, previous : ICharacterSkills) : number {
+        return Object.keys(current).reduce((t, attr) => {
+            return t + this.raiseService.getRaiseCosts(current[attr], 'F', { from: previous[attr] });
+        }, 0);
+    }
+
+    protected giftsCosts(gifts : IGift[]) : number {
+        return gifts.reduce((t, gift) => {
+            return t + this.raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 });
         }, 0);
     }
 }

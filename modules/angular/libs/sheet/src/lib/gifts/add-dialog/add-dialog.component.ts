@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { IPartialGift } from '@jina-draicana/presets';
+import { RaiseService, Level } from '../../raise/raise.service';
 
 @Component({
     selector       : 'js-add-dialog',
@@ -14,15 +15,30 @@ import { IPartialGift } from '@jina-draicana/presets';
     }
 })
 export class AddDialogComponent implements OnInit {
-    customGiftControl = new FormControl(null, Validators.required);
-    
+    // customGiftControl = new FormControl(null, Validators.required);
+    customGiftGroup = new FormGroup({
+        name: new FormControl(null, Validators.required),
+        level: new FormControl('F', [ Validators.required, ({ value }) => {
+            if(null != value && this.getRaiseCosts(value) > this.budget) {
+                return { overbudget: { budget: this.budget } }
+            }
+            return null;
+        }])
+    });
+
+    budget: number;
     gifts : IPartialGift[];
-    
-    constructor(@Inject(MAT_DIALOG_DATA) data : { gifts: IPartialGift[] }) {
+
+    constructor(@Inject(MAT_DIALOG_DATA) data : { gifts: IPartialGift[], budget: number },
+                protected readonly raiseService : RaiseService) {
+        this.budget = data.budget;
         this.gifts = data.gifts;
     }
-    
+
     ngOnInit() {
     }
-    
+
+    getRaiseCosts(level : Level) {
+        return this.raiseService.getRaiseCosts(1, level);
+    }
 }

@@ -1,5 +1,8 @@
+@import "../abstract.component";
+
 .js-attributes {
-    display: block;
+    @extend %abstract-component;
+    /*display: block;
 
     form > div {
         display: grid;
@@ -85,5 +88,5 @@
                 }
             }
         }
-    }
+    }*/
 }

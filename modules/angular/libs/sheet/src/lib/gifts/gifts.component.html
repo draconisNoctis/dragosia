@@ -1,25 +1,22 @@
 <form [formGroup]="form">
     <div>
-        <ng-container *ngIf="mode === 'range' && form.controls.length > 0">
-            <span></span>
-            <ul class="legend">
-                <li>+{{ 1 | costs }}</li>
-                <li>+{{ 2 | costs }}</li>
-                <li>+{{ 3 | costs }}</li>
-                <li>+{{ 4 | costs }}</li>
-                <li>+{{ 5 | costs }}</li>
-            </ul>
-        </ng-container>
         <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
             <label>{{ control.value.name }}</label>
-            <jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins[index]" formControlName="value"></jui-radio-range>
+            <!--<jui-radio-range deselectable [readonly]="mode === 'button'" [min]="mins[index]" formControlName="value"></jui-radio-range>
             <div *ngIf="mode === 'button'" class="button-wrapper">
                 <span i18n *ngIf="form.value[index].value < 5">{{ (form.value[index].value + 1) | costs:factor }} EP</span>
                 <span *ngIf="form.value[index].value >= 5"></span>
                 <button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < ((form.value[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
+            </div>-->
+            <div>
+                <button mat-icon-button (click)="delete(index)" *ngIf="mode !== 'button' && form.value[index].value <= 1"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="remove(index)" [disabled]="form.value[index].value <= 1" *ngIf="mode !== 'button' && form.value[index].value > 1"><mat-icon>remove</mat-icon></button>
             </div>
+            <input type="number" [min]="mins[index]" [max]="max" formControlName="value" />
+            <div><button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= max || budget < getCostsForNext(index)"><mat-icon>add</mat-icon></button></div>
+            <div class="costs-for-next"><span>+{{ getCostsForNext(index) }}</span></div>
         </ng-container>
     </div>
 </form>
 
-<button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < factor" matTooltip="Add Gift" i18n-matTooltip><mat-icon>add</mat-icon></button>
+<button mat-mini-fab (click)="openAddDialog()" matTooltip="Add Gift" i18n-matTooltip><mat-icon>add</mat-icon></button>

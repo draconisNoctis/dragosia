@@ -37,6 +37,7 @@ export interface ICharacterSkills {
 export interface IGift {
     name: string;
     value: number;
+    level: Level;
 }
 
 export interface IAdvantageDisadvantageDetails {

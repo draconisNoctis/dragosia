@@ -26,7 +26,15 @@
         flex-direction: row;
 
         .mat-form-field {
-            flex-grow: 1
+            &:nth-child(1) {
+                flex-grow: 1;
+            }
+            &:nth-child(2) {
+                margin-left: 8px;
+                .mat-form-field-infix {
+                    width: 50px;
+                }
+            }
         }
 
         button {

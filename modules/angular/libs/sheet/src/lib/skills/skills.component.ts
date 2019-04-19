@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { getCosts } from '@jina-draicana/presets';
-import { FACTOR_SKILLS } from '../factors';
+
 import { AbstractComponent } from '../abstract.component';
+import { RaiseService } from '../raise/raise.service';
 
 @Component({
     selector       : 'js-skills',
@@ -10,8 +10,7 @@ import { AbstractComponent } from '../abstract.component';
     styleUrls      : [ './skills.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    inputs: [ 'pointsAvailable', 'mode', 'factor' ],
-    outputs: [ 'pointsAvailableChange' ],
+    inputs: [ 'mode' ],
     host           : {
         'class': 'js-skills mat-typography',
         '[class.js-skills-button]': 'mode === "button"',
@@ -24,22 +23,30 @@ import { AbstractComponent } from '../abstract.component';
     } ]
 })
 export class SkillsComponent extends AbstractComponent implements ControlValueAccessor {
+    @Input()
+    max = Infinity;
+
+    @Input()
+    budget = Infinity;
+
     form = new FormGroup({
         melee: new FormControl(null, Validators.required),
         range: new FormControl(null, Validators.required),
         physical: new FormControl(null, Validators.required),
         mental: new FormControl(null, Validators.required)
     });
-    
-    protected defaultFactor = FACTOR_SKILLS;
-    
+
     mins = {
         melee: 0,
         range: 0,
         physical: 0,
         mental: 0
     };
-    
+
+    constructor(protected readonly raiseService: RaiseService) {
+        super();
+    }
+
     writeValue(obj : any) : void {
         this.unregisterSubscriptions();
         if(obj) {
@@ -50,19 +57,20 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         }
         this.registerSubscription();
     }
-    
+
     add(type : string) {
         const control = this.form.get(type)!;
         control.setValue(control.value + 1);
     }
-    
-    protected calculatePrice(previous : any, current : any) : number {
-        let price = 0;
-        for(const key in previous) {
-            price += getCosts(previous[key], current[key]);
-        }
-        
-        return price;
+
+    remove(type: string) {
+        const control = this.form.get(type)!;
+        control.setValue(control.value - 1);
     }
-    
+
+    getCostsForNext(type: string) {
+        const control = this.form.get(type)!;
+
+        return this.raiseService.getRaiseCosts(control.value + 1, 'F');
+    }
 }
