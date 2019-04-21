@@ -87,15 +87,24 @@
 
     <mat-step [stepControl]="advantagesControl" [editable]="true">
         <ng-template matStepLabel i18n>Advantages & Disadvantages</ng-template>
-        <ng-container *ngIf="budget && stepperIndex >= 5">
-            <js-advantages [formControl]="advantagesControl" [preset]="settingsControl.value?.preset"></js-advantages>
+        <ng-container *ngIf="stepperIndex >= 5">
+            <header class="step-header">
+                <span>{{ character?.about?.name }}</span>
+
+                <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
+            </header>
+
+            <js-advantages [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [budget]="character?.meta?.exp?.total - spend"></js-advantages>
 
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <span class="balance" i18n>Available: {{ budget?.talents }}</span>
+                <span [class.valid]="advantagesControl.valid"
+                      [class.invalid]="advantagesControl.invalid">{{ advantageBalance > 0 ? '+' : advantageBalance < 0 ? '-' : '' }}{{advantageBalanceAbsolute}}</span>
 
-                <button mat-button matStepperNext i18n [disabled]="budget?.talents < 0">Next</button>
+                <!--<span class="balance" i18n>Available: {{ budget?.talents }}</span>-->
+
+                <button mat-button matStepperNext i18n [disabled]="advantagesControl.invalid">Next</button>
             </div>
         </ng-container>
     </mat-step>

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { IAdvantage, IDisadvantage, Presets } from '@jina-draicana/presets';
-import { FACTOR_ADVANTAGES } from '../factors';
+
 import { AbstractComponent } from '../abstract.component';
 
 const CUSTOM_REGEXP = /^(.*)\s*\((\d+)\)$/;
@@ -12,8 +12,6 @@ const CUSTOM_REGEXP = /^(.*)\s*\((\d+)\)$/;
     styleUrls      : [ './advantages.component.scss' ],
     encapsulation  : ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    inputs         : [ 'pointsAvailable' ],
-    outputs        : [ 'pointsAvailableChange' ],
     host           : {
         'class': 'js-advantages mat-typography',
     },
@@ -29,63 +27,55 @@ export class AdvantagesComponent extends AbstractComponent {
         this.advantages = this.presets.getAdvantagesForPreset(preset);
         this.disadvantages = this.presets.getDisadvantagesForPreset(preset);
     }
-    
-    protected defaultFactor = FACTOR_ADVANTAGES;
-    
+
+    @Input()
+    budget = Infinity;
+
+
     advantages? : IAdvantage[];
     disadvantages? : IDisadvantage[];
-    
+
     customAdvantageControl = new FormGroup({
         name: new FormControl(null, Validators.required),
-        value: new FormControl(null, Validators.required)
+        value: new FormControl(null, [ Validators.required, ({ value}) => {
+            if(null != value && value > this.budget) {
+                return { overbudget: { budget: this.budget } }
+            }
+            return null;
+        }])
     });
-    
+
     customDisadvantageControl = new FormGroup({
         name: new FormControl(null, Validators.required),
         value: new FormControl(null, Validators.required)
     });
-    
+
     advantageForm = new FormGroup({
-        advantage: new FormControl(null, Validators.required),
+        advantage: new FormControl(null, [ Validators.required, ({ value }) => {
+            if(null != value && value.value > this.budget) {
+                return { overbudget: { budget: this.budget } };
+            }
+            return null;
+        }]),
         specialization: new FormControl(null)
     });
     disadvantageForm = new FormGroup({
         disadvantage: new FormControl(null, Validators.required),
         specialization: new FormControl(null)
     });
-    
+
     advantagesForm = new FormArray([]);
     disadvantagesForm = new FormArray([]);
-    
+
     form = new FormGroup({
         advantages   : this.advantagesForm,
         disadvantages: this.disadvantagesForm
     });
-    
+
     constructor(protected readonly presets : Presets) {
         super();
     }
-    
-    protected calculatePrice(previous : any, current : any) : number {
-        let currentPrice = 0;
-        for(const advantage of current.advantages) {
-            currentPrice -= advantage.value;
-        }
-        for(const disadvantage of current.disadvantages) {
-            currentPrice += disadvantage.value;
-        }
-        
-        let previousPrice = 0;
-        for(const advantage of previous.advantages) {
-            previousPrice -= advantage.value;
-        }
-        for(const disadvantage of previous.disadvantages) {
-            previousPrice += disadvantage.value;
-        }
-        
-        return (currentPrice - previousPrice) * -1;
-    }
-    
+
     addAdvantage(advantage?: IAdvantage) {
         if(!advantage) {
             if(this.advantageForm.value.advantage === 'custom') {
@@ -107,7 +97,7 @@ export class AdvantagesComponent extends AbstractComponent {
         this.advantageForm.reset();
         this.customAdvantageControl.reset();
     }
-    
+
     addDisadvantage(disadvantage?: IDisadvantage) {
         if(!disadvantage) {
             if(this.disadvantageForm.value.disadvantage === 'custom') {
@@ -129,17 +119,17 @@ export class AdvantagesComponent extends AbstractComponent {
         this.disadvantageForm.reset();
         this.customDisadvantageControl.reset();
     }
-    
+
     removeAdvantage(index : number) {
         this.advantagesForm.removeAt(index);
         this.form.updateValueAndValidity();
     }
-    
+
     removeDisadvantage(index : number) {
         this.disadvantagesForm.removeAt(index);
         this.form.updateValueAndValidity();
     }
-    
+
     writeValue(obj : null|{ advantages: IAdvantage[], disadvantages: IDisadvantage[] }) : void {
         this.unregisterSubscriptions();
         while(this.advantagesForm.length) {
@@ -148,18 +138,18 @@ export class AdvantagesComponent extends AbstractComponent {
         while(this.disadvantagesForm.length) {
             this.disadvantagesForm.removeAt(0);
         }
-        
+
         if(obj) {
             for(const advantage of obj.advantages) {
                 this.addAdvantage(advantage);
             }
-    
+
             for(const disadvantage of obj.disadvantages) {
                 this.addDisadvantage(disadvantage);
             }
             this.form.updateValueAndValidity();
         }
-        
+
         this.registerSubscription();
     }
 }

@@ -12,7 +12,8 @@ import {
     Presets,
     ICharacterAttributes,
     ICharacterSkills,
-    IGift
+    IGift,
+    IAdvantage
 } from '@jina-draicana/presets';
 import { FACTOR_ATTRIBUTES, FACTOR_SKILLS, FACTOR_TALENTS, RaiseService } from '@jina-draicana/sheet';
 import { delay, filter } from 'rxjs/operators';
@@ -47,7 +48,17 @@ export class WizardDialogComponent implements OnInit {
         gifts : new FormControl(null)
     });
     talentsControl = new FormControl(null, Validators.required);
-    advantagesControl = new FormControl(null, Validators.required);
+    advantagesControl = new FormControl(null, [ Validators.required, ({ value}) => {
+        if(null == value) {
+            return null;
+        }
+
+        if(Math.abs(this.advantagesCosts(value.advantages) - this.disadvantagesCosts(value.disadvantages)) > 10) {
+            return { unbalanced: true }
+        }
+
+        return null;
+    }]);
 
     character? : ICharacter;
     // costs? : ICosts;
@@ -61,7 +72,7 @@ export class WizardDialogComponent implements OnInit {
     stepperIndex = 0;
 
     get spend() {
-        return this.spendForAttributes + this.spendForSkills + this.spendForGifts;
+        return this.spendForAttributes + this.spendForSkills + this.spendForGifts + this.advantageBalance;
     }
 
     get spendForAttributes() {
@@ -86,6 +97,30 @@ export class WizardDialogComponent implements OnInit {
         }
 
         return this.giftsCosts(this.character.gifts);
+    }
+
+    get spendForAdvantages() {
+        if(!this.character) {
+            return 0;
+        }
+
+        return this.advantagesCosts(this.character.advantages);
+    }
+
+    get gainedForDisadvantages() {
+        if(!this.character) {
+            return 0;
+        }
+
+        return this.disadvantagesCosts(this.character.disadvantages);
+    }
+
+    get advantageBalance() {
+        return this.spendForAdvantages - this.gainedForDisadvantages;
+    }
+
+    get advantageBalanceAbsolute() {
+        return Math.abs(this.advantageBalance);
     }
 
     constructor(protected readonly presets : Presets,
@@ -114,6 +149,17 @@ export class WizardDialogComponent implements OnInit {
                 }
             }
         });
+
+        this.advantagesControl.valueChanges.subscribe(value => {
+            if(value && this.character) {
+                if(value.advantages) {
+                    this.character.advantages = value.advantages;
+                }
+                if(value.disadvantages) {
+                    this.character.disadvantages = value.disadvantages;
+                }
+            }
+        })
     }
 
     nextAfterBackground() {
@@ -267,5 +313,13 @@ export class WizardDialogComponent implements OnInit {
         return gifts.reduce((t, gift) => {
             return t + this.raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 });
         }, 0);
+    }
+
+    protected advantagesCosts(advantages : IAdvantage[]) : number {
+        return advantages.reduce((t, advantage) => t + advantage.value, 0);
+    }
+
+    protected disadvantagesCosts(advantages : IAdvantage[]) : number {
+        return advantages.reduce((t, advantage) => t + advantage.value, 0);
     }
 }
