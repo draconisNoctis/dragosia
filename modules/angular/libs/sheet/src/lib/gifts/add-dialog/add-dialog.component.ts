@@ -15,11 +15,10 @@ import { RaiseService, Level } from '../../raise/raise.service';
     }
 })
 export class AddDialogComponent implements OnInit {
-    // customGiftControl = new FormControl(null, Validators.required);
     customGiftGroup = new FormGroup({
         name: new FormControl(null, Validators.required),
         level: new FormControl('F', [ Validators.required, ({ value }) => {
-            if(null != value && this.getRaiseCosts(value) > this.budget) {
+            if(null != value && this.getActivationCost(value) > this.budget) {
                 return { overbudget: { budget: this.budget } }
             }
             return null;
@@ -38,7 +37,7 @@ export class AddDialogComponent implements OnInit {
     ngOnInit() {
     }
 
-    getRaiseCosts(level : Level) {
-        return this.raiseService.getRaiseCosts(1, level);
+    getActivationCost(level : Level) {
+        return this.raiseService.getActivationCost(level);
     }
 }

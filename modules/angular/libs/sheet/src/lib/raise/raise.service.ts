@@ -12,10 +12,12 @@ export function raiseServiceFactory() {
 })
 export abstract class RaiseService {
     abstract getRaiseCosts(to: number, level: Level, option?: { from?: number, reduced?: boolean }): number;
+    abstract getActivationCost(level : Level) : number;
 }
 
 @Injectable()
 export class FibonacciRaiseService implements RaiseService {
+    protected readonly activationMultiplier = 3;
     protected readonly multipliers : { [P in Level]: number } = {
         'A*': .75,
         'A': 1,
@@ -24,6 +26,16 @@ export class FibonacciRaiseService implements RaiseService {
         'D': 3.25,
         'E': 4.5,
         'F': 6
+    }
+
+    protected readonly offsets : { [P in Level]: number } = {
+        'A*': 0,
+        'A': 0,
+        'B': 0,
+        'C': 0,
+        'D': 0,
+        'E': 0,
+        'F': 0
     }
 
     protected readonly levels = Object.keys(this.multipliers) as Level[];
@@ -35,10 +47,14 @@ export class FibonacciRaiseService implements RaiseService {
 
         let sum = 0;
         while(from++ < to) {
-            sum += Math.round(this.getFibonacci(from + 1) * this.multipliers[level]);
+            sum += Math.round(this.getFibonacci(from + 1) * this.multipliers[level] + this.offsets[level]);
         }
 
         return sum;
+    }
+
+    getActivationCost(level : Level) {
+        return Math.round(this.activationMultiplier * this.multipliers[level] + this.offsets[level]);
     }
 
     protected getFibonacci(n : number) : number {

@@ -9,8 +9,8 @@
                 <button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= 5 || pointsAvailable < ((form.value[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
             </div>-->
             <div>
-                <button mat-icon-button (click)="delete(index)" *ngIf="mode !== 'button' && form.value[index].value <= 1"><mat-icon>delete</mat-icon></button>
-                <button mat-icon-button (click)="remove(index)" [disabled]="form.value[index].value <= 1" *ngIf="mode !== 'button' && form.value[index].value > 1"><mat-icon>remove</mat-icon></button>
+                <button mat-icon-button (click)="delete(index)" *ngIf="mode !== 'button' && form.value[index].value <= 0"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="remove(index)" [disabled]="form.value[index].value <= 0" *ngIf="mode !== 'button' && form.value[index].value > 0"><mat-icon>remove</mat-icon></button>
             </div>
             <input type="number" [min]="mins[index]" [max]="max" formControlName="value" />
             <div><button mat-icon-button (click)="add(index)" [disabled]="form.value[index].value >= max || budget < getCostsForNext(index)"><mat-icon>add</mat-icon></button></div>

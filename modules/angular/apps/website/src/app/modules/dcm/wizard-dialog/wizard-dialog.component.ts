@@ -311,7 +311,7 @@ export class WizardDialogComponent implements OnInit {
 
     protected giftsCosts(gifts : IGift[]) : number {
         return gifts.reduce((t, gift) => {
-            return t + this.raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 });
+            return t + this.raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 }) + this.raiseService.getActivationCost(gift.level);
         }, 0);
     }
 

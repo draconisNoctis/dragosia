@@ -70,7 +70,7 @@ export class GiftsComponent extends AbstractComponent implements ControlValueAcc
     protected addGift(gift : IGift) {
         this.form.push(new FormGroup({
             name : new FormControl(gift.name, Validators.required),
-            value: new FormControl(gift.value || 1, Validators.required),
+            value: new FormControl(gift.value || 0, Validators.required),
             level: new FormControl(gift.level)
         }))
     }
@@ -89,7 +89,7 @@ export class GiftsComponent extends AbstractComponent implements ControlValueAcc
         const result = await ref.afterClosed().toPromise();
 
         if(result) {
-            this.addGift({ ...result, value: 1 });
+            this.addGift({ ...result });
             this.mins.push(1);
             // this.pointsAvailable -= this.factor;
             this.cdr.markForCheck();
