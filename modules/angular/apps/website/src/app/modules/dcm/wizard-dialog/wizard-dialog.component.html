@@ -1,59 +1,55 @@
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" [selectedIndex]="stepperIndex" (selectionChange)="stepperChange($event)">
-    <mat-step [stepControl]="settingsControl" [editable]="true">
+    <mat-step [stepControl]="settingsControl" [editable]="false">
         <ng-template matStepLabel i18n>Settings</ng-template>
-        <ng-container *ngIf="stepperIndex >= 0">
-            <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
 
-            <div class="sub">
-                <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
-            </div>
-        </ng-container>
+        <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
+
+        <div class="sub">
+            <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
-    <mat-step [stepControl]="backgroundControl" [editable]="true">
+    <mat-step [stepControl]="backgroundControl" [editable]="false">
         <ng-template matStepLabel i18n>Background</ng-template>
-        <ng-container *ngIf="stepperIndex >= 1">
-            <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
 
-            <div class="sub">
-                <button mat-button matStepperPrevious i18n>Previous</button>
-                <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
-            </div>
-        </ng-container>
+        <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+
+        <div class="sub">
+            <button mat-button matStepperPrevious i18n>Previous</button>
+            <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
-    <mat-step [stepControl]="selectionsControl" [editable]="true">
+    <mat-step [stepControl]="selectionsControl" [editable]="false">
         <ng-template matStepLabel i18n>Selections</ng-template>
-        <ng-container *ngIf="stepperIndex >= 2">
-            <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
 
-            <div class="sub">
-                <button mat-button matStepperPrevious i18n>Previous</button>
-                <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
-            </div>
-        </ng-container>
+        <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+
+        <div class="sub">
+            <button mat-button matStepperPrevious i18n>Previous</button>
+            <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="attributesControl" [editable]="true">
         <ng-template matStepLabel i18n>Attributes</ng-template>
-        <ng-container *ngIf="stepperIndex >= 3">
-            <header class="step-header">
-                <span>{{ character?.about?.name }}</span>
 
-                <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
-            </header>
+        <header class="step-header">
+            <span>{{ character?.about?.name }}</span>
 
-            <js-attributes [formControl]="attributesControl" [max]="character?.meta?.points?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
+            <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
+        </header>
 
-            <div class="sub">
-                <button mat-button matStepperPrevious i18n>Previous</button>
+        <js-attributes [formControl]="attributesControl" [max]="character?.meta?.points?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
 
-                <span [class.valid]="spendForAttributes > character?.meta?.points?.attributes?.min"
-                      [class.invalid]="spendForAttributes <= character?.meta?.points?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.points?.attributes?.min }}</sub></span>
+        <div class="sub">
+            <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <button mat-button matStepperNext i18n [disabled]="attributesControl.invalid">Next</button>
-            </div>
-        </ng-container>
+            <span [class.valid]="spendForAttributes > character?.meta?.points?.attributes?.min"
+                [class.invalid]="spendForAttributes <= character?.meta?.points?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.points?.attributes?.min }}</sub></span>
+
+            <button mat-button matStepperNext i18n [disabled]="attributesControl.invalid">Next</button>
+        </div>
     </mat-step>
 
     <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="true">
