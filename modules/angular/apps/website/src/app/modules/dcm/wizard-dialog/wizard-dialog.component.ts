@@ -308,48 +308,34 @@ export class WizardDialogComponent implements OnInit {
 
 
     protected attributesCosts(attributes : ICharacterAttributes) : number {
-        return Object.keys(attributes).reduce((t, attr) => {
-            return t + this.raiseService.getRaiseCosts(attributes[attr], 'E', { from: 0 });
-        }, 0);
+        return this.raiseService.getAttributesCosts(attributes);
     }
 
     protected attributesDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
-        return Object.keys(current).reduce((t, attr) => {
-            return t + this.raiseService.getRaiseCosts(current[attr], 'E', { from: previous[attr] });
-        }, 0);
+        return this.raiseService.getAttributesDiffCosts(current, previous);
     }
 
     protected skillsCosts(skills : ICharacterSkills) : number {
-        return Object.keys(skills).reduce((t, skill) => {
-            return t + this.raiseService.getRaiseCosts(skills[skill], 'F', { from: 0 });
-        }, 0);
+        return this.raiseService.getSkillsCosts(skills);
     }
 
     protected skillsDiffCosts(current : ICharacterSkills, previous : ICharacterSkills) : number {
-        return Object.keys(current).reduce((t, attr) => {
-            return t + this.raiseService.getRaiseCosts(current[attr], 'F', { from: previous[attr] });
-        }, 0);
+        return this.raiseService.getSkillsDiffCosts(current, previous);
     }
 
     protected giftsCosts(gifts : IGift[]) : number {
-        return gifts.reduce((t, gift) => {
-            return t + this.raiseService.getRaiseCosts(gift.value, gift.level, { from: 0 }) + this.raiseService.getActivationCost(gift.level);
-        }, 0);
+        return this.raiseService.getGiftsCosts(gifts);
     }
 
     protected advantagesCosts(advantages : IAdvantage[]) : number {
-        return advantages.reduce((t, advantage) => t + advantage.value, 0);
+        return this.raiseService.getAdvantagesCosts(advantages);
     }
 
-    protected disadvantagesCosts(advantages : IAdvantage[]) : number {
-        return advantages.reduce((t, advantage) => t + advantage.value, 0);
+    protected disadvantagesCosts(disadvantages : IAdvantage[]) : number {
+        return this.raiseService.getDisadvantagesCosts(disadvantages);
     }
 
     protected talentsCosts(talents : ICharacterTalents) {
-        return Object.values(talents).reduce((t, talents : ICharacterTalent[]) => {
-            return t + talents.reduce((t, talent) => {
-                return t + this.raiseService.getRaiseCosts(talent.value, talent.level, { from: 0 });
-            }, 0)
-        }, 0)
+        return this.raiseService.getTalentsCosts(talents);
     }
 }

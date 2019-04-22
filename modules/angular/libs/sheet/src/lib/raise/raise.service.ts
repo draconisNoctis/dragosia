@@ -1,4 +1,5 @@
 import { Inject, inject, Injectable, InjectionToken } from '@angular/core';
+import { ICharacterAttributes, ICharacterSkills, IGift, IAdvantage, ICharacterTalents, ICharacterTalent } from '@jina-draicana/presets';
 
 export type Level = 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'
 
@@ -51,17 +52,75 @@ export function raiseServiceFactory() {
 export abstract class RaiseService {
     abstract getRaiseCosts(to: number, level: Level, option?: { from?: number, reduced?: boolean }): number;
     abstract getActivationCost(level: Level): number;
+
+    getAttributesCosts(attributes : ICharacterAttributes) : number {
+        return Object.keys(attributes).reduce((t, attr) => {
+            return t + this.getRaiseCosts(attributes[attr], 'E', { from: 0 });
+        }, 0);
+    }
+
+    getAttributesDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
+        return Object.keys(current).reduce((t, attr) => {
+            return t + this.getRaiseCosts(current[attr], 'E', { from: previous[attr] });
+        }, 0);
+    }
+
+    getSkillsCosts(skills : ICharacterSkills) : number {
+        return Object.keys(skills).reduce((t, skill) => {
+            return t + this.getRaiseCosts(skills[skill], 'F', { from: 0 });
+        }, 0);
+    }
+
+    getSkillsDiffCosts(current : ICharacterSkills, previous : ICharacterSkills) : number {
+        return Object.keys(current).reduce((t, attr) => {
+            return t + this.getRaiseCosts(current[attr], 'F', { from: previous[attr] });
+        }, 0);
+    }
+
+    getGiftsCosts(gifts : IGift[]) : number {
+        return gifts.reduce((t, gift) => {
+            return t + this.getRaiseCosts(gift.value, gift.level, { from: 0 }) + this.getActivationCost(gift.level);
+        }, 0);
+    }
+
+    getGiftsCostDiff(current : IGift[], previous : IGift[]) : number {
+        const previousMap = new Map(previous.map(gift => [ gift.name, gift ] as [ string, IGift ]));
+
+        return current.reduce((t, gift) => {
+            if(previousMap.has(gift.name)) {
+                return t + this.getRaiseCosts(gift.value, gift.level, { from: previousMap.get(gift.name)!.value });
+            } else {
+                return t + this.getRaiseCosts(gift.value, gift.level, { from: 0 }) + this.getActivationCost(gift.level);
+            }
+        }, 0);
+    }
+
+    getAdvantagesCosts(advantages : IAdvantage[]) : number {
+        return advantages.reduce((t, advantage) => t + advantage.value, 0);
+    }
+
+    getDisadvantagesCosts(disadvantages : IAdvantage[]) : number {
+        return disadvantages.reduce((t, disadvantage) => t + disadvantage.value, 0);
+    }
+
+    getTalentsCosts(talents : ICharacterTalents) {
+        return Object.values(talents).reduce((t, talents : ICharacterTalent[]) => {
+            return t + talents.reduce((t, talent) => {
+                return t + this.getRaiseCosts(talent.value, talent.level, { from: 0 });
+            }, 0)
+        }, 0)
+    }
 }
 
 @Injectable()
-export class ExponentialRaiseService implements RaiseService {
+export class ExponentialRaiseService extends RaiseService {
     protected readonly levels = Object.keys(this.multipliers) as Level[];
 
     constructor(@Inject(OFFSETS) protected readonly offsets: { [P in Level]: number },
         @Inject(MULTIPLIERS) protected readonly multipliers: { [P in Level]: number },
         @Inject(ACTIVATION_MULTIPLIER) protected readonly activationMultiplier: number,
-        @Inject(EXP_BASIS) protected  readonly basis : number) {
-
+        @Inject(EXP_BASIS) protected readonly basis: number) {
+        super();
     }
 
     getRaiseCosts(to: number, level: Level, { from = to - 1, reduced }: { from?: number; reduced?: boolean; } = {}): number {
@@ -83,13 +142,13 @@ export class ExponentialRaiseService implements RaiseService {
 }
 
 @Injectable()
-export class FibonacciRaiseService implements RaiseService {
+export class FibonacciRaiseService extends RaiseService {
     protected readonly levels = Object.keys(this.multipliers) as Level[];
 
     constructor(@Inject(OFFSETS) protected readonly offsets: { [P in Level]: number },
         @Inject(MULTIPLIERS) protected readonly multipliers: { [P in Level]: number },
         @Inject(ACTIVATION_MULTIPLIER) protected readonly activationMultiplier: number) {
-
+        super();
     }
 
     getRaiseCosts(to: number, level: Level, { from = to - 1, reduced }: { from?: number; reduced?: boolean; } = {}): number {
