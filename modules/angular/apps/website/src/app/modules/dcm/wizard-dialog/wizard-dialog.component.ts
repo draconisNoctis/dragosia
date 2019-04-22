@@ -144,7 +144,6 @@ export class WizardDialogComponent implements OnInit {
         }
 
         this.attributesControl.valueChanges.subscribe(value => {
-            console.log('attributes', value);
             if(value && this.character) {
                 this.character.attributes = value;
             }
