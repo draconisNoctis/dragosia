@@ -85,6 +85,7 @@ export interface ITalent {
     name: string;
     skill: string;
     attribute: string;
+    level: Level;
 }
 
 export interface ICharacterTalent extends ITalent {

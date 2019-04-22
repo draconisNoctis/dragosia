@@ -13,7 +13,9 @@ import {
     ICharacterAttributes,
     ICharacterSkills,
     IGift,
-    IAdvantage
+    IAdvantage,
+    ICharacterTalents,
+    ICharacterTalent
 } from '@jina-draicana/presets';
 import { FACTOR_ATTRIBUTES, FACTOR_SKILLS, FACTOR_TALENTS, RaiseService } from '@jina-draicana/sheet';
 import { delay, filter } from 'rxjs/operators';
@@ -72,7 +74,7 @@ export class WizardDialogComponent implements OnInit {
     stepperIndex = 0;
 
     get spend() {
-        return this.spendForAttributes + this.spendForSkills + this.spendForGifts + this.advantageBalance;
+        return this.spendForAttributes + this.spendForSkills + this.spendForGifts + this.advantageBalance + this.spendForTalents;
     }
 
     get spendForAttributes() {
@@ -97,6 +99,14 @@ export class WizardDialogComponent implements OnInit {
         }
 
         return this.giftsCosts(this.character.gifts);
+    }
+
+    get spendForTalents() {
+        if(!this.character) {
+            return 0;
+        }
+
+        return this.talentsCosts(this.character.talents);
     }
 
     get spendForAdvantages() {
@@ -158,6 +168,12 @@ export class WizardDialogComponent implements OnInit {
                 if(value.disadvantages) {
                     this.character.disadvantages = value.disadvantages;
                 }
+            }
+        });
+
+        this.talentsControl.valueChanges.subscribe(value => {
+            if(value && this.character) {
+                this.character.talents = value;
             }
         })
     }
@@ -321,5 +337,13 @@ export class WizardDialogComponent implements OnInit {
 
     protected disadvantagesCosts(advantages : IAdvantage[]) : number {
         return advantages.reduce((t, advantage) => t + advantage.value, 0);
+    }
+
+    protected talentsCosts(talents : ICharacterTalents) {
+        return Object.values(talents).reduce((t, talents : ICharacterTalent[]) => {
+            return t + talents.reduce((t, talent) => {
+                return t + this.raiseService.getRaiseCosts(talent.value, talent.level, { from: 0 });
+            }, 0)
+        }, 0)
     }
 }

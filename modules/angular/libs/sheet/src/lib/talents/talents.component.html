@@ -1,5 +1,15 @@
-<form [formGroup]="form">
+<div>
     <h2 i18n>Melee</h2>
+    <ng-container *ngTemplateOutlet="group; context: { type: 'melee', form: meleeForm }"></ng-container>
+    <h2 i18n>Range</h2>
+    <ng-container *ngTemplateOutlet="group; context: { type: 'range', form: rangeForm }"></ng-container>
+    <h2 i18n>Physical</h2>
+    <ng-container *ngTemplateOutlet="group; context: { type: 'physical', form: physicalForm }"></ng-container>
+    <h2 i18n>Mental</h2>
+    <ng-container *ngTemplateOutlet="group; context: { type: 'mental', form: mentalForm }"></ng-container>
+    <h2 i18n>Gifts</h2>
+    <ng-container *ngTemplateOutlet="group; context: { type: 'gifts', form: giftsForm }"></ng-container>
+    <!--<h2 i18n>Melee</h2>
     <div formArrayName="melee" class="wrapper">
         <div class="row" *ngIf="mode === 'range' && meleeForm.controls.length > 0">
             <span></span>
@@ -142,7 +152,43 @@
                 <button mat-icon-button (click)="add('gifts', index)" [disabled]="form.value.gifts[index].value >= 5 || pointsAvailable < ((form.value.gifts[index].value + 1) | costs:factor)"><mat-icon>add</mat-icon></button>
             </div>
         </div>
-    </div>
-</form>
+    </div>-->
+</div>
+
+<ng-template #group let-type="type" let-form="form">
+    <form [formGroup]="form" class="columns-8">
+        <div>
+            <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
+                <label class="no-border">{{ control.value.name }}</label>
+                <span>{{ form.value[index].attribute }}</span>
+                <span>{{ form.value[index].skill }}</span>
+                <span>{{ form.value[index].level }}</span>
+                <!--<mat-form-field floatLabel="never">
+                    <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+                </mat-form-field>
+                <mat-form-field floatLabel="never">
+                    <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+                </mat-form-field>
+                <mat-form-field floatLabel="never" class="border-right">
+                    <mat-select formControlName="level" i18n-placeholder placeholder="Level">
+                    <mat-option value="A">A</mat-option>
+                    <mat-option value="B">B</mat-option>
+                    <mat-option value="C">C</mat-option>
+                    <mat-option value="D">D</mat-option>
+                    <mat-option value="E">E</mat-option>
+                    <mat-option value="F">F</mat-option>
+                </mat-select>
+                </mat-form-field>-->
+                <div>
+                    <button mat-icon-button (click)="delete(type, index)" *ngIf="mode !== 'button' && form.value[index].value <= 0"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button (click)="remove(type, index)" [disabled]="form.value[index].value <= 0" *ngIf="mode !== 'button' && form.value[index].value > 0"><mat-icon>remove</mat-icon></button>
+                </div>
+                <input type="number" [min]="mins[type][index]" [max]="max" formControlName="value" />
+                <div><button mat-icon-button (click)="add(type, index)" [disabled]="form.value[index].value >= max || budget < getCostsForNext(index)"><mat-icon>add</mat-icon></button></div>
+                <div class="costs-for-next"><span>+{{ getCostsForNext(form.value[index]) }}</span></div>
+            </ng-container>
+        </div>
+    </form>
+</ng-template>
 
 <button mat-mini-fab (click)="openAddDialog()" [disabled]="pointsAvailable < 1"  matTooltip="Add Talent" i18n-matTooltip><mat-icon>add</mat-icon></button>

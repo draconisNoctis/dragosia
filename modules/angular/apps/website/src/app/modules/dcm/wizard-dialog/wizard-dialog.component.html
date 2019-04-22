@@ -50,9 +50,6 @@
 
                 <span [class.valid]="spendForAttributes > character?.meta?.points?.attributes?.min"
                       [class.invalid]="spendForAttributes <= character?.meta?.points?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.points?.attributes?.min }}</sub></span>
-                <!--<span class="points-available" i18n>Available: {{ budget?.meta?.exp?.total }}</span>
-                <span>Spend: {{ spend }}</span>
-                <span>Spend for Attributes: {{ spendForAttributes }}</span>-->
 
                 <button mat-button matStepperNext i18n [disabled]="attributesControl.invalid">Next</button>
             </div>
@@ -76,7 +73,6 @@
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <!--<span class="points-available" i18n>Available: {{ budget?.skills }}</span>-->
                 <span [class.valid]="spendForSkills + spendForGifts > character?.meta?.points?.skills?.min"
                       [class.invalid]="spendForSkills + spendForGifts <= character?.meta?.points?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.points?.skills?.min }}</sub></span>
 
@@ -102,8 +98,6 @@
                 <span [class.valid]="advantagesControl.valid"
                       [class.invalid]="advantagesControl.invalid">{{ advantageBalance > 0 ? '+' : advantageBalance < 0 ? '-' : '' }}{{advantageBalanceAbsolute}}</span>
 
-                <!--<span class="balance" i18n>Available: {{ budget?.talents }}</span>-->
-
                 <button mat-button matStepperNext i18n [disabled]="advantagesControl.invalid">Next</button>
             </div>
         </ng-container>
@@ -111,8 +105,14 @@
 
     <mat-step [stepControl]="talentsControl" [editable]="true">
         <ng-template matStepLabel i18n>Talents</ng-template>
-        <ng-container *ngIf="budget && stepperIndex >= 6">
-            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset"></js-talents>
+        <ng-container *ngIf="stepperIndex >= 6">
+            <header class="step-header">
+                <span>{{ character?.about?.name }}</span>
+
+                <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
+            </header>
+
+            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.points?.talents?.max" [budget]="character?.meta?.exp?.total - spend"></js-talents>
 
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
