@@ -1,11 +1,18 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { getCosts, ICharacterTalent, ICharacterTalents, IPartialTalent, Presets } from '@jina-draicana/presets';
+import { getCosts, ICharacterTalent, ICharacterTalents, IPartialTalent, Presets, ITalent } from '@jina-draicana/presets';
 import { FACTOR_TALENTS } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 import { RaiseService } from '../raise/raise.service';
+
+export class IncreaseTalentEvent {
+    constructor(public readonly talent: ICharacterTalent,
+                public readonly type : keyof ICharacterTalents,
+                public readonly value : number,
+                public readonly costs : number) {}
+}
 
 @Component({
     selector: 'js-talents',
@@ -36,6 +43,9 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
     @Input()
     budget = Infinity;
+
+    @Output()
+    increase = new EventEmitter<IncreaseTalentEvent>();
 
     talents?: IPartialTalent[];
 
@@ -87,6 +97,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
             }
         }
         this.registerSubscription();
+        this.cdr.markForCheck();
     }
 
     addTalent(talent: ICharacterTalent, category: keyof ICharacterTalents) {
@@ -115,6 +126,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
         if (result) {
             this.addTalent(result, result.category);
+            this.increase.emit(new IncreaseTalentEvent({ ...result }, result.category as keyof ICharacterTalents, 1, this.getCostsForNext({ ...result, value: 0 })));
             this.mins[result.category].push(0);
             // this.pointsAvailable -= 1;
             this.cdr.markForCheck();
@@ -123,8 +135,9 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
 
     add(type: string, index: number) {
-        const control = this.form.get([type, index, 'value'])!;
-        control.setValue(control.value + 1);
+        const control = this.form.get([type, index ])!;
+        this.increase.emit(new IncreaseTalentEvent({ ...control.value, value: control.value.value + 1 }, type as keyof ICharacterTalents, control.value.value + 1, this.getCostsForNext(control.value)));
+        control.setValue(control.value.value + 1);
     }
 
 

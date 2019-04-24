@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 import { AbstractComponent } from '../abstract.component';
 import { RaiseService } from '../raise/raise.service';
+import { ICharacterAttributes } from '@jina-draicana/presets';
+
+export class IncreaseAttributeEvent {
+    constructor(public readonly attribute : keyof ICharacterAttributes,
+                public readonly value : number,
+                public readonly costs : number) {}
+}
 
 @Component({
     selector: 'js-attributes',
@@ -29,6 +36,9 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
     @Input()
     budget = Infinity;
 
+    @Output()
+    increase = new EventEmitter<IncreaseAttributeEvent>();
+
     form = new FormGroup({
         strength: new FormControl(null, Validators.required),
         agility: new FormControl(null, Validators.required),
@@ -51,7 +61,8 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
         charisma: 0
     };
 
-    constructor(protected readonly raiseService: RaiseService) {
+    constructor(protected readonly raiseService: RaiseService,
+            protected readonly cdr : ChangeDetectorRef) {
         super();
     }
 
@@ -64,10 +75,12 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
             this.form.reset(undefined, { emitEvent: false });
         }
         this.registerSubscription();
+        this.cdr.markForCheck();
     }
 
     add(type: string) {
         const control = this.form.get(type)!;
+        this.increase.emit(new IncreaseAttributeEvent(type as keyof ICharacterAttributes, control.value + 1, this.getCostsForNext(type)));
         control.setValue(control.value + 1);
     }
 

@@ -1,8 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 
 import { AbstractComponent } from '../abstract.component';
 import { RaiseService } from '../raise/raise.service';
+import { ICharacterSkills } from '@jina-draicana/presets';
+
+export class IncreaseSkillEvent {
+    constructor(public readonly skill: keyof ICharacterSkills,
+                public readonly value : number,
+                public readonly costs : number) {}
+}
 
 @Component({
     selector       : 'js-skills',
@@ -29,6 +36,9 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
     @Input()
     budget = Infinity;
 
+    @Output()
+    increase = new EventEmitter<IncreaseSkillEvent>();
+
     form = new FormGroup({
         melee: new FormControl(null, Validators.required),
         range: new FormControl(null, Validators.required),
@@ -43,7 +53,8 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         mental: 0
     };
 
-    constructor(protected readonly raiseService: RaiseService) {
+    constructor(protected readonly raiseService: RaiseService,
+        protected readonly cdr : ChangeDetectorRef) {
         super();
     }
 
@@ -56,10 +67,12 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
             this.form.reset(undefined, { emitEvent: false });
         }
         this.registerSubscription();
+        this.cdr.markForCheck();
     }
 
     add(type : string) {
         const control = this.form.get(type)!;
+        this.increase.emit(new IncreaseSkillEvent(type as keyof ICharacterSkills, control.value + 1, this.getCostsForNext(type)));
         control.setValue(control.value + 1);
     }
 

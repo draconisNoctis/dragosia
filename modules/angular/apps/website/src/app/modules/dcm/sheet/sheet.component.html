@@ -29,27 +29,27 @@
 
                 <mat-tab i18n-label label="Advantages/Disadvantages">
                     <ng-template matTabContent>
-                        <js-advantages [preset]="_char.meta.preset" [formControl]="advantagesControl"></js-advantages>
+                        <js-advantages [preset]="_char.meta.preset" [ngModel]="_char" [budget]="budget | async"></js-advantages>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Attributes">
                     <ng-template matTabContent>
-                        <js-attributes mode="button" [formControl]="attributesControl"></js-attributes>
+                        <js-attributes mode="button" [ngModel]="_char.attributes" [budget]="budget | async" (increase)="increaseAttribute($event, _char)"></js-attributes>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Skills">
                     <ng-template matTabContent>
-                        <js-skills mode="button" [formControl]="skillsControl"></js-skills>
+                        <js-skills mode="button" [ngModel]="_char.skills" [budget]="budget | async" (increase)="increaseSkill($event, _char)"></js-skills>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Gifts">
                     <ng-template matTabContent>
-                        <js-gifts [preset]="_char.meta.preset" mode="button" [formControl]="giftsControl"></js-gifts>
+                        <js-gifts [preset]="_char.meta.preset" mode="button" [ngModel]="_char.gifts" [budget]="budget | async" (increase)="increaseGift($event, _char)"></js-gifts>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Talents">
                     <ng-template matTabContent>
-                        <js-talents [preset]="_char.meta.preset" mode="button" [formControl]="talentsControl"></js-talents>
+                        <js-talents [preset]="_char.meta.preset" mode="button" [ngModel]="_char.talents" [budget]="budget | async" (increase)="increaseTalent($event, _char)"></js-talents>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Character Sheet">

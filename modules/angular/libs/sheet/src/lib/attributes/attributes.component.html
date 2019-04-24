@@ -2,49 +2,49 @@
     <div>
         <label i18n>Strength</label>
         <div><button mat-icon-button (click)="remove('strength')" [disabled]="form.value.strength <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.strength" [max]="max" formControlName="strength" />
+        <input type="number" readonly [min]="mins.strength" [max]="max" formControlName="strength" />
         <div><button mat-icon-button (click)="add('strength')" [disabled]="form.value.strength >= max || budget < getCostsForNext('strength')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('strength') }}</span></div>
 
         <label i18n>Agility</label>
         <div><button mat-icon-button (click)="remove('agility')" [disabled]="form.value.agility <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.agility" [max]="max" formControlName="agility" />
+        <input type="number" readonly [min]="mins.agility" [max]="max" formControlName="agility" />
         <div><button mat-icon-button (click)="add('agility')" [disabled]="form.value.agility >= max || budget < getCostsForNext('agility')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('agility') }}</span></div>
 
         <label i18n>Dexterity</label>
         <div><button mat-icon-button (click)="remove('dexterity')" [disabled]="form.value.dexterity <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.dexterity" [max]="max" formControlName="dexterity" />
+        <input type="number" readonly [min]="mins.dexterity" [max]="max" formControlName="dexterity" />
         <div><button mat-icon-button (click)="add('dexterity')" [disabled]="form.value.dexterity >= max || budget < getCostsForNext('dexterity')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('dexterity') }}</span></div>
 
         <label i18n>Constitution</label>
         <div><button mat-icon-button (click)="remove('constitution')" [disabled]="form.value.constitution <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.constitution" [max]="max" formControlName="constitution" />
+        <input type="number" readonly [min]="mins.constitution" [max]="max" formControlName="constitution" />
         <div><button mat-icon-button (click)="add('constitution')" [disabled]="form.value.constitution >= max || budget < getCostsForNext('constitution')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('constitution') }}</span></div>
 
         <label i18n>Courage</label>
         <div><button mat-icon-button (click)="remove('courage')" [disabled]="form.value.courage <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.courage" [max]="max" formControlName="courage" />
+        <input type="number" readonly [min]="mins.courage" [max]="max" formControlName="courage" />
         <div><button mat-icon-button (click)="add('courage')" [disabled]="form.value.courage >= max || budget < getCostsForNext('courage')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('courage') }}</span></div>
 
         <label i18n>Intelligence</label>
         <div><button mat-icon-button (click)="remove('intelligence')" [disabled]="form.value.intelligence <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.intelligence" [max]="max" formControlName="intelligence" />
+        <input type="number" readonly [min]="mins.intelligence" [max]="max" formControlName="intelligence" />
         <div><button mat-icon-button (click)="add('intelligence')" [disabled]="form.value.intelligence >= max || budget < getCostsForNext('intelligence')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('intelligence') }}</span></div>
 
         <label i18n>Intuition</label>
         <div><button mat-icon-button (click)="remove('intuition')" [disabled]="form.value.intuition <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.intuition" [max]="max" formControlName="intuition" />
+        <input type="number" readonly [min]="mins.intuition" [max]="max" formControlName="intuition" />
         <div><button mat-icon-button (click)="add('intuition')" [disabled]="form.value.intuition >= max || budget < getCostsForNext('intuition')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('intuition') }}</span></div>
 
         <label i18n>Charisma</label>
         <div><button mat-icon-button (click)="remove('charisma')" [disabled]="form.value.charisma <= 1" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
-        <input type="number" [min]="mins.charisma" [max]="max" formControlName="charisma" />
+        <input type="number" readonly [min]="mins.charisma" [max]="max" formControlName="charisma" />
         <div><button mat-icon-button (click)="add('charisma')" [disabled]="form.value.charisma >= max || budget < getCostsForNext('charisma')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('charisma') }}</span></div>
     </div>
