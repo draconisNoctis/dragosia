@@ -60,7 +60,6 @@ export class SheetComponent implements OnInit {
         }),
         tap((char : ICharacter) => {
             if(char) {
-                this.exp = char.meta.exp.total - char.meta.exp.spend;
                 this.generalControl.setValue(char, { emitEvent: false });
                 this.advantagesControl.setValue({
                     advantages: char.advantages,
@@ -86,15 +85,6 @@ export class SheetComponent implements OnInit {
     talentsControl = new FormControl();
     advantagesControl = new FormControl();
 
-    get exp() {
-        return this._exp.getValue();
-    }
-    set exp(value : number|null) {
-        this._exp.next(value);
-    }
-
-    protected _exp = new BehaviorSubject<number|null>(null);
-
     sidenavToggle = new EventEmitter<void|boolean>();
 
     isMobile = this.breakpointObserver.observe('(max-width: 1024px)').pipe(map(v => v.matches));
@@ -119,25 +109,15 @@ export class SheetComponent implements OnInit {
 
     ngOnInit() {
         this.store.dispatch(new GetAllAction());
-        const exp = this._exp.pipe(pairwise());
 
-        merge(
-            this.generalControl.valueChanges.pipe(filter(Boolean)),
-            // this.advantagesControl.valueChanges.pipe(filter(Boolean)),
-            // this.attributesControl.valueChanges.pipe(filter(Boolean), map(attributes => ({ attributes }))),
-            // this.skillsControl.valueChanges.pipe(filter(Boolean), map(skills => ({ skills }))),
-            // this.giftsControl.valueChanges.pipe(filter(Boolean), map(gifts => ({ gifts }))),
-            // this.talentsControl.valueChanges.pipe(filter(Boolean), map(talents => ({ talents })))
-        ).pipe(
-            withLatestFrom(exp, this.char),
-            map(([ partial, exp, char ]) => {
-                const costs = exp[0] - exp[1];
+        this.generalControl.valueChanges.pipe(
+            filter(Boolean),
+            withLatestFrom(this.char),
+            map(([ partial, char ]) => {
                 char = { ...char, ...partial };
-                char.meta.exp.spend += costs;
 
                 return new UpdateAction(char);
-            }),
-            filter(Boolean)
+            })
         ).subscribe(this.store);
     }
 
