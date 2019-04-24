@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICharacter } from '@jina-draicana/presets';
-import { combineLatest, Observable, throwError } from 'rxjs';
+import { combineLatest, Observable, throwError, of } from 'rxjs';
 import { filter, first, map, switchMap, tap } from 'rxjs/operators';
 import { CharacterFirebaseService } from './character/character-firebase.service';
 import { CharacterLocalService } from './character/character-local.service';
@@ -36,8 +36,7 @@ export class CharacterService {
             return combineLatest(...this.services.map(([ name, service ]) => {
                 return service.isAvailable().pipe(
                     first(),
-                    filter(Boolean),
-                    switchMap(() => fn(service))
+                    switchMap(available => available ? fn(service) : of(null))
                 )
             }))
         }
@@ -49,7 +48,6 @@ export class CharacterService {
         }
 
         return providerService[1].isAvailable().pipe(
-            tap(foo => console.log(foo)),
             switchMap(isAvailable => {
                 if(!isAvailable) {
                     throw new Error(`Provider "${provider}" is not available`);
@@ -77,6 +75,7 @@ export class CharacterService {
 
     getAll() : Observable<ICharacter[]> {
         return this.exec<ICharacter[]>(service => service.getAll()).pipe(
+            map(results => results.filter(Boolean)),
             map(results => {
                 const characters = results.reduce<ICharacter[]>((t, c) => t.concat(c), [])
                     .filter((c, i, a) => i === a.findIndex(c1 => c1._id === c._id))

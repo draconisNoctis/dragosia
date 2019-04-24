@@ -24,11 +24,11 @@ export function sheetReducer(state = initialState, action : SheetActions) : Shee
     switch(action.type) {
         case SheetActionTypes.SetTheme:
             return { ...state, ...action.payload };
-        case SheetActionTypes.RestoreAll:
+        case SheetActionTypes.StoreAll:
             return sheetAdapter.upsertMany(action.payload.characters, state);
         case SheetActionTypes.Update:
             return sheetAdapter.upsertOne({ ...action.payload.character, _changed: true }, state);
-        case SheetActionTypes.Store:
+        case SheetActionTypes.Put:
             return sheetAdapter.upsertOne({ ...action.payload.character, _changed: undefined }, state);
         case SheetActionTypes.DoDelete:
             return sheetAdapter.removeOne(action.payload.character._id, state);

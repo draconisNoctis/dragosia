@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { I18n } from '@ngx-translate/i18n-polyfill';
 import { defer, fromEvent } from 'rxjs';
-import { filter, flatMap, map, mapTo, mergeMap, switchMap, tap, ignoreElements } from 'rxjs/operators';
+import { filter, flatMap, map, mapTo, mergeMap, switchMap, tap, ignoreElements, withLatestFrom } from 'rxjs/operators';
 import { CharacterService } from '../../../../../../../libs/sheet/src/lib/character.service';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 import {
@@ -12,31 +12,59 @@ import {
     ExportAction,
     FetchOneAction,
     ImportAction,
-    RestoreAllAction,
+    StoreAllAction,
     SheetActionTypes,
-    StoreAction
+    PutAction,
+    FetchAllAction
 } from './sheet.actions';
+import { SheetState, selectAllSheets } from './sheet.reducer';
+import { Store, select } from '@ngrx/store';
 
 @Injectable()
 export class SheetEffects {
 
-    @Effect()
-    $init = defer(() => {
-        return this.characterService.getAll().pipe(
-            map(chars => new RestoreAllAction(chars))
-        )
-    });
+    // @Effect()
+    // $init = defer(() => {
+    //     return this.characterService.getAll().pipe(
+    //         map(chars => new StoreAllAction(chars))
+    //     )
+    // });
 
     constructor(protected readonly actions$ : Actions,
+                protected readonly store$ : Store<SheetState>,
                 protected readonly dialog : MatDialog,
                 protected readonly characterService : CharacterService,
                 protected readonly i18n : I18n) {
     }
 
+    @Effect()
+    onGetAll() {
+        return this.actions$.pipe(
+            ofType(SheetActionTypes.GetAll),
+            withLatestFrom(this.store$.pipe(select(selectAllSheets))),
+            map(([ _, sheets ]) => {
+                if(sheets.length) {
+                    return null;
+                }
+                return new FetchAllAction();
+            }),
+            filter(Boolean)
+        )
+    }
+
+    @Effect()
+    onFetchAll() {
+        return this.actions$.pipe(
+            ofType(SheetActionTypes.FetchAll),
+            switchMap(() => this.characterService.getAll()),
+            map(sheets => new StoreAllAction(sheets))
+        )
+    }
+
     @Effect({ dispatch: false })
     onStore() {
         return this.actions$.pipe(
-            ofType<StoreAction>(SheetActionTypes.Store),
+            ofType<PutAction>(SheetActionTypes.Put),
             switchMap(action => this.characterService.put(action.payload.character))
         )
     }
@@ -46,7 +74,7 @@ export class SheetEffects {
         return this.actions$.pipe(
             ofType<FetchOneAction>(SheetActionTypes.FetchOne),
             switchMap(action => this.characterService.get(action.payload.id)),
-            map(char => new RestoreAllAction([ { ...char, _changed: undefined } ]))
+            map(char => new StoreAllAction([ { ...char, _changed: undefined } ]))
         )
     }
 
@@ -63,8 +91,7 @@ export class SheetEffects {
                     filter(Boolean),
                     mapTo(new DoDeleteAction(action.payload.character))
                 )
-            }),
-            tap(a => console.log(a))
+            })
         )
     }
 
@@ -114,7 +141,7 @@ export class SheetEffects {
                     tap(char => char.provider = action.payload.provider)
                 );
             }),
-            map(char => new StoreAction(char))
+            map(char => new PutAction(char))
         )
     }
 }

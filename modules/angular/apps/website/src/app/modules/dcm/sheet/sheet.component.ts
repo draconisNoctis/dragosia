@@ -20,8 +20,9 @@ import {
     ExportAction,
     FetchOneAction, ImportAction,
     SetThemeAction,
-    StoreAction,
-    UpdateAction
+    PutAction,
+    UpdateAction,
+    GetAllAction
 } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
@@ -117,6 +118,7 @@ export class SheetComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.store.dispatch(new GetAllAction());
         const exp = this._exp.pipe(pairwise());
 
         merge(
@@ -182,7 +184,7 @@ export class SheetComponent implements OnInit {
     }
 
     doStore(char : ICharacter) {
-        this.store.dispatch(new StoreAction(char));
+        this.store.dispatch(new PutAction(char));
     }
 
     doUpdate(value : ICharacter) {
@@ -206,7 +208,7 @@ export class SheetComponent implements OnInit {
         const result = await ref.afterClosed().toPromise();
 
         if(result) {
-            this.store.dispatch(new StoreAction({ ...result, provider }));
+            this.store.dispatch(new PutAction({ ...result, provider }));
             this.router.navigate([ '/dcm', result._id ])
         }
     }
