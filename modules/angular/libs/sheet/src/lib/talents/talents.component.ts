@@ -80,7 +80,6 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
     writeValue(obj: any): void {
         this.unregisterSubscriptions();
-        console.log({ obj });
         for (const key of ['melee', 'range', 'physical', 'mental', 'gifts'] as (keyof ICharacterTalents)[]) {
             const control = this.form.get(key) as FormArray;
             while (control.length) {
@@ -137,7 +136,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     add(type: string, index: number) {
         const control = this.form.get([type, index ])!;
         this.increase.emit(new IncreaseTalentEvent({ ...control.value, value: control.value.value + 1 }, type as keyof ICharacterTalents, control.value.value + 1, this.getCostsForNext(control.value)));
-        control.setValue(control.value.value + 1);
+        control.patchValue({ value: control.value.value + 1 });
     }
 
 

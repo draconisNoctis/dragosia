@@ -8,7 +8,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ICharacter } from '@jina-draicana/presets';
@@ -61,14 +61,6 @@ export class SheetComponent implements OnInit {
         tap((char : ICharacter) => {
             if(char) {
                 this.generalControl.setValue(char, { emitEvent: false });
-                this.advantagesControl.setValue({
-                    advantages: char.advantages,
-                    disadvantages: char.disadvantages
-                }, { emitEvent: false });
-                this.attributesControl.setValue(char.attributes, { emitEvent: false });
-                this.skillsControl.setValue(char.skills, { emitEvent: false });
-                this.giftsControl.setValue(char.gifts, { emitEvent: false });
-                this.talentsControl.setValue(char.talents, { emitEvent: false });
             }
         }),
         shareReplay(1)
@@ -79,11 +71,7 @@ export class SheetComponent implements OnInit {
     )
 
     generalControl = new FormControl();
-    attributesControl = new FormControl();
-    skillsControl = new FormControl();
-    giftsControl = new FormControl();
-    talentsControl = new FormControl();
-    advantagesControl = new FormControl();
+    addExpControl = new FormControl(null, Validators.required);
 
     sidenavToggle = new EventEmitter<void|boolean>();
 
@@ -119,6 +107,13 @@ export class SheetComponent implements OnInit {
                 return new UpdateAction(char);
             })
         ).subscribe(this.store);
+    }
+
+    addExp(char : ICharacter) {
+        char.meta.exp.total += this.addExpControl.value;
+        this.addExpControl.reset();
+
+        this.store.dispatch(new UpdateAction(char));
     }
 
     increaseAttribute(event : IncreaseAttributeEvent, char : ICharacter) {

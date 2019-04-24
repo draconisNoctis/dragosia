@@ -24,6 +24,26 @@
                 <mat-tab i18n-label label="General">
                     <ng-template matTabContent>
                         <js-general [formControl]="generalControl"></js-general>
+
+                        <div class="experience">
+                            <h3 i18n>Experience Points</h3>
+
+                            <mat-form-field>
+                                <input matInput type="number" [ngModel]="_char.meta.exp.spend" i18n-placeholder placeholder="Spend" readonly />
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput type="number" [ngModel]="_char.meta.exp.total" i18n-placeholder placeholder="Total" readonly />
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput type="number" [formControl]="addExpControl" i18n-placeholder placeholder="Add Exp" />
+                            </mat-form-field>
+
+                            <button mat-icon-button [disabled]="addExpControl.invalid" (click)="addExp(_char)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
                     </ng-template>
                 </mat-tab>
 

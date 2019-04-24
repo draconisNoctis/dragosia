@@ -111,7 +111,7 @@ export class GiftsComponent extends AbstractComponent implements ControlValueAcc
     add(index : number) {
         const control = this.form.at(index)!;
         this.increase.emit(new IncreaseGiftEvent({ ...control.value, value: control.value.value + 1 }, control.value.value + 1, this.getCostsForNext(index)));
-        control.setValue(control.value.value + 1);
+        control.patchValue({ value: control.value.value + 1 });
     }
 
 
