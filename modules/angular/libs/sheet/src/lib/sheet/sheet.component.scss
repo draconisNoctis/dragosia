@@ -1,3 +1,5 @@
+$sheet-text-font-size: 1.4rem;
+
 @function gta($name, $count) {
     $r: "";
     @for $i from 1 through $count {
@@ -12,6 +14,13 @@
 .js-sheet {
     font-size: 1.4rem;
     color: var(--text-color);
+
+    input[type=number] {
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
 
     h1, h2 {
         margin: 0;
@@ -47,28 +56,16 @@
     .jui-page:nth-child(1) {
         display: grid;
         grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm min-content 1fr .5cm 2cm;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(3, min-content) 1fr repeat(2, min-content);
         grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(about, 10)} #{gta(description, 10)}"
-            "#{gta(attribute-title, 20)}"
-            "#{gta(attribute-strength, 5)} #{gta(attribute-agility, 5)} #{gta(attribute-dexterity, 5)} #{gta(attribute-constitution, 5)}"
-            "#{gta(attribute-courage, 5)} #{gta(attribute-intelligence, 5)} #{gta(attribute-intuition, 5)} #{gta(attribute-charisma, 5)}"
-            "#{gta(skill-title, 20)}"
-            "#{gta(skill-melee, 5)} #{gta(skill-range, 5)} #{gta(skill-physical, 5)} #{gta(skill-mental, 5)}"
-            "#{gta(advantages-title, 10)} #{gta(gifts-title, 10)}"
-            "#{gta(advantages, 10)} #{gta(gifts, 10)}"
-            "#{gta(disadvantages-title, 10)} #{gta(budget-title, 5)} #{gta(exp-title, 5)}"
-            "#{gta(disadvantages, 10)} #{gta(budget, 5)} #{gta(exp, 5)}"
-            "#{gta(disadvantages, 10)} #{gta(info, 10)}"
-            "#{gta(health-title, 10)} #{gta(mana-title, 10)}"
-            "#{gta(health, 10)} #{gta(mana, 10)}";
+            "#{gta(page-title, 8)} #{gta(name, 4)}"
+            "#{gta(about, 6)} #{gta(description, 6)}"
+            "#{gta(attributes, 6)} #{gta(skills, 3)} #{gta(gifts, 3)}"
+            "#{gta(advantages, 6)} #{gta(disadvantages, 6)}"
+            "#{gta(exp, 5)} #{gta(startvalues, 7)}";
 
-        @each $area in (name, page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
-        attribute-courage, attribute-intelligence, attribute-intuition, attribute-charisma, skill-title, skill-melee, skill-range, skill-physical,
-        skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts,
-        budget-title, budget, exp-title, exp) {
+        @each $area in (name, page-title, about, description,advantages, disadvantages, info, meta, gifts, attributes, skills, exp, startvalues) {
             .#{$area} {
                 grid-area: $area;
             }
@@ -93,11 +90,139 @@
         }
 
         .exp {
-            @extend .budget;
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
 
-            grid-template-columns: 1fr 1fr;
+            &-wrapper {
+                border: 1px solid var(--border-color);
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: .25cm;
+                line-height: 1;
+
+                .exp-total, .exp-spend, .exp-balance {
+                    > :first-child {
+                        font-weight: bold;
+                        margin-right: .5em;
+                    }
+                }
+            }
         }
 
+        .startvalues {
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-wrapper {
+                border: 1px solid var(--border-color);
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                padding: .25cm;
+                line-height: 1;
+            }
+
+            &-level, &-exp, &-attributes, &-skills, &-talents {
+                > :first-child {
+                    font-weight: bold;
+                    margin-right: .5em;
+                }
+            }
+        }
+
+        .attributes {
+
+            &-wrapper {
+                border-top: 1px solid var(--border-color);
+                border-left: 1px solid var(--border-color);
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+
+                > * {
+                    border-right: 1px solid var(--border-color);
+                    border-bottom: 1px solid var(--border-color);
+                }
+            }
+
+            .attribute-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            input {
+                padding: 0;
+            }
+
+            strong {
+                margin: 0;
+            }
+        }
+
+        .skills {
+
+            &-wrapper {
+                border-top: 1px solid var(--border-color);
+                border-left: 1px solid var(--border-color);
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+
+                > * {
+                    border-right: 1px solid var(--border-color);
+                    border-bottom: 1px solid var(--border-color);
+                }
+            }
+
+            .skill-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            input {
+                padding: 0;
+            }
+
+            strong {
+                margin: 0;
+            }
+        }
+
+        .advantages, .disadvantages {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-input {
+                flex-grow: 1;
+            }
+        }
+
+        div[class^="attribute-"], div[class^="skill-"] {
+            display: flex;
+            flex-direction: column-reverse;
+
+            input {
+                width: 100%;
+                text-align: center;
+                font-size: 32px;
+                font-weight: bold;
+                font-family: inherit;
+                border: none;
+            }
+
+            strong {
+                text-align: center;
+            }
+        }
 
         .about {
             display: grid;
@@ -133,23 +258,42 @@
         }
 
         .gifts {
-            > div {
-                display: grid;
-                grid-template-columns: auto min-content;
-                grid-auto-rows: auto;
-                grid-gap: 2mm;
+            display: flex;
+            flex-direction: column;
 
-                > *:nth-child(1) {
-                    input {
-                        width: 100%;
-                        box-sizing: border-box;
+            .gifts-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-wrapper {
+                flex-grow: 1;
+                height: 100%;
+                display: grid;
+                grid-template-columns: auto .75cm min-content;
+                grid-template-rows: repeat(auto-fit, 1fr);
+                border: 1px solid var(--border-color);
+
+                span {
+                    padding: 0 8px;
+                    border-bottom: 1px solid var(--border-color);
+                    display: flex;
+                    align-items: center;
+                    font-size: $sheet-text-font-size;
+                    border-right: 1px solid var(--border-color);
+
+                    &.gift-level {
+                        text-align: center;
                     }
                 }
 
-                > *:nth-child(2) {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
+                input {
+                    width: .75cm;
+                    text-align: center;
+                }
+
+                > :nth-last-child(1), > :nth-last-child(2), > :nth-last-child(3) {
+                    border-bottom: none;
                 }
             }
         }
@@ -167,44 +311,6 @@
             border: 0;
             padding: 0;
             margin: 0;
-        }
-
-        .health, .mana {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            grid-auto-rows: auto;
-            grid-gap: 2mm 0;
-            justify-content: center;
-            align-content: center;
-
-            > span {
-                text-align: center;
-
-                grid-row: 1;
-
-                grid-column: auto / span 4;
-            }
-
-            .jui-radio-range {
-                display: contents;
-
-                span {
-                    grid-row: 3;
-                    width: 1rem;
-                    height: 1rem;
-
-                    &:nth-child(5n) {
-                        width: 3rem;
-                        height: 3rem;
-                        grid-row: 2;
-                        grid-column: auto / span 4;
-                    }
-                }
-
-                .circle {
-                    margin: 0 auto;
-                };
-            }
         }
     }
 

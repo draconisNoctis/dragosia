@@ -13,7 +13,7 @@ import { ICharacter } from '@jina-draicana/presets';
     }
 })
 export class SheetComponent implements OnInit {
-    
+
     form = new FormGroup({
         _id: new FormControl((Math.random() * 1000000 | 0).toString(36)),
         about: new FormGroup({
@@ -39,12 +39,12 @@ export class SheetComponent implements OnInit {
             physical: new FormControl(null, Validators.required),
             mental: new FormControl(null, Validators.required)
         }),
-        gifts: new FormArray(Array.from({ length: 6 }, () => this.createGiftFormControl())),
+        gifts: new FormArray(Array.from({ length: 4 }, () => this.createGiftFormControl())),
         advantages: new FormControl(),
         disadvantages: new FormControl(),
         health: new FormControl(),
         mana: new FormControl(),
-        
+
         talents: new FormGroup({
             melee: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
             range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
@@ -52,14 +52,14 @@ export class SheetComponent implements OnInit {
             mental: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
             gifts: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
         }),
-        
+
         inventory: new FormControl(),
         financials: new FormControl(),
         equipment: new FormControl(),
-        
+
         melee: new FormArray(Array.from({ length: 8 }, () => this.createMeleeWeaponControl())),
         range: new FormArray(Array.from({ length: 8 }, () => this.createRangeWeaponControl())),
-        
+
         meta: new FormGroup({
             preset: new FormControl(),
             budget: new FormGroup({
@@ -73,43 +73,49 @@ export class SheetComponent implements OnInit {
             })
         })
     });
-    
+
     giftsForm = this.form.get('gifts') as FormArray;
     meleeForm = this.form.get('melee') as FormArray;
     rangeForm = this.form.get('range') as FormArray;
-    
+
     talentsMeleeForm = this.form.get([ 'talents', 'melee' ]) as FormArray;
     talentsRangeForm = this.form.get([ 'talents', 'range' ]) as FormArray;
     talentsPhysicalForm = this.form.get([ 'talents', 'physical' ]) as FormArray;
     talentsMentalForm = this.form.get([ 'talents', 'mental' ]) as FormArray;
     talentsGiftsForm = this.form.get([ 'talents', 'gifts' ]) as FormArray;
-    
+
     @Input()
     set character(char : ICharacter) {
         if(char) {
             this.form.patchValue(char, { emitEvent: false });
         }
+        this._character = char;
     }
-    
+    get character() {
+        return this._character!;
+    }
+    protected _character?: ICharacter;
+
     @Output()
     update = this.form.valueChanges;
-    
+
     constructor() {
     }
-    
+
     ngOnInit() {
         // this.form.valueChanges.subscribe(value => {
         //     console.log(value);
         // })
     }
-    
+
     protected createGiftFormControl() {
         return new FormGroup({
             name: new FormControl(),
+            level: new FormControl(),
             value: new FormControl()
         })
     }
-    
+
     protected createTalentFormControl() {
         return new FormGroup({
             skill: new FormControl(),
@@ -118,7 +124,7 @@ export class SheetComponent implements OnInit {
             value: new FormControl()
         })
     }
-    
+
     protected createMeleeWeaponControl() {
         return new FormGroup({
             name: new FormControl(),
@@ -129,7 +135,7 @@ export class SheetComponent implements OnInit {
             damageModificator: new FormControl()
         })
     }
-    
+
     protected createRangeWeaponControl() {
         return new FormGroup({
             name: new FormControl(),
