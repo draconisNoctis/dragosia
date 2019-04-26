@@ -177,11 +177,103 @@
     </div>
 </jui-page>
 
+<ng-template #talents let-type="type" let-form="form">
+    <div [ngClass]="type" class="talents">
+        <h2 *ngIf="type === 'melee'" i18n class="melee-title">Melee</h2>
+        <h2 *ngIf="type === 'range'" i18n class="range-title">Range</h2>
+        <h2 *ngIf="type === 'physical'" i18n class="physical-title">Physical</h2>
+        <h2 *ngIf="type === 'mental'" i18n class="mental-title">Mental</h2>
+        <h2 *ngIf="type === 'gifts'" i18n class="gifts-title">Gifts</h2>
+
+        <div class="talents-wrapper">
+            <div *ngFor="let control of form.controls" [formGroup]="control" class="talent">
+                <span class="talent-name"><span>{{ control.value.name }}</span></span>
+                <span class="talent-attribute-skill"><small><ng-container *ngIf="control.value.attribute">({{ control.value.attribute }}, {{ control.value.skill }})</ng-container></small></span>
+                <span class="talent-level"><span>{{ control.value.level }}</span></span>
+                <input type="number" class="talent-value" formControlName="value" readonly />
+                <!--<input formControlName="skill" />
+                <input formControlName="name" />
+                <input formControlName="attribute" />
+                <jui-radio-range deselectable formControlName="value"></jui-radio-range>-->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
 <jui-page din="a4">
     <span class="name">{{ form.value.about.name }}</span>
     <h1 i18n class="page-title">Talent Sheet</h1>
 
-    <h2 i18n class="melee-title">Melee</h2>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'melee', form: talentsMeleeForm }"></ng-container>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'range', form: talentsRangeForm }"></ng-container>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'physical', form: talentsPhysicalForm }"></ng-container>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'mental', form: talentsMentalForm }"></ng-container>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'gifts', form: talentsGiftsForm }"></ng-container>
+
+
+    <div class="attributes-footer">
+        <div class="attributes-footer-wrapper">
+            <div class="attributes-footer-strength">
+                <span i18n>Strength:</span>
+                <span>{{ character?.attributes?.strength }}</span>
+            </div>
+            <div class="attributes-footer-agility">
+                <span i18n>Agility:</span>
+                <span>{{ character?.attributes?.agility }}</span>
+            </div>
+            <div class="attributes-footer-dexterity">
+                <span i18n>Dexterity:</span>
+                <span>{{ character?.attributes?.dexterity }}</span>
+            </div>
+            <div class="attributes-footer-constitution">
+                <span i18n>Konstitution:</span>
+                <span>{{ character?.attributes?.constitution }}</span>
+            </div>
+            <div class="attributes-footer-courage">
+                <span i18n>Courage:</span>
+                <span>{{ character?.attributes?.courage }}</span>
+            </div>
+            <div class="attributes-footer-intelligence">
+                <span i18n>Intelligence:</span>
+                <span>{{ character?.attributes?.intelligence }}</span>
+            </div>
+            <div class="attributes-footer-intuition">
+                <span i18n>Intuition:</span>
+                <span>{{ character?.attributes?.intuition }}</span>
+            </div>
+            <div class="attributes-footer-charisma">
+                <span i18n>Charisma:</span>
+                <span>{{ character?.attributes?.charisma }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills-gifts-footer">
+        <div class="skills-gifts-footer-wrapper">
+            <div class="skills-gifts-footer-melee">
+                <span i18n>Melee:</span>
+                <span>{{ character?.skills?.melee }}</span>
+            </div>
+            <div class="skills-gifts-footer-range">
+                <span i18n>Range:</span>
+                <span>{{ character?.skills?.range }}</span>
+            </div>
+            <div class="skills-gifts-footer-physical">
+                <span i18n>Physical:</span>
+                <span>{{ character?.skills?.physical }}</span>
+            </div>
+            <div class="skills-gifts-footer-mental">
+                <span i18n>Mental:</span>
+                <span>{{ character?.skills?.mental }}</span>
+            </div>
+            <div class="skills-gifts-footer-gift" *ngFor="let gift of character?.gifts">
+                <span>{{ gift.name }}:</span>
+                <span>{{ gift.value }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!--<h2 i18n class="melee-title">Melee</h2>
 
     <div class="melee">
         <div *ngFor="let control of talentsMeleeForm.controls" [formGroup]="control" class="talent">
@@ -191,6 +283,7 @@
             <jui-radio-range deselectable formControlName="value"></jui-radio-range>
         </div>
     </div>
+
 
     <h2 i18n class="range-title">Range</h2>
 
@@ -234,7 +327,7 @@
             <input formControlName="attribute" />
             <jui-radio-range deselectable formControlName="value"></jui-radio-range>
         </div>
-    </div>
+    </div>-->
 </jui-page>
 
 <jui-page din="a4" [formGroup]="form">

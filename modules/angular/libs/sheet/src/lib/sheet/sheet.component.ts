@@ -48,9 +48,9 @@ export class SheetComponent implements OnInit {
         talents: new FormGroup({
             melee: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
             range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
-            physical: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
-            mental: new FormArray(Array.from({ length: 13 }, () => this.createTalentFormControl())),
-            gifts: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl()))
+            physical: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
+            mental: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
+            gifts: new FormArray(Array.from({ length: 20 }, () => this.createTalentFormControl()))
         }),
 
         inventory: new FormControl(),
@@ -121,7 +121,8 @@ export class SheetComponent implements OnInit {
             skill: new FormControl(),
             name: new FormControl(),
             attribute: new FormControl(),
-            value: new FormControl()
+            value: new FormControl(),
+            level: new FormControl()
         })
     }
 

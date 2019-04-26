@@ -56,14 +56,14 @@ $sheet-text-font-size: 1.4rem;
     .jui-page:nth-child(1) {
         display: grid;
         grid-gap: 4mm;
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(16, 1fr);
         grid-template-rows: repeat(3, min-content) 1fr repeat(2, min-content);
         grid-template-areas:
-            "#{gta(page-title, 8)} #{gta(name, 4)}"
-            "#{gta(about, 6)} #{gta(description, 6)}"
-            "#{gta(attributes, 6)} #{gta(skills, 3)} #{gta(gifts, 3)}"
-            "#{gta(advantages, 6)} #{gta(disadvantages, 6)}"
-            "#{gta(exp, 5)} #{gta(startvalues, 7)}";
+            "#{gta(page-title, 10)} #{gta(name, 6)}"
+            "#{gta(about, 8)} #{gta(description, 8)}"
+            "#{gta(attributes, 8)} #{gta(skills, 4)} #{gta(gifts, 4)}"
+            "#{gta(advantages, 8)} #{gta(disadvantages, 8)}"
+            "#{gta(exp, 6)} #{gta(startvalues, 10)}";
 
         @each $area in (name, page-title, about, description,advantages, disadvantages, info, meta, gifts, attributes, skills, exp, startvalues) {
             .#{$area} {
@@ -89,7 +89,44 @@ $sheet-text-font-size: 1.4rem;
             }
         }
 
-        .exp {
+        .exp, .startvalues {
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-wrapper {
+                border: 1px solid var(--border-color);
+                display: grid;
+                padding: .75em 0;
+
+                > div {
+                    display: flex;
+
+                    > :first-child {
+                        padding-left: .75em;
+                        font-weight: bold;
+                        margin-right: .5em;
+                    }
+
+                    > :last-child {
+                        flex-grow: 1;
+                        text-align: right;
+                        padding-right: .75em;
+                    }
+                }
+            }
+        }
+
+        .exp-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .startvalues-wrapper {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        /*.exp {
             &-title {
                 text-align: center;
                 margin: 0;
@@ -131,7 +168,7 @@ $sheet-text-font-size: 1.4rem;
                     margin-right: .5em;
                 }
             }
-        }
+        }*/
 
         .attributes {
 
@@ -317,62 +354,117 @@ $sheet-text-font-size: 1.4rem;
     .jui-page:nth-child(2) {
         display: grid;
         grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm .5cm 1fr .5cm 2fr .5cm 1fr;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(5, min-content);
         grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(melee-title, 10)} #{gta(range-title, 10)}"
-            "#{gta(melee, 10)} #{gta(range, 10)}"
-            "#{gta(physical-title, 10)} #{gta(mental-title, 10)}"
-            "#{gta(physical, 10)} #{gta(mental, 10)}"
-            "#{gta(gifts-title, 20)}"
-            "#{gta(gifts, 20)}";
+            "#{gta(page-title, 8)} #{gta(name, 4)}"
+            "#{gta(melee, 6)} #{gta(range, 6)}"
+            "#{gta(physical, 6)} #{gta(mental, 6)}"
+            "#{gta(gifts, 12)}"
+            "#{gta(attributes-footer, 6)} #{gta(skills-gifts-footer, 6)}";
 
-        @each $area in (name, page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic, gifts-title, gifts) {
+        @each $area in (name, page-title, melee, range, physical, mental, gifts, attributes-footer, skills-gifts-footer) {
             .#{$area} {
                 grid-area: $area;
             }
         }
 
-        .talent {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+        .talents {
+            .melee-title, .range-title, .physical-title, .mental-title, .gifts-title {
+                text-align: center;
+                margin: 0;
+            }
 
-            input {
-                margin-right: 2mm;
-                &:nth-child(1) {
-                    width: .8cm;
-                    text-align: center;
-                }
-                &:nth-child(2) {
-                    flex-grow: 1;
-                }
-                &:nth-child(3) {
-                    width: 1.2cm;
-                    text-align: center;
+            .gifts-title {
+                // width: 50%;
+            }
+
+            &-wrapper {
+                border: 1px solid var(--border-color);
+                border-bottom: none;
+
+            }
+
+            &.gifts {
+                .talents-wrapper {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-gap: 0 4mm;
+                    grid-auto-flow: column;
+                    border: none;
+                    // border-left: 1px solid var(--border-color);
+                    // border-right: 1px solid var(--border-color);
+
+                    .talent {
+                        grid-column: 2;
+                        border-left: 1px solid var(--border-color);
+                        border-right: 1px solid var(--border-color);
+                        &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+                            grid-column: 1;
+
+                        }
+
+                        &:nth-child(10n+1) {
+                            border-top: 1px solid var(--border-color);
+                        }
+                    }
                 }
             }
-            .jui-radio-range {
-                span {
-                    height: 1rem;
-                    width: 1rem;
-                    &:not(:last-child) {
-                        margin-right: .2rem;
-                    }
+
+            .talent {
+                display: grid;
+                grid-template-columns: min-content auto .75cm min-content;
+                border-bottom: 1px solid var(--border-color);
+
+                input {
+                    width: .75cm;
+                    text-align: center;
+                    border-bottom: none;
+                    padding: 0;
+                    line-height: .6cm;
+                }
+
+                > span {
+                    display: flex;
+                    align-items: flex-end;
+                }
+
+                &-name, &-attribute-skill, &-level {
+                    padding: 0 8px;
+                }
+
+                &-attribute-skill {
+                    flex-grow: 1;
+                }
+
+                &-level, &-value {
+                    border-left: 1px solid var(--border-color);
                 }
             }
         }
 
-        .gifts {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .talent {
-                width: calc((100% - 4mm) / 2);
+        .attributes-footer, .skills-gifts-footer {
+            &-wrapper {
+                border: 1px solid var(--border-color);
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                padding: .75em 0;
+                line-height: 1;
 
-                &:nth-child(2n - 1) {
-                    margin-right: 4mm;
+                > div {
+                    display: flex;
+
+                    > :first-child {
+                        padding-left: .75em;
+                        font-weight: bold;
+                        margin-right: .5em;
+                    }
+
+                    > :last-child {
+                        flex-grow: 1;
+                        text-align: right;
+                        padding-right: .75em;
+                    }
                 }
             }
         }
