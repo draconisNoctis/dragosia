@@ -29,7 +29,7 @@
         </label>
     </div>
     <div class="attributes" formGroupName="attributes">
-        <h2 i18n class="attribute-title">Attributes</h2>
+        <h2 i18n class="attributes-title">Attributes</h2>
 
         <div class="attributes-wrapper">
             <div class="attribute-strength">
@@ -75,7 +75,7 @@
     </div>
 
     <div class="skills" formGroupName="skills">
-        <h2 i18n class="skill-title">Skills</h2>
+        <h2 i18n class="skills-title">Skills</h2>
 
         <div class="skills-wrapper">
             <div class="skill-melee">
@@ -105,8 +105,6 @@
 
         <div class="gifts-wrapper">
             <ng-container *ngFor="let control of giftsForm.controls" [formGroup]="control" >
-                <!--<input class="gift-name" formControlName="name">
-                <input class="gift-level" formControlName="level">-->
                 <span class="gift-name">{{ control.value.name }}</span>
                 <span class="gift-level">{{ control.value.level }}</span>
                 <input type="number" class="gift-value" formControlName="value" readonly />
@@ -191,11 +189,11 @@
 
 <ng-template #talents let-type="type" let-form="form">
     <div [ngClass]="type" class="talents">
-        <h2 *ngIf="type === 'melee'" i18n class="melee-title">Melee</h2>
-        <h2 *ngIf="type === 'range'" i18n class="range-title">Range</h2>
-        <h2 *ngIf="type === 'physical'" i18n class="physical-title">Physical</h2>
-        <h2 *ngIf="type === 'mental'" i18n class="mental-title">Mental</h2>
-        <h2 *ngIf="type === 'gifts'" i18n class="gifts-title">Gifts</h2>
+        <h2 *ngIf="type === 'melee'" i18n class="talents-title melee-title">Melee</h2>
+        <h2 *ngIf="type === 'range'" i18n class="talents-title range-title">Range</h2>
+        <h2 *ngIf="type === 'physical'" i18n class="talents-title physical-title">Physical</h2>
+        <h2 *ngIf="type === 'mental'" i18n class="talents-title mental-title">Mental</h2>
+        <h2 *ngIf="type === 'gifts'" i18n class="talents-title gifts-title">Gifts</h2>
 
         <div class="talents-wrapper">
             <div *ngFor="let control of form.controls" [formGroup]="control" class="talent">

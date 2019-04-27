@@ -1,14 +1,61 @@
 $sheet-text-font-size: 1.4rem;
 
-@function gta($name, $count) {
-    $r: "";
-    @for $i from 1 through $count {
-        @if 0 != $i {
-            $r: $r + " ";
+@mixin js-sheet-page($areas) {
+    display: grid;
+    grid-gap: 4mm;
+
+    $str: "";
+
+    @each $row in $areas {
+        $str: "#{$str} \"";
+        $first: true;
+        @each $area, $width in $row {
+            .#{$area} {
+                grid-area: $area;
+            }
+            @for $i from 1 through $width {
+                @if not $first {
+                    $str: "#{$str} "
+                }
+                $first: false;
+                $str: "#{$str}#{$area}"
+            }
         }
-        $r: $r + $name;
+
+        $str: "#{$str}\"";
     }
-    @return $r;
+
+    grid-template-areas: unquote($str);
+}
+
+@mixin js-sheet-area($border: null, $grid: false, $flex: false) {
+    @if $flex {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        &-input {
+            flex-grow: 1;
+        }
+    }
+
+    &-title {
+        text-align: center;
+        margin: 0;
+    }
+
+    &-wrapper {
+        @if $border == 'topleft' {
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+        }
+        @else if $border {
+            border: 1px solid var(--border-color);
+        }
+        @if $grid {
+            display: grid;
+        }
+    }
 }
 
 .js-sheet {
@@ -54,23 +101,16 @@ $sheet-text-font-size: 1.4rem;
     }
 
     .jui-page:nth-child(1) {
-        display: grid;
-        grid-gap: 4mm;
+        @include js-sheet-page((
+            (page-title: 10, name: 6),
+            (about: 8, description: 8),
+            (attributes: 8, skills: 4, gifts: 4),
+            (advantages: 8, disadvantages: 8),
+            (inventory: 12, financials: 4),
+            (exp: 6, startvalues: 10)
+        ));
         grid-template-columns: repeat(16, 1fr);
         grid-template-rows: repeat(3, min-content) 1fr 1fr repeat(2, min-content);
-        grid-template-areas:
-            "#{gta(page-title, 10)} #{gta(name, 6)}"
-            "#{gta(about, 8)} #{gta(description, 8)}"
-            "#{gta(attributes, 8)} #{gta(skills, 4)} #{gta(gifts, 4)}"
-            "#{gta(advantages, 8)} #{gta(disadvantages, 8)}"
-            "#{gta(inventory, 12)} #{gta(financials, 4)}"
-            "#{gta(exp, 6)} #{gta(startvalues, 10)}";
-
-        @each $area in (name, page-title, about, description,advantages, disadvantages, info, meta, gifts, attributes, skills, exp, startvalues, inventory, financials) {
-            .#{$area} {
-                grid-area: $area;
-            }
-        }
 
         .budget {
             display: grid;
@@ -91,14 +131,9 @@ $sheet-text-font-size: 1.4rem;
         }
 
         .exp, .startvalues {
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
+            @include js-sheet-area($border: true, $grid: true);
 
             &-wrapper {
-                border: 1px solid var(--border-color);
-                display: grid;
                 padding: .75em 0;
 
                 > div {
@@ -127,112 +162,45 @@ $sheet-text-font-size: 1.4rem;
             grid-template-columns: repeat(5, 1fr);
         }
 
-        .attributes {
-
+        .attributes, .skills {
+            @include js-sheet-area($grid: true, $border: 'topleft');
             &-wrapper {
-                border-top: 1px solid var(--border-color);
-                border-left: 1px solid var(--border-color);
-                display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 grid-template-rows: repeat(2, 1fr);
 
-                > * {
+                > div {
+                    display: flex;
+                    flex-direction: column-reverse;
                     border-right: 1px solid var(--border-color);
                     border-bottom: 1px solid var(--border-color);
-                }
-            }
 
-            .attribute-title {
-                text-align: center;
-                margin: 0;
+                    input {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 32px;
+                        font-weight: bold;
+                        font-family: inherit;
+                        border: none;
+                    }
+
+                    strong {
+                        text-align: center;
+                    }
+                }
             }
 
             input {
                 padding: 0;
             }
-
-            strong {
-                margin: 0;
-            }
         }
 
-        .skills {
-
-            &-wrapper {
-                border-top: 1px solid var(--border-color);
-                border-left: 1px solid var(--border-color);
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-
-                > * {
-                    border-right: 1px solid var(--border-color);
-                    border-bottom: 1px solid var(--border-color);
-                }
-            }
-
-            .skill-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            input {
-                padding: 0;
-            }
-
-            strong {
-                margin: 0;
-            }
+        .skills-wrapper {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
         }
 
-        .advantages, .disadvantages {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            &-input {
-                flex-grow: 1;
-            }
-        }
-
-        .inventory, .financials {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            &-input {
-                flex-grow: 1;
-            }
-        }
-
-
-
-        div[class^="attribute-"], div[class^="skill-"] {
-            display: flex;
-            flex-direction: column-reverse;
-
-            input {
-                width: 100%;
-                text-align: center;
-                font-size: 32px;
-                font-weight: bold;
-                font-family: inherit;
-                border: none;
-            }
-
-            strong {
-                text-align: center;
-            }
+        .advantages, .disadvantages, .inventory, .financials {
+            @include js-sheet-area($flex: true);
         }
 
         .about {
@@ -269,21 +237,12 @@ $sheet-text-font-size: 1.4rem;
         }
 
         .gifts {
-            display: flex;
-            flex-direction: column;
-
-            .gifts-title {
-                text-align: center;
-                margin: 0;
-            }
+            @include js-sheet-area($flex: true, $grid: true, $border: true);
 
             &-wrapper {
-                flex-grow: 1;
                 height: 100%;
-                display: grid;
                 grid-template-columns: auto .75cm min-content;
                 grid-template-rows: repeat(auto-fit, 1fr);
-                border: 1px solid var(--border-color);
 
                 span {
                     padding: 0 8px;
@@ -308,56 +267,29 @@ $sheet-text-font-size: 1.4rem;
                 }
             }
         }
-
-        strong {
-            line-height: 2rem;
-            margin-bottom: .5rem;
-        }
-
-        fieldset {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            border: 0;
-            padding: 0;
-            margin: 0;
-        }
     }
 
     .jui-page:nth-child(2) {
-        display: grid;
-        grid-gap: 4mm;
+        @include js-sheet-page((
+            (page-title: 8, name: 4),
+            (melee: 6, range: 6),
+            (physical: 6, mental: 6),
+            (gifts: 12),
+            (attributes-footer: 6, skills-gifts-footer: 6)
+        ));
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(5, min-content);
-        grid-template-areas:
-            "#{gta(page-title, 8)} #{gta(name, 4)}"
-            "#{gta(melee, 6)} #{gta(range, 6)}"
-            "#{gta(physical, 6)} #{gta(mental, 6)}"
-            "#{gta(gifts, 12)}"
-            "#{gta(attributes-footer, 6)} #{gta(skills-gifts-footer, 6)}";
-
-        @each $area in (name, page-title, melee, range, physical, mental, gifts, attributes-footer, skills-gifts-footer) {
-            .#{$area} {
-                grid-area: $area;
-            }
-        }
 
         .talents {
-            .melee-title, .range-title, .physical-title, .mental-title, .gifts-title {
-                text-align: center;
-                margin: 0;
-            }
+            @include js-sheet-area($grid: true, $border: true);
 
             &-wrapper {
-                border: 1px solid var(--border-color);
                 border-bottom: none;
 
             }
 
             &.gifts {
                 .talents-wrapper {
-                    display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-gap: 0 4mm;
                     grid-auto-flow: column;
@@ -412,9 +344,8 @@ $sheet-text-font-size: 1.4rem;
         }
 
         .attributes-footer, .skills-gifts-footer {
+            @include js-sheet-area($grid: true, $border: true);
             &-wrapper {
-                border: 1px solid var(--border-color);
-                display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 padding: .75em 0;
                 line-height: 1;
@@ -439,30 +370,19 @@ $sheet-text-font-size: 1.4rem;
     }
 
     .jui-page:nth-child(3) {
-        display: grid;
-        grid-gap: 4mm;
+        @include js-sheet-page((
+            (page-title: 12, name: 4),
+            (equipment: 10, armor: 6),
+            (melee-weapons: 16),
+            (range-weapons: 16)
+        ));
         grid-template-columns: repeat(16, 1fr);
         grid-template-rows: min-content 1fr min-content min-content;
-        grid-template-areas:
-            "#{gta(page-title, 12)} #{gta(name, 4)}"
-            "#{gta(equipment, 10)} #{gta(armor, 6)}"
-            "#{gta(melee-weapons, 16)}"
-            "#{gta(range-weapons, 16)}";
-
-        @each $area in (name, page-title, equipment, armor, melee-weapons, range-weapons) {
-            .#{$area} {
-                grid-area: $area;
-            }
-        }
 
         .equipment, .armor, .melee-weapons, .range-weapons {
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
+            @include js-sheet-area($grid: true);
 
             &-wrapper {
-                display: grid;
                 grid-gap: 0 2mm;
                 grid-auto-rows: min-content;
 
@@ -480,18 +400,7 @@ $sheet-text-font-size: 1.4rem;
         }
 
         .equipment {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            &-input {
-                flex-grow: 1;
-            }
+            @include js-sheet-area($flex: true);
         }
 
         .melee-weapons-wrapper {
