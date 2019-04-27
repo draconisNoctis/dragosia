@@ -126,6 +126,18 @@
         <textarea class="disadvantages-input" readonly>{{ form.value.disadvantages | advantagesToString }}</textarea>
     </div>
 
+    <div class="financials">
+        <h2 i18n class="financials-title">Financials</h2>
+
+        <textarea class="financials-input" formControlName="financials"></textarea>
+    </div>
+
+    <div class="inventory">
+        <h2 i18n class="inventory-title">Inventory</h2>
+
+        <textarea class="inventory-input" formControlName="inventory"></textarea>
+    </div>
+
     <div class="exp">
         <h2 i18n class="exp-title">Experiencepoints</h2>
 
@@ -191,10 +203,6 @@
                 <span class="talent-attribute-skill"><small><ng-container *ngIf="control.value.attribute">({{ control.value.attribute }}, {{ control.value.skill }})</ng-container></small></span>
                 <span class="talent-level"><span>{{ control.value.level }}</span></span>
                 <input type="number" class="talent-value" formControlName="value" readonly />
-                <!--<input formControlName="skill" />
-                <input formControlName="name" />
-                <input formControlName="attribute" />
-                <jui-radio-range deselectable formControlName="value"></jui-radio-range>-->
             </div>
         </div>
     </div>
@@ -272,117 +280,66 @@
             </div>
         </div>
     </div>
-
-    <!--<h2 i18n class="melee-title">Melee</h2>
-
-    <div class="melee">
-        <div *ngFor="let control of talentsMeleeForm.controls" [formGroup]="control" class="talent">
-            <input formControlName="skill" />
-            <input formControlName="name" />
-            <input formControlName="attribute" />
-            <jui-radio-range deselectable formControlName="value"></jui-radio-range>
-        </div>
-    </div>
-
-
-    <h2 i18n class="range-title">Range</h2>
-
-    <div class="range">
-        <div *ngFor="let control of talentsRangeForm.controls" [formGroup]="control" class="talent">
-            <input formControlName="skill" />
-            <input formControlName="name" />
-            <input formControlName="attribute" />
-            <jui-radio-range deselectable formControlName="value"></jui-radio-range>
-        </div>
-    </div>
-
-    <h2 i18n class="physical-title">Physical</h2>
-
-    <div class="physical">
-        <div *ngFor="let control of talentsPhysicalForm.controls" [formGroup]="control" class="talent">
-            <input formControlName="skill" />
-            <input formControlName="name" />
-            <input formControlName="attribute" />
-            <jui-radio-range deselectable formControlName="value"></jui-radio-range>
-        </div>
-    </div>
-
-    <h2 i18n class="mental-title">Mental</h2>
-
-    <div class="mental">
-        <div *ngFor="let control of talentsMentalForm.controls" [formGroup]="control" class="talent">
-            <input formControlName="skill" />
-            <input formControlName="name" />
-            <input formControlName="attribute" />
-            <jui-radio-range deselectable formControlName="value"></jui-radio-range>
-        </div>
-    </div>
-
-    <h2 i18n class="gifts-title">Gifts</h2>
-
-    <div class="gifts">
-        <div *ngFor="let control of talentsGiftsForm.controls" [formGroup]="control" class="talent">
-            <input formControlName="skill" />
-            <input formControlName="name" />
-            <input formControlName="attribute" />
-            <jui-radio-range deselectable formControlName="value"></jui-radio-range>
-        </div>
-    </div>-->
 </jui-page>
 
 <jui-page din="a4" [formGroup]="form">
     <span class="name">{{ form.value.about.name }}</span>
     <h1 i18n class="page-title">Equipment Sheet</h1>
 
-    <h2 i18n class="inventory-title">Inventory</h2>
+    <div class="equipment">
+        <h2 i18n class="equipment-title">Equipment</h2>
 
-    <textarea class="inventory" formControlName="inventory"></textarea>
-
-    <h2 i18n class="financials-title">Financials</h2>
-
-    <textarea class="financials" formControlName="financials"></textarea>
-
-    <h2 i18n class="equipment-title">Equipment</h2>
-
-    <textarea class="equipment" formControlName="equipment"></textarea>
-
-    <h2 i18n class="melee-weapons-title">Melee Weapons</h2>
-
-    <div class="melee-weapons">
-        <strong i18n>Name</strong>
-        <strong i18n>Type</strong>
-        <strong i18n>Attr.</strong>
-        <strong i18n>AT</strong>
-        <strong i18n>PA</strong>
-        <strong i18n>Dmg</strong>
-
-        <ng-container *ngFor="let control of meleeForm.controls" [formGroup]="control">
-            <input formControlName="name" />
-            <input formControlName="type" />
-            <input formControlName="attribute" />
-            <input formControlName="attackModificator" />
-            <input formControlName="paradeModificator" />
-            <input formControlName="damageModificator" />
-        </ng-container>
+        <textarea class="equipment-input" formControlName="equipment"></textarea>
     </div>
 
-    <h2 i18n class="range-weapons-title">Range Weapons</h2>
+    <div class="armor">
+        <h2 i18n class="armor-title">Armor</h2>
+
+        <div class="armor-wrapper"></div>
+        <div class="armor-summary"></div>
+    </div>
+
+    <div class="melee-weapons">
+        <h2 i18n class="melee-weapons-title">Melee Weapons</h2>
+
+        <div class="melee-weapons-wrapper">
+            <strong i18n>Name</strong>
+            <strong i18n>Type</strong>
+            <strong i18n>Attr.</strong>
+            <strong i18n>AT</strong>
+            <strong i18n>PA</strong>
+            <strong i18n>Dmg</strong>
+
+            <ng-container *ngFor="let control of meleeForm.controls" [formGroup]="control">
+                <input formControlName="name" />
+                <input formControlName="type" />
+                <input formControlName="attribute" />
+                <input formControlName="attackModificator" />
+                <input formControlName="paradeModificator" />
+                <input formControlName="damageModificator" />
+            </ng-container>
+        </div>
+    </div>
 
     <div class="range-weapons">
-        <strong i18n>Name</strong>
-        <strong i18n>Type</strong>
-        <strong i18n>Attr.</strong>
-        <strong i18n="distance|">Range</strong>
-        <strong i18n>AT</strong>
-        <strong i18n>Dmg</strong>
+        <h2 i18n class="range-weapons-title">Range Weapons</h2>
 
-        <ng-container *ngFor="let control of rangeForm.controls" [formGroup]="control">
-            <input formControlName="name" />
-            <input formControlName="type" />
-            <input formControlName="attribute" />
-            <input formControlName="range" />
-            <input formControlName="attackModificator" />
-            <input formControlName="damageModificator" />
-        </ng-container>
+        <div class="range-weapons-wrapper">
+            <strong i18n>Name</strong>
+            <strong i18n>Type</strong>
+            <strong i18n>Attr.</strong>
+            <strong i18n="distance|">Range</strong>
+            <strong i18n>AT</strong>
+            <strong i18n>Dmg</strong>
+
+            <ng-container *ngFor="let control of rangeForm.controls" [formGroup]="control">
+                <input formControlName="name" />
+                <input formControlName="type" />
+                <input formControlName="attribute" />
+                <input formControlName="range" />
+                <input formControlName="attackModificator" />
+                <input formControlName="damageModificator" />
+            </ng-container>
+        </div>
     </div>
 </jui-page>

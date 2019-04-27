@@ -57,15 +57,16 @@ $sheet-text-font-size: 1.4rem;
         display: grid;
         grid-gap: 4mm;
         grid-template-columns: repeat(16, 1fr);
-        grid-template-rows: repeat(3, min-content) 1fr repeat(2, min-content);
+        grid-template-rows: repeat(3, min-content) 1fr 1fr repeat(2, min-content);
         grid-template-areas:
             "#{gta(page-title, 10)} #{gta(name, 6)}"
             "#{gta(about, 8)} #{gta(description, 8)}"
             "#{gta(attributes, 8)} #{gta(skills, 4)} #{gta(gifts, 4)}"
             "#{gta(advantages, 8)} #{gta(disadvantages, 8)}"
+            "#{gta(inventory, 12)} #{gta(financials, 4)}"
             "#{gta(exp, 6)} #{gta(startvalues, 10)}";
 
-        @each $area in (name, page-title, about, description,advantages, disadvantages, info, meta, gifts, attributes, skills, exp, startvalues) {
+        @each $area in (name, page-title, about, description,advantages, disadvantages, info, meta, gifts, attributes, skills, exp, startvalues, inventory, financials) {
             .#{$area} {
                 grid-area: $area;
             }
@@ -125,50 +126,6 @@ $sheet-text-font-size: 1.4rem;
         .startvalues-wrapper {
             grid-template-columns: repeat(5, 1fr);
         }
-
-        /*.exp {
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            &-wrapper {
-                border: 1px solid var(--border-color);
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                padding: .25cm;
-                line-height: 1;
-
-                .exp-total, .exp-spend, .exp-balance {
-                    > :first-child {
-                        font-weight: bold;
-                        margin-right: .5em;
-                    }
-                }
-            }
-        }
-
-        .startvalues {
-            &-title {
-                text-align: center;
-                margin: 0;
-            }
-
-            &-wrapper {
-                border: 1px solid var(--border-color);
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                padding: .25cm;
-                line-height: 1;
-            }
-
-            &-level, &-exp, &-attributes, &-skills, &-talents {
-                > :first-child {
-                    font-weight: bold;
-                    margin-right: .5em;
-                }
-            }
-        }*/
 
         .attributes {
 
@@ -242,6 +199,23 @@ $sheet-text-font-size: 1.4rem;
                 flex-grow: 1;
             }
         }
+
+        .inventory, .financials {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-input {
+                flex-grow: 1;
+            }
+        }
+
+
 
         div[class^="attribute-"], div[class^="skill-"] {
             display: flex;
@@ -375,10 +349,6 @@ $sheet-text-font-size: 1.4rem;
                 margin: 0;
             }
 
-            .gifts-title {
-                // width: 50%;
-            }
-
             &-wrapper {
                 border: 1px solid var(--border-color);
                 border-bottom: none;
@@ -392,8 +362,6 @@ $sheet-text-font-size: 1.4rem;
                     grid-gap: 0 4mm;
                     grid-auto-flow: column;
                     border: none;
-                    // border-left: 1px solid var(--border-color);
-                    // border-right: 1px solid var(--border-color);
 
                     .talent {
                         grid-column: 2;
@@ -473,48 +441,65 @@ $sheet-text-font-size: 1.4rem;
     .jui-page:nth-child(3) {
         display: grid;
         grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm .5cm 1fr .5cm 1fr .5cm min-content .5cm min-content;
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: min-content 1fr min-content min-content;
         grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(inventory-title, 10)} #{gta(financials-title, 10)}"
-            "#{gta(inventory, 10)} #{gta(financials, 10)}"
-            "#{gta(equipment-title, 20)}"
-            "#{gta(equipment, 20)}"
-            "#{gta(melee-weapons-title, 20)}"
-            "#{gta(melee-weapons, 20)}"
-            "#{gta(range-weapons-title, 20)}"
-            "#{gta(range-weapons, 20)}";
+            "#{gta(page-title, 12)} #{gta(name, 4)}"
+            "#{gta(equipment, 10)} #{gta(armor, 6)}"
+            "#{gta(melee-weapons, 16)}"
+            "#{gta(range-weapons, 16)}";
 
-        @each $area in (name, page-title, inventory-title, inventory, financials-title, financials, equipment-title, equipment, melee-weapons-title, melee-weapons, range-weapons-title, range-weapons) {
+        @each $area in (name, page-title, equipment, armor, melee-weapons, range-weapons) {
             .#{$area} {
                 grid-area: $area;
             }
         }
 
-        .melee-weapons {
+        .equipment, .armor, .melee-weapons, .range-weapons {
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-wrapper {
+                display: grid;
+                grid-gap: 0 2mm;
+                grid-auto-rows: min-content;
+
+                strong {
+                    &:not(:first-child) {
+                        text-align: center;
+                    }
+                }
+
+                input {
+                    box-sizing: border-box;
+                    width: 100%;
+                }
+            }
+        }
+
+        .equipment {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+
+            &-title {
+                text-align: center;
+                margin: 0;
+            }
+
+            &-input {
+                flex-grow: 1;
+            }
+        }
+
+        .melee-weapons-wrapper {
             grid-template-columns: 5fr 2fr 1fr 1fr 1fr 1fr;
         }
 
-        .range-weapons {
+        .range-weapons-wrapper {
             grid-template-columns: 3fr 2fr 1fr 2fr 1fr 2fr;
         };
-
-        .melee-weapons, .range-weapons {
-            display: grid;
-            grid-gap: 0 2mm;
-            grid-auto-rows: min-content;
-
-            strong {
-                &:not(:first-child) {
-                    text-align: center;
-                }
-            }
-
-            input {
-                box-sizing: border-box;
-                width: 100%;
-            }
-        }
     }
 }
