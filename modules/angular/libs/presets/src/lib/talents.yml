@@ -122,6 +122,7 @@ name: Fährtensuche
 category: mental
 attribute: IN
 skill: G
+level: B
 
 ---
 
@@ -298,3 +299,51 @@ category: physical
 attribute: KL/FF
 skill: K/G
 level: B
+
+---
+
+name: Feuer
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Wasser
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Humus
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Erz
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Luft
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Magie
+category: gifts
+attribute: KL
+gift: Magie
+level: E

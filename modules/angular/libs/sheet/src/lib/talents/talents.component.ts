@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { getCosts, ICharacterTalent, ICharacterTalents, IPartialTalent, Presets, ITalent } from '@jina-draicana/presets';
+import { getCosts, ICharacterTalent, ICharacterTalents, IPartialTalent, Presets, ITalent, ICharacter, IGift } from '@jina-draicana/presets';
 import { FACTOR_TALENTS } from '../factors';
 import { AbstractComponent } from '../abstract.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
@@ -37,6 +37,9 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     set preset(preset: string) {
         this.talents = this.presets.getTalentsForPreset(preset);
     }
+
+    @Input()
+    gifts?: IGift[];
 
     @Input()
     max = Infinity;
@@ -102,7 +105,8 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     addTalent(talent: ICharacterTalent, category: keyof ICharacterTalents) {
         (this.form.get(category) as FormArray).push(new FormGroup({
             attribute: new FormControl(talent.attribute, Validators.required),
-            skill: new FormControl(talent.skill, Validators.required),
+            skill: new FormControl(talent.skill),
+            gift: new FormControl(talent.gift),
             name: new FormControl(talent.name, Validators.required),
             value: new FormControl(talent.value || 1, Validators.required),
             level: new FormControl(talent.level, Validators.required)
@@ -117,7 +121,9 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
             data: {
                 talents: this.talents.filter(talent => {
                     return !ids.has(talent.name);
-                })
+                }),
+                gifts: this.gifts,
+                budget: this.budget
             }
         });
 

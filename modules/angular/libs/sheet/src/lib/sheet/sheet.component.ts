@@ -12,7 +12,7 @@ import { ICharacter } from '@jina-draicana/presets';
         'class': 'js-sheet'
     }
 })
-export class SheetComponent implements OnInit {
+export class SheetComponent {
 
     form = new FormGroup({
         _id: new FormControl((Math.random() * 1000000 | 0).toString(36)),
@@ -102,12 +102,6 @@ export class SheetComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit() {
-        // this.form.valueChanges.subscribe(value => {
-        //     console.log(value);
-        // })
-    }
-
     protected createGiftFormControl() {
         return new FormGroup({
             name: new FormControl(),
@@ -121,6 +115,7 @@ export class SheetComponent implements OnInit {
             skill: new FormControl(),
             name: new FormControl(),
             attribute: new FormControl(),
+            gift: new FormControl(),
             value: new FormControl(),
             level: new FormControl()
         })

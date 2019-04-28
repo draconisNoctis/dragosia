@@ -83,7 +83,8 @@ export interface IDisadvantage {
 export interface ITalent {
     id?: string;
     name: string;
-    skill: string;
+    skill?: string;
+    gift?: string;
     attribute: string;
     level: Level;
 }
@@ -124,7 +125,7 @@ export interface ICharacterMeta {
         spend: number;
         total: number;
     }
-    points: IPoints
+    initValues: IInitValues
 }
 
 export interface ICharacter {
@@ -165,7 +166,9 @@ export interface ICosts {
     talents: number;
 }
 
-export interface IPoints {
+export interface IInitValues {
+    level: string;
+    exp: number;
     attributes: {
         min: number;
         max: number;
@@ -285,7 +288,9 @@ export function createEmptyCharacter() : ICharacter {
             //     skills: 0,
             //     talents: 0
             // },
-            points: {
+            initValues: {
+                level: '',
+                exp: 0,
                 attributes: {
                     max: 0,
                     min: 0

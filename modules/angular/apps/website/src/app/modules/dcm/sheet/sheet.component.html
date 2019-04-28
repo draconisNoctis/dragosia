@@ -69,7 +69,7 @@
                 </mat-tab>
                 <mat-tab i18n-label label="Talents">
                     <ng-template matTabContent>
-                        <js-talents [preset]="_char.meta.preset" mode="button" [ngModel]="_char.talents" [budget]="budget | async" (increase)="increaseTalent($event, _char)"></js-talents>
+                        <js-talents [preset]="_char.meta.preset" mode="button" [ngModel]="_char.talents" [budget]="budget | async" [gifts]="_char.gifts" (increase)="increaseTalent($event, _char)"></js-talents>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Character Sheet">

@@ -4,38 +4,101 @@
 <mat-form-field>
     <mat-select [formControl]="filter" i18n-placeholder placeholder="Category">
         <mat-option value="" i18n>All</mat-option>
-        <mat-option value="melee" i18n>Melee</mat-option>
-        <mat-option value="range" i18n>Range</mat-option>
-        <mat-option value="physical" i18n>Physical</mat-option>
-        <mat-option value="mental" i18n>Mental</mat-option>
-        <mat-option value="gifts" i18n>Gifts</mat-option>
-        <mat-option value="custom" i18n>Custom</mat-option>
+        <mat-optgroup i18n-label label="Talents">
+            <mat-option value="melee" i18n>Melee</mat-option>
+            <mat-option value="range" i18n>Range</mat-option>
+            <mat-option value="physical" i18n>Physical</mat-option>
+            <mat-option value="mental" i18n>Mental</mat-option>
+        </mat-optgroup>
+        <mat-optgroup i18n-label label="Gifts" *ngIf="gifts && gifts.length">
+            <mat-option *ngFor="let gift of gifts" [value]="'gifts-' + gift.name">{{ gift.name }}</mat-option>
+        </mat-optgroup>
+        <mat-optgroup i18n-label label="Custom">
+            <mat-option value="custom-melee" i18n>Melee</mat-option>
+            <mat-option value="custom-range" i18n>Range</mat-option>
+            <mat-option value="custom-physical" i18n>Physical</mat-option>
+            <mat-option value="custom-mental" i18n>Mental</mat-option>
+            <mat-option *ngFor="let gift of gifts" [value]="'custom-gifts-' + gift.name">{{ gift.name }}</mat-option>
+        </mat-optgroup>
+        <!--<mat-option value="gifts" i18n>Gifts</mat-option>
+        <mat-option value="custom" i18n>Custom</mat-option>-->
     </mat-select>
 </mat-form-field>
 
 <div matDialogContent>
-    <mat-selection-list *ngIf="filter.value !== 'custom'">
-        <mat-list-item *ngFor="let talent of filteredTalents | async"><button [matDialogClose]="talent">{{ talent.name }} ({{talent.attribute}} - {{talent.skill}})</button></mat-list-item>
-    </mat-selection-list>
-    <form [formGroup]="customTalentControl" *ngIf="filter.value === 'custom'">
+    <mat-action-list *ngIf="isList | async">
+        <button mat-list-item *ngFor="let talent of filteredTalents | async" [matDialogClose]="talent" [disabled]="getCosts(talent.level) > budget">
+            <span class="name">{{ talent.name }}</span>
+            <span class="attribute">{{talent.attribute}}</span>
+            <span class="skill">{{talent.skill || talent.gift }}</span>
+            <span class="level">{{talent.level}} +{{ getCosts(talent.level) }}</span>
+        </button>
+    </mat-action-list>
+    <form [formGroup]="customSkillTalentControl" *ngIf="isCustomSkillTalent | async">
         <mat-form-field>
             <input matInput formControlName="name" i18n-placeholder placeholder="Name" />
         </mat-form-field>
         <mat-form-field>
-            <mat-select formControlName="category" i18n-placeholder placeholder="Category">
-                <mat-option value="melee" i18n>Melee</mat-option>
-                <mat-option value="range" i18n>Range</mat-option>
-                <mat-option value="physical" i18n>Physical</mat-option>
-                <mat-option value="mental" i18n>Mental</mat-option>
-                <mat-option value="gifts" i18n>Gifts</mat-option>
+            <mat-select formControlName="attribute" i18n-placeholder placeholder="Attribute" multiple>
+                <mat-option value="ST">ST</mat-option>
+                <mat-option value="BE">BE</mat-option>
+                <mat-option value="FF">FF</mat-option>
+                <mat-option value="KO">KO</mat-option>
+                <mat-option value="MU">MU</mat-option>
+                <mat-option value="IN">IN</mat-option>
+                <mat-option value="KL">KL</mat-option>
+                <mat-option value="CH">CH</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />
+            <mat-select formControlName="skill" i18n-placeholder placeholder="Skill" multiple>
+                <mat-option value="N">N</mat-option>
+                <mat-option value="F">F</mat-option>
+                <mat-option value="K">K</mat-option>
+                <mat-option value="G">G</mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <input matInput formControlName="skill" i18n-placeholder placeholder="Skill" />
+            <mat-select formControlName="level" i18n-placeholder placeholder="Level">
+                <mat-option value="A">A</mat-option>
+                <mat-option value="B">B</mat-option>
+                <mat-option value="C">C</mat-option>
+                <mat-option value="D">D</mat-option>
+                <mat-option value="E">E</mat-option>
+                <mat-option value="F">F</mat-option>
+            </mat-select>
         </mat-form-field>
-        <button mat-icon-button [disabled]="customTalentControl.invalid" [matDialogClose]="customTalentControl.value"><mat-icon>add</mat-icon></button>
     </form>
+    <form [formGroup]="customGiftTalentControl" *ngIf="isCustomGiftTalent | async">
+        <mat-form-field>
+            <input matInput formControlName="name" i18n-placeholder placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select formControlName="attribute" i18n-placeholder placeholder="Attribute" multiple>
+                <mat-option value="ST">ST</mat-option>
+                <mat-option value="BE">BE</mat-option>
+                <mat-option value="FF">FF</mat-option>
+                <mat-option value="KO">KO</mat-option>
+                <mat-option value="MU">MU</mat-option>
+                <mat-option value="IN">IN</mat-option>
+                <mat-option value="KL">KL</mat-option>
+                <mat-option value="CH">CH</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select formControlName="level" i18n-placeholder placeholder="Level">
+                <mat-option value="A">A</mat-option>
+                <mat-option value="B">B</mat-option>
+                <mat-option value="C">C</mat-option>
+                <mat-option value="D">D</mat-option>
+                <mat-option value="E">E</mat-option>
+                <mat-option value="F">F</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+
+<div matDialogActions align="end">
+    <button mat-flat-button color="primary" *ngIf="isCustomSkillTalent | async" [disabled]="customSkillTalentControl.invalid" (click)="submitCustomSkillTalent()" i18n>Add</button>
+    <button mat-flat-button color="primary" *ngIf="isCustomGiftTalent | async" [disabled]="customGiftTalentControl.invalid" (click)="submitCustomGiftTalent()" i18n>Add</button>
 </div>

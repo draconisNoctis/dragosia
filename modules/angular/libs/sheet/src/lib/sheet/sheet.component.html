@@ -161,27 +161,27 @@
         <div class="startvalues-wrapper">
             <div class="startvalues-level">
                 <span i18n>Level:</span>
-                <span>TODO</span>
+                <span>{{ character?.meta?.initValues?.level }}</span>
             </div>
 
             <div class="startvalues-exp">
                 <span i18n>Exp:</span>
-                <span>TODO</span>
+                <span>{{ character?.meta?.initValues?.exp }}</span>
             </div>
 
             <div class="startvalues-attributes">
                 <span i18n>Attributes:</span>
-                <span>{{ character?.meta?.points?.attributes?.min }}/{{ character?.meta?.points?.attributes?.max }}</span>
+                <span>{{ character?.meta?.initValues?.attributes?.min }}/{{ character?.meta?.initValues?.attributes?.max }}</span>
             </div>
 
             <div class="startvalues-skills">
                 <span i18n>Skills:</span>
-                <span>{{ character?.meta?.points?.skills?.min }}/{{ character?.meta?.points?.skills?.max }}</span>
+                <span>{{ character?.meta?.initValues?.skills?.min }}/{{ character?.meta?.initValues?.skills?.max }}</span>
             </div>
 
             <div class="startvalues-talents">
                 <span i18n>Talents:</span>
-                <span>{{ character?.meta?.points?.talents?.min }}/{{ character?.meta?.points?.talents?.max }}</span>
+                <span>{{ character?.meta?.initValues?.talents?.min }}/{{ character?.meta?.initValues?.talents?.max }}</span>
             </div>
         </div>
     </div>
@@ -198,7 +198,7 @@
         <div class="talents-wrapper">
             <div *ngFor="let control of form.controls" [formGroup]="control" class="talent">
                 <span class="talent-name"><span>{{ control.value.name }}</span></span>
-                <span class="talent-attribute-skill"><small><ng-container *ngIf="control.value.attribute">({{ control.value.attribute }}, {{ control.value.skill }})</ng-container></small></span>
+                <span class="talent-attribute-skill"><small><ng-container *ngIf="control.value.attribute">({{ control.value.attribute }}, {{ control.value.skill || control.value.gift }})</ng-container></small></span>
                 <span class="talent-level"><span>{{ control.value.level }}</span></span>
                 <input type="number" class="talent-value" formControlName="value" readonly />
             </div>

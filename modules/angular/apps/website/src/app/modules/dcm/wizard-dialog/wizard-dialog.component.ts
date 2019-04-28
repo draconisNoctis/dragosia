@@ -39,8 +39,8 @@ export class WizardDialogComponent implements OnInit {
             return null;
         }
 
-        if(this.attributesCosts(value) < this.character!.meta.points.attributes.min) {
-            return { min: this.character!.meta.points.attributes.min }
+        if(this.attributesCosts(value) < this.character!.meta.initValues.attributes.min) {
+            return { min: this.character!.meta.initValues.attributes.min }
         }
 
         return null;
@@ -249,7 +249,7 @@ export class WizardDialogComponent implements OnInit {
                         spend: 0,
                         total: points
                     }
-                    character.meta.points = { attributes, skills, talents }
+                    character.meta.initValues = { level: this.settingsControl.value.budget, exp: points, attributes, skills, talents }
                     // character.meta.budget = this.settingsControl.value.budget;
 
                     this.character = character;

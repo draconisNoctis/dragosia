@@ -161,7 +161,7 @@
             <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
                 <label class="no-border">{{ control.value.name }}</label>
                 <span>{{ form.value[index].attribute }}</span>
-                <span>{{ form.value[index].skill }}</span>
+                <span>{{ form.value[index].skill || form.value[index].gift }}</span>
                 <span>{{ form.value[index].level }}</span>
                 <!--<mat-form-field floatLabel="never">
                     <input matInput formControlName="attribute" i18n-placeholder placeholder="Attribute" />

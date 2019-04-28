@@ -28,6 +28,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
 
     form = new FormGroup({
         preset: new FormControl(null, Validators.required),
+        budget: new FormControl('normal'),
         points: new FormGroup({
             points: new FormControl(null, Validators.required),
             attributes: new FormGroup({
@@ -45,8 +46,6 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
         })
     });
 
-    budgetControl = new FormControl('normal');
-
     subscription = Subscription.EMPTY;
 
     presets: IPreset[];
@@ -58,8 +57,8 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
     ngOnInit() {
         const points = this.form.get('points')!;
 
-        this.budgetControl.valueChanges
-            .pipe(startWith(this.budgetControl.value), delay(1))
+        this.form.get('budget')!.valueChanges
+            .pipe(startWith(this.form.get('budget')!.value), delay(1))
             .subscribe(value => {
                 if (value === 'custom') {
                     if (points.disabled) {

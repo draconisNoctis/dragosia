@@ -40,13 +40,13 @@
             <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
         </header>
 
-        <js-attributes [formControl]="attributesControl" [max]="character?.meta?.points?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
+        <js-attributes [formControl]="attributesControl" [max]="character?.meta?.initValues?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
 
         <div class="sub">
             <button mat-button matStepperPrevious i18n>Previous</button>
 
-            <span [class.valid]="spendForAttributes > character?.meta?.points?.attributes?.min"
-                [class.invalid]="spendForAttributes <= character?.meta?.points?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.points?.attributes?.min }}</sub></span>
+            <span [class.valid]="spendForAttributes > character?.meta?.initValues?.attributes?.min"
+                [class.invalid]="spendForAttributes <= character?.meta?.initValues?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.attributes?.min }}</sub></span>
 
             <button mat-button matStepperNext i18n [disabled]="attributesControl.invalid">Next</button>
         </div>
@@ -62,15 +62,15 @@
             </header>
 
             <h2 i18n>Skills</h2>
-            <js-skills formControlName="skills" [max]="character?.meta?.points?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-skills>
+            <js-skills formControlName="skills" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-skills>
             <h2 i18n>Gifts</h2>
-            <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [max]="character?.meta?.points?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
+            <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
 
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <span [class.valid]="spendForSkills + spendForGifts > character?.meta?.points?.skills?.min"
-                      [class.invalid]="spendForSkills + spendForGifts <= character?.meta?.points?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.points?.skills?.min }}</sub></span>
+                <span [class.valid]="spendForSkills + spendForGifts > character?.meta?.initValues?.skills?.min"
+                      [class.invalid]="spendForSkills + spendForGifts <= character?.meta?.initValues?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.skills?.min }}</sub></span>
 
                 <button mat-button matStepperNext i18n [disabled]="skillsGiftsControl.invalid">Next</button>
             </div>
@@ -108,7 +108,7 @@
                 <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
             </header>
 
-            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.points?.talents?.max" [budget]="character?.meta?.exp?.total - spend"></js-talents>
+            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.talents?.max" [gifts]="character?.gifts" [budget]="character?.meta?.exp?.total - spend"></js-talents>
 
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
