@@ -19,7 +19,28 @@ export class CharacterService {
                 char.provider = 'local';
             }
             return char;
-        } ]
+        } ],
+        [2, (char : ICharacter) => {
+            if(!char.meta.initValues) {
+                char.meta.initValues = {
+                    level: 'unknown',
+                    exp: -1,
+                    attributes: {
+                        min: 0,
+                        max: 0
+                    },
+                    skills: {
+                        min: 0,
+                        max: 0
+                    },
+                    talents: {
+                        min: 0,
+                        max: 0
+                    }
+                }
+            }
+            return char;
+        }]
     ] as any;
 
     constructor(local : CharacterLocalService, firebase : CharacterFirebaseService) {
