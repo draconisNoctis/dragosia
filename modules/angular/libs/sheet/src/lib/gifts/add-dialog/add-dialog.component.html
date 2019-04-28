@@ -1,8 +1,21 @@
 <h2 matDialogTitle i18n>Add Gift</h2>
 <button mat-icon-button matDialogClose><mat-icon>close</mat-icon></button>
 
+<mat-form-field>
+    <mat-select [formControl]="filter" i18n-placeholder placeholder="Type">
+        <mat-option value="" i18n>Defined</mat-option>
+        <mat-option value="custom" i18n>Custom</mat-option>
+    </mat-select>
+</mat-form-field>
+
 <div matDialogContent>
-    <form class="custom-wrapper" [formGroup]="customGiftGroup">
+    <mat-action-list *ngIf="isList | async">
+        <button mat-list-item *ngFor="let gift of gifts" [matDialogClose]="gift" [disabled]="getActivationCost(gift.level) > budget">
+            <span class="name">{{ gift.name }}</span>
+            <span class="level">{{gift.level}} +{{ getActivationCost(gift.level) }}</span>
+        </button>
+    </mat-action-list>
+    <form class="custom-wrapper" [formGroup]="customGiftGroup" *ngIf="isCustom | async">
         <mat-form-field>
             <input matInput formControlName="name" i18n-placeholder placeholder="Custom" />
         </mat-form-field>
@@ -16,9 +29,9 @@
                 <mat-option value="F">F/+{{ getActivationCost('F') }}</mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-icon-button [disabled]="customGiftGroup.invalid" [matDialogClose]="customGiftGroup.value"><mat-icon>add</mat-icon></button>
     </form>
-    <mat-selection-list>
-        <mat-list-item *ngFor="let gift of gifts"><button [matDialogClose]="gift" [disabled]="getActivationCost(gift.level) > budget">{{ gift.name }} ({{ gift.level }}/+{{ getActivationCost(gift.level) }})</button></mat-list-item>
-    </mat-selection-list>
+</div>
+
+<div matDialogActions align="end">
+    <button mat-flat-button color="primary" *ngIf="isCustom | async" [disabled]="customGiftGroup.invalid" [matDialogClose]="customGiftGroup.value" i18n>Add</button>
 </div>

@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { IPartialGift } from '@jina-draicana/presets';
 import { RaiseService, Level } from '../../raise/raise.service';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
     selector       : 'js-add-dialog',
@@ -15,9 +16,21 @@ import { RaiseService, Level } from '../../raise/raise.service';
     }
 })
 export class AddDialogComponent implements OnInit {
+    filter = new FormControl('');
+
+    isList = this.filter.valueChanges.pipe(
+        startWith(''),
+        map(value => !value || value !== 'custom')
+    );
+
+    isCustom = this.filter.valueChanges.pipe(
+        startWith(''),
+        map(value => value && value === 'custom')
+    );
+
     customGiftGroup = new FormGroup({
         name: new FormControl(null, Validators.required),
-        level: new FormControl('F', [ Validators.required, ({ value }) => {
+        level: new FormControl(null, [ Validators.required, ({ value }) => {
             if(null != value && this.getActivationCost(value) > this.budget) {
                 return { overbudget: { budget: this.budget } }
             }

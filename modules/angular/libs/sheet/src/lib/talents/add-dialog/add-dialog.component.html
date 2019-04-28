@@ -20,8 +20,6 @@
             <mat-option value="custom-mental" i18n>Mental</mat-option>
             <mat-option *ngFor="let gift of gifts" [value]="'custom-gifts-' + gift.name">{{ gift.name }}</mat-option>
         </mat-optgroup>
-        <!--<mat-option value="gifts" i18n>Gifts</mat-option>
-        <mat-option value="custom" i18n>Custom</mat-option>-->
     </mat-select>
 </mat-form-field>
 
