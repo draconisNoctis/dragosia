@@ -139,11 +139,11 @@
 </mat-menu>
 
 <mat-menu #importMenu="matMenu" class="sheet-menu">
-    <label mat-menu-item for="import-local" i18n>
+    <label mat-menu-item for="import-local">
         <span i18n>Local</span>
         <input type="file" id="import-local" (change)="import($event, 'local')" />
     </label>
-    <button mat-menu-item [disabled]="!(firebaseAuth.user | async)" i18n>
+    <button mat-menu-item [disabled]="!(firebaseAuth.user | async)">
         <label for="import-server" i18n>Server</label>
         <input type="file" id="import-server" (change)="import($event, 'firebase')" [disabled]="!(firebaseAuth.user | async)" />
     </button>
