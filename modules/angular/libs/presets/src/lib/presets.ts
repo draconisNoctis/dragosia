@@ -147,12 +147,27 @@ export interface ICharacter {
     talents: ICharacterTalents;
     meta: ICharacterMeta;
 
+    armor: IArmor[];
     inventory: string;
     financials: string;
     equipment: string;
 
     melee: IMeleeWeapon[];
     range: IRangeWeapon[];
+}
+
+export interface IArmorValues {
+    head: number;
+    chest: number;
+    back: number;
+    leftArm: number;
+    rightArm: number;
+    leftLeg: number;
+    rightLeg: number;
+}
+
+export interface IArmor extends IArmorValues {
+    name: string;
 }
 
 export interface IPreset {
@@ -281,6 +296,7 @@ export function createEmptyCharacter() : ICharacter {
         inventory: '',
         financials: '',
         equipment: '',
+        armor: [],
         meta: {
             preset: '',
             // budget: {

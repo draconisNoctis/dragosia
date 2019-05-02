@@ -61,6 +61,7 @@ export class SheetComponent implements OnInit {
         tap((char : ICharacter) => {
             if(char) {
                 this.generalControl.setValue(char, { emitEvent: false });
+                this.armorControl.setValue(char.armor, { emitEvent: false });
             }
         }),
         shareReplay(1)
@@ -71,6 +72,7 @@ export class SheetComponent implements OnInit {
     )
 
     generalControl = new FormControl();
+    armorControl = new FormControl();
     addExpControl = new FormControl(null, Validators.required);
 
     sidenavToggle = new EventEmitter<void|boolean>();
@@ -98,10 +100,14 @@ export class SheetComponent implements OnInit {
     ngOnInit() {
         this.store.dispatch(new GetAllAction());
 
-        this.generalControl.valueChanges.pipe(
+        merge(
+            this.generalControl.valueChanges,
+            this.armorControl.valueChanges.pipe(map(armor => ({ armor })))
+        ).pipe(
             filter(Boolean),
             withLatestFrom(this.char),
             map(([ partial, char ]) => {
+                console.log({ partial });
                 char = { ...char, ...partial };
 
                 return new UpdateAction(char);

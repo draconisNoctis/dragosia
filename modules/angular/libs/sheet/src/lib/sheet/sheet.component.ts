@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Output, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICharacter } from '@jina-draicana/presets';
+import { ArmorService } from '../armor/armor.service';
 
 @Component({
     selector       : 'js-sheet',
@@ -84,6 +85,22 @@ export class SheetComponent {
     talentsMentalForm = this.form.get([ 'talents', 'mental' ]) as FormArray;
     talentsGiftsForm = this.form.get([ 'talents', 'gifts' ]) as FormArray;
 
+    get armor() {
+        if(!this._character) {
+            return null;
+        }
+
+        return this.armorService.aggregateArmor(this._character.armor);
+    }
+
+    get armorSummary() {
+        if(!this._character) {
+            return null;
+        }
+
+        return this.armorService.getTotalArmor(this.armor!);
+    }
+
     @Input()
     set character(char : ICharacter) {
         if(char) {
@@ -99,7 +116,7 @@ export class SheetComponent {
     @Output()
     update = this.form.valueChanges;
 
-    constructor() {
+    constructor(protected readonly armorService : ArmorService) {
     }
 
     protected createGiftFormControl() {

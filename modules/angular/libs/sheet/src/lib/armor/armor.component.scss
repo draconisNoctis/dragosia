@@ -1,0 +1,61 @@
+.js-armor {
+    display: block;
+
+    .mat-table {
+        width: 100%;
+
+        .mat-form-field-infix {
+            width: 100%;
+            min-width: 30px;
+        }
+
+        .mat-form-field {
+            margin-right: 8px;
+        }
+
+        .input > .mat-header-cell:first-child {
+            .mat-form-field-infix {
+                min-width: 200px;
+
+                input {
+                    text-align: left;
+                }
+            }
+        }
+
+        .mat-header-row:first-child {
+            .mat-header-cell:not(:first-child) {
+                padding-left: 8px;
+                padding-right: 8px;
+                white-space: nowrap;
+            }
+        }
+
+        .mat-form-field-underline {
+            bottom: 0;
+        }
+
+        .mat-form-field-wrapper {
+            padding-bottom: 0;
+        }
+
+        .mat-header-cell:not(:first-child), .mat-cell:not(:first-child), .mat-footer-cell:not(:first-child) {
+            text-align: center;
+        }
+
+        .mat-footer-cell {
+            font-weight: bold;
+        }
+    }
+
+    input {
+        text-align: center;
+
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+    }
+
+
+}

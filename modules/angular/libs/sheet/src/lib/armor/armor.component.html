@@ -1,0 +1,153 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+        <td mat-footer-cell *matFooterCellDef i18n>Summary</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-name">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput formControlName="name" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="head">
+        <th mat-header-cell *matHeaderCellDef i18n>Head</th>
+        <td mat-cell *matCellDef="let row">{{ row.head }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.head }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-head">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="head" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="chest">
+        <th mat-header-cell *matHeaderCellDef i18n>Chest</th>
+        <td mat-cell *matCellDef="let row">{{ row.chest }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.chest }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-chest">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="chest" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="back">
+        <th mat-header-cell *matHeaderCellDef i18n>Back</th>
+        <td mat-cell *matCellDef="let row">{{ row.back }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.back }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-back">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="back" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="leftArm">
+        <th mat-header-cell *matHeaderCellDef i18n>Left Arm</th>
+        <td mat-cell *matCellDef="let row">{{ row.leftArm }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.leftArm }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-leftArm">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="leftArm" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="rightArm">
+        <th mat-header-cell *matHeaderCellDef i18n>Right Arm</th>
+        <td mat-cell *matCellDef="let row">{{ row.rightArm }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.rightArm }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-rightArm">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="rightArm" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="leftLeg">
+        <th mat-header-cell *matHeaderCellDef i18n>Left Leg</th>
+        <td mat-cell *matCellDef="let row">{{ row.leftLeg }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.leftLeg }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-leftLeg">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="leftLeg" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="rightLeg">
+        <th mat-header-cell *matHeaderCellDef i18n>Right Leg</th>
+        <td mat-cell *matCellDef="let row">{{ row.rightLeg }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ (summary | async)?.rightLeg }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-rightLeg">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-form-field [formGroup]="form">
+                <input matInput type="number" formControlName="rightLeg" />
+            </mat-form-field>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef i18n>&nbsp;</th>
+        <td mat-cell *matCellDef="let row; let index = index"><button mat-icon-button (click)="remove(index)"><mat-icon>delete</mat-icon></button></td>
+        <td mat-footer-cell *matFooterCellDef>&nbsp;</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-action">
+        <th mat-header-cell *matHeaderCellDef>
+            <button mat-flat-button color="primary" (click)="add()" [disabled]="form.invalid">
+                <mat-icon>add</mat-icon>
+                <span i18n>Add</span>
+            </button>
+        </th>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef i18n>tAR</th>
+        <td mat-cell *matCellDef="let row; let index = index">{{ getTotalArmor(row, true) | number:'1.1-1' }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ getTotalArmor(summary | async) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-total">
+        <th mat-header-cell *matHeaderCellDef></th>
+    </ng-container>
+
+    <ng-container matColumnDef="handicap">
+        <th mat-header-cell *matHeaderCellDef i18n>tHA</th>
+        <td mat-cell *matCellDef="let row; let index = index">{{ getTotalArmor(row, true) | number:'1.1-1' }}</td>
+        <td mat-footer-cell *matFooterCellDef>{{ getTotalArmor(summary | async) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="input-handicap">
+        <th mat-header-cell *matHeaderCellDef></th>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-header-row *matHeaderRowDef="inputColumns" class="input"></tr>
+    <tr mat-footer-row *matFooterRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+</table>

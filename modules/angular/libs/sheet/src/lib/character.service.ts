@@ -40,6 +40,12 @@ export class CharacterService {
                 }
             }
             return char;
+        }],
+        [3, (char : ICharacter) => {
+            if(!char.armor) {
+                char.armor = [];
+            }
+            return char;
         }]
     ] as any;
 

@@ -47,6 +47,12 @@
                     </ng-template>
                 </mat-tab>
 
+                <mat-tab i18n-label label="Armor">
+                    <ng-template matTabContent>
+                        <js-armor [formControl]="armorControl"></js-armor>
+                    </ng-template>
+                </mat-tab>
+
                 <mat-tab i18n-label label="Advantages/Disadvantages">
                     <ng-template matTabContent>
                         <js-advantages [preset]="_char.meta.preset" [ngModel]="_char" [budget]="budget | async"></js-advantages>

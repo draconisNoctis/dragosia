@@ -293,8 +293,26 @@
     <div class="armor">
         <h2 i18n class="armor-title">Armor</h2>
 
-        <div class="armor-wrapper"></div>
-        <div class="armor-summary"></div>
+        <div class="armor-wrapper">
+            <label i18n>Head</label>
+            <span>{{ armor?.head }}</span>
+            <label i18n>Chest</label>
+            <span>{{ armor?.chest }}</span>
+            <label i18n>Back</label>
+            <span>{{ armor?.back }}</span>
+            <label i18n>Left Arm</label>
+            <span>{{ armor?.leftArm }}</span>
+            <label i18n>Right Arm</label>
+            <span>{{ armor?.rightArm }}</span>
+            <label i18n>Left Leg</label>
+            <span>{{ armor?.leftLeg }}</span>
+            <label i18n>Right Leg</label>
+            <span>{{ armor?.rightLeg }}</span>
+            <label class="total">tArmor</label>
+            <span class="total">{{ armorSummary }}</span>
+            <label class="total">tHandicap</label>
+            <span class="total">{{ armorSummary }}</span>
+        </div>
     </div>
 
     <div class="melee-weapons">

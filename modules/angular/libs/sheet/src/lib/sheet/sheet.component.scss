@@ -372,12 +372,12 @@ $sheet-text-font-size: 1.4rem;
     .jui-page:nth-child(3) {
         @include js-sheet-page((
             (page-title: 12, name: 4),
-            (equipment: 10, armor: 6),
+            (equipment: 12, armor: 4),
             (melee-weapons: 16),
             (range-weapons: 16)
         ));
         grid-template-columns: repeat(16, 1fr);
-        grid-template-rows: min-content 1fr min-content min-content;
+        // grid-template-rows: min-content min-content min-content min-content;
 
         .equipment, .armor, .melee-weapons, .range-weapons {
             @include js-sheet-area($grid: true);
@@ -397,6 +397,36 @@ $sheet-text-font-size: 1.4rem;
                     width: 100%;
                 }
             }
+        }
+
+        .armor-wrapper {
+            display: grid;
+            grid-template-columns: 1fr min-content;
+            grid-gap: 0;
+            margin-top: -1px;
+
+            > * {
+                border-top: 1px solid var(--border-color);
+                border-left: 1px solid var(--border-color);
+                padding: 6px 8px 4px;
+
+                &:nth-child(2n) {
+                    border-right: 1px solid var(--border-color);
+                }
+
+                &:nth-last-child(1), &:nth-last-child(2) {
+                    border-bottom: 1px solid var(--border-color);
+                }
+            }
+
+            span {
+                text-align: right;
+            }
+
+            label, span.total  {
+                font-weight: bold;
+            }
+
         }
 
         .equipment {
