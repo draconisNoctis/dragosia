@@ -37,10 +37,6 @@
   <translation id="512999736698594700">Gaben</translation>
   <translation id="8866410934216748920">Vorteile</translation>
   <translation id="6213989057085085654">Nachteile</translation>
-  <translation id="2041675390931385838">Gesundheit</translation>
-  <translation id="1311080303172813893">Tod</translation>
-  <translation id="3409471884938641326">Mana</translation>
-  <translation id="3045416770236753721">Bewusstlos</translation>
   <translation id="555084565084867462">Ausrüstungsbogen</translation>
   <translation id="3010057485486897763">Inventar</translation>
   <translation id="5701499858274742084">Finanzen</translation>
@@ -61,9 +57,7 @@
   <translation id="3885497195825665706">Weiter</translation>
   <translation id="4531310590867542081">Hintergrund</translation>
   <translation id="2257050785343808305">Auswahl</translation>
-  <translation id="3567096528905232171">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.attributes }}</ex>{{ budget?.attributes }}</ph></translation>
   <translation id="6846241822886534943">Fähigkeiten &amp; Gaben</translation>
-  <translation id="6794067075608705128">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.skills }}</ex>{{ budget?.skills }}</ph></translation>
   <translation id="6489414246802244883">Talente</translation>
   <translation id="4137971599293800094">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></translation>
   <translation id="5674286808255988565">Erstellen</translation>
@@ -79,39 +73,15 @@
   <translation id="6885844978916799621">Budget</translation>
   <translation id="4846236882408369646">Profession</translation>
   <translation id="8197642571840924882" meaning="distance">Reichweite</translation>
-  <translation id="6262628629004746497">Startbudget</translation>
-  <translation id="3398353192845179101">Erfahrung</translation>
   <translation id="29108938894290964">Ausgegeben</translation>
   <translation id="4319441956121197474">Änderungen speichern</translation>
   <translation id="3924199801748884105">Änderungen verwerfen</translation>
   <translation id="3448462145758383019">Gesamt</translation>
   <translation id="689108718708204237">Talent hinzufügen</translation>
-  <translation id="5087190620051135252" meaning="short">Eig.</translation>
-  <translation id="6421842994322902328" meaning="short">Fähig.</translation>
-  <translation id="1492049433956562586" meaning="short">Talente</translation>
-  <translation id="6429339115481821433"><ph name="INTERPOLATION"><ex>{{ (form.value.strength + 1) | costs:factor }}</ex>{{ (form.value.strength + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="8951916213330522228"><ph name="INTERPOLATION"><ex>{{ (form.value.agility + 1) | costs:factor }}</ex>{{ (form.value.agility + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="5980584692256163257"><ph name="INTERPOLATION"><ex>{{ (form.value.dexterity + 1) | costs:factor }}</ex>{{ (form.value.dexterity + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="7710888177783989390"><ph name="INTERPOLATION"><ex>{{ (form.value.constitution + 1) | costs:factor }}</ex>{{ (form.value.constitution + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="2663633468145028274"><ph name="INTERPOLATION"><ex>{{ (form.value.courage + 1) | costs:factor }}</ex>{{ (form.value.courage + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="4627662001125896368"><ph name="INTERPOLATION"><ex>{{ (form.value.intelligence + 1) | costs:factor }}</ex>{{ (form.value.intelligence + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="6321655512567713170"><ph name="INTERPOLATION"><ex>{{ (form.value.intuition + 1) | costs:factor }}</ex>{{ (form.value.intuition + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="7804779453457845256"><ph name="INTERPOLATION"><ex>{{ (form.value.charisma + 1) | costs:factor }}</ex>{{ (form.value.charisma + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="4117381077985984749"><ph name="INTERPOLATION"><ex>{{ (form.value.melee + 1) | costs:factor }}</ex>{{ (form.value.melee + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="9121006557941351898"><ph name="INTERPOLATION"><ex>{{ (form.value.range + 1) | costs:factor }}</ex>{{ (form.value.range + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="2007131267701760601"><ph name="INTERPOLATION"><ex>{{ (form.value.physical + 1) | costs:factor }}</ex>{{ (form.value.physical + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="8229015367239449371"><ph name="INTERPOLATION"><ex>{{ (form.value.mental + 1) | costs:factor }}</ex>{{ (form.value.mental + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="944509076219772541"><ph name="INTERPOLATION"><ex>{{ (form.value[index].value + 1) | costs:factor }}</ex>{{ (form.value[index].value + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="2453998775787918218"><ph name="INTERPOLATION"><ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ex>{{ (form.value.melee[index].value + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="6257711033908874245"><ph name="INTERPOLATION"><ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ex>{{ (form.value.range[index].value + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="1421563720952682901"><ph name="INTERPOLATION"><ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ex>{{ (form.value.physical[index].value + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="8089998908836815339"><ph name="INTERPOLATION"><ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ex>{{ (form.value.mental[index].value + 1) | costs:factor }}</ph> EP</translation>
-  <translation id="377005748421168323"><ph name="INTERPOLATION"><ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ex>{{ (form.value.gifts[index].value + 1) | costs:factor }}</ph> EP</translation>
   <translation id="3361286106724929890">Charakter Löschen</translation>
   <translation id="5253915787128325560">Möchtest du den Charakter &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot; wirklich löschen?</translation>
   <translation id="3542042671420335679">Nein</translation>
   <translation id="2807800733729323332">Ja</translation>
-  <translation id="8638e95a40dc0c5816ed85c9e4e0ec6cbb7c402f">Beim Löschen des Charakters &quot;<ph name="INTERPOLATION"><ex>{{character}}</ex></ph>&quot; ist ein Fehler aufgetreten.</translation>
   <translation id="6312631703574843161">Talentbogen</translation>
   <translation id="6439365426343089851">Allgemein</translation>
   <translation id="7709916411635497333">Vorteil hinzufügen</translation>
@@ -177,4 +147,56 @@
   <translation id="5040455051672803712">Nicht kompatibel mit den Nachteilen</translation>
   <translation id="b5a9cab5ff9b9bcd914150e5924760a9090f3903">Charisma</translation>
   <translation id="95cc97954e5a355baf4a963c9a460400c8e2c071" meaning="short">CH</translation>
+  <translation id="4174151378350489191">Erfahrungspunkte</translation>
+  <translation id="7349530031233006058">Gesamt:</translation>
+  <translation id="681336602899750583">Ausgegeben:</translation>
+  <translation id="1837512975551949198">Guthaben:</translation>
+  <translation id="4964921936751632398">Startwerte</translation>
+  <translation id="7420289231407832388">Stufe:</translation>
+  <translation id="5398088090953921995">EP:</translation>
+  <translation id="3357373313192101894">Eigenschaften:</translation>
+  <translation id="4035216763011917088">Fähigkeiten:</translation>
+  <translation id="4289820552141034838">Talente:</translation>
+  <translation id="3911168411013507401">Stärke:</translation>
+  <translation id="70691223176566691">Beweglichkeit:</translation>
+  <translation id="7412661725452265500">Fingerfertigkeit:</translation>
+  <translation id="4884181322945494185">Konstitution:</translation>
+  <translation id="360699542594961283">Mut:</translation>
+  <translation id="8666876207219213961">Klugheit:</translation>
+  <translation id="180550560139118199">Intuition:</translation>
+  <translation id="4283278276769221377">Charisma:</translation>
+  <translation id="6123173845003437743">Nahkampf:</translation>
+  <translation id="346432286206022265">Fernkampf:</translation>
+  <translation id="8969498876442396567">Körperlich:</translation>
+  <translation id="4940423429064955896">Geistig:</translation>
+  <translation id="6583204503140018315">Rüstung</translation>
+  <translation id="4161176881257288804">Kopf</translation>
+  <translation id="3425114984623914347">Brust</translation>
+  <translation id="8890553633144307762">Rücken</translation>
+  <translation id="2746410509874991085">Linker Arm</translation>
+  <translation id="9162525179370776071">Rechter Arm</translation>
+  <translation id="34154738655756832">Linker Bein</translation>
+  <translation id="8348417411026662960">Rechter Bein</translation>
+  <translation id="1885431055843179051">Standard</translation>
+  <translation id="3733215288982610673">Stufe</translation>
+  <translation id="3249513483374643425">Hünzufügen</translation>
+  <translation id="4739818603756173797">Gesamt</translation>
+  <translation id="2531977296090514579">gRS</translation>
+  <translation id="5312909342270181964">gBE</translation>
+  <translation id="8115083664628466958">E-Mail</translation>
+  <translation id="1431416938026210429">Password</translation>
+  <translation id="2454050363478003966">Login</translation>
+  <translation id="8999284073934392732">Login with Google</translation>
+  <translation id="3301086086650990787">Registrieren</translation>
+  <translation id="3778143906468247656">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.attributes?.min }}</ex>{{ character?.meta?.initValues?.attributes?.min }}</ph></translation>
+  <translation id="1093760007115601051">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.skills?.min }}</ex>{{ character?.meta?.initValues?.skills?.min }}</ph></translation>
+  <translation id="5267883188461125987">Erfahrungspunkte</translation>
+  <translation id="1473831794569825533">EP Hinzufügen</translation>
+  <translation id="2906587845957718064">Lokal</translation>
+  <translation id="2188854519574316630">Server</translation>
+  <translation id="5254622645701859101">Punkte</translation>
+  <translation id="7028030735690498025">Min Punkte ausgegeben</translation>
+  <translation id="606247634268321201">Max pro Eigenschaft</translation>
+  <translation id="6416481670338790092">Max pro Fähigkeit</translation>
+  <translation id="755847152758185242">Max pro Talent</translation>
 </translationbundle>
