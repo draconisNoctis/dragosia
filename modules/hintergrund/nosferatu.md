@@ -34,9 +34,9 @@ Vampire und Werwölfe können sich auf den Tod nicht ausstehen. Ein Vampir kann 
 
 ## Regelerweiterungen
 
-Vampire verfügen über ein, der Magie ähnlichen, Energiebalken, der ihre Vampirkraft darstellt.
+Vampire verfügen über ein, der Magie ähnlichen, Energiebalken, der ihre Vampirkraft darstellt. Dieser kann nur durch den verzehr von ausreichend Blut wieder aufgefüllt werden.
 
-Ein Treffer einer silbernen Waffe verursacht eine Vampir-Wunde.
+Ein Treffer einer silbernen Waffe verursacht (zusätzlich) eine Vampir-Wunde.
 
 Möglicher Nachteil: `Blutgier`
 
@@ -46,3 +46,8 @@ Wunden mit ihrer Vampir-Kraft heilen.
 Jeder Vampir verfügt über den Nachteil `Lichtempfindlich II`.
 
 Nosferatur verfügen über die Gabe `Vampirismus` und die Talente `Ritual der Wandlung`, `Verwandlung`, `Beeinflussung`.
+
+Die körperliche Stärke eines Vampirs erhöht sich durch den Wert der Gabe `Vampirismus`, die Geschicklichkeit erhöt sich um die Häfte dieses Wertes.
+
+**Beispiel:**
+> Ein Vampir mit `ST: 5`, `GE: 4` und `Vampirismus: 4` hat die effektiven Werte `ST: 9` und `GE: 6`
