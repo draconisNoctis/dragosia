@@ -5,6 +5,7 @@
 - [**Charakterstatus**](./charakterstatus.md)
 - [**Kampf**](./kampf.md)
 - [**Rüstung**](./rüstung.md)
+- [**Geistige Beeinflussung**](./geistige-beeinflussung.md)
 - [**Schicksalspunkte**](./schicksalspunkte.md)
 - [**Sonstige Regeln**](./sonstige-regeln.md)
 
