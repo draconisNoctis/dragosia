@@ -2,9 +2,11 @@
     <mat-step [stepControl]="settingsControl" [editable]="false">
         <ng-template matStepLabel i18n>Settings</ng-template>
 
-        <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
+        <div class="step-content">
+            <cs-settings #settings="csSettings" [formControl]="settingsControl"></cs-settings>
+        </div>
 
-        <div class="sub">
+        <div class="sub step-footer">
             <button mat-button matStepperNext (click)="settings.submit()" i18n>Next</button>
         </div>
     </mat-step>
@@ -12,9 +14,11 @@
     <mat-step [stepControl]="backgroundControl" [editable]="false">
         <ng-template matStepLabel i18n>Background</ng-template>
 
-        <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+        <div class="step-content">
+            <cs-background #background="csBackground" [formControl]="backgroundControl" [preset]="settingsControl.value?.preset" (next)="nextAfterBackground()"></cs-background>
+        </div>
 
-        <div class="sub">
+        <div class="sub step-footer">
             <button mat-button matStepperPrevious i18n>Previous</button>
             <button mat-button matStepperNext (click)="background.submit()" i18n>Next</button>
         </div>
@@ -23,9 +27,11 @@
     <mat-step [stepControl]="selectionsControl" [editable]="false">
         <ng-template matStepLabel i18n>Selections</ng-template>
 
-        <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+        <div class="step-content">
+            <cs-selection #selection="csSelection" [formControl]="selectionsControl" [steps]="selections"></cs-selection>
+        </div>
 
-        <div class="sub">
+        <div class="sub step-footer">
             <button mat-button matStepperPrevious i18n>Previous</button>
             <button mat-button matStepperNext (click)="selection.submit()" i18n>Next</button>
         </div>
@@ -40,9 +46,11 @@
             <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
         </header>
 
-        <js-attributes [formControl]="attributesControl" [max]="character?.meta?.initValues?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
+        <div class="step-content">
+            <js-attributes [formControl]="attributesControl" [max]="character?.meta?.initValues?.attributes?.max" [budget]="character?.meta?.exp?.total - spend"></js-attributes>
+        </div>
 
-        <div class="sub">
+        <div class="sub step-footer">
             <button mat-button matStepperPrevious i18n>Previous</button>
 
             <span [class.valid]="spendForAttributes >= character?.meta?.initValues?.attributes?.min"
@@ -61,12 +69,14 @@
                 <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
             </header>
 
-            <h2 i18n>Skills</h2>
-            <js-skills formControlName="skills" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-skills>
-            <h2 i18n>Gifts</h2>
-            <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
+            <div class="step-content">
+                <h2 i18n>Skills</h2>
+                <js-skills formControlName="skills" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-skills>
+                <h2 i18n>Gifts</h2>
+                <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
+            </div>
 
-            <div class="sub">
+            <div class="sub step-footer">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
                 <span [class.valid]="spendForSkills + spendForGifts >= character?.meta?.initValues?.skills?.min"
@@ -86,9 +96,11 @@
                 <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
             </header>
 
-            <js-advantages [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [budget]="character?.meta?.exp?.total - spend"></js-advantages>
+            <div class="step-content">
+                <js-advantages [formControl]="advantagesControl" [preset]="settingsControl.value?.preset" [budget]="character?.meta?.exp?.total - spend"></js-advantages>
+            </div>
 
-            <div class="sub">
+            <div class="sub step-footer">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
                 <span [class.valid]="advantagesControl.valid"
@@ -108,9 +120,11 @@
                 <span>{{ spend }}/{{ character?.meta?.exp?.total}}</span>
             </header>
 
-            <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.talents?.max" [gifts]="character?.gifts" [budget]="character?.meta?.exp?.total - spend"></js-talents>
+            <div class="step-content">
+                <js-talents [formControl]="talentsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.talents?.max" [gifts]="character?.gifts" [budget]="character?.meta?.exp?.total - spend"></js-talents>
+            </div>
 
-            <div class="sub">
+            <div class="sub step-footer">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
                 <span [class.valid]="spendForTalents >= character?.meta?.initValues?.talents?.min"

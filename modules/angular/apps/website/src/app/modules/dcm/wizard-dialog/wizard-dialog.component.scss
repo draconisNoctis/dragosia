@@ -25,12 +25,13 @@
 
                 display: flex;
                 flex-direction: row;
+                flex-grow: 1;
             }
 
             .mat-horizontal-stepper-content {
                 flex-grow: 1;
-                min-width: 100%;
-                min-height: 100%;
+                width: 100%;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -86,7 +87,13 @@
         margin-bottom: 8px;
     }
 
-    .sub {
+    .step-content {
+        flex-grow: 1;
+        overflow-y: auto;
+        max-height: calc(90vh - 200px);
+    }
+
+    .step-footer {
         margin-top: 8px;
         display: flex;
         flex-direction: row;

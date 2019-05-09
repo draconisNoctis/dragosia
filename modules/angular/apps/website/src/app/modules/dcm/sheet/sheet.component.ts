@@ -182,7 +182,8 @@ export class SheetComponent implements OnInit {
 
     async openWizard(provider : CHARACTER_PROVIDER) {
         const ref = this.dialog.open(WizardDialogComponent, {
-            maxWidth: '100vw',
+            maxWidth: '720px',
+            width: '90vw',
             maxHeight: '90vh'
         });
 
