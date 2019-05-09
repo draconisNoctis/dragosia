@@ -45,8 +45,8 @@
         <div class="sub">
             <button mat-button matStepperPrevious i18n>Previous</button>
 
-            <span [class.valid]="spendForAttributes > character?.meta?.initValues?.attributes?.min"
-                [class.invalid]="spendForAttributes <= character?.meta?.initValues?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.attributes?.min }}</sub></span>
+            <span [class.valid]="spendForAttributes >= character?.meta?.initValues?.attributes?.min"
+                [class.invalid]="spendForAttributes < character?.meta?.initValues?.attributes?.min"><sup>{{ spendForAttributes }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.attributes?.min }}</sub></span>
 
             <button mat-button matStepperNext i18n [disabled]="attributesControl.invalid">Next</button>
         </div>
@@ -69,8 +69,8 @@
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <span [class.valid]="spendForSkills + spendForGifts > character?.meta?.initValues?.skills?.min"
-                      [class.invalid]="spendForSkills + spendForGifts <= character?.meta?.initValues?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.skills?.min }}</sub></span>
+                <span [class.valid]="spendForSkills + spendForGifts >= character?.meta?.initValues?.skills?.min"
+                      [class.invalid]="spendForSkills + spendForGifts < character?.meta?.initValues?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.skills?.min }}</sub></span>
 
                 <button mat-button matStepperNext i18n [disabled]="skillsGiftsControl.invalid">Next</button>
             </div>
@@ -113,7 +113,8 @@
             <div class="sub">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <span class="points-available" i18n>Available: {{ budget?.talents }}</span>
+                <span [class.valid]="spendForTalents >= character?.meta?.initValues?.talents?.min"
+                [class.invalid]="spendForTalents < character?.meta?.initValues?.talents?.min"><sup>{{ spendForTalents }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.talents?.min }}</sub></span>
 
                 <button mat-button (click)="create()" [disabled]="budget?.talents < 0" i18n>Create</button>
             </div>

@@ -71,7 +71,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                     switch (value) {
                         case 'beginner':
                             points.reset({
-                                points: 150,
+                                points: 240,
                                 attributes: {
                                     min: 55,
                                     max: 3
@@ -88,7 +88,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             break;
                         case 'normal':
                             points.reset({
-                                points: 240,
+                                points: 360,
                                 attributes: {
                                     min: 80,
                                     max: 4
@@ -105,7 +105,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             break;
                         case 'hero':
                             points.reset({
-                                points: 370,
+                                points: 540,
                                 attributes: {
                                     min: 120,
                                     max: 6
@@ -122,7 +122,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             break;
                         case 'legend':
                             points.reset({
-                                points: 490,
+                                points: 720,
                                 attributes: {
                                     min: 120,
                                     max: 6
