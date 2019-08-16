@@ -20,11 +20,11 @@
                 <span>{{ form.value[index].skill || form.value[index].gift }}</span>
                 <span>{{ form.value[index].level }}</span>
                 <div>
-                    <button mat-icon-button (click)="delete(type, index)" *ngIf="mode !== 'button' && form.value[index].value <= 0"><mat-icon>delete</mat-icon></button>
-                    <button mat-icon-button (click)="remove(type, index)" [disabled]="form.value[index].value <= 0" *ngIf="mode !== 'button' && form.value[index].value > 0"><mat-icon>remove</mat-icon></button>
+                    <button mat-icon-button (click)="delete(type, index)" *ngIf="mode !== 'button' && form.value[index].value <= 1"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button (click)="remove(type, index)" [disabled]="form.value[index].value <= 1" *ngIf="mode !== 'button' && form.value[index].value > 1"><mat-icon>remove</mat-icon></button>
                 </div>
                 <input type="number" [min]="mins[type][index]" [max]="max" formControlName="value" />
-                <div><button mat-icon-button (click)="add(type, index)" [disabled]="form.value[index].value >= max || budget < getCostsForNext(index)"><mat-icon>add</mat-icon></button></div>
+                <div><button mat-icon-button (click)="add(type, index)" [disabled]="form.value[index].value >= max || budget < getCostsForNext(form.value[index])"><mat-icon>add</mat-icon></button></div>
                 <div class="costs-for-next"><span>+{{ getCostsForNext(form.value[index]) }}</span></div>
             </ng-container>
         </div>

@@ -16,6 +16,7 @@ type: common
 name: Angst vor ...
 value: 3
 description: Der Charakter hat so starke Angst, dass er in bestimmten Situationen davon behindert wird.
+multi: true
 
 ---
 
@@ -23,6 +24,7 @@ type: common
 name: Starke Angst vor ...
 value: 5
 description: Siehe `Angst vor...`, jedoch entweder stärker oder häufiger ausgelöst.
+multi: true
 
 ---
 

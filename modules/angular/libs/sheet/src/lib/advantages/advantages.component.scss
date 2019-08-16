@@ -1,56 +1,74 @@
 .js-advantages {
     display: block;
 
-    form {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: min-content auto;
-        grid-gap: 0 24px;
+    .mat-list.existing {
+        // @TODO: use theme variables
+        border: solid 1px rgba(255, 255, 255, 0.12);
+        background: #424242;
+        padding: 0;
+        max-height: 200px;
+        overflow: auto;
 
-        > div {
-            grid-row: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr min-content;
-            grid-template-rows: min-content 1fr 1fr;
-            grid-gap: 0 8px;
-
-            .mat-form-field:nth-child(5) {
-                grid-column-end: span 2;
-            }
-
-            h3 {
-                margin-bottom: 0;
-                grid-column-end: span 3;
-            }
+        .mat-list-item {
+            height: auto;
         }
 
-        .mat-list {
-            grid-row: 2;
+        .mat-list-item-content {
+            padding: 0 8px;
+            justify-content: space-between;
 
-            .mat-list-item {
-                height: auto;
-            }
+            .mat-list-text {
+                flex-direction: row;
 
-            .mat-list-item-content {
-                padding: 0;
-                justify-content: space-between;
-
-                .mat-list-text {
-                    flex-direction: row;
-
-                    .mat-line:first-child {
-                        margin-right: .5em;
-                    }
-                    .mat-line:last-child {
-                        margin-left: auto;
-                    }
+                .mat-line:first-child {
+                    margin-right: .5em;
+                }
+                .mat-line:last-child {
+                    margin-left: auto;
                 }
             }
         }
+    }
 
-        .mat-form-field-infix {
-            width: 100%;
-            min-width: 50px;
+    .mat-list.selection {
+        .mat-list-item {
+            height: auto;
         }
+
+        .mat-list-item-content {
+            padding: 0 8px;
+
+
+            .mat-list-text {
+                flex-direction: row;
+                align-items: center;
+
+                > *:first-child {
+                    flex-grow: 1;
+                }
+
+                > *:nth-child(1), > *:nth-child(2) {
+                    margin-right: 8px;
+                }
+
+                > label {
+                    padding: 8px 0;
+                }
+
+                > span {
+                    padding: 8px 0;
+                    width: 50px;
+                    text-align: right;
+                }
+
+                .mat-line {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+
+    .mat-tab-group {
+        margin-top: 16px;
     }
 }

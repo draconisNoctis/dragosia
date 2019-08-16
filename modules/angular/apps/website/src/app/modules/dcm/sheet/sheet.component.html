@@ -55,7 +55,7 @@
 
                 <mat-tab i18n-label label="Advantages/Disadvantages">
                     <ng-template matTabContent>
-                        <js-advantages [preset]="_char.meta.preset" [ngModel]="_char" [budget]="budget | async"></js-advantages>
+                        <js-advantages mode="button" [preset]="_char.meta.preset" [ngModel]="_char" [budget]="budget | async" (select)="selectAdvantage($event, _char)"></js-advantages>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Attributes">

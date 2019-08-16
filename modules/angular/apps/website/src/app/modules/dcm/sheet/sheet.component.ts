@@ -11,7 +11,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ICharacter } from '@jina-draicana/presets';
+import { ICharacter, IAdvantage, IDisadvantage } from '@jina-draicana/presets';
 import { select, Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, merge } from 'rxjs';
 import { filter, first, map, pairwise, scan, shareReplay, startWith, tap, withLatestFrom } from 'rxjs/operators';
@@ -28,6 +28,7 @@ import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
 import { CHARACTER_PROVIDER, IncreaseAttributeEvent, IncreaseSkillEvent, IncreaseGiftEvent, IncreaseTalentEvent } from '@jina-draicana/sheet';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
+import { SelectAdvantageEvent } from 'libs/sheet/src/lib/advantages/advantages.component';
 
 @Component({
     selector       : 'cs-sheet',
@@ -156,6 +157,13 @@ export class SheetComponent implements OnInit {
             char.talents[event.type][index] = event.talent;
         }
         char.meta.exp.spend += event.costs;
+
+        this.store.dispatch(new UpdateAction(char));
+    }
+
+    selectAdvantage(event : SelectAdvantageEvent, char : ICharacter) {
+        char[event.type === 'advantage' ? 'advantages' : 'disadvantages'].push(event.value);
+        char.meta.exp.spend += event.costs * (event.type === 'advantage' ? 1 : -1);
 
         this.store.dispatch(new UpdateAction(char));
     }
