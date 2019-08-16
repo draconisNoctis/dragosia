@@ -328,6 +328,7 @@ $sheet-text-font-size: 1.4rem;
                 > span {
                     display: flex;
                     align-items: flex-end;
+                    white-space: nowrap;
                 }
 
                 &-name, &-attribute-skill, &-level {
