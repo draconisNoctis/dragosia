@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { ICharacterTalents, IGift, IPartialTalent, ITalent } from '@jina-draicana/presets';
+import { ICharacterTalents, IGift, IPartialTalent, ITalent, ICharacterTalent } from '@jina-draicana/presets';
 import { map, startWith } from 'rxjs/operators';
 
 import { Level, RaiseService } from '../../raise/raise.service';
@@ -88,26 +88,36 @@ export class AddDialogComponent {
         return this.raiseService.getRaiseCosts(1, level);
     }
 
+    submit(talent: IPartialTalent) {
+        const result: ICharacterTalent & { category: keyof ICharacterTalents } = {
+            ...talent,
+            value: 1
+        };
+        this.ref.close(result);
+    }
+
     submitCustomSkillTalent() {
         const { name, attribute, skill, level } = this.customSkillTalentControl.value;
-        const talent: ITalent & { category: keyof ICharacterTalents } = {
+        const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: this.filter.value.substr(7),
             skill: skill.join('/'),
             attribute: attribute.join('/'),
-            level: level
+            level: level,
+            value: 1
         }
         this.ref.close(talent);
     }
 
     submitCustomGiftTalent() {
         const { name, attribute, level } = this.customGiftTalentControl.value;
-        const talent: ITalent & { category: keyof ICharacterTalents } = {
+        const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: 'gifts',
             gift: this.filter.value.substr(13),
             attribute: attribute.join('/'),
-            level: level
+            level: level,
+            value: 1
         }
         this.ref.close(talent);
     }

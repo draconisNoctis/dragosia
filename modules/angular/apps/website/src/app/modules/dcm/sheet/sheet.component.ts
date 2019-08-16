@@ -157,6 +157,7 @@ export class SheetComponent implements OnInit {
             char.talents[event.type][index] = event.talent;
         }
         char.meta.exp.spend += event.costs;
+        console.log(event, char);
 
         this.store.dispatch(new UpdateAction(char));
     }
