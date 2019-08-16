@@ -59,7 +59,6 @@
   <translation id="2257050785343808305">Auswahl</translation>
   <translation id="6846241822886534943">Fähigkeiten &amp; Gaben</translation>
   <translation id="6489414246802244883">Talente</translation>
-  <translation id="4137971599293800094">Verfügbar: <ph name="INTERPOLATION"><ex>{{ budget?.talents }}</ex>{{ budget?.talents }}</ph></translation>
   <translation id="5674286808255988565">Erstellen</translation>
   <translation id="7505371262892780592">Neuer Charakter</translation>
   <translation id="7103588127254721505">Theme</translation>
@@ -84,8 +83,6 @@
   <translation id="2807800733729323332">Ja</translation>
   <translation id="6312631703574843161">Talentbogen</translation>
   <translation id="6439365426343089851">Allgemein</translation>
-  <translation id="7709916411635497333">Vorteil hinzufügen</translation>
-  <translation id="6692225324618907">Nachteil hinzufügen</translation>
   <translation id="5402042915276684474">Vorteile/Nachteile</translation>
   <translation id="4041129587394796892">Spezialisierung</translation>
   <translation id="6555318547274416232">Wert</translation>
@@ -199,4 +196,10 @@
   <translation id="606247634268321201">Max pro Eigenschaft</translation>
   <translation id="6416481670338790092">Max pro Fähigkeit</translation>
   <translation id="755847152758185242">Max pro Talent</translation>
+  <translation id="4579496777570550463">Sozial</translation>
+  <translation id="206277424835658439">Sozial:</translation>
+  <translation id="1804004049756063163">Spezialisierung (optional)</translation>
+  <translation id="4be06a67a260eb987672b61be425914f5f451369">Sozial</translation>
+  <translation id="0fff41707b519e7fec578fc5c6baddd224add4b0" meaning="short">Sozial</translation>
+  <translation id="3744731496992153188">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.talents?.min }}</ex>{{ character?.meta?.initValues?.talents?.min }}</ph></translation>
 </translationbundle>

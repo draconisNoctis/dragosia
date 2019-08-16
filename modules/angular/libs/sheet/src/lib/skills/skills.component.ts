@@ -51,7 +51,8 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         melee: 0,
         range: 0,
         physical: 0,
-        mental: 0
+        mental: 0,
+        social: 0
     };
 
     constructor(protected readonly raiseService: RaiseService,

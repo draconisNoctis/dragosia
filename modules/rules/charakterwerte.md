@@ -53,15 +53,4 @@ Die Talente stellen die spezialisierten Fähigkeiten des Charakters dar.
 
 ## Wertebereich
 
-Die Werte von Eigenschaften, Fähigkeiten, Gaben und Talenten reichen von `nicht vorhanden` bis `5`,
-wobei Eigenschaften einen Startwert von `1` und Fähigkeiten einen Startwert von `0` haben.
-
-```
--   Nicht vorhanden
-0   Unwissend
-1   Anfänger
-2   Amateur
-3   Geübt
-4   Profi
-5   Meister
-```
+Eigenschaften und Talente beginnen bei `1`. Fähigkeiten und Gaben bei `0`
