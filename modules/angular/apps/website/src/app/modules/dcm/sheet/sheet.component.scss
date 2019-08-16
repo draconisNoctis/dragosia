@@ -62,7 +62,7 @@
         }
     }
 
-    .js-general, .js-advantages, .js-attributes, .js-skills, .js-gifts, .js-talents {
+    .js-general, .js-advantages, .js-attributes, .js-skills, .js-gifts, .js-talents, .js-armor {
         margin: 24px auto;
         max-width: 800px;
 
@@ -75,6 +75,27 @@
 
             @media screen and (max-width: 800px) {
                 right: 8px;
+            }
+        }
+    }
+
+    .experience {
+        max-width: 800px;
+        margin: 24px auto;
+
+        display: grid;
+        grid-template-columns: repeat(3, 110px) 46px;
+        grid-gap: 8px;
+
+        h3 {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+
+        input[type="number"] {
+            &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
             }
         }
     }

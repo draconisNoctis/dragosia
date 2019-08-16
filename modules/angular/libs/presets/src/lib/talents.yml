@@ -2,6 +2,7 @@ name: Raufen
 category: melee
 attribute: STR/AGI
 skill: N
+level: C
 
 ---
 
@@ -9,6 +10,7 @@ name: Schilde
 category: melee
 attribute: STR
 skill: N
+level: C
 
 ---
 
@@ -16,6 +18,7 @@ name: Schwerter
 category: melee
 attribute: STR/AGI
 skill: N
+level: C
 
 ---
 
@@ -23,6 +26,7 @@ name: 2H-Schwerter
 category: melee
 attribute: STR
 skill: N
+level: C
 
 ---
 
@@ -30,6 +34,7 @@ name: Dolche
 category: melee
 attribute: AGI
 skill: N
+level: C
 
 ---
 
@@ -37,6 +42,7 @@ name: Hiebwaffen
 category: melee
 attribute: STR
 skill: N
+level: C
 
 ---
 
@@ -44,8 +50,7 @@ name: 2H-Hiebwaffen
 category: melee
 attribute: STR
 skill: N
-
-
+level: C
 
 ---
 
@@ -53,6 +58,7 @@ name: Werfen
 category: range
 attribute: AGI
 skill: F
+level: A
 
 ---
 
@@ -60,6 +66,7 @@ name: Bogen
 category: range
 attribute: AGI
 skill: F
+level: C
 
 ---
 
@@ -67,6 +74,7 @@ name: Armbrust
 category: range
 attribute: IN
 skill: F
+level: C
 
 ---
 
@@ -74,22 +82,23 @@ name: Wurfspeere
 category: range
 attribute: AGI
 skill: F
-
-
+level: C
 
 ---
 
 name: Menschenkenntnis
-category: mental
+category: social
 attribute: IN
-skill: G
+skill: S
+level: B
 
 ---
 
 name: Ausstrahlung
-category: mental
+category: social
 attribute: CH
-skill: G
+skill: S
+level: B
 
 ---
 
@@ -97,6 +106,7 @@ name: Orientierung
 category: mental
 attribute: IN
 skill: G
+level: B
 
 ---
 
@@ -104,6 +114,7 @@ name: Allgemeinwissen
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
@@ -111,6 +122,7 @@ name: Fährtensuche
 category: mental
 attribute: IN
 skill: G
+level: B
 
 ---
 
@@ -118,6 +130,7 @@ name: Lesen/Schreiben
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
@@ -125,6 +138,7 @@ name: Pflanzenkunde
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
@@ -132,6 +146,7 @@ name: Tierkunde
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
@@ -139,6 +154,7 @@ name: Geographie
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
@@ -146,13 +162,15 @@ name: Heraldik
 category: mental
 attribute: KL
 skill: G
+level: B
 
 ---
 
 name: Überreden
-category: mental
+category: social
 attribute: MU
-skill: G
+skill: S
+level: B
 
 ---
 
@@ -160,7 +178,7 @@ name: Selbstbeherrschung
 category: mental
 attribute: MU
 skill: G
-
+level: B
 
 ---
 
@@ -168,6 +186,7 @@ name: Muttersprache
 category: mental
 attribute: IN
 skill: G
+level: A
 
 ---
 
@@ -175,6 +194,7 @@ name: Gemeinsprache
 category: mental
 attribute: IN
 skill: G
+level: B
 
 ---
 
@@ -182,8 +202,7 @@ name: Fremdsprache
 category: mental
 attribute: KL/IN
 skill: G
-
-
+level: B
 
 ---
 
@@ -191,6 +210,7 @@ name: Körperbeherrschung
 category: physical
 attribute: AGI
 skill: K
+level: B
 
 ---
 
@@ -198,6 +218,7 @@ name: Klettern
 category: physical
 attribute: STR
 skill: K
+level: B
 
 ---
 
@@ -205,6 +226,7 @@ name: Singen
 category: physical
 attribute: CH
 skill: K
+level: A
 
 ---
 
@@ -212,6 +234,7 @@ name: Tanzen
 category: physical
 attribute: CH
 skill: K
+level: A
 
 ---
 
@@ -219,6 +242,7 @@ name: Musizieren
 category: physical
 attribute: FF
 skill: K
+level: A
 
 ---
 
@@ -226,6 +250,7 @@ name: Malen/Zeichnen
 category: physical
 attribute: FF
 skill: K
+level: B
 
 ---
 
@@ -233,6 +258,7 @@ name: Kochen
 category: physical
 attribute: FF
 skill: K
+level: A
 
 ---
 
@@ -240,6 +266,7 @@ name: Sinnesschärfe
 category: physical
 attribute: IN/FF
 skill: K
+level: B
 
 ---
 
@@ -247,6 +274,7 @@ name: Zechen
 category: physical
 attribute: KO
 skill: K
+level: A
 
 ---
 
@@ -254,6 +282,7 @@ name: Schleichen
 category: physical
 attribute: AGI
 skill: K
+level: B
 
 ---
 
@@ -261,6 +290,7 @@ name: Wildnisleben
 category: physical
 attribute: IN/KO
 skill: K/G
+level: B
 
 ---
 
@@ -268,3 +298,52 @@ name: Erste Hilfe
 category: physical
 attribute: KL/FF
 skill: K/G
+level: B
+
+---
+
+name: Feuer
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Wasser
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Humus
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Erz
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Luft
+category: gifts
+attribute: KL
+gift: Magie
+level: E
+
+---
+
+name: Magie
+category: gifts
+attribute: KL
+gift: Magie
+level: E

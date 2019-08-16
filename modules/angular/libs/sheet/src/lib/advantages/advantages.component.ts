@@ -1,165 +1,151 @@
-import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { IAdvantage, IDisadvantage, Presets } from '@jina-draicana/presets';
-import { FACTOR_ADVANTAGES } from '../factors';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators, ControlValueAccessor } from '@angular/forms';
+import { IAdvantage, IDisadvantage, Presets, IAdvantageDisadvantageDetails } from '@jina-draicana/presets';
+
 import { AbstractComponent } from '../abstract.component';
 
 const CUSTOM_REGEXP = /^(.*)\s*\((\d+)\)$/;
 
+export class SelectAdvantageEvent {
+    constructor(public readonly type : 'advantage' | 'disadvantage',
+                public readonly value : IAdvantage & (IAdvantageDisadvantageDetails | IAdvantageDisadvantageDetails),
+                public readonly costs : number) {}
+}
+
 @Component({
-    selector       : 'js-advantages',
-    templateUrl    : './advantages.component.html',
-    styleUrls      : [ './advantages.component.scss' ],
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'js-advantages',
+    templateUrl: './advantages.component.html',
+    styleUrls: ['./advantages.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    inputs         : [ 'pointsAvailable' ],
-    outputs        : [ 'pointsAvailableChange' ],
-    host           : {
+    inputs: ['mode'],
+    host: {
         'class': 'js-advantages mat-typography',
     },
-    providers      : [ {
-        provide    : NG_VALUE_ACCESSOR,
+    providers: [{
+        provide: NG_VALUE_ACCESSOR,
         useExisting: AdvantagesComponent,
-        multi      : true
-    } ]
+        multi: true
+    }]
 })
-export class AdvantagesComponent extends AbstractComponent {
+export class AdvantagesComponent implements ControlValueAccessor {
     @Input()
-    set preset(preset : string) {
-        this.advantages = this.presets.getAdvantagesForPreset(preset);
-        this.disadvantages = this.presets.getDisadvantagesForPreset(preset);
+    set preset(preset: string) {
+        this.availableAdvantages = this.presets.getAdvantagesForPreset(preset);
+        this.availableDisadvantages = this.presets.getDisadvantagesForPreset(preset);
+        this.availableAdvantagesMap = new Map(this.availableAdvantages.map(a => [ a.name, a ] as [string, IAdvantage & IAdvantageDisadvantageDetails]));
+        this.availableDisadvantagesMap = new Map(this.availableDisadvantages.map(d => [ d.name, d ] as [string, IDisadvantage & IAdvantageDisadvantageDetails]));
     }
-    
-    protected defaultFactor = FACTOR_ADVANTAGES;
-    
-    advantages? : IAdvantage[];
-    disadvantages? : IDisadvantage[];
-    
+
+    @Input()
+    budget = Infinity;
+
+    @Output()
+    select = new EventEmitter<SelectAdvantageEvent>();
+
+
+    availableAdvantages?: (IAdvantage & IAdvantageDisadvantageDetails)[];
+    availableDisadvantages?: (IDisadvantage & IAdvantageDisadvantageDetails)[];
+    availableAdvantagesMap?: Map<string, IAdvantage & IAdvantageDisadvantageDetails>;
+    availableDisadvantagesMap?: Map<string, IAdvantage & IAdvantageDisadvantageDetails>;
+
+    advantages: IAdvantage[] = [];
+    disadvantages: IDisadvantage[] = [];
+
     customAdvantageControl = new FormGroup({
         name: new FormControl(null, Validators.required),
+        specialization: new FormControl(null),
         value: new FormControl(null, Validators.required)
     });
-    
+
     customDisadvantageControl = new FormGroup({
         name: new FormControl(null, Validators.required),
+        specialization: new FormControl(null),
         value: new FormControl(null, Validators.required)
     });
-    
-    advantageForm = new FormGroup({
-        advantage: new FormControl(null, Validators.required),
-        specialization: new FormControl(null)
-    });
-    disadvantageForm = new FormGroup({
-        disadvantage: new FormControl(null, Validators.required),
-        specialization: new FormControl(null)
-    });
-    
-    advantagesForm = new FormArray([]);
-    disadvantagesForm = new FormArray([]);
-    
-    form = new FormGroup({
-        advantages   : this.advantagesForm,
-        disadvantages: this.disadvantagesForm
-    });
-    
-    constructor(protected readonly presets : Presets) {
-        super();
+
+    onChange : any = () => {};
+
+    constructor(protected readonly presets: Presets,
+        protected readonly cdr: ChangeDetectorRef) {
     }
-    
-    protected calculatePrice(previous : any, current : any) : number {
-        let currentPrice = 0;
-        for(const advantage of current.advantages) {
-            currentPrice -= advantage.value;
+
+    addAdvantage(advantage?: IAdvantage & IAdvantageDisadvantageDetails, noEmit?: boolean) {
+        if(advantage.multi && !advantage.specialization) {
+            advantage = {
+                ...advantage,
+                specialization: this.getFormControl(advantage.name).value
+            };
+            this.getFormControl(advantage.name).reset();
         }
-        for(const disadvantage of current.disadvantages) {
-            currentPrice += disadvantage.value;
-        }
-        
-        let previousPrice = 0;
-        for(const advantage of previous.advantages) {
-            previousPrice -= advantage.value;
-        }
-        for(const disadvantage of previous.disadvantages) {
-            previousPrice += disadvantage.value;
-        }
-        
-        return (currentPrice - previousPrice) * -1;
+
+        this.advantages.push(advantage);
+        !noEmit && this.select.emit(new SelectAdvantageEvent('advantage', advantage, advantage.value));
+        this.onChange({ advantages: this.advantages, disadvantages: this.disadvantages });
     }
-    
-    addAdvantage(advantage?: IAdvantage) {
-        if(!advantage) {
-            if(this.advantageForm.value.advantage === 'custom') {
-                advantage = {
-                    name: this.customAdvantageControl.value.name,
-                    specialization: this.advantageForm.value.specialization || undefined,
-                    value: this.customAdvantageControl.value.value,
-                    custom: true
-                }
-            } else {
-                advantage = {
-                    ...this.advantageForm.value.advantage,
-                    specialization: this.advantageForm.value.specialization || undefined
-                } as IAdvantage
+
+    addDisadvantage(disadvantage?: IDisadvantage & IAdvantageDisadvantageDetails, noEmit?: boolean) {
+        if(disadvantage.multi && !disadvantage.specialization) {
+            disadvantage = {
+                ...disadvantage,
+                specialization: this.getFormControl(disadvantage.name).value
+            }
+            this.getFormControl(disadvantage.name).reset();
+        }
+        this.disadvantages.push(disadvantage);
+        !noEmit && this.select.emit(new SelectAdvantageEvent('disadvantage', disadvantage, disadvantage.value));
+        this.onChange({ advantages: this.advantages, disadvantages: this.disadvantages });
+    }
+
+    forms = new Map<string, FormControl>();
+    getFormControl(name : string) {
+        if(!this.forms.has(name)) {
+            this.forms.set(name, new FormControl(null, Validators.required));
+        }
+
+        return this.forms.get(name);
+    }
+
+    hasAdvantage(name : string) {
+        return this.advantages.some(a => a.name === name);
+    }
+
+    hasDisadvantage(name : string) {
+        return this.disadvantages.some(d => d.name === name);
+    }
+
+    removeAdvantage(index: number) {
+        this.advantages.splice(index, 1);
+        this.onChange({ advantages: this.advantages, disadvantages: this.disadvantages });
+    }
+
+    removeDisadvantage(index: number) {
+        this.disadvantages.splice(index, 1);
+        this.onChange({ advantages: this.advantages, disadvantages: this.disadvantages });
+    }
+
+    writeValue(obj: null | { advantages: IAdvantage[], disadvantages: IDisadvantage[] }): void {
+        this.advantages.length = 0;
+        this.disadvantages.length = 0;
+
+        if (obj) {
+            for (const advantage of obj.advantages) {
+                this.addAdvantage({ ...this.availableAdvantagesMap.get(advantage.name), ...advantage }, true);
+            }
+
+            for (const disadvantage of obj.disadvantages) {
+                this.addDisadvantage({ ...this.availableDisadvantagesMap.get(disadvantage.name), ...disadvantage }, true);
             }
         }
-        const control = new FormControl(advantage);
-        this.advantagesForm.push(control);
-        this.advantageForm.reset();
-        this.customAdvantageControl.reset();
+
+        this.cdr.markForCheck();
     }
-    
-    addDisadvantage(disadvantage?: IDisadvantage) {
-        if(!disadvantage) {
-            if(this.disadvantageForm.value.disadvantage === 'custom') {
-                disadvantage = {
-                    name: this.customDisadvantageControl.value.name,
-                    specialization: this.disadvantageForm.value.specialization || undefined,
-                    value: this.customDisadvantageControl.value.value,
-                    custom: true
-                }
-            } else {
-                disadvantage = {
-                    ...this.disadvantageForm.value.disadvantage,
-                    specialization: this.disadvantageForm.value.specialization || undefined
-                } as IDisadvantage
-            }
-        }
-        const control = new FormControl(disadvantage);
-        this.disadvantagesForm.push(control);
-        this.disadvantageForm.reset();
-        this.customDisadvantageControl.reset();
+
+    registerOnChange(fn : any) {
+        this.onChange = fn;
     }
-    
-    removeAdvantage(index : number) {
-        this.advantagesForm.removeAt(index);
-        this.form.updateValueAndValidity();
-    }
-    
-    removeDisadvantage(index : number) {
-        this.disadvantagesForm.removeAt(index);
-        this.form.updateValueAndValidity();
-    }
-    
-    writeValue(obj : null|{ advantages: IAdvantage[], disadvantages: IDisadvantage[] }) : void {
-        this.unregisterSubscriptions();
-        while(this.advantagesForm.length) {
-            this.advantagesForm.removeAt(0);
-        }
-        while(this.disadvantagesForm.length) {
-            this.disadvantagesForm.removeAt(0);
-        }
-        
-        if(obj) {
-            for(const advantage of obj.advantages) {
-                this.addAdvantage(advantage);
-            }
-    
-            for(const disadvantage of obj.disadvantages) {
-                this.addDisadvantage(disadvantage);
-            }
-            this.form.updateValueAndValidity();
-        }
-        
-        this.registerSubscription();
+
+    registerOnTouched() {
+
     }
 }

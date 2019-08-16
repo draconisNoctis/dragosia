@@ -1,17 +1,73 @@
-@function gta($name, $count) {
-    $r: "";
-    @for $i from 1 through $count {
-        @if 0 != $i {
-            $r: $r + " ";
+$sheet-text-font-size: 1.4rem;
+
+@mixin js-sheet-page($areas) {
+    display: grid;
+    grid-gap: 4mm;
+
+    $str: "";
+
+    @each $row in $areas {
+        $str: "#{$str} \"";
+        $first: true;
+        @each $area, $width in $row {
+            .#{$area} {
+                grid-area: $area;
+            }
+            @for $i from 1 through $width {
+                @if not $first {
+                    $str: "#{$str} "
+                }
+                $first: false;
+                $str: "#{$str}#{$area}"
+            }
         }
-        $r: $r + $name;
+
+        $str: "#{$str}\"";
     }
-    @return $r;
+
+    grid-template-areas: unquote($str);
+}
+
+@mixin js-sheet-area($border: null, $grid: false, $flex: false) {
+    @if $flex {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        &-input {
+            flex-grow: 1;
+        }
+    }
+
+    &-title {
+        text-align: center;
+        margin: 0;
+    }
+
+    &-wrapper {
+        @if $border == 'topleft' {
+            border-top: 1px solid var(--border-color);
+            border-left: 1px solid var(--border-color);
+        }
+        @else if $border {
+            border: 1px solid var(--border-color);
+        }
+        @if $grid {
+            display: grid;
+        }
+    }
 }
 
 .js-sheet {
     font-size: 1.4rem;
     color: var(--text-color);
+
+    input[type=number] {
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
 
     h1, h2 {
         margin: 0;
@@ -45,34 +101,16 @@
     }
 
     .jui-page:nth-child(1) {
-        display: grid;
-        grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm min-content 1cm 1.2cm 1.2cm 1cm 1.2cm .5cm 1fr .5cm min-content 1fr .5cm 2cm;
-        grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(about, 10)} #{gta(description, 10)}"
-            "#{gta(attribute-title, 20)}"
-            "#{gta(attribute-strength, 5)} #{gta(attribute-agility, 5)} #{gta(attribute-dexterity, 5)} #{gta(attribute-constitution, 5)}"
-            "#{gta(attribute-courage, 5)} #{gta(attribute-intelligence, 5)} #{gta(attribute-intuition, 5)} #{gta(attribute-charisma, 5)}"
-            "#{gta(skill-title, 20)}"
-            "#{gta(skill-melee, 5)} #{gta(skill-range, 5)} #{gta(skill-physical, 5)} #{gta(skill-mental, 5)}"
-            "#{gta(advantages-title, 10)} #{gta(gifts-title, 10)}"
-            "#{gta(advantages, 10)} #{gta(gifts, 10)}"
-            "#{gta(disadvantages-title, 10)} #{gta(budget-title, 5)} #{gta(exp-title, 5)}"
-            "#{gta(disadvantages, 10)} #{gta(budget, 5)} #{gta(exp, 5)}"
-            "#{gta(disadvantages, 10)} #{gta(info, 10)}"
-            "#{gta(health-title, 10)} #{gta(mana-title, 10)}"
-            "#{gta(health, 10)} #{gta(mana, 10)}";
-
-        @each $area in (name, page-title, about, description, attribute-title, attribute-strength, attribute-agility, attribute-dexterity, attribute-constitution,
-        attribute-courage, attribute-intelligence, attribute-intuition, attribute-charisma, skill-title, skill-melee, skill-range, skill-physical,
-        skill-mental, advantages-title, advantages, disadvantages-title, disadvantages, info, health-title, health, mana-title, mana, gifts-title, gifts,
-        budget-title, budget, exp-title, exp) {
-            .#{$area} {
-                grid-area: $area;
-            }
-        }
+        @include js-sheet-page((
+            (page-title: 10, name: 6),
+            (about: 8, description: 8),
+            (attributes: 7, skills: 5, gifts: 4),
+            (advantages: 8, disadvantages: 8),
+            (inventory: 12, financials: 4),
+            (exp: 6, startvalues: 10)
+        ));
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(3, min-content) 1fr 1fr repeat(2, min-content);
 
         .budget {
             display: grid;
@@ -92,12 +130,78 @@
             }
         }
 
-        .exp {
-            @extend .budget;
+        .exp, .startvalues {
+            @include js-sheet-area($border: true, $grid: true);
 
-            grid-template-columns: 1fr 1fr;
+            &-wrapper {
+                padding: .75em 0;
+
+                > div {
+                    display: flex;
+
+                    > :first-child {
+                        padding-left: .75em;
+                        font-weight: bold;
+                        margin-right: .5em;
+                    }
+
+                    > :last-child {
+                        flex-grow: 1;
+                        text-align: right;
+                        padding-right: .75em;
+                    }
+                }
+            }
         }
 
+        .exp-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .startvalues-wrapper {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .attributes, .skills {
+            @include js-sheet-area($grid: true, $border: 'topleft');
+            &-wrapper {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+
+                > div {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    border-right: 1px solid var(--border-color);
+                    border-bottom: 1px solid var(--border-color);
+
+                    input {
+                        width: 100%;
+                        text-align: center;
+                        font-size: 32px;
+                        font-weight: bold;
+                        font-family: inherit;
+                        border: none;
+                    }
+
+                    strong {
+                        text-align: center;
+                    }
+                }
+            }
+
+            input {
+                padding: 0;
+            }
+        }
+
+        .skills-wrapper {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        .advantages, .disadvantages, .inventory, .financials {
+            @include js-sheet-area($flex: true);
+        }
 
         .about {
             display: grid;
@@ -133,190 +237,209 @@
         }
 
         .gifts {
-            > div {
-                display: grid;
-                grid-template-columns: auto min-content;
-                grid-auto-rows: auto;
-                grid-gap: 2mm;
+            @include js-sheet-area($flex: true, $grid: true, $border: true);
 
-                > *:nth-child(1) {
-                    input {
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
-                }
-
-                > *:nth-child(2) {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-            }
-        }
-
-        strong {
-            line-height: 2rem;
-            margin-bottom: .5rem;
-        }
-
-        fieldset {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            border: 0;
-            padding: 0;
-            margin: 0;
-        }
-
-        .health, .mana {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            grid-auto-rows: auto;
-            grid-gap: 2mm 0;
-            justify-content: center;
-            align-content: center;
-
-            > span {
-                text-align: center;
-
-                grid-row: 1;
-
-                grid-column: auto / span 4;
-            }
-
-            .jui-radio-range {
-                display: contents;
+            &-wrapper {
+                height: 100%;
+                grid-template-columns: auto .75cm min-content;
+                grid-template-rows: repeat(auto-fit, 1fr);
 
                 span {
-                    grid-row: 3;
-                    width: 1rem;
-                    height: 1rem;
+                    padding: 0 8px;
+                    border-bottom: 1px solid var(--border-color);
+                    display: flex;
+                    align-items: center;
+                    font-size: $sheet-text-font-size;
+                    border-right: 1px solid var(--border-color);
 
-                    &:nth-child(5n) {
-                        width: 3rem;
-                        height: 3rem;
-                        grid-row: 2;
-                        grid-column: auto / span 4;
+                    &.gift-level {
+                        text-align: center;
                     }
                 }
 
-                .circle {
-                    margin: 0 auto;
-                };
+                input {
+                    width: .75cm;
+                    text-align: center;
+                }
+
+                > :nth-last-child(1), > :nth-last-child(2), > :nth-last-child(3) {
+                    border-bottom: none;
+                }
             }
         }
     }
 
     .jui-page:nth-child(2) {
-        display: grid;
-        grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm .5cm 1fr .5cm 2fr .5cm 1fr;
-        grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(melee-title, 10)} #{gta(range-title, 10)}"
-            "#{gta(melee, 10)} #{gta(range, 10)}"
-            "#{gta(physical-title, 10)} #{gta(mental-title, 10)}"
-            "#{gta(physical, 10)} #{gta(mental, 10)}"
-            "#{gta(gifts-title, 20)}"
-            "#{gta(gifts, 20)}";
+        @include js-sheet-page((
+            (page-title: 8, name: 4),
+            (melee: 6, range: 6),
+            (physical: 4, mental: 4, social: 4),
+            (gifts: 12),
+            (attributes-footer: 12),
+            (skills-gifts-footer: 12)
+        ));
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(5, min-content);
 
-        @each $area in (name, page-title, melee-title, melee, range-title, range, physical-title, physical, mental-title, mental, magic-title, magic, gifts-title, gifts) {
-            .#{$area} {
-                grid-area: $area;
+        .talents {
+            @include js-sheet-area($grid: true, $border: true);
+
+            &-wrapper {
+                border-bottom: none;
+
             }
-        }
 
-        .talent {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            &.gifts {
+                .talents-wrapper {
+                    grid-template-columns: 1fr 1fr;
+                    grid-gap: 0 4mm;
+                    grid-auto-flow: column;
+                    border: none;
 
-            input {
-                margin-right: 2mm;
-                &:nth-child(1) {
-                    width: .8cm;
-                    text-align: center;
-                }
-                &:nth-child(2) {
-                    flex-grow: 1;
-                }
-                &:nth-child(3) {
-                    width: 1.2cm;
-                    text-align: center;
-                }
-            }
-            .jui-radio-range {
-                span {
-                    height: 1rem;
-                    width: 1rem;
-                    &:not(:last-child) {
-                        margin-right: .2rem;
+                    .talent {
+                        grid-column: 2;
+                        border-left: 1px solid var(--border-color);
+                        border-right: 1px solid var(--border-color);
+                        &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9), &:nth-child(10) {
+                            grid-column: 1;
+
+                        }
+
+                        &:nth-child(10n+1) {
+                            border-top: 1px solid var(--border-color);
+                        }
                     }
                 }
             }
+
+            .talent {
+                display: grid;
+                grid-template-columns: min-content auto .75cm min-content;
+                border-bottom: 1px solid var(--border-color);
+
+                input {
+                    width: .75cm;
+                    text-align: center;
+                    border-bottom: none;
+                    padding: 0;
+                    line-height: .6cm;
+                }
+
+                > span {
+                    display: flex;
+                    align-items: flex-end;
+                }
+
+                &-name, &-attribute-skill, &-level {
+                    padding: 0 8px;
+                }
+
+                &-attribute-skill {
+                    flex-grow: 1;
+                }
+
+                &-level, &-value {
+                    border-left: 1px solid var(--border-color);
+                }
+            }
         }
 
-        .gifts {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .talent {
-                width: calc((100% - 4mm) / 2);
+        .attributes-footer, .skills-gifts-footer {
+            @include js-sheet-area($grid: true, $border: true);
+            &-wrapper {
+                grid-template-columns: repeat(8, 1fr);
+                padding: .75em 0;
+                line-height: 1;
 
-                &:nth-child(2n - 1) {
-                    margin-right: 4mm;
+                > div {
+                    display: flex;
+
+                    > :first-child {
+                        padding-left: .75em;
+                        font-weight: bold;
+                        margin-right: .5em;
+                    }
+
+                    > :last-child {
+                        flex-grow: 1;
+                        text-align: right;
+                        padding-right: .75em;
+                    }
                 }
             }
         }
     }
 
     .jui-page:nth-child(3) {
-        display: grid;
-        grid-gap: 4mm;
-        grid-template-columns: repeat(20, 1fr);
-        grid-template-rows: 1cm .5cm 1fr .5cm 1fr .5cm min-content .5cm min-content;
-        grid-template-areas:
-            "#{gta(page-title, 16)} #{gta(name, 4)}"
-            "#{gta(inventory-title, 10)} #{gta(financials-title, 10)}"
-            "#{gta(inventory, 10)} #{gta(financials, 10)}"
-            "#{gta(equipment-title, 20)}"
-            "#{gta(equipment, 20)}"
-            "#{gta(melee-weapons-title, 20)}"
-            "#{gta(melee-weapons, 20)}"
-            "#{gta(range-weapons-title, 20)}"
-            "#{gta(range-weapons, 20)}";
+        @include js-sheet-page((
+            (page-title: 12, name: 4),
+            (equipment: 12, armor: 4),
+            (melee-weapons: 16),
+            (range-weapons: 16)
+        ));
+        grid-template-columns: repeat(16, 1fr);
+        // grid-template-rows: min-content min-content min-content min-content;
 
-        @each $area in (name, page-title, inventory-title, inventory, financials-title, financials, equipment-title, equipment, melee-weapons-title, melee-weapons, range-weapons-title, range-weapons) {
-            .#{$area} {
-                grid-area: $area;
+        .equipment, .armor, .melee-weapons, .range-weapons {
+            @include js-sheet-area($grid: true);
+
+            &-wrapper {
+                grid-gap: 0 2mm;
+                grid-auto-rows: min-content;
+
+                strong {
+                    &:not(:first-child) {
+                        text-align: center;
+                    }
+                }
+
+                input {
+                    box-sizing: border-box;
+                    width: 100%;
+                }
             }
         }
 
-        .melee-weapons {
-            grid-template-columns: 5fr 2fr 1fr 1fr 1fr 1fr;
-        }
-
-        .range-weapons {
-            grid-template-columns: 3fr 2fr 1fr 2fr 1fr 2fr;
-        };
-
-        .melee-weapons, .range-weapons {
+        .armor-wrapper {
             display: grid;
-            grid-gap: 0 2mm;
-            grid-auto-rows: min-content;
+            grid-template-columns: 1fr min-content;
+            grid-gap: 0;
+            margin-top: -1px;
 
-            strong {
-                &:not(:first-child) {
-                    text-align: center;
+            > * {
+                border-top: 1px solid var(--border-color);
+                border-left: 1px solid var(--border-color);
+                padding: 6px 8px 4px;
+
+                &:nth-child(2n) {
+                    border-right: 1px solid var(--border-color);
+                }
+
+                &:nth-last-child(1), &:nth-last-child(2) {
+                    border-bottom: 1px solid var(--border-color);
                 }
             }
 
-            input {
-                box-sizing: border-box;
-                width: 100%;
+            span {
+                text-align: right;
             }
+
+            label, span.total  {
+                font-weight: bold;
+            }
+
         }
+
+        .equipment {
+            @include js-sheet-area($flex: true);
+        }
+
+        .melee-weapons-wrapper {
+            grid-template-columns: 5fr 2fr 1fr 1fr 1fr 1fr;
+        }
+
+        .range-weapons-wrapper {
+            grid-template-columns: 3fr 2fr 1fr 2fr 1fr 2fr;
+        };
     }
 }

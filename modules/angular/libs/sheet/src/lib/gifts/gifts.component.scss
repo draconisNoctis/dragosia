@@ -1,5 +1,8 @@
+@import "../abstract.component";
+
 .js-gifts {
-    display: block;
+    @extend %abstract-component
+    /*display: block;
     position: relative;
 
     form {
@@ -7,8 +10,10 @@
 
         > div {
             display: grid;
-            grid-template-columns: auto min-content;
+            // grid-template-columns: auto min-content;
+            grid-template-columns: auto min-content 40px min-content 40px;
             grid-auto-rows: auto;
+            align-items: stretch;
 
             label, .jui-radio-range {
                 padding: 8px;
@@ -42,17 +47,30 @@
         }
     }
 
-    > button {
-        position: absolute;
-        right: 8px;
-        top: 0;
-        transform: translateY(-100%);
+    // > button {
+    //     position: absolute;
+    //     right: 8px;
+    //     top: 0;
+    //     transform: translateY(-100%);
+    // }
+    .button-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > span {
+            display: inline-block;
+            white-space: nowrap;
+            width: 40px;
+            padding-right: 8px;
+            text-align: right;
+        }
     }
 
     &-range {
         form > div {
             > * {
-                &:nth-child(4n), &:nth-child(4n - 1) {
+                &:nth-child(10n), &:nth-child(10n - 1), &:nth-child(10n - 2), &:nth-child(10n - 3), &:nth-child(10n - 4) {
                     background: rgba(0, 0, 0, .1);
                 }
             }
@@ -69,5 +87,5 @@
                 }
             }
         }
-    }
+    }*/
 }

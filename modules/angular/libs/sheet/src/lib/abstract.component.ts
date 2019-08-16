@@ -6,48 +6,24 @@ import { delay, pairwise, startWith } from 'rxjs/operators';
 @Injectable()
 export abstract class AbstractComponent implements ControlValueAccessor {
     @Input()
-    get pointsAvailable() {
-        return this._pointsAvailable;
-    }
-    
-    set pointsAvailable(value : number) {
-        this._pointsAvailable = value;
-    }
-    private _pointsAvailable = 0;
-    
-    protected abstract defaultFactor: number;
-    
-    @Input()
-    set factor(factor : number|null) {
-        this._factor = factor;
-    }
-    get factor() {
-        return null == this._factor ? this.defaultFactor : this._factor;
-    }
-    _factor?: number|null;
-    
-    @Input()
     mode : 'range' | 'button' = 'range';
-    
-    @Output()
-    pointsAvailableChange = new EventEmitter<number>();
-    
+
     abstract form : AbstractControl;
-    
+
     private subscription = Subscription.EMPTY;
     private pointsSubscription = Subscription.EMPTY;
-    
+
     onChange : any = () => {};
-    
+
     registerOnChange(fn : any) : void {
         this.onChange = fn;
         this.unregisterSubscriptions();
         this.registerSubscription();
     }
-    
+
     registerOnTouched(fn : any) : void {
     }
-    
+
     setDisabledState(isDisabled : boolean) : void {
         if(isDisabled) {
             this.form.disable();
@@ -55,27 +31,19 @@ export abstract class AbstractComponent implements ControlValueAccessor {
             this.form.enable();
         }
     }
-    
+
     abstract writeValue(obj : any) : void;
-    
+
     protected unregisterSubscriptions() {
         this.subscription.unsubscribe();
         this.pointsSubscription.unsubscribe();
     }
-    
+
     protected transformValue(value : any) : any {
         return value;
     }
-    
+
     protected registerSubscription() {
-        this.pointsSubscription = this.form.valueChanges.pipe(startWith(this.form.value), pairwise()).subscribe(([ previous, current ]) => {
-            const price = this.calculatePrice(previous, current);
-        
-            if(price) {
-                this.pointsAvailable -= price * this.factor;
-                this.pointsAvailableChange.emit(this.pointsAvailable);
-            }
-        });
         this.subscription = combineLatest(
             this.form.statusChanges,
             this.form.valueChanges
@@ -89,7 +57,5 @@ export abstract class AbstractComponent implements ControlValueAccessor {
                 }
             });
     }
-    
-    protected abstract calculatePrice(previous : any, current : any) : number;
 }
 

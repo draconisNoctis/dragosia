@@ -31,6 +31,7 @@ Nahkampf            N
 Fernkampf           F
 Körperlich          K
 Geistig             G
+Sozial              S
 ```
 
 

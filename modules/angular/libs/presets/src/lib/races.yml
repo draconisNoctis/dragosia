@@ -4,35 +4,35 @@ presets:
     - dragosia
 talents:
     - name: Raufen
-      value: 0
+      value: 1
     - name: Werfen
-      value: 1
+      value: 2
     - name: Körperbeherrschung
-      value: 1
+      value: 2
     - name: Klettern
-      value: 0
-    - name: Singen
-      value: 0
-    - name: Tanzen
-      value: 0
-    - name: Sinnesschärfe
-      value: 0
-    - name: Schleichen
-      value: 0
-    - name: Selbstbeherrschung
-      value: 0
-    - name: Menschenkenntnis
-      value: 0
-    - name: Ausstrahlung
-      value: 0
-    - name: Orientierung
       value: 1
+    - name: Singen
+      value: 1
+    - name: Tanzen
+      value: 1
+    - name: Sinnesschärfe
+      value: 1
+    - name: Schleichen
+      value: 1
+    - name: Selbstbeherrschung
+      value: 1
+    - name: Menschenkenntnis
+      value: 1
+    - name: Ausstrahlung
+      value: 1
+    - name: Orientierung
+      value: 2
     - name: Malen/Zeichnen
-      value: 0
+      value: 1
     - name: Kochen
-      value: 0
+      value: 1
     - name: Allgemeinwissen
-      value: 0
+      value: 1
 
 ---
 
@@ -42,9 +42,9 @@ presets:
     - dragosia
 talents:
     - name: Muttersprache
-      value: 3
+      value: 5
     - name: Gemeinsprache
-      value: 1
+      value: 3
 
 ---
 
@@ -54,7 +54,7 @@ presets:
     - dragosia
 talents:
     - name: Muttersprache
-      value: 3
+      value: 5
     - name: Gemeinsprache
-      value: 1
+      value: 3
 

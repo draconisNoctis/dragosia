@@ -1,4 +1,6 @@
 .js-add-dialog {
+    width: 600px;
+    max-width: 90vw;
     position: relative;
     display: block;
 
@@ -13,15 +15,51 @@
         width: 100%;
     }
 
-    .mat-selection-list {
-        min-width: 200px;
+    .mat-dialog-content {
+        height: 400px;
+    }
+
+    // .mat-selection-list {
+    //     min-width: 200px;
+
+    //     button {
+    //         cursor: pointer;
+    //         border: none;
+    //         background: none;
+    //         width: 100%;
+    //         height: 100%;
+    //     }
+    // }
+
+    .mat-action-list {
+        .mat-list-item-content {
+            flex-grow: 1;
+        }
 
         button {
-            cursor: pointer;
-            border: none;
-            background: none;
-            width: 100%;
-            height: 100%;
+            display: flex;
+
+            &[disabled] {
+                opacity: .3;
+
+                &:hover {
+                    background: none;
+                }
+            }
+
+            .name {
+                flex-grow: 1;
+            }
+
+            .attribute, .skill {
+                width: 60px;
+                text-align: right;
+            }
+
+            .level {
+                width: 60px;
+                text-align: right;
+            }
         }
     }
 
@@ -30,6 +68,8 @@
         grid-template-columns: 1fr 1fr min-content;
         grid-auto-rows: auto;
         grid-gap: 0 8px;
+        overflow-y: auto;
+
 
         .mat-form-field {
             &:nth-child(1), &:nth-child(2) {

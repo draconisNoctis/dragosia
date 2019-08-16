@@ -13,7 +13,7 @@
         <mat-select
             i18n-placeholder
             placeholder="Budget"
-            [formControl]="budgetControl"
+            formControlName="budget"
         >
             <mat-option value="beginner" i18n>Beginner</mat-option>
             <mat-option value="normal" i18n>Normal</mat-option>
@@ -23,40 +23,98 @@
         </mat-select>
     </mat-form-field>
 
-    <div class="budget" formGroupName="budget">
+    <ng-container formGroupName="points">
+
         <mat-form-field>
             <input
                 matInput
                 type="number"
                 min="1"
-                max="100"
-                formControlName="attributes"
+                max="10000"
+                formControlName="points"
                 i18n-placeholder
-                placeholder="Attributes"
+                placeholder="Points"
             />
         </mat-form-field>
-        <mat-form-field>
-            <input
-                matInput
-                type="number"
-                min="1"
-                max="100"
-                formControlName="skills"
-                i18n-placeholder
-                placeholder="Skills"
-            />
-        </mat-form-field>
-        <mat-form-field>
-            <input
-                matInput
-                type="number"
-                min="1"
-                max="200"
-                formControlName="talents"
-                i18n-placeholder
-                placeholder="Talents"
-            />
-        </mat-form-field>
-    </div>
+
+        <div class="attributes" formGroupName="attributes">
+            <label i18n>Attributes</label>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="min"
+                    i18n-placeholder
+                    placeholder="Min Points Spend"
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="max"
+                    i18n-placeholder
+                    placeholder="Max per Attribute"
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="skills" formGroupName="skills">
+            <label i18n>Skills</label>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="min"
+                    i18n-placeholder
+                    placeholder="Min Points Spend"
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="max"
+                    i18n-placeholder
+                    placeholder="Max per Skill"
+                />
+            </mat-form-field>
+        </div>
+
+        <div class="talents" formGroupName="talents">
+            <label i18n>Talents</label>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="min"
+                    i18n-placeholder
+                    placeholder="Min Points Spend"
+                />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    type="number"
+                    min="1"
+                    max="100"
+                    formControlName="max"
+                    i18n-placeholder
+                    placeholder="Max per Talent"
+                />
+            </mat-form-field>
+        </div>
+
+    </ng-container>
     <button #submit class="hidden"></button>
 </form>

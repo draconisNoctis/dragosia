@@ -24,32 +24,58 @@
                 <mat-tab i18n-label label="General">
                     <ng-template matTabContent>
                         <js-general [formControl]="generalControl"></js-general>
+
+                        <div class="experience">
+                            <h3 i18n>Experience Points</h3>
+
+                            <mat-form-field>
+                                <input matInput type="number" [ngModel]="_char.meta.exp.spend" i18n-placeholder placeholder="Spend" readonly />
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput type="number" [ngModel]="_char.meta.exp.total" i18n-placeholder placeholder="Total" readonly />
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput type="number" [formControl]="addExpControl" i18n-placeholder placeholder="Add Exp" />
+                            </mat-form-field>
+
+                            <button mat-icon-button [disabled]="addExpControl.invalid" (click)="addExp(_char)">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                    </ng-template>
+                </mat-tab>
+
+                <mat-tab i18n-label label="Armor">
+                    <ng-template matTabContent>
+                        <js-armor [formControl]="armorControl"></js-armor>
                     </ng-template>
                 </mat-tab>
 
                 <mat-tab i18n-label label="Advantages/Disadvantages">
                     <ng-template matTabContent>
-                        <js-advantages [preset]="_char.meta.preset" [formControl]="advantagesControl"></js-advantages>
+                        <js-advantages mode="button" [preset]="_char.meta.preset" [ngModel]="_char" [budget]="budget | async" (select)="selectAdvantage($event, _char)"></js-advantages>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Attributes">
                     <ng-template matTabContent>
-                        <js-attributes mode="button" [formControl]="attributesControl" [(pointsAvailable)]="exp"></js-attributes>
+                        <js-attributes mode="button" [ngModel]="_char.attributes" [budget]="budget | async" (increase)="increaseAttribute($event, _char)"></js-attributes>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Skills">
                     <ng-template matTabContent>
-                        <js-skills mode="button" [formControl]="skillsControl" [(pointsAvailable)]="exp"></js-skills>
+                        <js-skills mode="button" [ngModel]="_char.skills" [budget]="budget | async" (increase)="increaseSkill($event, _char)"></js-skills>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Gifts">
                     <ng-template matTabContent>
-                        <js-gifts [preset]="_char.meta.preset" mode="button" [formControl]="giftsControl" [(pointsAvailable)]="exp"></js-gifts>
+                        <js-gifts [preset]="_char.meta.preset" mode="button" [ngModel]="_char.gifts" [budget]="budget | async" (increase)="increaseGift($event, _char)"></js-gifts>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Talents">
                     <ng-template matTabContent>
-                        <js-talents [preset]="_char.meta.preset" mode="button" [formControl]="talentsControl" [(pointsAvailable)]="exp"></js-talents>
+                        <js-talents [preset]="_char.meta.preset" mode="button" [ngModel]="_char.talents" [budget]="budget | async" [gifts]="_char.gifts" (increase)="increaseTalent($event, _char)"></js-talents>
                     </ng-template>
                 </mat-tab>
                 <mat-tab i18n-label label="Character Sheet">
@@ -113,11 +139,11 @@
 </mat-menu>
 
 <mat-menu #importMenu="matMenu" class="sheet-menu">
-    <label mat-menu-item for="import-local" i18n>
+    <label mat-menu-item for="import-local">
         <span i18n>Local</span>
         <input type="file" id="import-local" (change)="import($event, 'local')" />
     </label>
-    <button mat-menu-item [disabled]="!(firebaseAuth.user | async)" i18n>
+    <button mat-menu-item [disabled]="!(firebaseAuth.user | async)">
         <label for="import-server" i18n>Server</label>
         <input type="file" id="import-server" (change)="import($event, 'firebase')" [disabled]="!(firebaseAuth.user | async)" />
     </button>
