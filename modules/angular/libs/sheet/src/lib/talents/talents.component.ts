@@ -56,6 +56,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     rangeForm = new FormArray([]);
     physicalForm = new FormArray([]);
     mentalForm = new FormArray([]);
+    socialForm = new FormArray([]);
     giftsForm = new FormArray([]);
 
     form = new FormGroup({
@@ -63,6 +64,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
         range: this.rangeForm,
         physical: this.physicalForm,
         mental: this.mentalForm,
+        social: this.socialForm,
         gifts: this.giftsForm
     });
 
@@ -71,6 +73,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
         range: [],
         physical: [],
         mental: [],
+        social: [],
         gifts: []
     };
 
@@ -83,7 +86,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
     writeValue(obj: any): void {
         this.unregisterSubscriptions();
-        for (const key of ['melee', 'range', 'physical', 'mental', 'gifts'] as (keyof ICharacterTalents)[]) {
+        for (const key of ['melee', 'range', 'physical', 'mental', 'social', 'gifts'] as (keyof ICharacterTalents)[]) {
             const control = this.form.get(key) as FormArray;
             while (control.length) {
                 control.removeAt(0);
@@ -116,7 +119,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
     async openAddDialog() {
         const v: ICharacterTalents = this.form.value;
-        const ids = new Set([...v.melee, ...v.range, ...v.physical, ...v.mental, ...v.gifts].map(talent => talent.name));
+        const ids = new Set([...v.melee, ...v.range, ...v.physical, ...v.mental, ...v.social, ...v.gifts].map(talent => talent.name));
         const ref = this.dialog.open(AddDialogComponent, {
             data: {
                 talents: this.talents.filter(talent => {

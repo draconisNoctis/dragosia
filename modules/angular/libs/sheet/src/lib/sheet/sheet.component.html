@@ -97,6 +97,11 @@
                 <strong i18n>Mental</strong>
                 <input type="number" formControlName="mental" readonly />
             </div>
+
+            <div class="skill-social">
+                <strong i18n>Social</strong>
+                <input type="number" formControlName="social" readonly />
+            </div>
         </div>
     </div>
 
@@ -193,6 +198,7 @@
         <h2 *ngIf="type === 'range'" i18n class="talents-title range-title">Range</h2>
         <h2 *ngIf="type === 'physical'" i18n class="talents-title physical-title">Physical</h2>
         <h2 *ngIf="type === 'mental'" i18n class="talents-title mental-title">Mental</h2>
+        <h2 *ngIf="type === 'social'" i18n class="talents-title social-title">Social</h2>
         <h2 *ngIf="type === 'gifts'" i18n class="talents-title gifts-title">Gifts</h2>
 
         <div class="talents-wrapper">
@@ -214,6 +220,7 @@
     <ng-container *ngTemplateOutlet="talents; context: { type: 'range', form: talentsRangeForm }"></ng-container>
     <ng-container *ngTemplateOutlet="talents; context: { type: 'physical', form: talentsPhysicalForm }"></ng-container>
     <ng-container *ngTemplateOutlet="talents; context: { type: 'mental', form: talentsMentalForm }"></ng-container>
+    <ng-container *ngTemplateOutlet="talents; context: { type: 'social', form: talentsSocialForm }"></ng-container>
     <ng-container *ngTemplateOutlet="talents; context: { type: 'gifts', form: talentsGiftsForm }"></ng-container>
 
 
@@ -271,6 +278,10 @@
             <div class="skills-gifts-footer-mental">
                 <span i18n>Mental:</span>
                 <span>{{ character?.skills?.mental }}</span>
+            </div>
+            <div class="skills-gifts-footer-social">
+                <span i18n>Social:</span>
+                <span>{{ character?.skills?.social }}</span>
             </div>
             <div class="skills-gifts-footer-gift" *ngFor="let gift of character?.gifts">
                 <span>{{ gift.name }}:</span>

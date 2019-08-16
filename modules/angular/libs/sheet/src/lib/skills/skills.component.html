@@ -23,5 +23,11 @@
         <input type="number" [min]="mins.mental" [max]="max" formControlName="mental" />
         <div><button mat-icon-button (click)="add('mental')" [disabled]="form.value.mental >= max || budget < getCostsForNext('mental')"><mat-icon>add</mat-icon></button></div>
         <div class="costs-for-next"><span>+{{ getCostsForNext('mental') }}</span></div>
+
+        <label i18n>Social</label>
+        <div><button mat-icon-button (click)="remove('social')" [disabled]="form.value.social <= 0" *ngIf="mode !== 'button'"><mat-icon>remove</mat-icon></button></div>
+        <input type="number" [min]="mins.social" [max]="max" formControlName="social" />
+        <div><button mat-icon-button (click)="add('social')" [disabled]="form.value.social >= max || budget < getCostsForNext('social')"><mat-icon>add</mat-icon></button></div>
+        <div class="costs-for-next"><span>+{{ getCostsForNext('social') }}</span></div>
     </div>
 </form>

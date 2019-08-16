@@ -43,7 +43,8 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
         melee: new FormControl(null, Validators.required),
         range: new FormControl(null, Validators.required),
         physical: new FormControl(null, Validators.required),
-        mental: new FormControl(null, Validators.required)
+        mental: new FormControl(null, Validators.required),
+        social: new FormControl(null, Validators.required)
     });
 
     mins = {
@@ -59,6 +60,7 @@ export class SkillsComponent extends AbstractComponent implements ControlValueAc
     }
 
     writeValue(obj : any) : void {
+        console.log({ obj });
         this.unregisterSubscriptions();
         if(obj) {
             this.form.setValue(obj, { emitEvent: false });

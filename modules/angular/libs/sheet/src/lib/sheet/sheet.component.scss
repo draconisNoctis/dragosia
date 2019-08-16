@@ -104,7 +104,7 @@ $sheet-text-font-size: 1.4rem;
         @include js-sheet-page((
             (page-title: 10, name: 6),
             (about: 8, description: 8),
-            (attributes: 8, skills: 4, gifts: 4),
+            (attributes: 7, skills: 5, gifts: 4),
             (advantages: 8, disadvantages: 8),
             (inventory: 12, financials: 4),
             (exp: 6, startvalues: 10)
@@ -195,7 +195,7 @@ $sheet-text-font-size: 1.4rem;
         }
 
         .skills-wrapper {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
         }
 
@@ -273,9 +273,10 @@ $sheet-text-font-size: 1.4rem;
         @include js-sheet-page((
             (page-title: 8, name: 4),
             (melee: 6, range: 6),
-            (physical: 6, mental: 6),
+            (physical: 4, mental: 4, social: 4),
             (gifts: 12),
-            (attributes-footer: 6, skills-gifts-footer: 6)
+            (attributes-footer: 12),
+            (skills-gifts-footer: 12)
         ));
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: repeat(5, min-content);
@@ -346,7 +347,7 @@ $sheet-text-font-size: 1.4rem;
         .attributes-footer, .skills-gifts-footer {
             @include js-sheet-area($grid: true, $border: true);
             &-wrapper {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(8, 1fr);
                 padding: .75em 0;
                 line-height: 1;
 

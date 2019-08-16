@@ -38,7 +38,8 @@ export class SheetComponent {
             melee: new FormControl(null, Validators.required),
             range: new FormControl(null, Validators.required),
             physical: new FormControl(null, Validators.required),
-            mental: new FormControl(null, Validators.required)
+            mental: new FormControl(null, Validators.required),
+            social: new FormControl(null, Validators.required)
         }),
         gifts: new FormArray(Array.from({ length: 4 }, () => this.createGiftFormControl())),
         advantages: new FormControl(),
@@ -51,6 +52,7 @@ export class SheetComponent {
             range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
             physical: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
             mental: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
+            social: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
             gifts: new FormArray(Array.from({ length: 20 }, () => this.createTalentFormControl()))
         }),
 
@@ -83,6 +85,7 @@ export class SheetComponent {
     talentsRangeForm = this.form.get([ 'talents', 'range' ]) as FormArray;
     talentsPhysicalForm = this.form.get([ 'talents', 'physical' ]) as FormArray;
     talentsMentalForm = this.form.get([ 'talents', 'mental' ]) as FormArray;
+    talentsSocialForm = this.form.get([ 'talents', 'social' ]) as FormArray;
     talentsGiftsForm = this.form.get([ 'talents', 'gifts' ]) as FormArray;
 
     get armor() {

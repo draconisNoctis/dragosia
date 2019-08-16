@@ -87,17 +87,17 @@ level: C
 ---
 
 name: Menschenkenntnis
-category: mental
+category: social
 attribute: IN
-skill: G
+skill: S
 level: B
 
 ---
 
 name: Ausstrahlung
-category: mental
+category: social
 attribute: CH
-skill: G
+skill: S
 level: B
 
 ---
@@ -167,9 +167,9 @@ level: B
 ---
 
 name: Überreden
-category: mental
+category: social
 attribute: MU
-skill: G
+skill: S
 level: B
 
 ---

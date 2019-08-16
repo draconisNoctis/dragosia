@@ -32,6 +32,7 @@ export interface ICharacterSkills {
     range: number;
     physical: number;
     mental: number;
+    social: number;
 }
 
 export interface IGift {
@@ -98,6 +99,7 @@ export interface ICharacterTalents {
     range: ICharacterTalent[];
     physical: ICharacterTalent[];
     mental: ICharacterTalent[];
+    social: ICharacterTalent[];
     gifts: ICharacterTalent[];
 }
 
@@ -278,13 +280,15 @@ export function createEmptyCharacter() : ICharacter {
             melee: 0,
             range: 0,
             physical: 0,
-            mental: 0
+            mental: 0,
+            social: 0
         },
         talents: {
             melee: [],
             range: [],
             physical: [],
             mental: [],
+            social: [],
             gifts: []
         },
         gifts: [],
@@ -611,6 +615,7 @@ export class Presets {
             case 'range': return this.i18n('Range');
             case 'physical': return this.i18n('Physical');
             case 'mental': return this.i18n('Mental');
+            case 'social': return this.i18n('Social');
         }
     }
 
@@ -620,6 +625,7 @@ export class Presets {
             case 'range': return this.i18n({ value: 'Range', meaning: 'short' });
             case 'physical': return this.i18n({ value: 'Physical', meaning: 'short' });
             case 'mental': return this.i18n({ value: 'Mental', meaning: 'short' });
+            case 'social': return this.i18n({ value: 'Social', meaning: 'short' });
         }
     }
 

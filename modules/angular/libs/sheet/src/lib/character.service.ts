@@ -46,6 +46,15 @@ export class CharacterService {
                 char.armor = [];
             }
             return char;
+        }],
+        [4, (char : ICharacter) => {
+            if(null == char.skills.social) {
+                char.skills.social = 0;
+            }
+            if(null == char.talents.social) {
+                char.talents.social = [];
+            }
+            return char;
         }]
     ] as any;
 
@@ -93,7 +102,7 @@ export class CharacterService {
                 char = patcher(char);
                 char.version = v;
             } else {
-                break;
+                continue;
             }
         }
 

@@ -9,6 +9,7 @@
             <mat-option value="range" i18n>Range</mat-option>
             <mat-option value="physical" i18n>Physical</mat-option>
             <mat-option value="mental" i18n>Mental</mat-option>
+            <mat-option value="social" i18n>Social</mat-option>
         </mat-optgroup>
         <mat-optgroup i18n-label label="Gifts" *ngIf="gifts && gifts.length">
             <mat-option *ngFor="let gift of gifts" [value]="'gifts-' + gift.name">{{ gift.name }}</mat-option>
@@ -18,6 +19,7 @@
             <mat-option value="custom-range" i18n>Range</mat-option>
             <mat-option value="custom-physical" i18n>Physical</mat-option>
             <mat-option value="custom-mental" i18n>Mental</mat-option>
+            <mat-option value="custom-social" i18n>Social</mat-option>
             <mat-option *ngFor="let gift of gifts" [value]="'custom-gifts-' + gift.name">{{ gift.name }}</mat-option>
         </mat-optgroup>
     </mat-select>
