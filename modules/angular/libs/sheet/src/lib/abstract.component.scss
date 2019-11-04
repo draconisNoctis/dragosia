@@ -43,6 +43,7 @@
 
         > label, > span {
             padding: 8px;
+            white-space: nowrap;
         }
 
         > label:not(.no-border), .border-right {

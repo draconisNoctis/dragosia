@@ -107,8 +107,10 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
 
     addTalent(talent: ICharacterTalent, category: keyof ICharacterTalents) {
         (this.form.get(category) as FormArray).push(new FormGroup({
-            attribute: new FormControl(talent.attribute, Validators.required),
-            skill: new FormControl(talent.skill),
+            attributes: new FormArray([
+                new FormControl(talent.attributes[0], Validators.required),
+                new FormControl(talent.attributes[1], Validators.required)
+            ]),
             gift: new FormControl(talent.gift),
             name: new FormControl(talent.name, Validators.required),
             value: new FormControl(talent.value || 1, Validators.required),

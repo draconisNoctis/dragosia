@@ -50,10 +50,10 @@ export class SheetComponent {
         talents: new FormGroup({
             melee: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
             range: new FormArray(Array.from({ length: 8 }, () => this.createTalentFormControl())),
-            physical: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
-            mental: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
-            social: new FormArray(Array.from({ length: 16 }, () => this.createTalentFormControl())),
-            gifts: new FormArray(Array.from({ length: 20 }, () => this.createTalentFormControl()))
+            physical: new FormArray(Array.from({ length: 18 }, () => this.createTalentFormControl())),
+            mental: new FormArray(Array.from({ length: 18 }, () => this.createTalentFormControl())),
+            social: new FormArray(Array.from({ length: 10 }, () => this.createTalentFormControl())),
+            gifts: new FormArray(Array.from({ length: 10 }, () => this.createTalentFormControl()))
         }),
 
         inventory: new FormControl(),
@@ -106,6 +106,7 @@ export class SheetComponent {
 
     @Input()
     set character(char : ICharacter) {
+        console.log(char);
         if(char) {
             this.form.patchValue(char, { emitEvent: false });
         }
@@ -134,7 +135,10 @@ export class SheetComponent {
         return new FormGroup({
             skill: new FormControl(),
             name: new FormControl(),
-            attribute: new FormControl(),
+            attributes: new FormControl([
+                new FormControl(),
+                new FormControl()
+            ]),
             gift: new FormControl(),
             value: new FormControl(),
             level: new FormControl()

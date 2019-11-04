@@ -27,13 +27,15 @@ export interface ICharacterAttributes {
     charisma: number;
 }
 
-export interface ICharacterSkills {
-    melee: number;
-    range: number;
-    physical: number;
-    mental: number;
-    social: number;
-}
+// export interface ICharacterSkills {
+//     melee: number;
+//     range: number;
+//     physical: number;
+//     mental: number;
+//     social: number;
+// }
+
+export type CategoryType = 'melee' | 'range' | 'physical' | 'mental' | 'social';
 
 export interface IGift {
     name: string;
@@ -42,7 +44,7 @@ export interface IGift {
 }
 
 export interface IAdvantageDisadvantageDetails {
-    type: keyof ICharacterSkills | 'gift' | 'common';
+    type: CategoryType | 'gift' | 'common';
     typeGiftName?: string;
     multi?: boolean;
     description: string;
@@ -51,9 +53,9 @@ export interface IAdvantageDisadvantageDetails {
         attributes?: {
             [a in keyof ICharacterAttributes]?: number;
         };
-        skills?: {
-            [s in keyof ICharacterSkills]?: number;
-        };
+        // skills?: {
+        //     [s in keyof ICharacterSkills]?: number;
+        // };
         gifts?: {
             [name: string]: number;
         }
@@ -84,9 +86,9 @@ export interface IDisadvantage {
 export interface ITalent {
     id?: string;
     name: string;
-    skill?: string;
+    // skill?: string;
     gift?: string;
-    attribute: string;
+    attributes: [ string, string ];
     level: Level;
 }
 
@@ -115,7 +117,7 @@ export interface IMeleeWeapon {
 export interface IRangeWeapon {
     name: string;
     type: string;
-    attribute: string;
+    // attribute: string;
     range: string;
     attackModification: string;
     damageModification: string;
@@ -139,7 +141,7 @@ export interface ICharacter {
 
     about: ICharacterAbout;
     attributes: ICharacterAttributes;
-    skills: ICharacterSkills;
+    // skills: ICharacterSkills;
     gifts: IGift[];
     advantages: IAdvantage[];
     disadvantages: IDisadvantage[];
@@ -179,7 +181,7 @@ export interface IPreset {
 
 export interface ICosts {
     attributes: number;
-    skills: number;
+    gifts: number;
     talents: number;
 }
 
@@ -190,10 +192,10 @@ export interface IInitValues {
         min: number;
         max: number;
     };
-    skills: {
+    gifts: {
         min: number;
         max: number;
-    };
+    }
     talents: {
         min: number;
         max: number;
@@ -231,7 +233,7 @@ export interface IPartial {
     extends?: string;
     abstract?: boolean;
     attributes?: Partial<ICharacterAttributes>;
-    skills?: Partial<ICharacterSkills>;
+    // skills?: Partial<ICharacterSkills>;
     gifts?: IPartialGiftWithValue[];
     talents?: (IPartialTalentWithValue|ISelectTalents)[]
 }
@@ -276,13 +278,13 @@ export function createEmptyCharacter() : ICharacter {
             intuition: 1,
             charisma: 1
         },
-        skills: {
-            melee: 0,
-            range: 0,
-            physical: 0,
-            mental: 0,
-            social: 0
-        },
+        // skills: {
+        //     melee: 0,
+        //     range: 0,
+        //     physical: 0,
+        //     mental: 0,
+        //     social: 0
+        // },
         talents: {
             melee: [],
             range: [],
@@ -315,7 +317,7 @@ export function createEmptyCharacter() : ICharacter {
                     max: 0,
                     min: 0
                 },
-                skills: {
+                gifts: {
                     max: 0,
                     min: 0
                 },
@@ -388,13 +390,13 @@ export function applyPartials(char : ICharacter, raiseService : RaiseService, pa
                 character.attributes[attr] += partial.attributes[attr];
             }
         }
-        if(partial.skills) {
-            for(const skill in partial.skills) {
-                // spend += raiseService.getRaiseCosts(character.skills[skill] + partial.skills[skill], 'F', { from: character.skills[skill] });
-                // costs.skills += getCosts(character.skills[skill], character.skills[skill] + partial.skills[skill]);
-                character.skills[skill] += partial.skills[skill];
-            }
-        }
+        // if(partial.skills) {
+        //     for(const skill in partial.skills) {
+        //         // spend += raiseService.getRaiseCosts(character.skills[skill] + partial.skills[skill], 'F', { from: character.skills[skill] });
+        //         // costs.skills += getCosts(character.skills[skill], character.skills[skill] + partial.skills[skill]);
+        //         character.skills[skill] += partial.skills[skill];
+        //     }
+        // }
         if(partial.gifts) {
             for(const gift of partial.gifts) {
                 const existingGift = character.gifts.find(g => g.name === gift.name);
@@ -575,7 +577,6 @@ export class Presets {
         const res = { ...a, ...b } as T;
 
         res.attributes = { ...a.attributes, ...b.attributes };
-        res.skills = { ...a.skills, ...b.skills };
         res.gifts = [ ...(a.gifts || []), ...(b.gifts || []) ];
         res.talents = [ ...(a.talents || []), ...(b.talents || []) ];
 
@@ -601,16 +602,16 @@ export class Presets {
         }
     }
 
-    getTypeName(type : keyof ICharacterSkills | 'common' | 'gift') {
+    getTypeName(type : CategoryType | 'common' | 'gift') {
         switch(type) {
             case 'common': return this.i18n('Common');
             case 'gift': return this.i18n('Gift');
-            default: return this.getSkillName(type);
+            default: return this.getCategoryName(type);
         }
     }
 
-    getSkillName(name : keyof ICharacterSkills) {
-        switch(name) {
+    getCategoryName(type : CategoryType) {
+        switch(type) {
             case 'melee': return this.i18n('Melee');
             case 'range': return this.i18n('Range');
             case 'physical': return this.i18n('Physical');
@@ -619,8 +620,8 @@ export class Presets {
         }
     }
 
-    getSkillNameShort(name : keyof ICharacterSkills) {
-        switch(name) {
+    getCategoryNameShort(type : CategoryType) {
+        switch(type) {
             case 'melee': return this.i18n({ value: 'Melee', meaning: 'short' });
             case 'range': return this.i18n({ value: 'Range', meaning: 'short' });
             case 'physical': return this.i18n({ value: 'Physical', meaning: 'short' });

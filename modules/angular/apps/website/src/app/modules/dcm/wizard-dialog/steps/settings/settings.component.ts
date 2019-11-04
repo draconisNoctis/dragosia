@@ -35,7 +35,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                 min: new FormControl(null, Validators.required),
                 max: new FormControl(null, Validators.required)
             }),
-            skills: new FormGroup({
+            gifts: new FormGroup({
                 min: new FormControl(null, Validators.required),
                 max: new FormControl(null, Validators.required)
             }),
@@ -76,8 +76,8 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                                     min: 55,
                                     max: 3
                                 },
-                                skills: {
-                                    min: 20,
+                                gifts: {
+                                    min: 0,
                                     max: 3
                                 },
                                 talents: {
@@ -93,8 +93,8 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                                     min: 80,
                                     max: 4
                                 },
-                                skills: {
-                                    min: 40,
+                                gifts: {
+                                    min: 0,
                                     max: 4
                                 },
                                 talents: {
@@ -110,8 +110,8 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                                     min: 120,
                                     max: 6
                                 },
-                                skills: {
-                                    min: 65,
+                                gifts: {
+                                    min: 0,
                                     max: 6
                                 },
                                 talents: {
@@ -127,8 +127,8 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                                     min: 120,
                                     max: 6
                                 },
-                                skills: {
-                                    min: 65,
+                                gifts: {
+                                    min: 0,
                                     max: 6
                                 },
                                 talents: {

@@ -74,46 +74,15 @@
         </div>
     </div>
 
-    <div class="skills" formGroupName="skills">
-        <h2 i18n class="skills-title">Skills</h2>
-
-        <div class="skills-wrapper">
-            <div class="skill-melee">
-                <strong i18n>Melee</strong>
-                <input type="number" formControlName="melee" readonly />
-            </div>
-
-            <div class="skill-range">
-                <strong i18n>Range</strong>
-                <input type="number" formControlName="range" readonly />
-            </div>
-
-            <div class="skill-physical">
-                <strong i18n>Physical</strong>
-                <input type="number" formControlName="physical" readonly />
-            </div>
-
-            <div class="skill-mental">
-                <strong i18n>Mental</strong>
-                <input type="number" formControlName="mental" readonly />
-            </div>
-
-            <div class="skill-social">
-                <strong i18n>Social</strong>
-                <input type="number" formControlName="social" readonly />
-            </div>
-        </div>
-    </div>
-
     <div class="gifts">
         <h2 i18n class="gifts-title">Gifts</h2>
 
         <div class="gifts-wrapper">
-            <ng-container *ngFor="let control of giftsForm.controls" [formGroup]="control" >
+            <div *ngFor="let control of giftsForm.controls" [formGroup]="control" >
                 <span class="gift-name">{{ control.value.name }}</span>
                 <span class="gift-level">{{ control.value.level }}</span>
                 <input type="number" class="gift-value" formControlName="value" readonly />
-            </ng-container>
+            </div>
         </div>
     </div>
 
@@ -179,11 +148,6 @@
                 <span>{{ character?.meta?.initValues?.attributes?.min }}/{{ character?.meta?.initValues?.attributes?.max }}</span>
             </div>
 
-            <div class="startvalues-skills">
-                <span i18n>Skills:</span>
-                <span>{{ character?.meta?.initValues?.skills?.min }}/{{ character?.meta?.initValues?.skills?.max }}</span>
-            </div>
-
             <div class="startvalues-talents">
                 <span i18n>Talents:</span>
                 <span>{{ character?.meta?.initValues?.talents?.min }}/{{ character?.meta?.initValues?.talents?.max }}</span>
@@ -204,7 +168,7 @@
         <div class="talents-wrapper">
             <div *ngFor="let control of form.controls" [formGroup]="control" class="talent">
                 <span class="talent-name"><span>{{ control.value.name }}</span></span>
-                <span class="talent-attribute-skill"><small><ng-container *ngIf="control.value.attribute">({{ control.value.attribute }}, {{ control.value.skill || control.value.gift }})</ng-container></small></span>
+                <span class="talent-attributes"><small><ng-container *ngIf="control.value.name && control.value.attributes">({{ control.value.attributes.join(', ') }})</ng-container></small></span>
                 <span class="talent-level"><span>{{ control.value.level }}</span></span>
                 <input type="number" class="talent-value" formControlName="value" readonly />
             </div>
@@ -227,63 +191,39 @@
     <div class="attributes-footer">
         <div class="attributes-footer-wrapper">
             <div class="attributes-footer-strength">
-                <span i18n>Strength:</span>
+                <span i18n>STR:</span>
                 <span>{{ character?.attributes?.strength }}</span>
             </div>
             <div class="attributes-footer-agility">
-                <span i18n>Agility:</span>
+                <span i18n>AGI:</span>
                 <span>{{ character?.attributes?.agility }}</span>
             </div>
             <div class="attributes-footer-dexterity">
-                <span i18n>Dexterity:</span>
+                <span i18n>FF:</span>
                 <span>{{ character?.attributes?.dexterity }}</span>
             </div>
             <div class="attributes-footer-constitution">
-                <span i18n>Konstitution:</span>
+                <span i18n>KO:</span>
                 <span>{{ character?.attributes?.constitution }}</span>
             </div>
             <div class="attributes-footer-courage">
-                <span i18n>Courage:</span>
+                <span i18n>MU:</span>
                 <span>{{ character?.attributes?.courage }}</span>
             </div>
             <div class="attributes-footer-intelligence">
-                <span i18n>Intelligence:</span>
+                <span i18n>KL:</span>
                 <span>{{ character?.attributes?.intelligence }}</span>
             </div>
             <div class="attributes-footer-intuition">
-                <span i18n>Intuition:</span>
+                <span i18n>IN:</span>
                 <span>{{ character?.attributes?.intuition }}</span>
             </div>
             <div class="attributes-footer-charisma">
-                <span i18n>Charisma:</span>
+                <span i18n>CH:</span>
                 <span>{{ character?.attributes?.charisma }}</span>
             </div>
-        </div>
-    </div>
 
-    <div class="skills-gifts-footer">
-        <div class="skills-gifts-footer-wrapper">
-            <div class="skills-gifts-footer-melee">
-                <span i18n>Melee:</span>
-                <span>{{ character?.skills?.melee }}</span>
-            </div>
-            <div class="skills-gifts-footer-range">
-                <span i18n>Range:</span>
-                <span>{{ character?.skills?.range }}</span>
-            </div>
-            <div class="skills-gifts-footer-physical">
-                <span i18n>Physical:</span>
-                <span>{{ character?.skills?.physical }}</span>
-            </div>
-            <div class="skills-gifts-footer-mental">
-                <span i18n>Mental:</span>
-                <span>{{ character?.skills?.mental }}</span>
-            </div>
-            <div class="skills-gifts-footer-social">
-                <span i18n>Social:</span>
-                <span>{{ character?.skills?.social }}</span>
-            </div>
-            <div class="skills-gifts-footer-gift" *ngFor="let gift of character?.gifts">
+            <div class="attributes-footer-gift" *ngFor="let gift of character?.gifts">
                 <span>{{ gift.name }}:</span>
                 <span>{{ gift.value }}</span>
             </div>

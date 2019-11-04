@@ -1,5 +1,5 @@
 import { Inject, inject, Injectable, InjectionToken } from '@angular/core';
-import { ICharacterAttributes, ICharacterSkills, IGift, IAdvantage, ICharacterTalents, ICharacterTalent } from '@jina-draicana/presets';
+import { ICharacterAttributes, IGift, IAdvantage, ICharacterTalents, ICharacterTalent } from '@jina-draicana/presets';
 
 export type Level = 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F'
 
@@ -62,18 +62,6 @@ export abstract class RaiseService {
     getAttributesDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
         return Object.keys(current).reduce((t, attr) => {
             return t + this.getRaiseCosts(current[attr], 'E', { from: previous[attr] });
-        }, 0);
-    }
-
-    getSkillsCosts(skills : ICharacterSkills) : number {
-        return Object.keys(skills).reduce((t, skill) => {
-            return t + this.getRaiseCosts(skills[skill], 'F', { from: 0 });
-        }, 0);
-    }
-
-    getSkillsDiffCosts(current : ICharacterSkills, previous : ICharacterSkills) : number {
-        return Object.keys(current).reduce((t, attr) => {
-            return t + this.getRaiseCosts(current[attr], 'F', { from: previous[attr] });
         }, 0);
     }
 

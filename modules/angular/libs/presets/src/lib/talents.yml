@@ -1,6 +1,8 @@
 name: Raufen
 category: melee
-attribute: STR/AGI
+attributes:
+    - STR
+    - AGI
 skill: N
 level: C
 
@@ -8,7 +10,9 @@ level: C
 
 name: Schilde
 category: melee
-attribute: STR
+attributes:
+    - STR
+    - KO
 skill: N
 level: C
 
@@ -16,7 +20,9 @@ level: C
 
 name: Schwerter
 category: melee
-attribute: STR/AGI
+attributes:
+    - STR
+    - AGI
 skill: N
 level: C
 
@@ -24,7 +30,9 @@ level: C
 
 name: 2H-Schwerter
 category: melee
-attribute: STR
+attributes:
+    - STR
+    - AGI
 skill: N
 level: C
 
@@ -32,7 +40,9 @@ level: C
 
 name: Dolche
 category: melee
-attribute: AGI
+attributes:
+    - AGI
+    - FF
 skill: N
 level: C
 
@@ -40,7 +50,9 @@ level: C
 
 name: Hiebwaffen
 category: melee
-attribute: STR
+attributes:
+    - STR
+    - AGI
 skill: N
 level: C
 
@@ -48,7 +60,9 @@ level: C
 
 name: 2H-Hiebwaffen
 category: melee
-attribute: STR
+attributes:
+    - STR
+    - AGI
 skill: N
 level: C
 
@@ -56,7 +70,9 @@ level: C
 
 name: Werfen
 category: range
-attribute: AGI
+attributes:
+    - AGI
+    - IN
 skill: F
 level: A
 
@@ -64,7 +80,9 @@ level: A
 
 name: Bogen
 category: range
-attribute: AGI
+attributes:
+    - AGI
+    - IN
 skill: F
 level: C
 
@@ -72,7 +90,9 @@ level: C
 
 name: Armbrust
 category: range
-attribute: IN
+attributes:
+    - IN
+    - IN
 skill: F
 level: C
 
@@ -80,7 +100,9 @@ level: C
 
 name: Wurfspeere
 category: range
-attribute: AGI
+attributes:
+    - AGI
+    - IN
 skill: F
 level: C
 
@@ -88,7 +110,9 @@ level: C
 
 name: Menschenkenntnis
 category: social
-attribute: IN
+attributes:
+    - IN
+    - CH
 skill: S
 level: B
 
@@ -96,7 +120,9 @@ level: B
 
 name: Ausstrahlung
 category: social
-attribute: CH
+attributes:
+    - CH
+    - CH
 skill: S
 level: B
 
@@ -104,7 +130,9 @@ level: B
 
 name: Orientierung
 category: mental
-attribute: IN
+attributes:
+    - KL
+    - IN
 skill: G
 level: B
 
@@ -112,7 +140,9 @@ level: B
 
 name: Allgemeinwissen
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - KL
 skill: G
 level: B
 
@@ -120,7 +150,9 @@ level: B
 
 name: Fährtensuche
 category: mental
-attribute: IN
+attributes:
+    - IN
+    - KO
 skill: G
 level: B
 
@@ -128,7 +160,9 @@ level: B
 
 name: Lesen/Schreiben
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - KL
 skill: G
 level: B
 
@@ -136,7 +170,9 @@ level: B
 
 name: Pflanzenkunde
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - IN
 skill: G
 level: B
 
@@ -144,7 +180,9 @@ level: B
 
 name: Tierkunde
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - IN
 skill: G
 level: B
 
@@ -152,7 +190,9 @@ level: B
 
 name: Geographie
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - KL
 skill: G
 level: B
 
@@ -160,7 +200,9 @@ level: B
 
 name: Heraldik
 category: mental
-attribute: KL
+attributes:
+    - KL
+    - KL
 skill: G
 level: B
 
@@ -168,7 +210,9 @@ level: B
 
 name: Überreden
 category: social
-attribute: MU
+attributes:
+    - MU
+    - CH
 skill: S
 level: B
 
@@ -176,7 +220,9 @@ level: B
 
 name: Selbstbeherrschung
 category: mental
-attribute: MU
+attributes:
+    - MU
+    - KO
 skill: G
 level: B
 
@@ -184,7 +230,9 @@ level: B
 
 name: Muttersprache
 category: mental
-attribute: IN
+attributes:
+    - IN
+    - KL
 skill: G
 level: A
 
@@ -192,7 +240,9 @@ level: A
 
 name: Gemeinsprache
 category: mental
-attribute: IN
+attributes:
+    - KL
+    - IN
 skill: G
 level: B
 
@@ -200,7 +250,9 @@ level: B
 
 name: Fremdsprache
 category: mental
-attribute: KL/IN
+attributes:
+    - KL
+    - IN
 skill: G
 level: B
 
@@ -208,7 +260,9 @@ level: B
 
 name: Körperbeherrschung
 category: physical
-attribute: AGI
+attributes:
+    - AGI
+    - KO
 skill: K
 level: B
 
@@ -216,7 +270,9 @@ level: B
 
 name: Klettern
 category: physical
-attribute: STR
+attributes:
+    - AGI
+    - KO
 skill: K
 level: B
 
@@ -224,7 +280,9 @@ level: B
 
 name: Singen
 category: physical
-attribute: CH
+attributes:
+    - CH
+    - IN
 skill: K
 level: A
 
@@ -232,7 +290,9 @@ level: A
 
 name: Tanzen
 category: physical
-attribute: CH
+attributes:
+    - CH
+    - AGI
 skill: K
 level: A
 
@@ -240,7 +300,9 @@ level: A
 
 name: Musizieren
 category: physical
-attribute: FF
+attributes:
+    - FF
+    - IN
 skill: K
 level: A
 
@@ -248,7 +310,9 @@ level: A
 
 name: Malen/Zeichnen
 category: physical
-attribute: FF
+attributes:
+    - FF
+    - IN
 skill: K
 level: B
 
@@ -256,15 +320,19 @@ level: B
 
 name: Kochen
 category: physical
-attribute: FF
+attributes:
+    - FF
+    - KL
 skill: K
 level: A
 
 ---
 
 name: Sinnesschärfe
-category: physical
-attribute: IN/FF
+category: mental
+attributes:
+    - IN
+    - KL
 skill: K
 level: B
 
@@ -272,7 +340,9 @@ level: B
 
 name: Zechen
 category: physical
-attribute: KO
+attributes:
+    - KO
+    - STR
 skill: K
 level: A
 
@@ -280,7 +350,9 @@ level: A
 
 name: Schleichen
 category: physical
-attribute: AGI
+attributes:
+    - AGI
+    - MU
 skill: K
 level: B
 
@@ -288,7 +360,9 @@ level: B
 
 name: Wildnisleben
 category: physical
-attribute: IN/KO
+attributes:
+    - IN
+    - KO
 skill: K/G
 level: B
 
@@ -296,7 +370,9 @@ level: B
 
 name: Erste Hilfe
 category: physical
-attribute: KL/FF
+attributes:
+    - KL
+    - FF
 skill: K/G
 level: B
 
@@ -304,7 +380,9 @@ level: B
 
 name: Feuer
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E
 
@@ -312,7 +390,9 @@ level: E
 
 name: Wasser
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E
 
@@ -320,7 +400,9 @@ level: E
 
 name: Humus
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E
 
@@ -328,7 +410,9 @@ level: E
 
 name: Erz
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E
 
@@ -336,7 +420,9 @@ level: E
 
 name: Luft
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E
 
@@ -344,6 +430,8 @@ level: E
 
 name: Magie
 category: gifts
-attribute: KL
+attributes:
+    - Magie
+    - KL
 gift: Magie
 level: E

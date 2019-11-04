@@ -26,7 +26,7 @@ import {
 } from '../+state/sheet.actions';
 import { selectAllSheets } from '../+state/sheet.reducer';
 import { CharSheetState } from '../+state/state';
-import { CHARACTER_PROVIDER, IncreaseAttributeEvent, IncreaseSkillEvent, IncreaseGiftEvent, IncreaseTalentEvent } from '@jina-draicana/sheet';
+import { CHARACTER_PROVIDER, IncreaseAttributeEvent, IncreaseGiftEvent, IncreaseTalentEvent } from '@jina-draicana/sheet';
 import { WizardDialogComponent } from '../wizard-dialog/wizard-dialog.component';
 import { SelectAdvantageEvent } from 'libs/sheet/src/lib/advantages/advantages.component';
 
@@ -125,13 +125,6 @@ export class SheetComponent implements OnInit {
 
     increaseAttribute(event : IncreaseAttributeEvent, char : ICharacter) {
         char.attributes[event.attribute] = event.value;
-        char.meta.exp.spend += event.costs;
-
-        this.store.dispatch(new UpdateAction(char));
-    }
-
-    increaseSkill(event : IncreaseSkillEvent, char : ICharacter) {
-        char.skills[event.skill] = event.value;
         char.meta.exp.spend += event.costs;
 
         this.store.dispatch(new UpdateAction(char));

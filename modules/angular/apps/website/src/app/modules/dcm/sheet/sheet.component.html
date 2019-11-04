@@ -63,11 +63,6 @@
                         <js-attributes mode="button" [ngModel]="_char.attributes" [budget]="budget | async" (increase)="increaseAttribute($event, _char)"></js-attributes>
                     </ng-template>
                 </mat-tab>
-                <mat-tab i18n-label label="Skills">
-                    <ng-template matTabContent>
-                        <js-skills mode="button" [ngModel]="_char.skills" [budget]="budget | async" (increase)="increaseSkill($event, _char)"></js-skills>
-                    </ng-template>
-                </mat-tab>
                 <mat-tab i18n-label label="Gifts">
                     <ng-template matTabContent>
                         <js-gifts [preset]="_char.meta.preset" mode="button" [ngModel]="_char.gifts" [budget]="budget | async" (increase)="increaseGift($event, _char)"></js-gifts>

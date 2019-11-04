@@ -29,8 +29,7 @@
     <mat-action-list *ngIf="isList | async">
         <button mat-list-item *ngFor="let talent of filteredTalents | async" (click)="submit(talent)" [disabled]="getCosts(talent.level) > budget">
             <span class="name">{{ talent.name }}</span>
-            <span class="attribute">{{talent.attribute}}</span>
-            <span class="skill">{{talent.skill || talent.gift }}</span>
+            <span class="attribute">{{talent.attributes.join(', ')}}</span>
             <span class="level">{{talent.level}} +{{ getCosts(talent.level) }}</span>
         </button>
     </mat-action-list>

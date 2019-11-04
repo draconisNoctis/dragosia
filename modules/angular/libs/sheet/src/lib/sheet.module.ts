@@ -24,16 +24,15 @@ import { GeneralComponent } from './general/general.component';
 import { AddDialogComponent as AddGiftDialogComponent } from './gifts/add-dialog/add-dialog.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { SheetComponent } from './sheet/sheet.component';
-import { SkillsComponent } from './skills/skills.component';
 import { AddDialogComponent as AddTalentDialogComponent } from './talents/add-dialog/add-dialog.component';
 import { TalentsComponent } from './talents/talents.component';
 
 @NgModule({
     imports: [CommonModule, JuiModule, PresetsModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule,
         MatFormFieldModule, MatInputModule, MatDialogModule, MatListModule, MatSelectModule, MatTooltipModule, MatTableModule, MatTabsModule],
-    declarations: [SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent, AdvantagesToStringPipe, ArmorComponent],
+    declarations: [SheetComponent, AttributesComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent, AdvantagesToStringPipe, ArmorComponent],
     entryComponents: [AddGiftDialogComponent, AddTalentDialogComponent],
-    exports: [SheetComponent, AttributesComponent, SkillsComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent, AdvantagesToStringPipe, ArmorComponent]
+    exports: [SheetComponent, AttributesComponent, GiftsComponent, AddGiftDialogComponent, TalentsComponent, AddTalentDialogComponent, GeneralComponent, AdvantagesComponent, AdvantagesToStringPipe, ArmorComponent]
 })
 export class SheetModule {
 }

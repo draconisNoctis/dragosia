@@ -92,6 +92,6 @@ export class AttributesComponent extends AbstractComponent implements ControlVal
     getCostsForNext(type: string) {
         const control = this.form.get(type)!;
 
-        return this.raiseService.getRaiseCosts(control.value + 1, 'E');
+        return this.raiseService.getRaiseCosts(control.value + 1, 'F');
     }
 }

@@ -3,9 +3,9 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulatio
 import { FormControl } from '@angular/forms';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { ICharacterAttributes, ICharacterSkills, Presets } from '@jina-draicana/presets';
-import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
-import { delay, map, shareReplay, tap } from 'rxjs/operators';
+import { ICharacterAttributes, Presets } from '@jina-draicana/presets';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, shareReplay, tap } from 'rxjs/operators';
 
 @Component({
     selector       : 'dw-advantages-disadvantages',
@@ -26,15 +26,15 @@ import { delay, map, shareReplay, tap } from 'rxjs/operators';
 })
 export class AdvantagesDisadvantagesComponent implements OnInit {
     displayedColumns = [ 'type', 'name', 'requirements', 'value' ];
-    
+
     mode : Observable<'ADVANTAGES' | 'DISADVANTAGES'> = this.route.data.pipe(map(d => d.mode));
-    
+
     filterControl = new FormControl();
-    
+
     preset = new BehaviorSubject('dragosia');
-    
+
     init = new BehaviorSubject<[MatSort, MatPaginator]|null>(null);
-    
+
     data = combineLatest(this.mode, this.preset).pipe(
         map(([ mode, preset ]) => mode === 'ADVANTAGES'
             ? this.presets.getAdvantagesForPreset(preset)
@@ -52,9 +52,9 @@ export class AdvantagesDisadvantagesComponent implements OnInit {
             };
         }))
     );
-    
+
     expanded = new Set<string>();
-    
+
     dataSource = combineLatest(
         this.data,
         this.init
@@ -63,61 +63,57 @@ export class AdvantagesDisadvantagesComponent implements OnInit {
             const dataSource = new MatTableDataSource(data);
             dataSource.filterPredicate = (data : any, filter) => {
                 filter = filter.toLowerCase();
-                
+
                 if(data.type.toLowerCase().includes(filter)) {
                     return true;
                 }
-                
+
                 if(data.name.toLowerCase().includes(filter)) {
                     return true;
                 }
-                
+
                 if(data.description.toLowerCase().includes(filter)) {
                     return true;
                 }
-                
+
                 if(data.info && data.info.toLowerCase().includes(filter)) {
                     return true;
                 }
-                
+
                 return false;
             };
-            
+
             if(init) {
                 const [ sort, paginator ] = init;
                 dataSource.sort = sort;
                 dataSource.paginator = paginator;
             }
-            
+
             return dataSource;
         }),
         shareReplay(1)
     );
-    
+
     @ViewChild(MatSort)
     sort!: MatSort;
-    
+
     @ViewChild(MatPaginator)
     paginator!: MatPaginator;
-    
-    
+
+
     constructor(protected readonly route : ActivatedRoute,
                 protected readonly presets : Presets) {
     }
-    
+
     ngOnInit() : void {
         combineLatest(this.dataSource, this.filterControl.valueChanges).pipe(
             tap(([ dataSource, filter ]) => dataSource.filter = filter)
         ).subscribe();
         this.init.next([this.sort, this.paginator]);
     }
-    
-    getSkillNameShort(name : keyof ICharacterSkills) {
-        return this.presets.getSkillNameShort(name);
-    }
-    
+
     getAttributeNameShort(name : keyof ICharacterAttributes) {
         return this.presets.getAttributeNameShort(name);
     }
-    
+
 }

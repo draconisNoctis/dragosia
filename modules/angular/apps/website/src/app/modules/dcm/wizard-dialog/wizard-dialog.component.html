@@ -60,8 +60,8 @@
         </div>
     </mat-step>
 
-    <mat-step [stepControl]="skillsGiftsControl" [formGroup]="skillsGiftsControl" [editable]="true">
-        <ng-template matStepLabel i18n>Skills &amp; Gifts</ng-template>
+    <mat-step [stepControl]="giftsControl" [formGroup]="giftsControl" [editable]="true">
+        <ng-template matStepLabel i18n>Gifts</ng-template>
         <ng-container *ngIf="stepperIndex >= 4">
             <header class="step-header">
                 <span>{{ character?.about?.name }}</span>
@@ -70,19 +70,19 @@
             </header>
 
             <div class="step-content">
-                <h2 i18n>Skills</h2>
+                <!-- <h2 i18n>Skills</h2>
                 <js-skills formControlName="skills" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-skills>
-                <h2 i18n>Gifts</h2>
-                <js-gifts formControlName="gifts" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.skills?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
+                <h2 i18n>Gifts</h2> -->
+                <js-gifts [formControl]="giftsControl" [preset]="settingsControl.value?.preset" [max]="character?.meta?.initValues?.gifts?.max" [budget]="character?.meta?.exp?.total - spend"></js-gifts>
             </div>
 
             <div class="sub step-footer">
                 <button mat-button matStepperPrevious i18n>Previous</button>
 
-                <span [class.valid]="spendForSkills + spendForGifts >= character?.meta?.initValues?.skills?.min"
-                      [class.invalid]="spendForSkills + spendForGifts < character?.meta?.initValues?.skills?.min"><sup>{{ spendForSkills + spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.skills?.min }}</sub></span>
+                <span [class.valid]="spendForGifts >= character?.meta?.initValues?.gifts?.min"
+                      [class.invalid]="spendForGifts < character?.meta?.initValues?.gifts?.min"><sup>{{ spendForGifts }}</sup>/<sub i18n>min {{ character?.meta?.initValues?.gifts?.min }}</sub></span>
 
-                <button mat-button matStepperNext i18n [disabled]="skillsGiftsControl.invalid">Next</button>
+                <button mat-button matStepperNext i18n [disabled]="giftsControl.invalid">Next</button>
             </div>
         </ng-container>
     </mat-step>

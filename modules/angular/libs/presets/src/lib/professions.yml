@@ -12,9 +12,9 @@ cultures:
 talents:
   - nOf:
         - name: Schwerter
-        - name: 3H-Schwerter
+        - name: 2H-Schwerter
         - name: Hiebwaffen
-        - name: 3H-Hiebwaffen
+        - name: 2H-Hiebwaffen
         - name: Dolche
     values:
         - 2

@@ -29,7 +29,7 @@ export class CharacterService {
                         min: 0,
                         max: 0
                     },
-                    skills: {
+                    gifts: {
                         min: 0,
                         max: 0
                     },
@@ -48,9 +48,6 @@ export class CharacterService {
             return char;
         }],
         [4, (char : ICharacter) => {
-            if(null == char.skills.social) {
-                char.skills.social = 0;
-            }
             if(null == char.talents.social) {
                 char.talents.social = [];
             }

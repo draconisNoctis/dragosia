@@ -38,10 +38,10 @@ export class AddDialogComponent {
         map(value => value && value.startsWith('custom-gifts-'))
     );
 
-    customSkillTalentControl = new FormGroup({
+    customTalentControl = new FormGroup({
         name: new FormControl(null, Validators.required),
-        attribute: new FormControl(null, Validators.required),
-        skill: new FormControl(null, Validators.required),
+        attribute1: new FormControl(null, Validators.required),
+        attribute2: new FormControl(null, Validators.required),
         level: new FormControl(null, [Validators.required, ({ value }) => {
             if (value != null && this.getCosts(value) > this.budget) {
                 return { overbudget: true }
@@ -97,12 +97,11 @@ export class AddDialogComponent {
     }
 
     submitCustomSkillTalent() {
-        const { name, attribute, skill, level } = this.customSkillTalentControl.value;
+        const { name, attribute1, attribute2, level } = this.customTalentControl.value;
         const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: this.filter.value.substr(7),
-            skill: skill.join('/'),
-            attribute: attribute.join('/'),
+            attributes: [ attribute1, attribute2 ],
             level: level,
             value: 1
         }
@@ -115,7 +114,7 @@ export class AddDialogComponent {
             name: name,
             category: 'gifts',
             gift: this.filter.value.substr(13),
-            attribute: attribute.join('/'),
+            attributes: [ this.filter.value.substr(13), attribute ],
             level: level,
             value: 1
         }

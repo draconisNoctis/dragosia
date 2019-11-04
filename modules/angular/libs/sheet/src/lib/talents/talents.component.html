@@ -18,8 +18,7 @@
         <div>
             <ng-container *ngFor="let control of form.controls; let index = index" [formGroup]="control">
                 <label class="no-border">{{ control.value.name }}</label>
-                <span>{{ form.value[index].attribute }}</span>
-                <span>{{ form.value[index].skill || form.value[index].gift }}</span>
+                <span>{{ form.value[index].attributes.join(', ') }}</span>
                 <span>{{ form.value[index].level }}</span>
                 <div>
                     <button mat-icon-button (click)="delete(type, index)" *ngIf="mode !== 'button' && form.value[index].value <= 1"><mat-icon>delete</mat-icon></button>

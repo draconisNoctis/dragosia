@@ -1,7 +1,6 @@
 export * from './lib/sheet.module';
 export * from './lib/sheet/sheet.component';
 export * from './lib/attributes/attributes.component';
-export * from './lib/skills/skills.component';
 export * from './lib/gifts/gifts.component';
 export * from './lib/talents/talents.component';
 export * from './lib/factors';

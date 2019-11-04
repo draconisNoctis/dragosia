@@ -1,24 +1,20 @@
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MatHorizontalStepper } from '@angular/material';
 import {
     applyPartials,
     createEmptyCharacter,
     getPartialSelections,
+    IAdvantage,
     ICharacter,
-    ICosts,
+    ICharacterAttributes,
+    ICharacterTalents,
+    IGift,
     ISelectTalents,
     Presets,
-    ICharacterAttributes,
-    ICharacterSkills,
-    IGift,
-    IAdvantage,
-    ICharacterTalents,
-    ICharacterTalent
 } from '@jina-draicana/presets';
-import { FACTOR_ATTRIBUTES, FACTOR_SKILLS, FACTOR_TALENTS, RaiseService } from '@jina-draicana/sheet';
-import { delay, filter } from 'rxjs/operators';
+import { RaiseService } from '@jina-draicana/sheet';
 
 @Component({
     selector       : 'cs-wizard-dialog',
@@ -45,10 +41,7 @@ export class WizardDialogComponent implements OnInit {
 
         return null;
     }]);
-    skillsGiftsControl = new FormGroup({
-        skills: new FormControl(null),
-        gifts : new FormControl(null)
-    });
+    giftsControl = new FormControl(null);
     talentsControl = new FormControl(null, Validators.required);
     advantagesControl = new FormControl(null, [ Validators.required, ({ value}) => {
         if(null == value) {
@@ -74,7 +67,7 @@ export class WizardDialogComponent implements OnInit {
     stepperIndex = 0;
 
     get spend() {
-        return this.spendForAttributes + this.spendForSkills + this.spendForGifts + this.advantageBalance + this.spendForTalents;
+        return this.spendForAttributes + this.spendForGifts + this.advantageBalance + this.spendForTalents;
     }
 
     get spendForAttributes() {
@@ -83,14 +76,6 @@ export class WizardDialogComponent implements OnInit {
         }
 
         return this.attributesCosts(this.character.attributes);
-    }
-
-    get spendForSkills() {
-        if(!this.character) {
-            return 0;
-        }
-
-        return this.skillsCosts(this.character.skills);
     }
 
     get spendForGifts() {
@@ -149,14 +134,9 @@ export class WizardDialogComponent implements OnInit {
             }
         });
 
-        this.skillsGiftsControl.valueChanges.subscribe(value => {
+        this.giftsControl.valueChanges.subscribe(value => {
             if(value && this.character) {
-                if(value.skills) {
-                    this.character.skills = value.skills;
-                }
-                if(value.gifts) {
-                    this.character.gifts = value.gifts;
-                }
+                this.character.gifts = value;
             }
         });
 
@@ -187,14 +167,11 @@ export class WizardDialogComponent implements OnInit {
 
     create() {
         this.character.attributes = this.attributesControl.value;
-        this.character.skills = this.skillsGiftsControl.value.skills;
-        this.character.gifts = this.skillsGiftsControl.value.gifts;
+        this.character.gifts = this.giftsControl.value;
         this.character.talents = this.talentsControl.value;
         this.character.advantages = this.advantagesControl.value.advantages;
         this.character.disadvantages = this.advantagesControl.value.disadvantages;
 
-        // this.character.meta.exp.spend = this.costs.attributes * 4 + this.costs.skills * 2 + this.costs.talents;
-        // this.character.meta.exp.total = this.character.meta.exp.spend + this.budget.talents;
         this.character.meta.exp.spend = this.spend;
 
         console.log(this.character);
@@ -244,12 +221,12 @@ export class WizardDialogComponent implements OnInit {
                     character.about.race = race.name;
                     character.about.culture = culture.name;
                     character.about.profession = profession.name;
-                    const { points, attributes, skills, talents } = this.settingsControl.value.points;
+                    const { points, attributes, gifts, talents } = this.settingsControl.value.points;
                     character.meta.exp = {
                         spend: 0,
                         total: points
                     }
-                    character.meta.initValues = { level: this.settingsControl.value.budget, exp: points, attributes, skills, talents }
+                    character.meta.initValues = { level: this.settingsControl.value.budget, exp: points, attributes, gifts, talents }
                     // character.meta.budget = this.settingsControl.value.budget;
 
                     this.character = character;
@@ -262,10 +239,7 @@ export class WizardDialogComponent implements OnInit {
 
                     // this.budget.attributes = this.settingsControl.value.budget.attributes - this.costs.attributes;
                     this.attributesControl.setValue(this.character.attributes);
-                    this.skillsGiftsControl.setValue({
-                        skills: this.character.skills,
-                        gifts: this.character.gifts
-                    });
+                    this.giftsControl.setValue(this.character.gifts);
                     this.advantagesControl.setValue({
                         advantages: this.character.advantages,
                         disadvantages: this.character.disadvantages
@@ -313,14 +287,6 @@ export class WizardDialogComponent implements OnInit {
 
     protected attributesDiffCosts(current : ICharacterAttributes, previous : ICharacterAttributes) : number {
         return this.raiseService.getAttributesDiffCosts(current, previous);
-    }
-
-    protected skillsCosts(skills : ICharacterSkills) : number {
-        return this.raiseService.getSkillsCosts(skills);
-    }
-
-    protected skillsDiffCosts(current : ICharacterSkills, previous : ICharacterSkills) : number {
-        return this.raiseService.getSkillsDiffCosts(current, previous);
     }
 
     protected giftsCosts(gifts : IGift[]) : number {
