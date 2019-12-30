@@ -21,21 +21,21 @@ export class AddDialogComponent {
     gifts: IGift[];
     budget: number;
 
-    filter = new FormControl('');
+    filter = new FormControl(null);
 
     isList = this.filter.valueChanges.pipe(
         startWith(''),
-        map(value => !value || !value.startsWith('custom'))
+        map(value => !value || value.type !== 'custom')
     );
 
     isCustomSkillTalent = this.filter.valueChanges.pipe(
         startWith(''),
-        map(value => value && value.startsWith('custom-') && !value.startsWith('custom-gifts-'))
+        map(value => value && value.type === 'custom' && value.category)
     );
 
     isCustomGiftTalent = this.filter.valueChanges.pipe(
         startWith(''),
-        map(value => value && value.startsWith('custom-gifts-'))
+        map(value => value && value.type === 'custom' && value.gift)
     );
 
     customTalentControl = new FormGroup({
@@ -62,16 +62,15 @@ export class AddDialogComponent {
     });
 
     filteredTalents = this.filter.valueChanges.pipe(
-        startWith(''),
+        startWith(this.filter.value),
         map(value => {
             if (!value) {
                 return this.talents;
             }
-            if (value.startsWith('gifts')) {
-                const gift = value.substr(6);
-                return this.talents.filter(t => t.gift === gift);
+            if (value.type === 'gift') {
+                return this.talents.filter(t => t.gift === value.gift);
             }
-            return this.talents.filter(t => t.category === value);
+            return this.talents.filter(t => t.category === value.category);
         })
     );
 
@@ -100,7 +99,7 @@ export class AddDialogComponent {
         const { name, attribute1, attribute2, level } = this.customTalentControl.value;
         const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
-            category: this.filter.value.substr(7),
+            category: this.filter.value.category,
             attributes: [ attribute1, attribute2 ],
             level: level,
             value: 1
@@ -113,8 +112,7 @@ export class AddDialogComponent {
         const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: 'gifts',
-            gift: this.filter.value.substr(13),
-            attributes: [ this.filter.value.substr(13), attribute ],
+            attributes: [ this.filter.value.gift, attribute ],
             level: level,
             value: 1
         }
