@@ -28,3 +28,29 @@ talents:
         - name: Hiebwaffen
         - name: 2H-Hiebwaffen
     values: [ 1, 0 ]
+
+---
+
+name: Föderation
+races:
+    - Andorianer
+    - Bajoraner
+    - Benzit
+    - Betazoid
+    - Bolianer
+    - Capellaner
+    - Cardassianer
+    - Deltaner
+    - El-Aurianer
+    - Elaysianer
+    - Ferengi
+    - Jem'Hadar
+    - Kelpianer
+    - Klingonen
+    - Menschen
+    - Orioner
+    - Rigelianer
+    - Tellarianer
+    - Trill
+    - Vulkanier
+    - Zakdornianer

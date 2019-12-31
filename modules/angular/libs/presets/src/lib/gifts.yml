@@ -1,12 +1,33 @@
 name: Magie
+presets: [ 'dragosia' ]
 level: F
 
 ---
 
 name: Gefahreninstinkt
+presets: [ 'dragosia' ]
 level: E
 
 ---
 
 name: Glaube
+presets: [ 'dragosia' ]
 level: D
+
+---
+
+name: Telepathie
+presets: [ 'star-trek' ]
+level: D
+
+---
+
+name: Kontakt-Telepathie
+presets: [ 'star-trek' ]
+level: C
+
+---
+
+name: Empathiesche-Telepatie
+presets: [ 'star-trek' ]
+level: B

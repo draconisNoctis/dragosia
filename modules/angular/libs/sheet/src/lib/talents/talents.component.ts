@@ -36,6 +36,7 @@ export class TalentsComponent extends AbstractComponent implements ControlValueA
     @Input()
     set preset(preset: string) {
         this.talents = this.presets.getTalentsForPreset(preset);
+        console.log(this.talents);
     }
 
     @Input()

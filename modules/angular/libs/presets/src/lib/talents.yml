@@ -1,4 +1,5 @@
 name: Raufen
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -9,6 +10,7 @@ level: C
 ---
 
 name: Schilde
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -19,6 +21,7 @@ level: C
 ---
 
 name: Schwerter
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -29,6 +32,7 @@ level: C
 ---
 
 name: 2H-Schwerter
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -39,6 +43,7 @@ level: C
 ---
 
 name: Dolche
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - AGI
@@ -49,6 +54,7 @@ level: C
 ---
 
 name: Hiebwaffen
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -59,6 +65,7 @@ level: C
 ---
 
 name: 2H-Hiebwaffen
+presets: [ 'dragosia' ]
 category: melee
 attributes:
     - STR
@@ -69,6 +76,7 @@ level: C
 ---
 
 name: Werfen
+presets: [ 'dragosia', 'star-trek' ]
 category: range
 attributes:
     - AGI
@@ -79,6 +87,7 @@ level: A
 ---
 
 name: Bogen
+presets: [ 'dragosia' ]
 category: range
 attributes:
     - AGI
@@ -89,6 +98,7 @@ level: C
 ---
 
 name: Armbrust
+presets: [ 'dragosia' ]
 category: range
 attributes:
     - IN
@@ -99,6 +109,7 @@ level: C
 ---
 
 name: Wurfspeere
+presets: [ 'dragosia' ]
 category: range
 attributes:
     - AGI
@@ -109,6 +120,7 @@ level: C
 ---
 
 name: Menschenkenntnis
+presets: [ 'dragosia', 'star-trek' ]
 category: social
 attributes:
     - IN
@@ -119,6 +131,7 @@ level: B
 ---
 
 name: Ausstrahlung
+presets: [ 'dragosia', 'star-trek' ]
 category: social
 attributes:
     - CH
@@ -129,6 +142,7 @@ level: B
 ---
 
 name: Orientierung
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - KL
@@ -139,6 +153,7 @@ level: B
 ---
 
 name: Allgemeinwissen
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - KL
@@ -149,6 +164,7 @@ level: B
 ---
 
 name: Fährtensuche
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - IN
@@ -159,6 +175,7 @@ level: B
 ---
 
 name: Lesen/Schreiben
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -169,6 +186,7 @@ level: B
 ---
 
 name: Pflanzenkunde
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -179,6 +197,7 @@ level: B
 ---
 
 name: Tierkunde
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -189,6 +208,7 @@ level: B
 ---
 
 name: Geographie
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -199,6 +219,7 @@ level: B
 ---
 
 name: Heraldik
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -209,6 +230,7 @@ level: B
 ---
 
 name: Überreden
+presets: [ 'dragosia', 'star-trek' ]
 category: social
 attributes:
     - MU
@@ -219,6 +241,7 @@ level: B
 ---
 
 name: Selbstbeherrschung
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - MU
@@ -229,6 +252,7 @@ level: B
 ---
 
 name: Muttersprache
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - IN
@@ -239,6 +263,7 @@ level: A
 ---
 
 name: Gemeinsprache
+presets: [ 'dragosia' ]
 category: mental
 attributes:
     - KL
@@ -249,6 +274,7 @@ level: B
 ---
 
 name: Fremdsprache
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - KL
@@ -259,6 +285,7 @@ level: B
 ---
 
 name: Körperbeherrschung
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - AGI
@@ -269,6 +296,7 @@ level: B
 ---
 
 name: Klettern
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - AGI
@@ -279,6 +307,7 @@ level: B
 ---
 
 name: Singen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - CH
@@ -289,6 +318,7 @@ level: A
 ---
 
 name: Tanzen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - CH
@@ -299,6 +329,7 @@ level: A
 ---
 
 name: Musizieren
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - FF
@@ -309,6 +340,7 @@ level: A
 ---
 
 name: Malen/Zeichnen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - FF
@@ -319,6 +351,7 @@ level: B
 ---
 
 name: Kochen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - FF
@@ -329,6 +362,7 @@ level: A
 ---
 
 name: Sinnesschärfe
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes:
     - IN
@@ -339,6 +373,7 @@ level: B
 ---
 
 name: Zechen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - KO
@@ -349,6 +384,7 @@ level: A
 ---
 
 name: Schleichen
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - AGI
@@ -359,6 +395,7 @@ level: B
 ---
 
 name: Wildnisleben
+presets: [ 'dragosia' ]
 category: physical
 attributes:
     - IN
@@ -369,6 +406,7 @@ level: B
 ---
 
 name: Erste Hilfe
+presets: [ 'dragosia', 'star-trek' ]
 category: physical
 attributes:
     - KL
@@ -379,6 +417,7 @@ level: B
 ---
 
 name: Feuer
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
@@ -389,6 +428,7 @@ level: E
 ---
 
 name: Wasser
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
@@ -399,6 +439,7 @@ level: E
 ---
 
 name: Humus
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
@@ -409,6 +450,7 @@ level: E
 ---
 
 name: Erz
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
@@ -419,6 +461,7 @@ level: E
 ---
 
 name: Luft
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
@@ -429,9 +472,45 @@ level: E
 ---
 
 name: Magie
+presets: [ 'dragosia' ]
 category: gifts
 attributes:
     - Magie
     - KL
 gift: Magie
 level: E
+
+---
+
+name: Föderationsstandard
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Nahkampf
+presets: [ 'star-trek' ]
+category: melee
+attributes: [ 'STR', 'AGI' ]
+level: C
+
+---
+
+name: Handphaser
+presets: [ 'star-trek' ]
+category: range
+attributes: [ 'AGI', 'IN' ]
+level: C
+
+---
+
+name: Phasergewehr
+presets: [ 'star-trek' ]
+category: range
+attributes: [ 'AGI', 'IN' ]
+level: C
+
+
+

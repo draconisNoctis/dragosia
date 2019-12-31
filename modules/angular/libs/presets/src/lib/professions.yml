@@ -77,4 +77,34 @@ gifts:
   - name: Glaube
     value: 3
 
+---
+
+name: Kommandooffizier
+cultures: [ 'Föderation' ]
+
+---
+
+name: Wissenschaftsoffizier
+cultures: [ 'Föderation' ]
+
+---
+
+name: Sicherheitsoffizier
+cultures: [ 'Föderation' ]
+talents:
+  - nOf:
+        - name: Nahkampf
+        - name: Handphaser
+    values: [ 2, 1 ]
+
+---
+
+name: Ingenieur
+cultures: [ 'Föderation' ]
+
+---
+
+name: Crewman
+cultures: [ 'Föderation' ]
+
 

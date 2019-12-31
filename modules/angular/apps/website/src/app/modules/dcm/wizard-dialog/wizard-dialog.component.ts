@@ -28,7 +28,7 @@ import { RaiseService } from '@jina-draicana/sheet';
 })
 export class WizardDialogComponent implements OnInit {
     settingsControl = new FormControl(null, Validators.required);
-    backgroundControl = new FormControl({ name: 'Alrik' }, Validators.required);
+    backgroundControl = new FormControl(null, Validators.required);
     selectionsControl = new FormControl({ value: null, disabled: true }, Validators.required);
     attributesControl = new FormControl(null, [ Validators.required, ({ value}) => {
         if(!value) {
@@ -202,6 +202,7 @@ export class WizardDialogComponent implements OnInit {
                     this.selectionsControl.enable();
                     break;
                 } else {
+                    this.stepperIndex = 3;
                     this.selectionsControl.disable();
                 }
             }
@@ -226,6 +227,7 @@ export class WizardDialogComponent implements OnInit {
                         spend: 0,
                         total: points
                     }
+                    character.meta.preset = this.settingsControl.value.preset;
                     character.meta.initValues = { level: this.settingsControl.value.budget, exp: points, attributes, gifts, talents }
                     // character.meta.budget = this.settingsControl.value.budget;
 

@@ -64,6 +64,7 @@ export class AddDialogComponent {
     filteredTalents = this.filter.valueChanges.pipe(
         startWith(this.filter.value),
         map(value => {
+            console.log({ value, talents: this.talents });
             if (!value) {
                 return this.talents;
             }

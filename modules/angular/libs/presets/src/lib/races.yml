@@ -58,3 +58,197 @@ talents:
     - name: Gemeinsprache
       value: 3
 
+---
+
+name: st-base
+abstract: true
+presets: [ 'star-trek' ]
+talents:
+    - name: Föderationsstandard
+      value: 2
+    - name: Muttersprache
+      value: 3
+    - name: Werfen
+      value: 1
+    - name: Körperbeherrschung
+      value: 1
+    - name: Klettern
+      value: 1
+    - name: Singen
+      value: 1
+    - name: Tanzen
+      value: 1
+    - name: Sinnesschärfe
+      value: 1
+    - name: Schleichen
+      value: 1
+    - name: Selbstbeherrschung
+      value: 1
+    - name: Menschenkenntnis
+      value: 1
+    - name: Ausstrahlung
+      value: 1
+    - name: Orientierung
+      value: 1
+    - name: Malen/Zeichnen
+      value: 1
+    - name: Kochen
+      value: 1
+    - name: Allgemeinwissen
+      value: 1
+
+---
+
+name: Andorianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Bajoraner
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Benzit
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+# telepathisch
+name: Betazoid
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+gifts:
+    - name: Telepathie
+      value: 1
+
+---
+
+name: Bolianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Capellaner
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Cardassianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Deltaner
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: El-Aurianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Elaysianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Ferengi
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Jem'Hadar
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Kelpianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Klingonen
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Menschen
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Orioner
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Rigelianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Tellarianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Trill
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Vulkanier
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+gifts:
+    - name: Kontakt-Telepathie
+      value: 1
+
+---
+
+name: Zakdornianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+
