@@ -15,3 +15,4 @@
 
 
 - [**Wahrscheinlichkeitstabelle**](https://draconisnoctis.github.io/dragosia/utils/wahrscheinlichkeiten)
+- [**Steigerungstabelle**](https://draconisnoctis.github.io/dragosia/utils/steigerungstabelle)
