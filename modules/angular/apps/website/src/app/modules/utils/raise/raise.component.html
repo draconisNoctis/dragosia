@@ -1,0 +1,32 @@
+<dw-website-header></dw-website-header>
+
+<div class="content">
+    <mat-card>
+        <mat-card-header>
+            <h1 mat-title i18n>Raise costs</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="table">
+                <ng-container matColumnDef="label">
+                    <th mat-header-cell *matHeaderCellDef>
+                    </th>
+                    <th mat-header-cell *matCellDef="let row">{{ row.to }}</th>
+                </ng-container>
+                <ng-container *ngFor="let level of this.levels; let index = index">
+                    <ng-container [matColumnDef]="level">
+                        <th mat-header-cell *matHeaderCellDef>{{ level }}
+                        </th>
+                        <td mat-cell *matCellDef="let row">
+                            {{ row.costs[level] }}
+                        </td>
+                    </ng-container>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<dw-website-footer></dw-website-footer>

@@ -9,21 +9,24 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
+
 import { ComponentsModule } from '../../components/components.module';
 import { ProbabilityComponent } from './probability/probability.component';
+import { RaiseComponent } from './raise/raise.component';
 
 
 @NgModule({
-    declarations: [ ProbabilityComponent ],
-    imports     : [
+    declarations: [ProbabilityComponent, RaiseComponent],
+    imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forChild([
-            { path: 'wahrscheinlichkeiten', component: ProbabilityComponent }
+            { path: 'wahrscheinlichkeiten', component: ProbabilityComponent },
+            { path: 'steigerungstabelle', component: RaiseComponent }
         ]),
         MatToolbarModule,
         MatIconModule,

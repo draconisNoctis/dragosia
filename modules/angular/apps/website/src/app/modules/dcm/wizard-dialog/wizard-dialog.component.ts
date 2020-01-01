@@ -13,6 +13,9 @@ import {
     IGift,
     ISelectTalents,
     Presets,
+    IRace,
+    ICulture,
+    IProfession,
 } from '@jina-draicana/presets';
 import { RaiseService } from '@jina-draicana/sheet';
 
@@ -208,9 +211,9 @@ export class WizardDialogComponent implements OnInit {
             }
             case 3: {
                 if(event.previouslySelectedIndex < 3) {
-                    const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === this.backgroundControl.value.race) || { name: this.backgroundControl.value.race, presets: [ this.settingsControl.value.preset ]};
-                    const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.name === this.backgroundControl.value.culture) || { name: this.backgroundControl.value.culture, presets: [ this.settingsControl.value.preset ]};
-                    const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.name === this.backgroundControl.value.profession) || { name: this.backgroundControl.value.profession, presets: [ this.settingsControl.value.preset ]};
+                    const race : IRace = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === this.backgroundControl.value.race) || { name: this.backgroundControl.value.race, presets: [ this.settingsControl.value.preset ]};
+                    const culture : ICulture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.name === this.backgroundControl.value.culture) || { name: this.backgroundControl.value.culture, races: [ race.name ]};
+                    const profession : IProfession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.name === this.backgroundControl.value.profession) || { name: this.backgroundControl.value.profession, cultures: [ culture.name ]};
 
                     const character = applyPartials(createEmptyCharacter(), this.raiseService, [
                         race,
