@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatButtonModule,
+    MatCheckboxModule,
     MatCommonModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -16,13 +17,14 @@ import {
     MatStepperModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { PresetsModule } from '@jina-draicana/presets';
 import { SheetModule } from '@jina-draicana/sheet';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+
 import { ComponentsModule } from '../../components/components.module';
 import { SheetEffects } from './+state/sheet.effects';
 import { sheetReducer } from './+state/sheet.reducer';
@@ -31,7 +33,7 @@ import { PrintComponent } from './print/print.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { BackgroundComponent } from './wizard-dialog/steps/background/background.component';
 import { SelectionComponent } from './wizard-dialog/steps/selection/selection.component';
-import { SettingsComponent } from './wizard-dialog/steps/settings/settings.component'
+import { SettingsComponent } from './wizard-dialog/steps/settings/settings.component';
 import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
 
 
@@ -64,6 +66,7 @@ import { WizardDialogComponent } from './wizard-dialog/wizard-dialog.component';
         MatIconModule,
         MatTabsModule,
         MatTooltipModule,
+        MatCheckboxModule,
         StoreModule.forFeature('sheet', sheetReducer),
         EffectsModule.forFeature([ SheetEffects ]),
         ComponentsModule

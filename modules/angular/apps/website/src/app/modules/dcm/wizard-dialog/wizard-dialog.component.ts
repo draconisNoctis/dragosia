@@ -194,7 +194,7 @@ export class WizardDialogComponent implements OnInit {
                     this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === value.race)!,
                     this.presets.getCulturesForRace(value.race).find(c => c.name === value.culture)!,
                     this.presets.getProfessionsForCulture(value.culture).find(p => p.name === value.profession)!
-                ]);
+                ].filter(Boolean));
 
                 this.selections = selections;
 
@@ -208,9 +208,9 @@ export class WizardDialogComponent implements OnInit {
             }
             case 3: {
                 if(event.previouslySelectedIndex < 3) {
-                    const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === this.backgroundControl.value.race)!
-                    const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.name === this.backgroundControl.value.culture)!;
-                    const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.name === this.backgroundControl.value.profession)!;
+                    const race = this.presets.getRacesForPreset(this.settingsControl.value.preset).find(r => r.name === this.backgroundControl.value.race) || { name: this.backgroundControl.value.race, presets: [ this.settingsControl.value.preset ]};
+                    const culture = this.presets.getCulturesForRace(this.backgroundControl.value.race).find(c => c.name === this.backgroundControl.value.culture) || { name: this.backgroundControl.value.culture, presets: [ this.settingsControl.value.preset ]};
+                    const profession = this.presets.getProfessionsForCulture(this.backgroundControl.value.culture).find(p => p.name === this.backgroundControl.value.profession) || { name: this.backgroundControl.value.profession, presets: [ this.settingsControl.value.preset ]};
 
                     const character = applyPartials(createEmptyCharacter(), this.raiseService, [
                         race,

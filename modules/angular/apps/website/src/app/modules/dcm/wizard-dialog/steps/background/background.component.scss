@@ -5,6 +5,11 @@
         display: block;
     }
 
+    .mat-checkbox {
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .hidden {
         display: none;
     }

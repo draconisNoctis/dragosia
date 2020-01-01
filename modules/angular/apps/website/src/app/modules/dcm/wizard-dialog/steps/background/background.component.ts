@@ -37,41 +37,45 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
     set preset(preset : string) {
         this.races = this.presets.getRacesForPreset(preset);
     }
-    
+
     @Output()
     next = new EventEmitter<void>();
-    
+
     @ViewChild('submit')
     submitButton : ElementRef<HTMLButtonElement>;
-    
+
     races? : IRace[];
     cultures? : ICulture[];
     professions? : IProfession[];
-    
+
+    customRace = false;
+    customCulture = false;
+    customProfession = false;
+
     form = new FormGroup({
         name      : new FormControl(null, Validators.required),
         race      : new FormControl(null, Validators.required),
         culture   : new FormControl({ value: null, disabled: true }, Validators.required),
         profession: new FormControl({ value: null, disabled: true }, Validators.required)
     });
-    
+
     subscription = Subscription.EMPTY;
-    
+
     constructor(protected readonly presets : Presets) {
     }
-    
+
     ngOnInit() {
         const race = this.form.get('race')!;
         const culture = this.form.get('culture')!;
         const profession = this.form.get('profession')!;
-        
+
         race.valueChanges.pipe(
             startWith(race.value)
         ).subscribe(value => {
             if(value) {
                 culture.enable();
                 this.cultures = this.presets.getCulturesForRace(value);
-                
+
                 if(!this.cultures.some(c => c.name === culture.value)) {
                     culture.reset();
                 }
@@ -80,14 +84,14 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
                 this.cultures = undefined;
             }
         });
-        
+
         culture.valueChanges.pipe(
             startWith(culture.value)
         ).subscribe(value => {
             if(value) {
                 profession.enable();
                 this.professions = this.presets.getProfessionsForCulture(value);
-                
+
                 if(!this.professions.some(p => p.name === profession.value)) {
                     profession.reset();
                 }
@@ -97,11 +101,11 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             }
         });
     }
-    
+
     submit() {
         this.submitButton.nativeElement.click();
     }
-    
+
     registerOnChange(fn : any) : void {
         this.subscription.unsubscribe();
         this.subscription = combineLatest(
@@ -117,10 +121,10 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
                 }
             });
     }
-    
+
     registerOnTouched(fn : any) : void {
     }
-    
+
     setDisabledState(isDisabled : boolean) : void {
         if(isDisabled) {
             this.form.disable();
@@ -128,7 +132,7 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             this.form.enable();
         }
     }
-    
+
     writeValue(obj : any) : void {
         if(obj) {
             this.form.patchValue(obj);
@@ -136,5 +140,5 @@ export class BackgroundComponent implements OnInit, ControlValueAccessor {
             this.form.reset();
         }
     }
-    
+
 }

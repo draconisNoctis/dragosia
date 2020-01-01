@@ -1,36 +1,45 @@
-<form [formGroup]="form">
-    <mat-form-field>
+<form>
+    <mat-form-field [formGroup]="form">
         <input matInput formControlName="name" i18n-placeholder placeholder="Name" />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field [formGroup]="form">
         <mat-select
             i18n-placeholder
             placeholder="Race"
             formControlName="race"
+            *ngIf="!customRace"
         >
             <mat-option *ngFor="let race of races" [value]="race.name">{{ race.name }}</mat-option>
         </mat-select>
+        <input matInput *ngIf="customRace" placeholder="Race" formControlName="race">
     </mat-form-field>
+    <mat-checkbox [(ngModel)]="customRace" [ngModelOptions]="{ standalone: true }" i18n>Custom</mat-checkbox>
 
-    <mat-form-field>
+    <mat-form-field [formGroup]="form">
         <mat-select
             i18n-placeholder
             placeholder="Culture"
             formControlName="culture"
+            *ngIf="!customRace && !customCulture"
         >
             <mat-option *ngFor="let culture of cultures" [value]="culture.name">{{ culture.name }}</mat-option>
         </mat-select>
+        <input matInput *ngIf="customRace || customCulture" placeholder="Culture" formControlName="culture">
     </mat-form-field>
+    <mat-checkbox [(ngModel)]="customCulture" [ngModelOptions]="{ standalone: true }"  [disabled]="customRace" i18n>Custom</mat-checkbox>
 
-    <mat-form-field>
+    <mat-form-field [formGroup]="form">
         <mat-select
             i18n-placeholder
             placeholder="Profession"
             formControlName="profession"
+            *ngIf="!customRace && !customCulture && !customProfession"
         >
             <mat-option *ngFor="let profession of professions" [value]="profession.name">{{ profession.name }}</mat-option>
         </mat-select>
+        <input matInput *ngIf="customRace || customCulture || customProfession" placeholder="Profession" formControlName="profession">
     </mat-form-field>
+    <mat-checkbox [(ngModel)]="customProfession" [ngModelOptions]="{ standalone: true }"  [disabled]="customRace || customCulture" i18n>Custom</mat-checkbox>
 
     <button #submit class="hidden"></button>
 </form>
