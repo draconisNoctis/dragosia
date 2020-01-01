@@ -52,12 +52,10 @@
   <translation id="1616102757855967475">Alle</translation>
   <translation id="1806667489382256324">Kategorie</translation>
   <translation id="1650073357556875190">Eigenschaft</translation>
-  <translation id="6387879863897234206">Fähigkeit</translation>
   <translation id="4930506384627295710">Einstellungen</translation>
   <translation id="3885497195825665706">Weiter</translation>
   <translation id="4531310590867542081">Hintergrund</translation>
   <translation id="2257050785343808305">Auswahl</translation>
-  <translation id="6846241822886534943">Fähigkeiten &amp; Gaben</translation>
   <translation id="6489414246802244883">Talente</translation>
   <translation id="5674286808255988565">Erstellen</translation>
   <translation id="7505371262892780592">Neuer Charakter</translation>
@@ -152,20 +150,7 @@
   <translation id="7420289231407832388">Stufe:</translation>
   <translation id="5398088090953921995">EP:</translation>
   <translation id="3357373313192101894">Eigenschaften:</translation>
-  <translation id="4035216763011917088">Fähigkeiten:</translation>
   <translation id="4289820552141034838">Talente:</translation>
-  <translation id="3911168411013507401">Stärke:</translation>
-  <translation id="70691223176566691">Beweglichkeit:</translation>
-  <translation id="7412661725452265500">Fingerfertigkeit:</translation>
-  <translation id="4884181322945494185">Konstitution:</translation>
-  <translation id="360699542594961283">Mut:</translation>
-  <translation id="8666876207219213961">Klugheit:</translation>
-  <translation id="180550560139118199">Intuition:</translation>
-  <translation id="4283278276769221377">Charisma:</translation>
-  <translation id="6123173845003437743">Nahkampf:</translation>
-  <translation id="346432286206022265">Fernkampf:</translation>
-  <translation id="8969498876442396567">Körperlich:</translation>
-  <translation id="4940423429064955896">Geistig:</translation>
   <translation id="6583204503140018315">Rüstung</translation>
   <translation id="4161176881257288804">Kopf</translation>
   <translation id="3425114984623914347">Brust</translation>
@@ -186,7 +171,6 @@
   <translation id="8999284073934392732">Login with Google</translation>
   <translation id="3301086086650990787">Registrieren</translation>
   <translation id="3778143906468247656">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.attributes?.min }}</ex>{{ character?.meta?.initValues?.attributes?.min }}</ph></translation>
-  <translation id="1093760007115601051">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.skills?.min }}</ex>{{ character?.meta?.initValues?.skills?.min }}</ph></translation>
   <translation id="5267883188461125987">Erfahrungspunkte</translation>
   <translation id="1473831794569825533">EP Hinzufügen</translation>
   <translation id="2906587845957718064">Lokal</translation>
@@ -197,9 +181,20 @@
   <translation id="6416481670338790092">Max pro Fähigkeit</translation>
   <translation id="755847152758185242">Max pro Talent</translation>
   <translation id="4579496777570550463">Sozial</translation>
-  <translation id="206277424835658439">Sozial:</translation>
   <translation id="1804004049756063163">Spezialisierung (optional)</translation>
   <translation id="4be06a67a260eb987672b61be425914f5f451369">Sozial</translation>
   <translation id="0fff41707b519e7fec578fc5c6baddd224add4b0" meaning="short">Sozial</translation>
   <translation id="3744731496992153188">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.talents?.min }}</ex>{{ character?.meta?.initValues?.talents?.min }}</ph></translation>
+  <translation id="8069433498468835980">STR:</translation>
+  <translation id="7489627574907629358">AGI:</translation>
+  <translation id="5609903908435861776">FF:</translation>
+  <translation id="3079885176878132013">KO:</translation>
+  <translation id="185759454086421107">MU:</translation>
+  <translation id="3011644554536754841">KL:</translation>
+  <translation id="2513880304092132070">IN:</translation>
+  <translation id="5396763014640804211">CH:</translation>
+  <translation id="2071822230446050659">Attribut 1</translation>
+  <translation id="7826198913456651979">Attribut 2</translation>
+  <translation id="4130931299231756278">min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.gifts?.min }}</ex>{{ character?.meta?.initValues?.gifts?.min }}</ph></translation>
+  <translation id="532891581208049200">Steigerungstabelle</translation>
 </translationbundle>

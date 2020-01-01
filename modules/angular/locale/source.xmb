@@ -21,11 +21,11 @@
 <!ELEMENT ex (#PCDATA)>
 ]>
 <messagebundle>
-  <msg id="8235775649619498299"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:3</source><source>src/app/modules/dcm/sheet/sheet.component.html:81</source>Character Sheet</msg>
-  <msg id="8953033926734869941"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:39</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:74</source><source>../../libs/sheet/src/lib/general/general.component.html:4</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:25</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:59</source><source>../../libs/sheet/src/lib/armor/armor.component.html:3</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:333</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:355</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:3</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:21</source>Name</msg>
+  <msg id="8235775649619498299"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:3</source><source>src/app/modules/dcm/sheet/sheet.component.html:76</source>Character Sheet</msg>
+  <msg id="8953033926734869941"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:38</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:78</source><source>../../libs/sheet/src/lib/general/general.component.html:4</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:25</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:59</source><source>../../libs/sheet/src/lib/armor/armor.component.html:3</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:273</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:295</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:3</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:21</source>Name</msg>
   <msg id="1679869148678530261"><source>../../libs/sheet/src/lib/general/general.component.html:7</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:11</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:8</source>Race</msg>
-  <msg id="79936206013046129"><source>../../libs/sheet/src/lib/general/general.component.html:10</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:16</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:18</source>Culture</msg>
-  <msg id="4846236882408369646"><source>../../libs/sheet/src/lib/general/general.component.html:13</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:21</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:28</source>Profession</msg>
+  <msg id="79936206013046129"><source>../../libs/sheet/src/lib/general/general.component.html:10</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:16</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:21</source>Culture</msg>
+  <msg id="4846236882408369646"><source>../../libs/sheet/src/lib/general/general.component.html:13</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:21</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:34</source>Profession</msg>
   <msg id="4902817035128594900"><source>../../libs/sheet/src/lib/general/general.component.html:16</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:27</source>Description</msg>
   <msg id="8008131619909556709"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:32</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:41</source><source>src/app/modules/dcm/sheet/sheet.component.html:61</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:41</source>Attributes</msg>
   <msg id="6632040223751981101"><source>../../libs/sheet/src/lib/attributes/attributes.component.html:3</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:36</source>Strength</msg>
@@ -36,72 +36,66 @@
   <msg id="8489670130200267808"><source>../../libs/sheet/src/lib/attributes/attributes.component.html:33</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:61</source>Intelligence</msg>
   <msg id="7458174081002220540"><source>../../libs/sheet/src/lib/attributes/attributes.component.html:39</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:66</source>Intuition</msg>
   <msg id="6828638344650593860"><source>../../libs/sheet/src/lib/attributes/attributes.component.html:45</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:71</source>Charisma</msg>
-  <msg id="4342625008558026850"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:78</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:73</source><source>src/app/modules/dcm/sheet/sheet.component.html:66</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:67</source>Skills</msg>
-  <msg id="1637444068586569722"><source>../../libs/sheet/src/lib/skills/skills.component.html:3</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:18</source><source>../../libs/sheet/src/lib/talents/talents.component.html:2</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:82</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:197</source>Melee</msg>
-  <msg id="2348971518300945764"><source>../../libs/sheet/src/lib/skills/skills.component.html:9</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:19</source><source>../../libs/sheet/src/lib/talents/talents.component.html:4</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:87</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:198</source>Range</msg>
-  <msg id="337101541139237513"><source>../../libs/sheet/src/lib/skills/skills.component.html:15</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:20</source><source>../../libs/sheet/src/lib/talents/talents.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:92</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:199</source>Physical</msg>
-  <msg id="8530621156729135816"><source>../../libs/sheet/src/lib/skills/skills.component.html:21</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:21</source><source>../../libs/sheet/src/lib/talents/talents.component.html:8</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:97</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:200</source>Mental</msg>
-  <msg id="4579496777570550463"><source>../../libs/sheet/src/lib/skills/skills.component.html:27</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:12</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:22</source><source>../../libs/sheet/src/lib/talents/talents.component.html:10</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:102</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:201</source>Social</msg>
-  <msg id="512999736698594700"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:14</source><source>../../libs/sheet/src/lib/talents/talents.component.html:12</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:109</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:202</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:75</source><source>src/app/modules/dcm/sheet/sheet.component.html:71</source>Gifts</msg>
-  <msg id="8866410934216748920"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:21</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:121</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:6</source>Advantages</msg>
-  <msg id="6213989057085085654"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:55</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:127</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:7</source>Disadvantages</msg>
-  <msg id="5701499858274742084"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:133</source>Financials</msg>
-  <msg id="3010057485486897763"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:139</source>Inventory</msg>
-  <msg id="4174151378350489191"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:145</source>Experiencepoints</msg>
-  <msg id="7349530031233006058"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:149</source>Total:</msg>
-  <msg id="681336602899750583"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:153</source>Spend:</msg>
-  <msg id="1837512975551949198"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:157</source>Balance:</msg>
-  <msg id="4964921936751632398"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:164</source>Startvalues</msg>
-  <msg id="7420289231407832388"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:168</source>Level:</msg>
-  <msg id="5398088090953921995"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:173</source>Exp:</msg>
-  <msg id="3357373313192101894"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:178</source>Attributes:</msg>
-  <msg id="4035216763011917088"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:183</source>Skills:</msg>
-  <msg id="4289820552141034838"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:188</source>Talents:</msg>
-  <msg id="6312631703574843161"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:217</source>Talent Sheet</msg>
-  <msg id="3911168411013507401"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:230</source>Strength:</msg>
-  <msg id="70691223176566691"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:234</source>Agility:</msg>
-  <msg id="7412661725452265500"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:238</source>Dexterity:</msg>
-  <msg id="4884181322945494185"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:242</source>Konstitution:</msg>
-  <msg id="360699542594961283"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:246</source>Courage:</msg>
-  <msg id="8666876207219213961"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:250</source>Intelligence:</msg>
-  <msg id="180550560139118199"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:254</source>Intuition:</msg>
-  <msg id="4283278276769221377"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:258</source>Charisma:</msg>
-  <msg id="6123173845003437743"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:267</source>Melee:</msg>
-  <msg id="346432286206022265"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:271</source>Range:</msg>
-  <msg id="8969498876442396567"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:275</source>Physical:</msg>
-  <msg id="4940423429064955896"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:279</source>Mental:</msg>
-  <msg id="206277424835658439"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:283</source>Social:</msg>
-  <msg id="555084565084867462"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:296</source>Equipment Sheet</msg>
-  <msg id="7595930936671323978"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:299</source>Equipment</msg>
-  <msg id="6583204503140018315"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:305</source><source>src/app/modules/dcm/sheet/sheet.component.html:50</source>Armor</msg>
-  <msg id="4161176881257288804"><source>../../libs/sheet/src/lib/armor/armor.component.html:17</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:308</source>Head</msg>
-  <msg id="3425114984623914347"><source>../../libs/sheet/src/lib/armor/armor.component.html:31</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:310</source>Chest</msg>
-  <msg id="8890553633144307762"><source>../../libs/sheet/src/lib/armor/armor.component.html:45</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:312</source>Back</msg>
-  <msg id="2746410509874991085"><source>../../libs/sheet/src/lib/armor/armor.component.html:59</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:314</source>Left Arm</msg>
-  <msg id="9162525179370776071"><source>../../libs/sheet/src/lib/armor/armor.component.html:73</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:316</source>Right Arm</msg>
-  <msg id="34154738655756832"><source>../../libs/sheet/src/lib/armor/armor.component.html:87</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:318</source>Left Leg</msg>
-  <msg id="8348417411026662960"><source>../../libs/sheet/src/lib/armor/armor.component.html:101</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:320</source>Right Leg</msg>
-  <msg id="4269127934271347575"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:330</source>Melee Weapons</msg>
-  <msg id="8650499415827640724"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:5</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:334</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:356</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:16</source>Type</msg>
-  <msg id="3675298821422143312"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:335</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:357</source>Attr.</msg>
-  <msg id="8927075220582389378"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:336</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:359</source>AT</msg>
-  <msg id="3229995205437916259"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:337</source>PA</msg>
-  <msg id="5034984824056492965"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:338</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:360</source>Dmg</msg>
-  <msg id="3212248032259955065"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:352</source>Range Weapons</msg>
-  <msg id="8197642571840924882" meaning="distance"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:358</source>Range</msg>
+  <msg id="512999736698594700"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:14</source><source>../../libs/sheet/src/lib/talents/talents.component.html:12</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:78</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:166</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:64</source><source>src/app/modules/dcm/sheet/sheet.component.html:66</source>Gifts</msg>
+  <msg id="8866410934216748920"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:21</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:90</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:6</source>Advantages</msg>
+  <msg id="6213989057085085654"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:55</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:96</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:7</source>Disadvantages</msg>
+  <msg id="5701499858274742084"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:102</source>Financials</msg>
+  <msg id="3010057485486897763"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:108</source>Inventory</msg>
+  <msg id="4174151378350489191"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:114</source>Experiencepoints</msg>
+  <msg id="7349530031233006058"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:118</source>Total:</msg>
+  <msg id="681336602899750583"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:122</source>Spend:</msg>
+  <msg id="1837512975551949198"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:126</source>Balance:</msg>
+  <msg id="4964921936751632398"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:133</source>Startvalues</msg>
+  <msg id="7420289231407832388"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:137</source>Level:</msg>
+  <msg id="5398088090953921995"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:142</source>Exp:</msg>
+  <msg id="3357373313192101894"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:147</source>Attributes:</msg>
+  <msg id="4289820552141034838"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:152</source>Talents:</msg>
+  <msg id="1637444068586569722"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:8</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:18</source><source>../../libs/sheet/src/lib/talents/talents.component.html:2</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:161</source>Melee</msg>
+  <msg id="2348971518300945764"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:9</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:19</source><source>../../libs/sheet/src/lib/talents/talents.component.html:4</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:162</source>Range</msg>
+  <msg id="337101541139237513"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:10</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:20</source><source>../../libs/sheet/src/lib/talents/talents.component.html:6</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:163</source>Physical</msg>
+  <msg id="8530621156729135816"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:11</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:21</source><source>../../libs/sheet/src/lib/talents/talents.component.html:8</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:164</source>Mental</msg>
+  <msg id="4579496777570550463"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:12</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:22</source><source>../../libs/sheet/src/lib/talents/talents.component.html:10</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:165</source>Social</msg>
+  <msg id="6312631703574843161"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:181</source>Talent Sheet</msg>
+  <msg id="8069433498468835980"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:194</source>STR:</msg>
+  <msg id="7489627574907629358"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:198</source>AGI:</msg>
+  <msg id="5609903908435861776"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:202</source>FF:</msg>
+  <msg id="3079885176878132013"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:206</source>KO:</msg>
+  <msg id="185759454086421107"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:210</source>MU:</msg>
+  <msg id="3011644554536754841"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:214</source>KL:</msg>
+  <msg id="2513880304092132070"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:218</source>IN:</msg>
+  <msg id="5396763014640804211"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:222</source>CH:</msg>
+  <msg id="555084565084867462"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:236</source>Equipment Sheet</msg>
+  <msg id="7595930936671323978"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:239</source>Equipment</msg>
+  <msg id="6583204503140018315"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:245</source><source>src/app/modules/dcm/sheet/sheet.component.html:50</source>Armor</msg>
+  <msg id="4161176881257288804"><source>../../libs/sheet/src/lib/armor/armor.component.html:17</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:248</source>Head</msg>
+  <msg id="3425114984623914347"><source>../../libs/sheet/src/lib/armor/armor.component.html:31</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:250</source>Chest</msg>
+  <msg id="8890553633144307762"><source>../../libs/sheet/src/lib/armor/armor.component.html:45</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:252</source>Back</msg>
+  <msg id="2746410509874991085"><source>../../libs/sheet/src/lib/armor/armor.component.html:59</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:254</source>Left Arm</msg>
+  <msg id="9162525179370776071"><source>../../libs/sheet/src/lib/armor/armor.component.html:73</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:256</source>Right Arm</msg>
+  <msg id="34154738655756832"><source>../../libs/sheet/src/lib/armor/armor.component.html:87</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:258</source>Left Leg</msg>
+  <msg id="8348417411026662960"><source>../../libs/sheet/src/lib/armor/armor.component.html:101</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:260</source>Right Leg</msg>
+  <msg id="4269127934271347575"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:270</source>Melee Weapons</msg>
+  <msg id="8650499415827640724"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:5</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:274</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:296</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:16</source>Type</msg>
+  <msg id="3675298821422143312"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:275</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:297</source>Attr.</msg>
+  <msg id="8927075220582389378"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:276</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:299</source>AT</msg>
+  <msg id="3229995205437916259"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:277</source>PA</msg>
+  <msg id="5034984824056492965"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:278</source><source>../../libs/sheet/src/lib/sheet/sheet.component.html:300</source>Dmg</msg>
+  <msg id="3212248032259955065"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:292</source>Range Weapons</msg>
+  <msg id="8197642571840924882" meaning="distance"><source>../../libs/sheet/src/lib/sheet/sheet.component.html:298</source>Range</msg>
   <msg id="609533585549478126"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:1</source><source>../../libs/sheet/src/lib/gifts/gifts.component.html:22</source>Add Gift</msg>
   <msg id="1885431055843179051"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:6</source>Defined</msg>
-  <msg id="7590013429208346303"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:7</source><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:20</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:17</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:22</source>Custom</msg>
-  <msg id="3733215288982610673"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:23</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:62</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:89</source>Level</msg>
-  <msg id="3249513483374643425"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:36</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:102</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:103</source><source>../../libs/sheet/src/lib/armor/armor.component.html:124</source>Add</msg>
-  <msg id="689108718708204237"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:1</source><source>../../libs/sheet/src/lib/talents/talents.component.html:36</source>Add Talent</msg>
+  <msg id="7590013429208346303"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:7</source><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:20</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:17</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:22</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:16</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:29</source><source>src/app/modules/dcm/wizard-dialog/steps/background/background.component.html:42</source>Custom</msg>
+  <msg id="3733215288982610673"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:23</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:65</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:93</source>Level</msg>
+  <msg id="3249513483374643425"><source>../../libs/sheet/src/lib/gifts/add-dialog/add-dialog.component.html:36</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:106</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:107</source><source>../../libs/sheet/src/lib/armor/armor.component.html:124</source>Add</msg>
+  <msg id="689108718708204237"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:1</source><source>../../libs/sheet/src/lib/talents/talents.component.html:35</source>Add Talent</msg>
   <msg id="1616102757855967475"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:6</source>All</msg>
-  <msg id="6489414246802244883"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:115</source><source>src/app/modules/dcm/sheet/sheet.component.html:76</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:93</source>Talents</msg>
+  <msg id="6489414246802244883"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:7</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:115</source><source>src/app/modules/dcm/sheet/sheet.component.html:71</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:93</source>Talents</msg>
   <msg id="1806667489382256324"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:5</source>Category</msg>
-  <msg id="1650073357556875190"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:42</source><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:77</source>Attribute</msg>
-  <msg id="6387879863897234206"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:54</source>Skill</msg>
+  <msg id="2071822230446050659"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:41</source>Attribute 1</msg>
+  <msg id="7826198913456651979"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:53</source>Attribute 2</msg>
+  <msg id="1650073357556875190"><source>../../libs/sheet/src/lib/talents/add-dialog/add-dialog.component.html:81</source>Attribute</msg>
   <msg id="1804004049756063163"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:28</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:62</source>Specialization (optional)</msg>
-  <msg id="6555318547274416232"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:31</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:65</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:43</source>Value</msg>
+  <msg id="6555318547274416232"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:31</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:65</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:40</source>Value</msg>
   <msg id="4041129587394796892"><source>../../libs/sheet/src/lib/advantages/advantages.component.html:43</source><source>../../libs/sheet/src/lib/advantages/advantages.component.html:77</source>Specialization</msg>
   <msg id="4739818603756173797"><source>../../libs/sheet/src/lib/armor/armor.component.html:5</source>Summary</msg>
   <msg id="2531977296090514579"><source>../../libs/sheet/src/lib/armor/armor.component.html:130</source>tAR</msg>
@@ -151,8 +145,7 @@
   <msg id="4452427314943113135"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:22</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:35</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:54</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:80</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:104</source><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:128</source>Previous</msg>
   <msg id="2257050785343808305"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:28</source>Selections</msg>
   <msg id="3778143906468247656"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:57</source>min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.attributes?.min }}</ex>{{ character?.meta?.initValues?.attributes?.min }}</ph></msg>
-  <msg id="6846241822886534943"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:64</source>Skills &amp; Gifts</msg>
-  <msg id="1093760007115601051"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:83</source>min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.skills?.min }}</ex>{{ character?.meta?.initValues?.skills?.min }}</ph></msg>
+  <msg id="4130931299231756278"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:83</source>min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.gifts?.min }}</ex>{{ character?.meta?.initValues?.gifts?.min }}</ph></msg>
   <msg id="8679962642627293685"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:91</source>Advantages &amp; Disadvantages</msg>
   <msg id="3744731496992153188"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:131</source>min <ph name="INTERPOLATION"><ex>{{ character?.meta?.initValues?.talents?.min }}</ex>{{ character?.meta?.initValues?.talents?.min }}</ph></msg>
   <msg id="5674286808255988565"><source>src/app/modules/dcm/wizard-dialog/wizard-dialog.component.html:133</source>Create</msg>
@@ -163,17 +156,17 @@
   <msg id="1473831794569825533"><source>src/app/modules/dcm/sheet/sheet.component.html:40</source>Add Exp</msg>
   <msg id="6439365426343089851"><source>src/app/modules/dcm/sheet/sheet.component.html:24</source>General</msg>
   <msg id="5402042915276684474"><source>src/app/modules/dcm/sheet/sheet.component.html:56</source>Advantages/Disadvantages</msg>
-  <msg id="7505371262892780592"><source>src/app/modules/dcm/sheet/sheet.component.html:96</source>New Character</msg>
-  <msg id="6948665149717579872"><source>src/app/modules/dcm/sheet/sheet.component.html:100</source>Import Character</msg>
-  <msg id="4319441956121197474"><source>src/app/modules/dcm/sheet/sheet.component.html:106</source>Save Changes</msg>
-  <msg id="3924199801748884105"><source>src/app/modules/dcm/sheet/sheet.component.html:110</source>Discard Changes</msg>
-  <msg id="3361286106724929890"><source>src/app/modules/dcm/sheet/sheet.component.html:114</source><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
-  <msg id="5411931426354196722"><source>src/app/modules/dcm/sheet/sheet.component.html:118</source>Export Character</msg>
-  <msg id="7103588127254721505"><source>src/app/modules/dcm/sheet/sheet.component.html:123</source>Theme</msg>
-  <msg id="8257364975276272655"><source>src/app/modules/dcm/sheet/sheet.component.html:127</source>Presentation Mode</msg>
-  <msg id="7049887240439736400"><source>src/app/modules/dcm/sheet/sheet.component.html:131</source>Print</msg>
-  <msg id="2906587845957718064"><source>src/app/modules/dcm/sheet/sheet.component.html:137</source><source>src/app/modules/dcm/sheet/sheet.component.html:143</source>Local</msg>
-  <msg id="2188854519574316630"><source>src/app/modules/dcm/sheet/sheet.component.html:138</source><source>src/app/modules/dcm/sheet/sheet.component.html:147</source>Server</msg>
+  <msg id="7505371262892780592"><source>src/app/modules/dcm/sheet/sheet.component.html:91</source>New Character</msg>
+  <msg id="6948665149717579872"><source>src/app/modules/dcm/sheet/sheet.component.html:95</source>Import Character</msg>
+  <msg id="4319441956121197474"><source>src/app/modules/dcm/sheet/sheet.component.html:101</source>Save Changes</msg>
+  <msg id="3924199801748884105"><source>src/app/modules/dcm/sheet/sheet.component.html:105</source>Discard Changes</msg>
+  <msg id="3361286106724929890"><source>src/app/modules/dcm/sheet/sheet.component.html:109</source><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:1</source>Delete Character</msg>
+  <msg id="5411931426354196722"><source>src/app/modules/dcm/sheet/sheet.component.html:113</source>Export Character</msg>
+  <msg id="7103588127254721505"><source>src/app/modules/dcm/sheet/sheet.component.html:118</source>Theme</msg>
+  <msg id="8257364975276272655"><source>src/app/modules/dcm/sheet/sheet.component.html:122</source>Presentation Mode</msg>
+  <msg id="7049887240439736400"><source>src/app/modules/dcm/sheet/sheet.component.html:126</source>Print</msg>
+  <msg id="2906587845957718064"><source>src/app/modules/dcm/sheet/sheet.component.html:132</source><source>src/app/modules/dcm/sheet/sheet.component.html:138</source>Local</msg>
+  <msg id="2188854519574316630"><source>src/app/modules/dcm/sheet/sheet.component.html:133</source><source>src/app/modules/dcm/sheet/sheet.component.html:142</source>Server</msg>
   <msg id="6333857424161463201"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:5</source>Preset</msg>
   <msg id="5754117841832798663"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:18</source>Beginner</msg>
   <msg id="3080483882937310852"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:19</source>Normal</msg>
@@ -183,30 +176,32 @@
   <msg id="5254622645701859101"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:36</source>Points</msg>
   <msg id="7028030735690498025"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:50</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:76</source><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:102</source>Min Points Spend</msg>
   <msg id="606247634268321201"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:61</source>Max per Attribute</msg>
+  <msg id="4342625008558026850"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:67</source>Skills</msg>
   <msg id="6416481670338790092"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:87</source>Max per Skill</msg>
   <msg id="755847152758185242"><source>src/app/modules/dcm/wizard-dialog/steps/settings/settings.component.html:113</source>Max per Talent</msg>
   <msg id="5253915787128325560"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:3</source>Do you really want to delete the character &quot;<ph name="INTERPOLATION"><ex>{{ char.about.name }}</ex>{{ char.about.name }}</ph>&quot;?</msg>
   <msg id="3542042671420335679"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:6</source>No</msg>
   <msg id="2807800733729323332"><source>src/app/modules/dcm/confirm-delete-dialog/confirm-delete-dialog.component.html:7</source>Yes</msg>
   <msg id="8829497237648100098"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:10</source>Filter</msg>
-  <msg id="1991740644022678534"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:26</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:59</source>Requirements</msg>
-  <msg id="314315645942131479"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:55</source>Info</msg>
-  <msg id="8301924700928654726"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:72,74</source>
+  <msg id="1991740644022678534"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:26</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:56</source>Requirements</msg>
+  <msg id="314315645942131479"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:52</source>Info</msg>
+  <msg id="8301924700928654726"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:66,68</source>
                                     Not compatible with the advantage <ph name="START_TAG_CODE"><ex>&lt;code&gt;</ex>&lt;code&gt;</ph><ph name="INTERPOLATION"><ex>{{ row.incompatible.advantages[0] }}</ex>{{ row.incompatible.advantages[0] }}</ph><ph name="CLOSE_TAG_CODE"><ex>&lt;/code&gt;</ex>&lt;/code&gt;</ph>.
                                 </msg>
-  <msg id="8068462513072736344"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:76</source>Not compatible with the advantages</msg>
-  <msg id="42160814379287693"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:80</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:95</source> and</msg>
-  <msg id="4181594468527095644"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:85,88</source>
+  <msg id="8068462513072736344"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:70</source>Not compatible with the advantages</msg>
+  <msg id="42160814379287693"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:74</source><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:89</source> and</msg>
+  <msg id="4181594468527095644"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:79,82</source>
                                     Not compatible with the disadvantage
                                     <ph name="START_TAG_CODE"><ex>&lt;code&gt;</ex>&lt;code&gt;</ph><ph name="INTERPOLATION"><ex>{{ row.incompatible.disadvantages[0] }}</ex>{{ row.incompatible.disadvantages[0] }}</ph><ph name="CLOSE_TAG_CODE"><ex>&lt;/code&gt;</ex>&lt;/code&gt;</ph>.
                                 </msg>
-  <msg id="5040455051672803712"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:91</source>Not compatible with the disadvantages</msg>
+  <msg id="5040455051672803712"><source>src/app/modules/presets/advantages-disadvantages/advantages-disadvantages.component.html:85</source>Not compatible with the disadvantages</msg>
   <msg id="9072927010120079382"><source>src/app/modules/search/search/search.component.html:15</source>No results for query &quot;<ph name="INTERPOLATION"><ex>{{ query | async }}</ex>{{ query | async }}</ph>&quot;.</msg>
   <msg id="8688982360057766039"><source>src/app/modules/search/search/search.component.html:20</source>Enter query to start a search...</msg>
   <msg id="3686315288514138686"><source>src/app/modules/utils/probability/probability.component.html:6</source>Probabilities</msg>
   <msg id="5963653123239768443"><source>src/app/modules/utils/probability/probability.component.html:13</source>Threshold</msg>
   <msg id="6227029411187131996"><source>src/app/modules/utils/probability/probability.component.html:25</source>(<ph name="INTERPOLATION"><ex>{{ row.successes }}</ex>{{ row.successes }}</ph> Successes)</msg>
   <msg id="2713553834825601516"><source>src/app/modules/utils/probability/probability.component.html:31</source>Dices</msg>
+  <msg id="532891581208049200"><source>src/app/modules/utils/raise/raise.component.html:6</source>Raise costs</msg>
   <msg id="78e563acaffc3be704c8a4edfe7cb5952d0a3049"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Easy</msg>
   <msg id="077e90416bdae39a40441d0b94c5a9e8fcad4514"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Normal</msg>
   <msg id="4304211a1b4689b42421cec0cbf069b97b44a6ab"><source>apps/website/src/app/modules/utils/probability/probability.component.ts:1</source>Difficult</msg>
