@@ -1,3 +1,4 @@
+<button mat-dialog-close mat-icon-button><mat-icon>close</mat-icon></button>
 <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper" [selectedIndex]="stepperIndex" (selectionChange)="stepperChange($event)">
     <mat-step [stepControl]="settingsControl" [editable]="false">
         <ng-template matStepLabel i18n>Settings</ng-template>

@@ -1,4 +1,19 @@
 .cs-wizard-dialog {
+    display: block;
+    position: relative;
+
+    [mat-icon-button][mat-dialog-close] {
+        position: absolute;
+        top: -24px;
+        right: -24px;
+
+        .mat-icon {
+            font-size: 16px;
+            line-height: 16px;
+            height: 16px;
+            width: 16px;
+        }
+    }
 
     .mat-stepper-horizontal {
         .mat-stepper-horizontal-line {
