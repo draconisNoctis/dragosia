@@ -514,6 +514,14 @@ level: C
 
 ---
 
+name: Ingenieurswesen
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'FF' ]
+level: B
+
+---
+
 name: Medizin
 presets: [ 'star-trek' ]
 category: mental
