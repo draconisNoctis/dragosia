@@ -203,6 +203,7 @@ typeGiftName: Magie
 name: Ausdauernde Zauberei I
 value: 3
 description: Erhöt die Anzahl an Würfeln zum Mana reduzieren nach Zaubern um 1 Würfel
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 2
@@ -218,6 +219,7 @@ typeGiftName: Magie
 name: Ausdauernde Zauberei II
 value: 8
 description: Siehe Ausdauernde Zauberei I, jedoch 2 Würfel.
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 3
@@ -233,6 +235,7 @@ typeGiftName: Magie
 name: Ausdauernde Zauberei III
 value: 13
 description: Siehe Ausdauernde Zauberei I, jedoch 3 Würfel.
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 5
@@ -248,6 +251,7 @@ typeGiftName: Magie
 name: Magische Regeneration I
 value: 3
 description: Erhöt die Anzahl an Würfeln für die Probe um eine Mana-Wunde zu heilen um 1/2/3
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 1
@@ -263,6 +267,7 @@ typeGiftName: Magie
 name: Magische Regeneration II
 value: 8
 description: Siehe Magische Regeneration I, jedoch 2 Würfel.
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 2
@@ -277,6 +282,7 @@ typeGiftName: Magie
 name: Magische Regeneration III
 value: 13
 description: Siehe Magische Regeneration I, jedoch 3 Würfel.
+presets: [ 'dragosia' ]
 requirements:
   gifts:
       Magie: 4
@@ -292,6 +298,7 @@ typeGiftName: Magie
 name: Stählerner Geist I
 value: 5
 description: Erlaubt dem Magiekunden die ersten 1 Wunden zu komplett ignorieren. Die 2. Wunde bedeutet dann auch nur einen Abzug von einem Würfel. 5 Wunden bedeuten trotzdem die Bewusstlosigkeit.
+presets: [ 'dragosia' ]
 requirements:
   attributes:
       constitution: 2
@@ -308,6 +315,7 @@ typeGiftName: Magie
 name: Stählerner Geist II
 value: 13
 description: Siehe Stählerner Geist I, jedoch bis zu zwei Wunden.
+presets: [ 'dragosia' ]
 requirements:
   attributes:
       constitution: 4

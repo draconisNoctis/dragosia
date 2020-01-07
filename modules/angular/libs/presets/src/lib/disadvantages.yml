@@ -59,6 +59,7 @@ type: common
 name: Gesucht I
 value: 3
 description: Der Charakter wird in einer Stadt gesucht.
+presets: [ 'dragosia' ]
 incompatible:
     disadvantages:
         - Gesucht II
@@ -70,6 +71,7 @@ type: common
 name: Gesucht II
 value: 5
 description: Der Charakter wird in einem Bezirk gesucht.
+presets: [ 'dragosia' ]
 incompatible:
     disadvantages:
         - Gesucht I
@@ -81,6 +83,7 @@ type: common
 name: Gesucht III
 value: 8
 description: Der Charakter wird in einem Land gesucht.
+presets: [ 'dragosia' ]
 incompatible:
     disadvantages:
         - Gesucht I
