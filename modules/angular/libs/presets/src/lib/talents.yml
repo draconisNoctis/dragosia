@@ -512,5 +512,165 @@ category: range
 attributes: [ 'AGI', 'IN' ]
 level: C
 
+---
+
+name: Medizin
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'FF' ]
+level: B
+
+---
+
+name: Motivieren
+presets: [ 'star-trek' ]
+category: social
+attributes: [ 'CH', 'MU' ]
+level: B
+
+---
+
+name: Diplomatie
+presets: [ 'star-trek' ]
+category: social
+attributes: [ 'CH', 'IN' ]
+level: B
+
+---
+
+name: Steuern
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'IN', 'MU' ]
+level: B
+
+---
+
+name: Navigation
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Astronomie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Astrophysik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Biochemie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'FF' ]
+level: B
+
+---
+
+name: Botanik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'IN', 'FF' ]
+level: B
+
+---
+
+name: Chemie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'FF' ]
+level: B
+
+---
+
+name: Geologie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'KL' ]
+level: B
+
+---
+
+name: Genetik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'MU' ]
+level: B
+
+---
+
+name: Kybernetik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'MU' ]
+level: B
+
+---
+
+name: Linguistik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Mathematik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'KL' ]
+level: B
+
+---
+
+name: Molekularbiologie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'FF' ]
+level: B
+
+---
+
+name: Physik
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Psychologie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'IN', 'CH' ]
+level: B
+
+---
+
+name: Stellarkartographie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'IN' ]
+level: B
+
+---
+
+name: Xenobiologie
+presets: [ 'star-trek' ]
+category: mental
+attributes: [ 'KL', 'MU' ]
+level: B
+
 
 
