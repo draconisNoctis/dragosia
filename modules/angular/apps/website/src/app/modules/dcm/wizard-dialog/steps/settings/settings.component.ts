@@ -73,7 +73,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             points.reset({
                                 points: 7000,
                                 attributes: {
-                                    min: 6000,
+                                    min: 5000,
                                     max: 13
                                 },
                                 gifts: {
@@ -90,7 +90,7 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                             points.reset({
                                 points: 8000,
                                 attributes: {
-                                    min: 6500,
+                                    min: 6000,
                                     max: 14
                                 },
                                 gifts: {
