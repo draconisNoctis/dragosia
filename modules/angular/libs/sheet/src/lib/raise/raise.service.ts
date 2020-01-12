@@ -11,11 +11,34 @@ function multipliersFactory() {
         'C': 2.25,
         'D': 3.25,
         'E': 4.5,
-        'F': 6
+        'F': 9
+    };
+};
+
+function linearMultipliersFactory() {
+    return {
+        'A*': .75,
+        'A': 1,
+        'B': 1.5,
+        'C': 2.25,
+        'D': 4,
+        'E': 6,
+        'F': 9
     };
 };
 
 function offsetsFactory() {
+    return {
+        'A*': 0,
+        'A': 0,
+        'B': 0,
+        'C': 0,
+        'D': 0,
+        'E': 0,
+        'F': 0
+    };
+};
+function linearOffsetsFactory() {
     return {
         'A*': 0,
         'A': 0,
@@ -32,17 +55,42 @@ function activationMultiplierFactory() {
 }
 
 function expBasisFactory() {
-    return Math.sqrt(2);
+    return {
+        'A*': 1.4,
+        'A': 1.4,
+        'B': 1.4,
+        'C': 1.4,
+        'D': 1.4,
+        'E': 1.4,
+        'F': 1.4
+    };
+}
+
+function linearBaseFactory() {
+    return {
+        'A*': 1.4,
+        'A': 1.4,
+        'B': 1.4,
+        'C': 1.4,
+        'D': 1.4,
+        'E': 1.4,
+        'F': 1.4
+    };
 }
 
 export const MULTIPLIERS = new InjectionToken<{ [P in Level]: number }>('MULTIPLIERS', { providedIn: 'root', factory: multipliersFactory })
+export const LINEAR_MULTIPLIERS = new InjectionToken<{ [P in Level]: number }>('MULTIPLIERS', { providedIn: 'root', factory: linearMultipliersFactory })
 export const OFFSETS = new InjectionToken<{ [P in Level]: number }>('OFFSETS', { providedIn: 'root', factory: offsetsFactory })
+export const LINEAR_OFFSETS = new InjectionToken<{ [P in Level]: number }>('OFFSETS', { providedIn: 'root', factory: linearOffsetsFactory })
 export const ACTIVATION_MULTIPLIER = new InjectionToken<number>('ACTIVATION_MULTIPLIER', { providedIn: 'root', factory: activationMultiplierFactory })
-export const EXP_BASIS = new InjectionToken<number>('EXP_BASIS', { providedIn: 'root', factory: expBasisFactory });
+export const EXP_BASIS = new InjectionToken<{ [P in Level]: number }>('EXP_BASIS', { providedIn: 'root', factory: expBasisFactory });
+export const BASE = new InjectionToken<{ [P in Level]: number }>('EXP_BASIS', { providedIn: 'root', factory: linearBaseFactory });
 
 export function raiseServiceFactory() {
+    return new LinearRaiseService(inject(LINEAR_OFFSETS), inject(LINEAR_MULTIPLIERS), inject(ACTIVATION_MULTIPLIER), inject(BASE));
     // return new FibonacciRaiseService(inject(OFFSETS), inject(MULTIPLIERS), inject(ACTIVATION_MULTIPLIER));
-    return new ExponentialRaiseService(inject(OFFSETS), inject(MULTIPLIERS), inject(ACTIVATION_MULTIPLIER), inject(EXP_BASIS));
+    // return new ExponentialRaiseService(inject(OFFSETS), inject(MULTIPLIERS), inject(ACTIVATION_MULTIPLIER), inject(EXP_BASIS));
+
 }
 
 @Injectable({
@@ -107,7 +155,7 @@ export class ExponentialRaiseService extends RaiseService {
     constructor(@Inject(OFFSETS) protected readonly offsets: { [P in Level]: number },
         @Inject(MULTIPLIERS) protected readonly multipliers: { [P in Level]: number },
         @Inject(ACTIVATION_MULTIPLIER) protected readonly activationMultiplier: number,
-        @Inject(EXP_BASIS) protected readonly basis: number) {
+        @Inject(EXP_BASIS) protected readonly basis: { [P in Level]: number }) {
         super();
     }
 
@@ -118,14 +166,52 @@ export class ExponentialRaiseService extends RaiseService {
 
         let sum = 0;
         while (from++ < to) {
-            sum += Math.round(Math.pow(this.basis, from) * this.multipliers[level] + this.offsets[level]);
+            sum += Math.round(Math.pow(this.basis[level], from) * this.multipliers[level] + this.offsets[level]);
         }
 
         return sum;
     }
 
     getActivationCost(level: Level) {
-        return Math.round(this.activationMultiplier * this.basis * this.multipliers[level] + this.offsets[level]);
+        return Math.round(this.activationMultiplier * this.basis[level] * this.multipliers[level] + this.offsets[level]);
+    }
+}
+
+
+@Injectable()
+export class LinearRaiseService extends RaiseService {
+    protected readonly levels = Object.keys(this.multipliers) as Level[];
+
+    constructor(@Inject(LINEAR_OFFSETS) protected readonly offsets: { [P in Level]: number },
+        @Inject(LINEAR_MULTIPLIERS) protected readonly multipliers: { [P in Level]: number },
+        @Inject(ACTIVATION_MULTIPLIER) protected readonly activationMultiplier: number,
+        @Inject(BASE) protected readonly base: { [P in Level]: number }) {
+        super();
+    }
+
+    getRaiseCosts(to: number, level: Level, { from = to - 1, reduced }: { from?: number; reduced?: boolean; } = {}): number {
+        if (reduced) {
+            level = this.levels[this.levels.indexOf(level) - 1];
+        }
+
+        let sum = 0;
+        while (from++ < to) {
+            sum += Math.round(this.getLevelCost(from, level) * this.multipliers[level] + this.offsets[level]);
+        }
+
+        return sum;
+    }
+
+    protected getLevelCost(to: number, level: Level): number {
+        const add = 1.1**to;
+        if(to > 0) {
+            return this.getLevelCost(to - 1, level) + add;
+        }
+        return add;
+    }
+
+    getActivationCost(level: Level) {
+        return Math.round(this.activationMultiplier * this.getLevelCost(0, level) * this.multipliers[level] + this.offsets[level]);
     }
 }
 

@@ -88,7 +88,7 @@ export interface ITalent {
     name: string;
     // skill?: string;
     gift?: string;
-    attributes: [ string, string ];
+    attributes: [ string, string, string ];
     level: Level;
 }
 
@@ -269,14 +269,14 @@ export function createEmptyCharacter() : ICharacter {
             profession: ''
         },
         attributes: {
-            strength: 1,
-            agility: 1,
-            dexterity: 1,
-            constitution: 1,
-            courage: 1,
-            intelligence: 1,
-            intuition: 1,
-            charisma: 1
+            strength: 8,
+            agility: 8,
+            dexterity: 8,
+            constitution: 8,
+            courage: 8,
+            intelligence: 8,
+            intuition: 8,
+            charisma: 8
         },
         // skills: {
         //     melee: 0,

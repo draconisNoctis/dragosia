@@ -23,13 +23,16 @@ export class RaiseComponent implements OnInit {
     displayedColumns = [ 'label', ...this.levels];
 
 
-    table = Array.from({ length: 16 }, (_, i) => i).map(to => {
+    table = Array.from({ length: 26 }, (_, i) => i).map(to => {
         return this.levels.reduce((t, c) => {
-            t.costs[c] = this.raiseService.getRaiseCosts(to, c);
+            t.costs[c] = {
+                current: this.raiseService.getRaiseCosts(to, c),
+                sum: 0
+            }
             return t;
         }, {
             to,
-            costs: {} as { [P in Level]: number }
+            costs: {} as { [P in Level]: { current: number, sum: number } }
         })
 
         // return this.levels.reduce(level => {

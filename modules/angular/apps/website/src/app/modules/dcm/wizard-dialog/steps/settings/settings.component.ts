@@ -71,69 +71,69 @@ export class SettingsComponent implements OnInit, ControlValueAccessor {
                     switch (value) {
                         case 'beginner':
                             points.reset({
-                                points: 240,
+                                points: 7000,
                                 attributes: {
-                                    min: 55,
-                                    max: 3
+                                    min: 6000,
+                                    max: 13
                                 },
                                 gifts: {
                                     min: 0,
-                                    max: 3
+                                    max: 10
                                 },
                                 talents: {
                                     min: 0,
-                                    max: 3
+                                    max: 10
                                 }
                             });
                             break;
                         case 'normal':
                             points.reset({
-                                points: 360,
+                                points: 8000,
                                 attributes: {
-                                    min: 80,
-                                    max: 4
+                                    min: 6500,
+                                    max: 14
                                 },
                                 gifts: {
                                     min: 0,
-                                    max: 4
+                                    max: 12
                                 },
                                 talents: {
                                     min: 0,
-                                    max: 5
+                                    max: 12
                                 }
                             });
                             break;
                         case 'hero':
                             points.reset({
-                                points: 540,
+                                points: 9000,
                                 attributes: {
-                                    min: 120,
-                                    max: 6
+                                    min: 7000,
+                                    max: 15
                                 },
                                 gifts: {
                                     min: 0,
-                                    max: 6
+                                    max: 14
                                 },
                                 talents: {
                                     min: 0,
-                                    max: 7
+                                    max: 14
                                 }
                             });
                             break;
                         case 'legend':
                             points.reset({
-                                points: 720,
+                                points: 10000,
                                 attributes: {
-                                    min: 120,
-                                    max: 6
+                                    min: 8000,
+                                    max: 16
                                 },
                                 gifts: {
                                     min: 0,
-                                    max: 6
+                                    max: 16
                                 },
                                 talents: {
                                     min: 0,
-                                    max: 7
+                                    max: 16
                                 }
                             });
                             break;

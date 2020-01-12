@@ -17,7 +17,7 @@
                         <th mat-header-cell *matHeaderCellDef>{{ level }}
                         </th>
                         <td mat-cell *matCellDef="let row">
-                            {{ row.costs[level] }}
+                            {{ row.costs[level].current }}
                         </td>
                     </ng-container>
                 </ng-container>

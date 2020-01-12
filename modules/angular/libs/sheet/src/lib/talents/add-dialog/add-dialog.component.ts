@@ -42,6 +42,7 @@ export class AddDialogComponent {
         name: new FormControl(null, Validators.required),
         attribute1: new FormControl(null, Validators.required),
         attribute2: new FormControl(null, Validators.required),
+        attribute3: new FormControl(null, Validators.required),
         level: new FormControl(null, [Validators.required, ({ value }) => {
             if (value != null && this.getCosts(value) > this.budget) {
                 return { overbudget: true }
@@ -52,7 +53,8 @@ export class AddDialogComponent {
 
     customGiftTalentControl = new FormGroup({
         name: new FormControl(null, Validators.required),
-        attribute: new FormControl(null, Validators.required),
+        attribute1: new FormControl(null, Validators.required),
+        attribute2: new FormControl(null, Validators.required),
         level: new FormControl(null, [Validators.required, ({ value }) => {
             if (value != null && this.getCosts(value) > this.budget) {
                 return { overbudget: true }
@@ -97,11 +99,11 @@ export class AddDialogComponent {
     }
 
     submitCustomSkillTalent() {
-        const { name, attribute1, attribute2, level } = this.customTalentControl.value;
+        const { name, attribute1, attribute2, attribute3, level } = this.customTalentControl.value;
         const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: this.filter.value.category,
-            attributes: [ attribute1, attribute2 ],
+            attributes: [ attribute1, attribute2, attribute3 ],
             level: level,
             value: 1
         }
@@ -109,11 +111,11 @@ export class AddDialogComponent {
     }
 
     submitCustomGiftTalent() {
-        const { name, attribute, level } = this.customGiftTalentControl.value;
+        const { name, attribute1, attribute2, level } = this.customGiftTalentControl.value;
         const talent: ICharacterTalent & { category: keyof ICharacterTalents } = {
             name: name,
             category: 'gifts',
-            attributes: [ this.filter.value.gift, attribute ],
+            attributes: [ this.filter.value.gift, attribute1, attribute2 ],
             level: level,
             value: 1
         }

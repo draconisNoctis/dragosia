@@ -65,37 +65,37 @@ abstract: true
 presets: [ 'star-trek' ]
 talents:
     - name: Föderationsstandard
-      value: 2
+      value: 5
     - name: Muttersprache
-      value: 3
+      value: 7
     - name: Werfen
-      value: 1
+      value: 4
     - name: Körperbeherrschung
-      value: 1
+      value: 3
     - name: Klettern
-      value: 1
+      value: 3
     - name: Singen
       value: 1
     - name: Tanzen
       value: 1
     - name: Sinnesschärfe
-      value: 1
+      value: 3
     - name: Schleichen
-      value: 1
+      value: 3
     - name: Selbstbeherrschung
-      value: 1
+      value: 4
     - name: Menschenkenntnis
-      value: 1
+      value: 3
     - name: Ausstrahlung
-      value: 1
+      value: 3
     - name: Orientierung
-      value: 1
+      value: 3
     - name: Malen/Zeichnen
       value: 1
     - name: Kochen
       value: 1
     - name: Allgemeinwissen
-      value: 1
+      value: 4
 
 ---
 
@@ -127,11 +127,18 @@ presets: [ 'star-trek' ]
 talents: []
 gifts:
     - name: Telepathie
-      value: 1
+      value: 3
 
 ---
 
 name: Bolianer
+extends: st-base
+presets: [ 'star-trek' ]
+talents: []
+
+---
+
+name: Caitianer
 extends: st-base
 presets: [ 'star-trek' ]
 talents: []
@@ -222,7 +229,7 @@ talents: []
 
 ---
 
-name: Tellarianer
+name: Tellarit
 extends: st-base
 presets: [ 'star-trek' ]
 talents: []
@@ -242,7 +249,7 @@ presets: [ 'star-trek' ]
 talents: []
 gifts:
     - name: Kontakt-Telepathie
-      value: 1
+      value: 3
 
 ---
 

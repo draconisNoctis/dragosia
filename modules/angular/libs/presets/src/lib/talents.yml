@@ -1,53 +1,43 @@
 name: Raufen
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - AGI
+attributes: [ 'STR', 'AGI', 'AGI' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: Schilde
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - KO
+attributes: [ 'STR', 'STR', 'KO' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: Schwerter
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - AGI
+attributes: [ 'STR', 'AGI', 'AGI' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: 2H-Schwerter
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - AGI
+attributes: [ 'STR', 'STR', 'AGI' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: Dolche
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - AGI
-    - FF
+attributes: [ 'AGI', 'AGI', 'FF' ]
 skill: N
 level: C
 
@@ -56,86 +46,70 @@ level: C
 name: Hiebwaffen
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - AGI
+attributes: [ 'STR', 'STR', 'AGI' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: 2H-Hiebwaffen
 presets: [ 'dragosia' ]
 category: melee
-attributes:
-    - STR
-    - AGI
+attributes: [ 'STR', 'STR', 'AGI' ]
 skill: N
-level: C
+level: D
 
 ---
 
 name: Werfen
 presets: [ 'dragosia', 'star-trek' ]
 category: range
-attributes:
-    - AGI
-    - IN
+attributes: [ 'AGI', 'IN', 'FF' ]
 skill: F
-level: A
+level: B
 
 ---
 
 name: Bogen
 presets: [ 'dragosia' ]
 category: range
-attributes:
-    - AGI
-    - IN
+attributes: [ 'AGI', 'IN', 'FF' ]
 skill: F
-level: C
+level: D
 
 ---
 
 name: Armbrust
 presets: [ 'dragosia' ]
 category: range
-attributes:
-    - IN
-    - IN
+attributes: [ 'IN', 'IN', 'FF' ]
 skill: F
-level: C
+level: D
 
 ---
 
 name: Wurfspeere
 presets: [ 'dragosia' ]
 category: range
-attributes:
-    - AGI
-    - IN
+attributes: [ 'AGI', 'AGI', 'IN' ]
 skill: F
-level: C
+level: D
 
 ---
 
 name: Menschenkenntnis
 presets: [ 'dragosia', 'star-trek' ]
 category: social
-attributes:
-    - IN
-    - CH
+attributes: [ 'MU', 'IN', 'CH' ]
 skill: S
-level: B
+level: C
 
 ---
 
 name: Ausstrahlung
 presets: [ 'dragosia', 'star-trek' ]
 category: social
-attributes:
-    - CH
-    - CH
+attributes: [ 'CH', 'CH', 'IN' ]
 skill: S
 level: B
 
@@ -144,9 +118,7 @@ level: B
 name: Orientierung
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - KL
-    - IN
+attributes: [ 'KL', 'IN', 'IN' ]
 skill: G
 level: B
 
@@ -155,20 +127,16 @@ level: B
 name: Allgemeinwissen
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - KL
-    - KL
+attributes: [ 'KL', 'KL', 'IN' ]
 skill: G
-level: B
+level: C
 
 ---
 
 name: Fährtensuche
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - IN
-    - KO
+attributes: [ 'MU', 'IN', 'KO' ]
 skill: G
 level: B
 
@@ -177,9 +145,7 @@ level: B
 name: Lesen/Schreiben
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - KL
+attributes: [ 'KL', 'KL', 'FF' ]
 skill: G
 level: B
 
@@ -188,9 +154,7 @@ level: B
 name: Pflanzenkunde
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - IN
+attributes: [ 'KL', 'KL', 'IN' ]
 skill: G
 level: B
 
@@ -199,9 +163,7 @@ level: B
 name: Tierkunde
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - IN
+attributes: [ 'KL', 'IN', 'MU' ]
 skill: G
 level: B
 
@@ -210,9 +172,7 @@ level: B
 name: Geographie
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - KL
+attributes: [ 'KL', 'KL', 'IN' ]
 skill: G
 level: B
 
@@ -221,9 +181,7 @@ level: B
 name: Heraldik
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - KL
+attributes: [ 'KL', 'KL', 'MU' ]
 skill: G
 level: B
 
@@ -232,9 +190,7 @@ level: B
 name: Überreden
 presets: [ 'dragosia', 'star-trek' ]
 category: social
-attributes:
-    - MU
-    - CH
+attributes: [ 'MU', 'CH', 'CH' ]
 skill: S
 level: B
 
@@ -243,20 +199,16 @@ level: B
 name: Selbstbeherrschung
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - MU
-    - KO
+attributes: [ 'MU', 'MU', 'KO' ]
 skill: G
-level: B
+level: C
 
 ---
 
 name: Muttersprache
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - IN
-    - KL
+attributes: [ 'IN', 'IN', 'KL' ]
 skill: G
 level: A
 
@@ -265,9 +217,7 @@ level: A
 name: Gemeinsprache
 presets: [ 'dragosia' ]
 category: mental
-attributes:
-    - KL
-    - IN
+attributes: [ 'KL', 'KL', 'IN' ]
 skill: G
 level: B
 
@@ -276,9 +226,7 @@ level: B
 name: Fremdsprache
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - KL
-    - IN
+attributes: [ 'KL', 'KL', 'IN' ]
 skill: G
 level: B
 
@@ -287,31 +235,25 @@ level: B
 name: Körperbeherrschung
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - AGI
-    - KO
+attributes: [ 'AGI', 'AGI', 'KO' ]
 skill: K
-level: B
+level: C
 
 ---
 
 name: Klettern
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - AGI
-    - KO
+attributes: [ 'AGI', 'STR', 'KO' ]
 skill: K
-level: B
+level: C
 
 ---
 
 name: Singen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - CH
-    - IN
+attributes: [ 'CH', 'IN', 'IN' ]
 skill: K
 level: A
 
@@ -320,31 +262,25 @@ level: A
 name: Tanzen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - CH
-    - AGI
+attributes: [ 'CH', 'AGI', 'AGI' ]
 skill: K
-level: A
+level: B
 
 ---
 
 name: Musizieren
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - FF
-    - IN
+attributes: [ 'FF', 'IN', 'CH' ]
 skill: K
-level: A
+level: B
 
 ---
 
 name: Malen/Zeichnen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - FF
-    - IN
+attributes: [ 'FF', 'IN', 'IN' ]
 skill: K
 level: B
 
@@ -353,53 +289,43 @@ level: B
 name: Kochen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - FF
-    - KL
+attributes: [ 'FF', 'KL', 'KO' ]
 skill: K
-level: A
+level: B
 
 ---
 
 name: Sinnesschärfe
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes:
-    - IN
-    - KL
+attributes: [ IN', 'KL', 'KL' ]
 skill: K
-level: B
+level: C
 
 ---
 
 name: Zechen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - KO
-    - STR
+attributes: [ 'KO', 'KO', 'MU' ]
 skill: K
-level: A
+level: C
 
 ---
 
 name: Schleichen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - AGI
-    - MU
+attributes: [ 'AGI', 'MU', 'IN' ]
 skill: K
-level: B
+level: C
 
 ---
 
 name: Wildnisleben
 presets: [ 'dragosia' ]
 category: physical
-attributes:
-    - IN
-    - KO
+attributes: [ 'IN', 'KO', 'STR' ]
 skill: K/G
 level: B
 
@@ -408,9 +334,7 @@ level: B
 name: Erste Hilfe
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes:
-    - KL
-    - FF
+attributes: [ 'KL', 'KL', 'FF' ]
 skill: K/G
 level: B
 
@@ -419,73 +343,52 @@ level: B
 name: Feuer
 presets: [ 'dragosia' ]
 category: gifts
-attributes:
-    - Magie
-    - KL
+attributes: [ 'Magie', 'KL', 'MU' ]
 gift: Magie
-level: E
+level: D
 
 ---
 
 name: Wasser
 presets: [ 'dragosia' ]
 category: gifts
-attributes:
-    - Magie
-    - KL
+attributes: [ 'Magie', 'KL', 'IN' ]
 gift: Magie
-level: E
+level: D
 
 ---
 
 name: Humus
 presets: [ 'dragosia' ]
 category: gifts
-attributes:
-    - Magie
-    - KL
+attributes: [ 'Magie', 'KL', 'KO' ]
 gift: Magie
-level: E
+level: D
 
 ---
 
 name: Erz
 presets: [ 'dragosia' ]
 category: gifts
-attributes:
-    - Magie
-    - KL
+attributes: [ 'Magie', 'KL', 'KO' ]
 gift: Magie
-level: E
+level: D
 
 ---
 
 name: Luft
 presets: [ 'dragosia' ]
 category: gifts
-attributes:
-    - Magie
-    - KL
+attributes: [ 'Magie', 'KL', 'IN' ]
 gift: Magie
-level: E
-
----
-
-name: Magie
-presets: [ 'dragosia' ]
-category: gifts
-attributes:
-    - Magie
-    - KL
-gift: Magie
-level: E
+level: D
 
 ---
 
 name: Föderationsstandard
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -493,31 +396,31 @@ level: B
 name: Nahkampf
 presets: [ 'star-trek' ]
 category: melee
-attributes: [ 'STR', 'AGI' ]
-level: C
+attributes: [ 'STR', 'AGI', 'AGI' ]
+level: D
 
 ---
 
 name: Handphaser
 presets: [ 'star-trek' ]
 category: range
-attributes: [ 'AGI', 'IN' ]
-level: C
+attributes: [ 'AGI', 'IN', 'FF' ]
+level: D
 
 ---
 
 name: Phasergewehr
 presets: [ 'star-trek' ]
 category: range
-attributes: [ 'AGI', 'IN' ]
-level: C
+attributes: [ 'AGI', 'IN', 'FF' ]
+level: D
 
 ---
 
 name: Ingenieurswesen
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'FF' ]
+attributes: [ 'KL', 'KL', 'FF' ]
 level: B
 
 ---
@@ -525,7 +428,7 @@ level: B
 name: Medizin
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'FF' ]
+attributes: [ 'KL', 'IN', 'FF' ]
 level: B
 
 ---
@@ -533,7 +436,7 @@ level: B
 name: Motivieren
 presets: [ 'star-trek' ]
 category: social
-attributes: [ 'CH', 'MU' ]
+attributes: [ 'CH', 'CH', 'MU' ]
 level: B
 
 ---
@@ -541,7 +444,7 @@ level: B
 name: Diplomatie
 presets: [ 'star-trek' ]
 category: social
-attributes: [ 'CH', 'IN' ]
+attributes: [ 'CH', 'IN', 'KL' ]
 level: B
 
 ---
@@ -549,7 +452,7 @@ level: B
 name: Steuern
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'IN', 'MU' ]
+attributes: [ 'IN', 'IN', 'MU' ]
 level: B
 
 ---
@@ -557,7 +460,7 @@ level: B
 name: Navigation
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -565,7 +468,7 @@ level: B
 name: Astronomie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -573,7 +476,7 @@ level: B
 name: Astrophysik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -581,7 +484,7 @@ level: B
 name: Biochemie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'FF' ]
+attributes: [ 'KL', 'IN', 'FF' ]
 level: B
 
 ---
@@ -589,7 +492,7 @@ level: B
 name: Botanik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'IN', 'FF' ]
+attributes: [ 'IN', 'IN', 'FF' ]
 level: B
 
 ---
@@ -597,7 +500,7 @@ level: B
 name: Chemie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'FF' ]
+attributes: [ 'KL', 'IN', 'FF' ]
 level: B
 
 ---
@@ -605,7 +508,7 @@ level: B
 name: Geologie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'KL' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -613,7 +516,7 @@ level: B
 name: Genetik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'MU' ]
+attributes: [ 'KL', 'KL', 'MU' ]
 level: B
 
 ---
@@ -621,7 +524,7 @@ level: B
 name: Kybernetik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'MU' ]
+attributes: [ 'KL', 'KL', 'MU' ]
 level: B
 
 ---
@@ -629,7 +532,7 @@ level: B
 name: Linguistik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'IN', 'IN' ]
 level: B
 
 ---
@@ -637,7 +540,7 @@ level: B
 name: Mathematik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'KL' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -645,7 +548,7 @@ level: B
 name: Molekularbiologie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'FF' ]
+attributes: [ 'KL', 'IN', 'FF' ]
 level: B
 
 ---
@@ -653,7 +556,7 @@ level: B
 name: Physik
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -661,7 +564,7 @@ level: B
 name: Psychologie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'IN', 'CH' ]
+attributes: [ 'KL', 'IN', 'CH' ]
 level: B
 
 ---
@@ -669,7 +572,7 @@ level: B
 name: Stellarkartographie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'IN' ]
+attributes: [ 'KL', 'KL', 'IN' ]
 level: B
 
 ---
@@ -677,7 +580,7 @@ level: B
 name: Xenobiologie
 presets: [ 'star-trek' ]
 category: mental
-attributes: [ 'KL', 'MU' ]
+attributes: [ 'KL', 'IN', 'MU' ]
 level: B
 
 

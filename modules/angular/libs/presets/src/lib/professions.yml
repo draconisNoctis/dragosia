@@ -95,7 +95,7 @@ talents:
   - nOf:
         - name: Nahkampf
         - name: Handphaser
-    values: [ 2, 1 ]
+    values: [ 4, 2 ]
 
 ---
 

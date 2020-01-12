@@ -1,18 +1,18 @@
 name: Magie
 presets: [ 'dragosia' ]
-level: F
+level: E
 
 ---
 
 name: Gefahreninstinkt
 presets: [ 'dragosia' ]
-level: E
+level: D
 
 ---
 
 name: Glaube
 presets: [ 'dragosia' ]
-level: D
+level: C
 
 ---
 
@@ -30,4 +30,4 @@ level: C
 
 name: Empathische-Telepatie
 presets: [ 'star-trek' ]
-level: B
+level: C
