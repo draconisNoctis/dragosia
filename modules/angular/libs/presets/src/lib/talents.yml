@@ -136,7 +136,7 @@ level: C
 name: Fährtensuche
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes: [ 'MU', 'IN', 'KO' ]
+attributes: [ 'IN', 'IN', 'KL' ]
 skill: G
 level: B
 
@@ -169,10 +169,46 @@ level: B
 
 ---
 
+name: Mechanik
+presets: [ 'dragosia' ]
+category: mental
+attributes: [ 'KL', 'FF', 'FF' ]
+skill: G
+level: B
+
+---
+
+name: Schmieden
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'ST', 'KO', 'FF' ]
+skill: G
+level: B
+
+---
+
+name: Holzbearbeitung
+presets: [ 'dragosia' ]
+category: mental
+attributes: [ 'KL', 'FF', 'IN' ]
+skill: G
+level: B
+
+---
+
 name: Geographie
 presets: [ 'dragosia' ]
 category: mental
 attributes: [ 'KL', 'KL', 'IN' ]
+skill: G
+level: B
+
+---
+
+name: Schwimmen
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'AGI', 'AGI', 'KO' ]
 skill: G
 level: B
 
@@ -191,6 +227,15 @@ name: Überreden
 presets: [ 'dragosia', 'star-trek' ]
 category: social
 attributes: [ 'MU', 'CH', 'CH' ]
+skill: S
+level: B
+
+---
+
+name: Lügen
+presets: [ 'dragosia', 'star-trek' ]
+category: social
+attributes: [ 'MU', 'IN', 'CH' ]
 skill: S
 level: B
 
@@ -298,7 +343,7 @@ level: B
 name: Sinnesschärfe
 presets: [ 'dragosia', 'star-trek' ]
 category: mental
-attributes: [ IN', 'KL', 'KL' ]
+attributes: [ 'IN', 'KL', 'KL' ]
 skill: K
 level: C
 
@@ -316,9 +361,63 @@ level: C
 name: Schleichen
 presets: [ 'dragosia', 'star-trek' ]
 category: physical
-attributes: [ 'AGI', 'MU', 'IN' ]
+attributes: [ 'AGI', 'IN', 'KO' ]
 skill: K
 level: C
+
+---
+
+name: Verstecken
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'AGI', 'IN', 'KO' ]
+skill: K
+level: C
+
+---
+
+name: Schlösser knacken
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'FF', 'FF', 'IN' ]
+skill: K
+level: C
+
+---
+
+name: Taschendiebstahl
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'MU', 'FF', 'AGI' ]
+skill: K
+level: C
+
+---
+
+name: Brauen
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'KL', 'KL', 'IN' ]
+skill: K
+level: A
+
+---
+
+name: Winzern
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'KL', 'KL', 'IN' ]
+skill: K
+level: A
+
+---
+
+name: Schnapps brennen
+presets: [ 'dragosia', 'star-trek' ]
+category: physical
+attributes: [ 'KL', 'KL', 'IN' ]
+skill: K
+level: A
 
 ---
 
@@ -327,6 +426,14 @@ presets: [ 'dragosia' ]
 category: physical
 attributes: [ 'IN', 'KO', 'STR' ]
 skill: K/G
+level: B
+
+---
+
+name: Fallen stellen
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'FF', 'FF', 'KL' ]
 level: B
 
 ---
@@ -382,6 +489,22 @@ category: gifts
 attributes: [ 'Magie', 'KL', 'IN' ]
 gift: Magie
 level: D
+
+---
+
+name: Philosophie
+presets: [ 'dragosia' ]
+category: mental
+attributes: [ 'KL', 'IN', 'CH' ]
+level: B
+
+---
+
+name: Handeln
+presets: [ 'dragosia' ]
+category: social
+attributes: [ 'KL', 'MU', 'CH' ]
+level: B
 
 ---
 
@@ -538,7 +661,7 @@ level: B
 ---
 
 name: Mathematik
-presets: [ 'star-trek' ]
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes: [ 'KL', 'KL', 'IN' ]
 level: B
