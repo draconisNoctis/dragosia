@@ -508,6 +508,22 @@ level: B
 
 ---
 
+name: Schießen
+presets: [ 'dragosia' ]
+category: range
+attributes: [ 'IN', 'FF', 'KO' ]
+level: D
+
+---
+
+name: Metallurgie
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'KL', 'KL', 'FF' ]
+level: B
+
+---
+
 name: Föderationsstandard
 presets: [ 'star-trek' ]
 category: mental
@@ -589,7 +605,7 @@ level: B
 ---
 
 name: Astronomie
-presets: [ 'star-trek' ]
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes: [ 'KL', 'KL', 'IN' ]
 level: B
@@ -629,7 +645,7 @@ level: B
 ---
 
 name: Geologie
-presets: [ 'star-trek' ]
+presets: [ 'dragosia', 'star-trek' ]
 category: mental
 attributes: [ 'KL', 'KL', 'IN' ]
 level: B
@@ -704,6 +720,62 @@ name: Xenobiologie
 presets: [ 'star-trek' ]
 category: mental
 attributes: [ 'KL', 'IN', 'MU' ]
+level: B
+
+---
+
+name: Reiten
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'AGI', 'KO', 'IN' ]
+level: B
+
+---
+
+name: Alchemie
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'KL', 'FF', 'MU' ]
+level: B
+
+---
+
+name: Verführen
+presets: [ 'dragosia' ]
+category: social
+attributes: [ 'IN', 'CH', 'CH' ]
+level: B
+
+---
+
+name: Schauspielern
+presets: [ 'dragosia' ]
+category: social
+attributes: [ 'MU', 'IN', 'CH' ]
+level: B
+
+---
+
+name: Lederbearbeitung
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'KL', 'IN', 'FF' ]
+level: B
+
+---
+
+name: Schlachten
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'MU', 'KL', 'FF' ]
+level: B
+
+---
+
+name: Akrobatik
+presets: [ 'dragosia' ]
+category: physical
+attributes: [ 'AGI', 'AGI', 'KO' ]
 level: B
 
 
